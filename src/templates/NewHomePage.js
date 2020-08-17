@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Slider from "react-slick"
 import Parser from "html-react-parser"
+import Equalizer from "../components/Equalizer"
 const shortid = require("shortid")
 
 export const query = graphql`
@@ -522,21 +523,23 @@ export default function NewHomePage({ data }) {
         <div className="slider-wrap">
           <div className="row slider-row">
             <div className="large-10 columns small-centered">
-              <Slider className="soc-slider" {...sliderSettings}>
-                {templateFields.listSocProof.map(each => {
-                  return (
-                    <div
-                      className="soc-slide"
-                      key={shortid.generate()}
-                      data-mh="soc-slide"
-                    >
-                      <div name="soc-slide" className="slide-wrap">
-                        {Parser(each.text)}
+              <Equalizer>
+                <Slider className="soc-slider" {...sliderSettings}>
+                  {templateFields.listSocProof.map(each => {
+                    return (
+                      <div
+                        className="soc-slide"
+                        key={shortid.generate()}
+                        data-mh="soc-slide"
+                      >
+                        <div name="soc-slide" className="slide-wrap">
+                          {Parser(each.text)}
+                        </div>
                       </div>
-                    </div>
-                  )
-                })}
-              </Slider>
+                    )
+                  })}
+                </Slider>
+              </Equalizer>
             </div>
           </div>
         </div>

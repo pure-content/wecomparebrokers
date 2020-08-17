@@ -3,7 +3,6 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Parser from "html-react-parser"
 import Equalizer from "./Equalizer"
 const shortid = require("shortid")
-console.log(Equalizer)
 
 export default function Footer() {
   const footer = useStaticQuery(graphql`
