@@ -21,9 +21,11 @@ const Layout = props => {
 
   useEffect(() => {
     MatchHeight.init()
-    window.addEventListener("resize", resize)
-    return () => {
-      window.removeEventListener("resize", resize)
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", resize)
+      return () => {
+        window.removeEventListener("resize", resize)
+      }
     }
   }, [width])
 
