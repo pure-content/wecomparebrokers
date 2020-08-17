@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="204px" height="573px" viewBox="0 0 204 573" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>circle-cut-left</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="circle-cut-left" transform="translate(0.000000, -8.000000)" fill-rule="nonzero">
+            <g transform="translate(0.000000, 8.000000)" id="Shape">
+                <path d="M1,0 L204,0 L204,573 L58.5200418,573 C106.636807,499.135546 134.046358,413.761048 134.046358,322.881747 C134.046358,200.27476 84.1289648,87.8766812 1,0 Z" fill="#FFFFFF"></path>
+                <path d="M88.5,0 L0,0 C83.7,87.8766812 134,200.27476 134,322.881747 C134,413.761048 106.4,499.135546 58,573 L138.5,573 C180.2,499.135546 204,413.761048 204,322.881747 C204,200.27476 160.6,87.8766812 88.5,0 Z" fill="#F0F9FE"></path>
+            </g>
+        </g>
+    </g>
+</svg>
