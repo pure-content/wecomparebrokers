@@ -17,20 +17,20 @@ import "../assets/local-style.css"
 const Layout = props => {
   const { children, isFrontPage } = props
   const mainClass = isFrontPage ? "homePage" : ""
-  const [width, setWidth] = useState(window.innerWidth)
+  //const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
     //MatchHeight.init()
-    window.addEventListener("resize", resize)
-    return () => {
-      window.removeEventListener("resize", resize)
-    }
-  }, [width])
+    // window.addEventListener("resize", resize)
+    // return () => {
+    //   window.removeEventListener("resize", resize)
+    // }
+  }, [])
 
-  const resize = () => {
-    setWidth(window.innerWidth)
-    //MatchHeight.update()
-  }
+  // const resize = () => {
+  //   setWidth(window.innerWidth)
+  //   MatchHeight.update()
+  // }
 
   // const { url } = menu.wpgraphql.generalSettings
   // const {
