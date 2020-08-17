@@ -195,52 +195,6 @@ export default function Footer() {
               title
               linkType
               linkText
-              link {
-                ... on WPGraphQL_Post {
-                  id
-                  uri
-                }
-                ... on WPGraphQL_Page {
-                  id
-                  uri
-                }
-                ... on WPGraphQL_MediaItem {
-                  id
-                  uri
-                }
-                ... on WPGraphQL_Broker123 {
-                  id
-                  uri
-                }
-                ... on WPGraphQL_Platform123 {
-                  id
-                  uri
-                }
-                ... on WPGraphQL_Comparison123 {
-                  id
-                  uri
-                }
-                ... on WPGraphQL_CryptoCurrency123 {
-                  id
-                  uri
-                }
-                ... on WPGraphQL_BrokerComparison123 {
-                  id
-                  uri
-                }
-                ... on WPGraphQL_Article123 {
-                  id
-                  uri
-                }
-                ... on WPGraphQL_TopBroker123 {
-                  id
-                  uri
-                }
-                ... on WPGraphQL_ForexMarketNewsPage123 {
-                  id
-                  uri
-                }
-              }
             }
             footerLogo {
               mediaItemUrl
