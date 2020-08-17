@@ -1,7 +1,9 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Parser from "html-react-parser"
+import Equalizer from "./Equalizer"
 const shortid = require("shortid")
+console.log(Equalizer)
 
 export default function Footer() {
   const footer = useStaticQuery(graphql`
@@ -310,10 +312,12 @@ export default function Footer() {
     return (
       <div class="light-grey-wrap">
         <div class="row">
-          <FirstCol />
-          <SecondCol />
-          <ThirdCol />
-          <ForthCol />
+          <Equalizer>
+            <FirstCol />
+            <SecondCol />
+            <ThirdCol />
+            <ForthCol />
+          </Equalizer>
           {footerOptions.socialsList.length > 0 && (
             <div class="large-6 medium-12 columns footer-half half-left">
               <ul class="socials">
