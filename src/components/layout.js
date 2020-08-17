@@ -3,7 +3,6 @@ import NewHeader from "./NewHeader"
 import OldHeader from "./OldHeader"
 import NewFooter from "./NewFooter"
 import OldFooter from "./OldFooter"
-import MatchHeight from "matchheight"
 
 import "@wordpress/block-library/build-style/style.css"
 import "../assets/css/foundation.min.css"
@@ -20,8 +19,9 @@ const Layout = props => {
   const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
-    MatchHeight.init()
     if (typeof window !== "undefined") {
+      import MatchHeight from "matchheight"
+      MatchHeight.init()
       window.addEventListener("resize", resize)
       return () => {
         window.removeEventListener("resize", resize)
@@ -31,7 +31,9 @@ const Layout = props => {
 
   const resize = () => {
     setWidth(window.innerWidth)
-    MatchHeight.update()
+    if (typeof window !== "undefined") {
+      MatchHeight.update()
+    }
   }
 
   // const { url } = menu.wpgraphql.generalSettings
