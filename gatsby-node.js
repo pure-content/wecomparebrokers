@@ -9,6 +9,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
                     {
                         test: /select2/,
                         use: loaders.null(),
+                    },
+                    {
+                        test: /easy-pie-chart/,
+                        use: loaders.null(),
                     }
                 ],
             },
