@@ -1,3 +1,16 @@
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+    if (stage === "build-html") {
+        actions.setWebpackConfig({
+            module: {
+                rules: [{
+                    test: /jquery-match-height/,
+                    use: loaders.null(),
+                }, ],
+            },
+        })
+    }
+}
+
 exports.createPages = async({ actions, graphql }) => {
     // query for WordPress page data
     const result = await graphql(`

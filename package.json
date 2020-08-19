@@ -14,7 +14,6 @@
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
     },
     "dependencies": {
-        "@wordpress/block-library": "^2.22.6",
         "foundation-sites": "^6.6.3",
         "gatsby": "^2.24.26",
         "gatsby-plugin-sass": "^2.3.12",
