@@ -237,7 +237,7 @@ export default function OldFooter(props) {
   `)
 
   const { url } = footer.wpgraphql.generalSettings
-  const contentType = props.contentType.node.name
+  const contentType = props.contentType ? props.contentType.node.name : ""
   const footerOptions = footer.wpgraphql.themeFooterSettings.optFooter
   const dt = new Date()
 
