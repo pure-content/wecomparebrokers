@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import $ from "jquery"
+import "jquery-match-height"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Parser from "html-react-parser"
