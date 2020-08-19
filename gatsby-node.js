@@ -3,9 +3,14 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         actions.setWebpackConfig({
             module: {
                 rules: [{
-                    test: /jquery-match-height/,
-                    use: loaders.null(),
-                }, ],
+                        test: /jquery-match-height/,
+                        use: loaders.null(),
+                    },
+                    {
+                        test: /select2/,
+                        use: loaders.null(),
+                    }
+                ],
             },
         })
     }
