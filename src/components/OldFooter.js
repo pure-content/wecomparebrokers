@@ -344,10 +344,7 @@ export default function OldFooter(props) {
               const linkType = eachLink.linkType
               const linkItself =
                 linkType === "text"
-                  ? eachLink.linkText
-                      .split("/")
-                      .splice(3, eachLink.linkText.split("/").length - 1)
-                      .join("/")
+                  ? eachLink.linkText.replace(url, "")
                   : eachLink.link.uri
               return (
                 <li key={shortid.generate()}>

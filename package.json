@@ -14,6 +14,7 @@
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
     },
     "dependencies": {
+        "easy-pie-chart": "^2.1.7",
         "foundation-sites": "^6.6.3",
         "gatsby": "^2.24.26",
         "gatsby-plugin-sass": "^2.3.12",

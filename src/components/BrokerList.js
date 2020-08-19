@@ -2,8 +2,11 @@ import React from "react"
 import $ from "jquery"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Parser from "html-react-parser"
+import RecommendedBroker from "./RecommendedBroker"
 
-export default function BrokerList() {
+export default function BrokerList(props) {
+  const { recommendedBroker, recommendedBrokerAdditionalText } = props
+
   const brokers = useStaticQuery(graphql`
     query {
       wpgraphql {
@@ -18,14 +21,22 @@ export default function BrokerList() {
     }
   `)
   return (
-    <div>
-      {brokers.wpgraphql.brokers123.nodes.map(brok => {
-        return (
-          <h1>
-            <Link to={brok.uri}>{brok.title}</Link>
-          </h1>
-        )
-      })}
+    <div class="row brokers-list">
+      <div class="small-12 columns">
+        {recommendedBroker && (
+          <RecommendedBroker
+            recommendedBroker={recommendedBroker}
+            recommendedBrokerAdditionalText={recommendedBrokerAdditionalText}
+          />
+        )}
+        {brokers.wpgraphql.brokers123.nodes.map(brok => {
+          return (
+            <h1>
+              <Link to={brok.uri}>{brok.title}</Link>
+            </h1>
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -76,3 +76,13 @@ footer .app-img {
     width: 1px !important;
     white-space: nowrap !important;
 }
+
+.broker-wrap .img-col img.img-list-default {
+    max-width: unset;
+}
+
+.score-head {
+    display: block;
+    font-size: 12px;
+    line-height: normal;
+}

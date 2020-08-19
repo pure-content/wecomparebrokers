@@ -37,6 +37,26 @@ export const query = graphql`
         }
         tmplBrokerFinder {
           rightColumnTitle
+          recommendedBrokerAdditionalText
+          recommendedBroker {
+            ... on WPGraphQL_Broker123 {
+              id
+              cptBrokers {
+                specialOffer
+                ourScore
+                likesList
+                affiliateLink
+                tabButtonAlternativeText
+                takeMeToBrokerButtonNoteText
+              }
+              featuredImage {
+                node {
+                  mediaItemUrl
+                }
+              }
+              title
+            }
+          }
         }
         featuredImage {
           node {
@@ -52,6 +72,13 @@ export const query = graphql`
           metaDesc
           title
           opengraphType
+        }
+      }
+      themeGeneralSettings {
+        optGeneralSettings {
+          specialOfferIcon {
+            mediaItemUrl
+          }
         }
       }
     }
@@ -240,7 +267,12 @@ export default function BrokerFinderTemplate({ data }) {
       <CompareForm />
       <TopContent />
       <Filter />
-      <BrokerList />
+      <BrokerList
+        recommendedBroker={pageTemplate.recommendedBroker}
+        recommendedBrokerAdditionalText={
+          pageTemplate.recommendedBrokerAdditionalText
+        }
+      />
     </Layout>
   )
 }
