@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import $ from "jquery"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Parser from "html-react-parser"
 import Equalizer from "./Equalizer"
@@ -14,7 +15,6 @@ export default function Footer() {
         themeFooterSettings {
           optFooter {
             newFooterSidebarContent
-            buttonsHeader
             footerText
             socialsList {
               link
@@ -215,6 +215,9 @@ export default function Footer() {
       }
     }
   `)
+  useEffect(() => {
+    $(".light-grey-wrap .columns").matchHeight()
+  }, [])
 
   const { url } = footer.wpgraphql.generalSettings
   const footerOptions = footer.wpgraphql.themeFooterSettings.optFooter
@@ -309,17 +312,15 @@ export default function Footer() {
     }
 
     return (
-      <div class="light-grey-wrap">
-        <div class="row">
-          <Equalizer>
-            <FirstCol />
-            <SecondCol />
-            <ThirdCol />
-            <ForthCol />
-          </Equalizer>
+      <div className="light-grey-wrap">
+        <div className="row">
+          <FirstCol />
+          <SecondCol />
+          <ThirdCol />
+          <ForthCol />
           {footerOptions.socialsList.length > 0 && (
-            <div class="large-6 medium-12 columns footer-half half-left">
-              <ul class="socials">
+            <div className="large-6 medium-12 columns footer-half half-left">
+              <ul className="socials">
                 {footerOptions.socialsList.map(soc => {
                   return (
                     <li key={shortid.generate()}>
@@ -360,7 +361,7 @@ export default function Footer() {
               <ul id="menu-footer-menu" className="inline-list">
                 {menuItems.map(menuItem => {
                   return (
-                    <li className="menu-item">
+                    <li key={shortid.generate()} className="menu-item">
                       <Link to={menuItem.url}>{menuItem.label}</Link>
                     </li>
                   )

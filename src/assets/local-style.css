@@ -10,7 +10,7 @@
 .compare-tab .tab-brok-row .col-logo img,
 .tabs-brok-card-wrap .top-wrap .top-right picture,
 .compare-tab .tab-brok-row .col-logo picture {
-    transform: none;
+    /* transform: none; */
 }
 
 .homePage .new-hp-wrap h2 {
@@ -53,4 +53,26 @@
 
 .slick-prev:before {
     content: "";
+}
+
+footer .app-img {
+    max-width: 305px;
+}
+
+.footer-appstore,
+.footer-playmarket {
+    max-width: 255px;
+}
+
+.select2-hidden-accessible {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
 }

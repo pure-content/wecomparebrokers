@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
+import $ from "jquery"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Slider from "react-slick"
 import Parser from "html-react-parser"
 import Equalizer from "../components/Equalizer"
+import Helmet from "react-helmet"
 const shortid = require("shortid")
 
 export const query = graphql`
@@ -14,6 +16,16 @@ export const query = graphql`
         content
         id
         isFrontPage
+        contentType {
+          node {
+            name
+          }
+        }
+        seo {
+          metaDesc
+          title
+          opengraphType
+        }
         newHomePage {
           homeBannerColor
           newBannerText
@@ -125,7 +137,22 @@ export const query = graphql`
 
 export default function NewHomePage({ data }) {
   const page = data.wpgraphql.page
+  const seo = page.seo
   const templateFields = page.newHomePage
+  console.log(page)
+
+  useEffect(() => {
+    $(document).ready(function () {
+      $(".left_banner_dropdown, .right_banner_dropdown").on(
+        "click",
+        function () {
+          $(this).find(".banner_body").slideToggle("fast")
+          $(this).toggleClass("open")
+        }
+      )
+      $(".slide-wrap").matchHeight()
+    })
+  }, [])
 
   const avarageRatingCounter = brokerRatings => {
     let avarage =
@@ -331,17 +358,12 @@ export default function NewHomePage({ data }) {
 
       return (
         <div className="new_banner_dropdown">
-          <div
-            className={`left_banner_dropdown ${leftDropdownOpen.className}`}
-            onClick={() => {
-              bannerDropdownHandler("left")
-            }}
-          >
+          <div className={`left_banner_dropdown ${leftDropdownOpen.className}`}>
             <span className="banner_heading">
               {Parser(templateFields.leftDropdownName)}
             </span>
 
-            <div style={leftDropdownOpen.style} className="banner_body">
+            <div style={{ display: "none" }} className="banner_body">
               {templateFields.leftDropdown.map(ddbrok => {
                 return (
                   <a key={ddbrok.id} href={ddbrok.uri}>
@@ -367,14 +389,11 @@ export default function NewHomePage({ data }) {
           </div>
           <div
             className={`right_banner_dropdown ${rightDropdownOpen.className}`}
-            onClick={() => {
-              bannerDropdownHandler("right")
-            }}
           >
             <span className="banner_heading">
               {Parser(templateFields.rightDropdownName)}
             </span>
-            <div style={rightDropdownOpen.style} className="banner_body">
+            <div style={{ display: "none" }} className="banner_body">
               {templateFields.rightDropdown.map(ddbrok => {
                 return (
                   <a key={ddbrok.id} href={ddbrok.uri}>
@@ -550,7 +569,15 @@ export default function NewHomePage({ data }) {
   }
 
   return (
-    <Layout isFrontPage={page.isFrontPage}>
+    <Layout isFrontPage={page.isFrontPage} contentType={page.contentType}>
+      <Helmet
+        htmlAttributes={{ lang: "en", amp: undefined }}
+        title={seo.title}
+        meta={[
+          { name: "description", content: seo.metaDesc },
+          { property: "og:type", content: seo.opengraphType },
+        ]}
+      />
       <div className="new-hp-wrap">
         <div
           className="new_banner_bg"
@@ -573,11 +600,11 @@ export default function NewHomePage({ data }) {
         <div className="row dropdown-wrap">
           <div className="large-12 columns">{<NewBannerDropdown />}</div>
         </div>
-        {<BodyTextDropdowns />}
-        {<HPIcons />}
-        {<TrustSection />}
-        {<TrustSectionText />}
-        {<ListSocProof />}
+        <BodyTextDropdowns />
+        <HPIcons />
+        <TrustSection />
+        <TrustSectionText />
+        <ListSocProof />
       </div>
     </Layout>
   )

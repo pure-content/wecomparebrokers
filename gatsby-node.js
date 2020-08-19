@@ -1,9 +1,9 @@
 exports.createPages = async({ actions, graphql }) => {
     // query for WordPress page data
     const result = await graphql(`
-      {
+    {
         wpgraphql {
-            pages(first: 1000) {
+            pages(first: 5000) {
                 nodes {
                     id
                     uri
@@ -62,8 +62,15 @@ exports.createPages = async({ actions, graphql }) => {
                     uri
                 }
             }
+            brokers123(first: 5000) {
+                nodes {
+                  title
+                  uri
+                  id
+                }
+            }
         }
-      }
+    }
     `)
 
     // pull the page data out of the query response
@@ -72,8 +79,8 @@ exports.createPages = async({ actions, graphql }) => {
     pages.forEach(page => {
         templates.includes(page.template.templateName) ? '' : templates.push(page.template.templateName.split(' ').join(''));
     });
-    console.log(templates)
-        // loop through WordPress pages and create a Gatsby page for each one
+
+    // loop through WordPress pages and create a Gatsby page for each one
     pages.forEach(page => {
         switch (page.template.templateName.split(' ').join('')) {
             case "NewHomePage":
@@ -167,6 +174,17 @@ exports.createPages = async({ actions, graphql }) => {
                 })
         }
 
+    })
+
+    const brokers = result.data.wpgraphql.brokers123.nodes
+    brokers.forEach(broker => {
+        actions.createPage({
+            path: broker.uri,
+            component: require.resolve("./src/customPostTypes/BrokersSingle.js"),
+            context: {
+                id: broker.id,
+            },
+        })
     })
 
     const posts = result.data.wpgraphql.posts.nodes
