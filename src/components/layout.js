@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import $ from "jquery"
-import "jquery-match-height"
 import NewHeader from "./NewHeader"
 import OldHeader from "./OldHeader"
 import NewFooter from "./NewFooter"
