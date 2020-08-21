@@ -21,6 +21,11 @@ export const query = graphql`
           title
           id
           databaseId
+          featuredImage {
+            node {
+              mediaItemUrl
+            }
+          }
           cptBrokers {
             brokerRegion
             specialOffer
@@ -116,7 +121,6 @@ export default function BrokerFinderTemplate({ data }) {
   const brokers = data.wpgraphql.brokers123.nodes
   const pageTemplate = data.wpgraphql.page.tmplBrokerFinder
   const dt = new Date()
-  console.log(brokers)
 
   useEffect(() => {
     let country = $(

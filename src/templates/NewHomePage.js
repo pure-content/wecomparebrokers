@@ -140,7 +140,6 @@ export default function NewHomePage({ data }) {
   const page = data.wpgraphql.page
   const seo = page.seo
   const templateFields = page.newHomePage
-  console.log(page)
 
   useEffect(() => {
     $(document).ready(function () {

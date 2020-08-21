@@ -41,7 +41,6 @@ export default function OldHeader(props) {
     ...item,
     url: item.url.replace(url, ""),
   }))
-  console.log(items)
 
   return (
     <header style={{ backgroundColor: "#fff" }}>
