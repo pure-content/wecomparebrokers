@@ -7,6 +7,9 @@ import Parser from "html-react-parser"
 import Equalizer from "../components/Equalizer"
 import Helmet from "react-helmet"
 import BrokerList from "../components/BrokerList"
+import CompareFrom from "../components/CompareFrom"
+import RecommendedBroker from "../components/RecommendedBroker"
+import BrokerTableSingleItem from "../components/BrokerTableSingleItem"
 const shortid = require("shortid")
 
 export const query = graphql`
@@ -20,6 +23,28 @@ export const query = graphql`
           databaseId
           cptBrokers {
             brokerRegion
+            specialOffer
+            affiliateLink
+            minDeposit
+            platformsList
+            accountsList
+            spreadsList
+            methodsList
+            takeMeToBrokerButtonNoteText
+            ourScore
+            allSpreadsPoints
+            tableInfo
+            platformRelation {
+              ... on WPGraphQL_Platform123 {
+                id
+                title
+                featuredImage {
+                  node {
+                    mediaItemUrl
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -90,6 +115,7 @@ export default function BrokerFinderTemplate({ data }) {
   const brokers = data.wpgraphql.brokers123.nodes
   const pageTemplate = data.wpgraphql.page.tmplBrokerFinder
   const dt = new Date()
+  console.log(brokers)
 
   useEffect(() => {
     let country = $(
@@ -118,40 +144,15 @@ export default function BrokerFinderTemplate({ data }) {
       minimumResultsForSearch: Infinity,
       allowClear: true,
     })
+    $(".top-content-col").matchHeight()
+    $(".broker-col").matchHeight()
   }, [])
-
-  const CompareForm = () => {
-    return (
-      <div id="compare-form-wrap">
-        <div id="compare-form">
-          <span className="close">
-            <i className="fa fa-times" aria-hidden="true"></i>
-          </span>
-          <h4>Please select the second broker</h4>
-          <form action="/compare-forex-brokers/" method="get">
-            <input id="first-user" name="first-usr" type="hidden" value="" />
-
-            <select id="popup-sec-usr" name="sec-usr">
-              <option></option>
-              {brokers.map(brok => {
-                return <option value={brok.databaseId}>{brok.title}</option>
-              })}
-            </select>
-
-            <button className="btn blue" type="submit">
-              Go to comparison page
-            </button>
-          </form>
-        </div>
-      </div>
-    )
-  }
 
   const TopContent = () => {
     return (
       <div className="top-content-wrap find-page">
         <div className="row top-content">
-          <div className="large-5 medium-6 columns" data-mh="top-content-col">
+          <div className="large-5 medium-6 columns top-content-col">
             <div className="crumbs">
               <Link to="/">Home page</Link> -&gt;
               <span>
@@ -181,7 +182,7 @@ export default function BrokerFinderTemplate({ data }) {
               </div>
             </article>
           </div>
-          <div className="medium-6 columns" data-mh="top-content-col">
+          <div className="medium-6 columns top-content-col">
             <div className="thumb-wrap">
               {pageTemplate.rightColumnTitle ? (
                 <h2>
@@ -262,17 +263,36 @@ export default function BrokerFinderTemplate({ data }) {
   //   )
   // }
 
+  const pageInfo = {
+    isFrontPage: page.isFrontPage,
+    contentType: page.contentType,
+    title: page.title,
+  }
+
   return (
-    <Layout isFrontPage={page.isFrontPage} contentType={page.contentType}>
-      <CompareForm />
+    <Layout pageInfo={pageInfo}>
+      <CompareFrom />
       <TopContent />
       <Filter />
-      <BrokerList
+      <div class="row brokers-list">
+        <div class="small-12 columns">
+          <RecommendedBroker
+            recommendedBroker={pageTemplate.recommendedBroker}
+            recommendedBrokerAdditionalText={
+              pageTemplate.recommendedBrokerAdditionalText
+            }
+          />
+          {brokers.map(eachBroker => {
+            return <BrokerTableSingleItem brokerInfo={eachBroker} />
+          })}
+        </div>
+      </div>
+      {/* <BrokerList
         recommendedBroker={pageTemplate.recommendedBroker}
         recommendedBrokerAdditionalText={
           pageTemplate.recommendedBrokerAdditionalText
         }
-      />
+      /> */}
     </Layout>
   )
 }

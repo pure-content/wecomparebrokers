@@ -2,8 +2,6 @@ import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 export default function Header(props) {
-  //const { mediaItemUrl, altText, items } = props
-
   const menu = useStaticQuery(graphql`
     query {
       wpgraphql {
@@ -32,6 +30,7 @@ export default function Header(props) {
   `)
 
   const { url } = menu.wpgraphql.generalSettings
+  const { title } = props
   const {
     altText,
     mediaItemUrl,
@@ -72,7 +71,12 @@ export default function Header(props) {
               <div className="menu-new-header-menu-container">
                 <ul id="menu-new-header-menu" className="menu">
                   {items.map(item => (
-                    <li key={item.id} className="menu-item">
+                    <li
+                      key={item.id}
+                      className={`menu-item ${
+                        title === item.label ? "current-menu-item" : ""
+                      }`}
+                    >
                       <Link key={item.url} to={item.url}>
                         {item.label}
                       </Link>

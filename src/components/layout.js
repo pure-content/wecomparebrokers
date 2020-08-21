@@ -20,10 +20,15 @@ import "../assets/css/plugins/select2.min.css"
 import "../assets/css/plugins/slick.css"
 
 const Layout = props => {
-  const { children, isFrontPage, contentType } = props
+  const { children, pageInfo } = props
+  const { isFrontPage, contentType, title } = pageInfo ? pageInfo : ""
   const mainClass = isFrontPage ? "homePage" : ""
 
-  const CurrentHeader = isFrontPage ? <NewHeader /> : <OldHeader />
+  const CurrentHeader = isFrontPage ? (
+    <NewHeader title={title} />
+  ) : (
+    <OldHeader title={title} />
+  )
   const CurrentFooter = isFrontPage ? (
     <NewFooter />
   ) : (

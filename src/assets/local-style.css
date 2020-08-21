@@ -86,3 +86,29 @@ footer .app-img {
     font-size: 12px;
     line-height: normal;
 }
+
+.score-head {
+    /* display: flex; */
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    line-height: normal;
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.chart .chart-inner {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    z-index: 2;
+    color: #7b7e91;
+    position: relative;
+    top: 41%;
+    transform: translateY(-50%);
+    /* align-items: center; */
+    /* height: inherit; */
+    /* justify-content: center; */
+}

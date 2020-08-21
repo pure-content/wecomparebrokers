@@ -3,12 +3,12 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import $ from "jquery"
 import "easy-pie-chart/dist/jquery.easypiechart"
 import Parser from "html-react-parser"
+import { scoreAnimation } from "../functions/scoreAnimation"
 
 export default function RecommendedBroker(props) {
   const { recommendedBroker, recommendedBrokerAdditionalText } = props
   const brokerFields = recommendedBroker.cptBrokers
   const brokerImage = recommendedBroker.featuredImage.node
-  console.log(recommendedBroker, recommendedBrokerAdditionalText)
 
   const specialOffer = useStaticQuery(graphql`
     query {
@@ -50,22 +50,6 @@ export default function RecommendedBroker(props) {
       })
     }
   }, [])
-
-  const scoreAnimation = (chartClass = "small-chart", title = false) => {
-    if (brokerFields.ourScore) {
-      return (
-        <span
-          className={`chart ${chartClass}`}
-          data-percent={brokerFields.ourScore}
-        >
-          <span className="chart-inner">
-            <span className="percent"></span>
-          </span>
-          {title && <span className="score-head">our score</span>}
-        </span>
-      )
-    } else return null
-  }
 
   const BrokerButtons = () => {
     if (brokerFields.affiliateLink && !brokerFields.tabButtonAlternativeText) {
@@ -124,7 +108,7 @@ export default function RecommendedBroker(props) {
             alt="Special Offer"
           />
         )}
-        <div className="broker-tab-col img-col" data-mh="broker-col">
+        <div className="broker-tab-col img-col broker-col">
           <div className="thumb-wrap">
             {brokerImage ? (
               <img
@@ -142,12 +126,12 @@ export default function RecommendedBroker(props) {
           </div>
         </div>
 
-        <div className="broker-tab-col broker-name" data-mh="broker-col">
+        <div className="broker-tab-col broker-name broker-col">
           <h3>{recommendedBroker.title}</h3>
-          {scoreAnimation("small-chart", true)}
+          {scoreAnimation(brokerFields.ourScore, "small-chart", true)}
         </div>
 
-        <div className="broker-tab-col broker-content" data-mh="broker-col">
+        <div className="broker-tab-col broker-content broker-col">
           <div className="likes-col">
             <p>
               <strong>Pros:</strong>
@@ -161,7 +145,7 @@ export default function RecommendedBroker(props) {
           )}
         </div>
 
-        <div className="broker-tab-col btn-col" data-mh="broker-col">
+        <div className="broker-tab-col btn-col broker-col">
           <BrokerButtons />
         </div>
       </div>
