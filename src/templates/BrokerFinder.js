@@ -62,6 +62,7 @@ export const query = graphql`
         }
         tmplBrokerFinder {
           rightColumnTitle
+          bodyTextChoosing
           recommendedBrokerAdditionalText
           recommendedBroker {
             ... on WPGraphQL_Broker123 {
@@ -285,6 +286,15 @@ export default function BrokerFinderTemplate({ data }) {
           {brokers.map(eachBroker => {
             return <BrokerTableSingleItem brokerInfo={eachBroker} />
           })}
+        </div>
+      </div>
+      <div class="choose-wrap bot-text">
+        <div class="row">
+          <div class="medium-10 columns small-centered">
+            {Parser(
+              pageTemplate.bodyTextChoosing ? pageTemplate.bodyTextChoosing : ""
+            )}
+          </div>
         </div>
       </div>
       {/* <BrokerList
