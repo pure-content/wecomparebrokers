@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react"
 import { graphql } from "gatsby"
 import Parser from "html-react-parser"
 import $ from "jquery"
+import "jquery-match-height"
 import "easy-pie-chart/dist/jquery.easypiechart"
 import Layout from "../components/layout"
 import BrokerList from "../components/BrokerList"
@@ -170,7 +171,10 @@ function ComparisonPageTemplate({ data, search }) {
     return (
       <div class="top-content-compare">
         <div class="row top-content">
-          <div class="large-5 medium-6 columns top-content-col">
+          <div
+            class="large-5 medium-6 columns top-content-col"
+            ref={topContentCol}
+          >
             <div class="crumbs">
               <a href={"/"}>Home page</a> -&gt;
               <span>
@@ -201,7 +205,10 @@ function ComparisonPageTemplate({ data, search }) {
               {Parser(page.content)}
             </article>
           </div>
-          <div class="medium-6 columns text-center top-content-col">
+          <div
+            class="medium-6 columns text-center top-content-col"
+            ref={topContentCol}
+          >
             <div class="compare-filter-wrap">
               <h4>
                 <img
