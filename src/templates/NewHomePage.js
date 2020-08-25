@@ -7,6 +7,7 @@ import Slider from "react-slick"
 import Parser from "html-react-parser"
 import Equalizer from "../components/Equalizer"
 import Helmet from "react-helmet"
+import { avarageRatingCounter } from "../functions/avarageRatingCounter"
 const shortid = require("shortid")
 
 export const query = graphql`
@@ -151,17 +152,9 @@ export default function NewHomePage({ data }) {
         }
       )
       $(".slide-wrap").matchHeight()
+      $(".tabs-brok-card-wrap .top-cols").matchHeight()
     })
   }, [])
-
-  const avarageRatingCounter = brokerRatings => {
-    let avarage =
-      Object.values(brokerRatings).reduce((a, b) =>
-        typeof b === "number" ? a + b : a
-      ) / 6
-    const avarageRound = Math.round(avarage * 10) / 10
-    return avarageRound
-  }
 
   const AwardCol = () => {
     let brokAmount = 0
@@ -568,8 +561,14 @@ export default function NewHomePage({ data }) {
     }
   }
 
+  const pageInfo = {
+    isFrontPage: page.isFrontPage,
+    contentType: page.contentType,
+    title: page.title,
+  }
+
   return (
-    <Layout isFrontPage={page.isFrontPage} contentType={page.contentType}>
+    <Layout pageInfo={pageInfo}>
       <Helmet
         htmlAttributes={{ lang: "en", amp: undefined }}
         title={seo.title}

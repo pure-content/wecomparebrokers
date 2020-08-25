@@ -10,6 +10,10 @@ import { Helmet } from "react-helmet"
 import BrokerTableSingleItem from "../components/BrokerTableSingleItem"
 import CompareFrom from "../components/CompareFrom"
 import withLocation from "../hoc/withLocation"
+import { scoreAnimation } from "../functions/scoreAnimation"
+import { avarageRatingCounter } from "../functions/avarageRatingCounter"
+import { Link } from "@reach/router"
+
 const queryString = require("query-string")
 
 export const query = graphql`
@@ -80,7 +84,10 @@ export const query = graphql`
           }
         }
       }
-      brokers123(first: 10000) {
+      brokers123(
+        first: 10000
+        where: { health: "good", orderby: { field: MENU_ORDER, order: ASC } }
+      ) {
         nodes {
           title
           uri
@@ -90,6 +97,18 @@ export const query = graphql`
               mediaItemUrl
             }
           }
+          cptBrokers {
+            ratingCommFees
+            ratingCustResearch
+            ratingCustServ
+            ratingEase
+            ratingMobTrad
+            ratingPlatfTools
+            ourScore
+            likesList
+            affiliateLink
+            tabButtonAlternativeText
+          }
         }
       }
     }
@@ -98,7 +117,9 @@ export const query = graphql`
 
 function ComparisonPageTemplate({ data, search }) {
   const firstUsr = search["first-usr"] ? JSON.parse(search["first-usr"]) : null
+  console.log(firstUsr)
   const secUsr = search["sec-usr"] ? JSON.parse(search["sec-usr"]) : null
+  console.log(secUsr)
   const firstBrokerRef = useRef(null)
   const secondBrokerRef = useRef(null)
   const topContentCol = useRef(null)
@@ -164,6 +185,12 @@ function ComparisonPageTemplate({ data, search }) {
       })
       $(".top-content-col").matchHeight()
       $(".broker-col").matchHeight()
+
+      $(".brok-info-wrap").each(function () {
+        var list = $(this).find(".list-cont"),
+          listItems = list.find("li").slice(0, 4)
+        $(this).find(".advant-list").append(listItems)
+      })
     })
   }, [])
 
@@ -255,14 +282,125 @@ function ComparisonPageTemplate({ data, search }) {
     )
   }
 
+  const BrokerButtons = user => {
+    console.log(user)
+    if (
+      user.user.cptBrokers.affiliateLink &&
+      !user.user.cptBrokers.tabButtonAlternativeText
+    ) {
+      return (
+        <Link
+          class="btn small"
+          to={user.user.cptBrokers.affiliateLink}
+          target="_blank"
+          rel="nofollow sponsored"
+        >
+          Go to Broker
+        </Link>
+      )
+    } else if (
+      user.user.cptBrokers.affiliateLink &&
+      user.user.cptBrokers.tabButtonAlternativeText
+    ) {
+      return (
+        <Link
+          class="btn small"
+          to={user.user.cptBrokers.affiliateLink}
+          target="_blank"
+          rel="nofollow sponsored"
+        >
+          {user.user.cptBrokers.tabButtonAlternativeText}
+        </Link>
+      )
+    }
+    return null
+  }
+
   const FirstCompareColumn = () => {
     if (firstUsr) {
-      return <div class="tabs-brok-card-wrap" data-mh="tabs-card"></div>
+      let content = firstUsr.cptBrokers.likesList
+
+      return (
+        <div class="tabs-brok-card-wrap" data-mh="tabs-card">
+          <div class="top-wrap">
+            <div class="top-left top-cols" data-mh="top-cols">
+              <img src={firstUsr.featuredImage.node.mediaItemUrl} />
+            </div>
+            <div class="top-right top-cols text-center" data-mh="top-cols">
+              {scoreAnimation(firstUsr.cptBrokers.ourScore, "big-chart", true)}
+            </div>
+            <div class="brok-info-wrap">
+              <p>What we like:</p>
+              <ul class="advant-list"></ul>
+              <div class="list-cont">{content ? Parser(content) : ""}</div>
+            </div>
+            <div class="rat-wrap">
+              <span class="rating">
+                <img
+                  src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                  alt="Rating"
+                />
+                <span
+                  class="rat-color"
+                  style={{
+                    width: `${avarageRatingCounter(firstUsr.cptBrokers) * 20}%`,
+                  }}
+                ></span>
+              </span>
+              {avarageRatingCounter(firstUsr.cptBrokers)}
+            </div>
+            <div class="btn-wrap">
+              <BrokerButtons user={firstUsr} />
+              <Link to={firstUsr.uri} class="btn small blue">
+                Read Full Review
+              </Link>
+            </div>
+          </div>
+        </div>
+      )
     } else return null
   }
   const SecondCompareColumn = () => {
-    if (firstUsr) {
-      return <div class="tabs-brok-card-wrap" data-mh="tabs-card"></div>
+    if (secUsr) {
+      let content = secUsr.cptBrokers.likesList
+      return (
+        <div class="tabs-brok-card-wrap" data-mh="tabs-card">
+          <div class="top-wrap">
+            <div class="top-left top-cols" data-mh="top-cols">
+              <img src={secUsr.featuredImage.node.mediaItemUrl} />
+            </div>
+            <div class="top-right top-cols text-center" data-mh="top-cols">
+              {scoreAnimation(secUsr.cptBrokers.ourScore, "big-chart", true)}
+            </div>
+            <div class="brok-info-wrap">
+              <p>What we like:</p>
+              <ul class="advant-list"></ul>
+              <div class="list-cont">{content ? Parser(content) : ""}</div>
+            </div>
+            <div class="rat-wrap">
+              <span class="rating">
+                <img
+                  src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                  alt="Rating"
+                />
+                <span
+                  class="rat-color"
+                  style={{
+                    width: `${avarageRatingCounter(secUsr.cptBrokers) * 20}%`,
+                  }}
+                ></span>
+              </span>
+              {avarageRatingCounter(secUsr.cptBrokers)}
+            </div>
+            <div class="btn-wrap">
+              <BrokerButtons user={secUsr} />
+              <Link to={secUsr.uri} class="btn small blue">
+                Read Full Review
+              </Link>
+            </div>
+          </div>
+        </div>
+      )
     } else return null
   }
 
@@ -271,6 +409,8 @@ function ComparisonPageTemplate({ data, search }) {
       <div class="row compare-cols">
         <div class="medium-6 columns">
           <FirstCompareColumn />
+        </div>
+        <div class="medium-6 columns">
           <SecondCompareColumn />
         </div>
       </div>

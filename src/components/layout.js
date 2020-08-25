@@ -23,7 +23,7 @@ const Layout = props => {
   const { children, pageInfo } = props
   const { isFrontPage, contentType, title } = pageInfo ? pageInfo : ""
   const mainClass = isFrontPage ? "homePage" : ""
-
+  console.log(isFrontPage)
   const CurrentHeader = isFrontPage ? (
     <NewHeader title={title} />
   ) : (

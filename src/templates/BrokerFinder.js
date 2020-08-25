@@ -4,9 +4,7 @@ import "jquery-match-height"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Parser from "html-react-parser"
-import Equalizer from "../components/Equalizer"
 import Helmet from "react-helmet"
-import BrokerList from "../components/BrokerList"
 import CompareFrom from "../components/CompareFrom"
 import RecommendedBroker from "../components/RecommendedBroker"
 import BrokerTableSingleItem from "../components/BrokerTableSingleItem"
@@ -15,7 +13,10 @@ const shortid = require("shortid")
 export const query = graphql`
   query($id: ID!) {
     wpgraphql {
-      brokers123(first: 10000) {
+      brokers123(
+        first: 10000
+        where: { health: "good", orderby: { field: MENU_ORDER, order: DESC } }
+      ) {
         nodes {
           uri
           title

@@ -5,7 +5,10 @@ export default function CompareFrom() {
   const brokers = useStaticQuery(graphql`
     query {
       wpgraphql {
-        brokers123(first: 10000) {
+        brokers123(
+          first: 10000
+          where: { health: "good", orderby: { field: MENU_ORDER, order: DESC } }
+        ) {
           nodes {
             title
             uri
