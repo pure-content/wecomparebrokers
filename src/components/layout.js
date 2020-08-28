@@ -9,6 +9,7 @@ import Helmet from "react-helmet"
 import "../assets/css/foundation.min.css"
 import "../assets/css/normalize.css"
 import "../assets/style.css"
+//import "../assets/css/all-styles.css"
 import "../assets/css/media-screens.css"
 import "select2"
 import "slick-carousel/slick/slick.css"
@@ -26,13 +27,13 @@ const Layout = props => {
   const CurrentHeader = isFrontPage ? (
     <NewHeader title={title} />
   ) : (
-    <OldHeader title={title} />
-  )
+      <OldHeader title={title} />
+    )
   const CurrentFooter = isFrontPage ? (
     <NewFooter />
   ) : (
-    <OldFooter contentType={contentType} />
-  )
+      <OldFooter contentType={contentType} />
+    )
   return (
     <>
       <Helmet>

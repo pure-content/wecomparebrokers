@@ -455,6 +455,9 @@ export default function BrokersSingle({ data }) {
         $(this).addClass("active")
         $("#tab-" + currentHash).show("fast")
       })
+      $('.broker-tab-col').matchHeight()
+      $('.tab-col').matchHeight()
+      $('.cont-col').matchHeight()
 
       // //broker floating button descktop
       // if ($(window).innerWidth() > 1024) {
@@ -998,18 +1001,18 @@ export default function BrokersSingle({ data }) {
             {broker.cptBrokers.tableCommFees ? (
               <div class="tab-wrap six-cols">
                 <div class="tab-row tab-head hide-for-small">
-                  <div class="tab-col col-val" data-mh="tab-col"><p>Fees</p></div>
-                  <div class="tab-col col-xtb" data-mh="tab-col"><p>TD Ameritrade</p></div>
-                  <div class="tab-col col-ava" data-mh="tab-col"><p>E*TRADE</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Charles Schwab</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Fidelity</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Merrill Edge</p></div>
+                  <div class="tab-col col-val" ><p>Fees</p></div>
+                  <div class="tab-col col-xtb" ><p>TD Ameritrade</p></div>
+                  <div class="tab-col col-ava" ><p>E*TRADE</p></div>
+                  <div class="tab-col col-city" ><p>Charles Schwab</p></div>
+                  <div class="tab-col col-city" ><p>Fidelity</p></div>
+                  <div class="tab-col col-city" ><p>Merrill Edge</p></div>
                 </div>
                 {broker.cptBrokers.tableCommFees && broker.cptBrokers.tableCommFees.map((row) => {
                   return (
                     <div class="tab-row">
-                      <div class="tab-col col-val" data-mh="tab-col"><p>{row.rowLabel}</p></div>
-                      <div class="tab-col col-amer" data-mh="tab-col">
+                      <div class="tab-col col-val" ><p>{row.rowLabel}</p></div>
+                      <div class="tab-col col-amer" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">TD Ameritrade:</strong>{row.tdAmeritradeValueText}</p> : ''}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1032,7 +1035,7 @@ export default function BrokersSingle({ data }) {
                         ) : ''}
                       </div>
 
-                      <div class="tab-col col-etrade" data-mh="tab-col">
+                      <div class="tab-col col-etrade" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">E*TRADE:</strong>{row.etradeValueText}</p> : ''}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1051,7 +1054,7 @@ export default function BrokersSingle({ data }) {
                         ) : null}
                       </div>
 
-                      <div class="tab-col col-schwab" data-mh="tab-col">
+                      <div class="tab-col col-schwab" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Charles Schwab:</strong>{row.charlesSchwabValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1070,7 +1073,7 @@ export default function BrokersSingle({ data }) {
                         ) : null}
                       </div>
 
-                      <div class="tab-col col-fidelity" data-mh="tab-col">
+                      <div class="tab-col col-fidelity" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Fidelity:</strong>{row.fidelityValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1089,7 +1092,7 @@ export default function BrokersSingle({ data }) {
                         ) : null}
                       </div>
 
-                      <div class="tab-col col-merrill" data-mh="tab-col">
+                      <div class="tab-col col-merrill" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Merrill Edge:</strong>{row.merrillEdgeValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1132,18 +1135,18 @@ export default function BrokersSingle({ data }) {
             {broker.cptBrokers.tablePlatfTools ? (
               <div class="tab-wrap six-cols">
                 <div class="tab-row tab-head hide-for-small">
-                  <div class="tab-col col-val" data-mh="tab-col"></div>
-                  <div class="tab-col col-xtb" data-mh="tab-col"><p>TD Ameritrade</p></div>
-                  <div class="tab-col col-ava" data-mh="tab-col"><p>E*TRADE</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Charles Schwab</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Fidelity</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Merrill Edge</p></div>
+                  <div class="tab-col col-val" ></div>
+                  <div class="tab-col col-xtb" ><p>TD Ameritrade</p></div>
+                  <div class="tab-col col-ava" ><p>E*TRADE</p></div>
+                  <div class="tab-col col-city" ><p>Charles Schwab</p></div>
+                  <div class="tab-col col-city" ><p>Fidelity</p></div>
+                  <div class="tab-col col-city" ><p>Merrill Edge</p></div>
                 </div>
                 {broker.cptBrokers.tablePlatfTools.map((row) => {
                   return (
                     <div class="tab-row">
-                      <div class="tab-col col-val" data-mh="tab-col"><p>{row.rowLabel}</p></div>
-                      <div class="tab-col col-amer" data-mh="tab-col">
+                      <div class="tab-col col-val" ><p>{row.rowLabel}</p></div>
+                      <div class="tab-col col-amer" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">TD Ameritrade:</strong>{row.tdAmeritradeValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1161,7 +1164,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-etrade" data-mh="tab-col">
+                      <div class="tab-col col-etrade" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">E*TRADE:</strong>{row.etradeValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1179,7 +1182,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-schwab" data-mh="tab-col">
+                      <div class="tab-col col-schwab" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Charles Schwab:</strong>{row.charlesSchwabValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1197,7 +1200,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-fidelity" data-mh="tab-col">
+                      <div class="tab-col col-fidelity" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Fidelity:</strong>{row.fidelityValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1215,7 +1218,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-merrill" data-mh="tab-col">
+                      <div class="tab-col col-merrill" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Merrill Edge:</strong>{row.merrillEdgeValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1271,18 +1274,18 @@ export default function BrokersSingle({ data }) {
             {broker.cptBrokers.tableResearch ? (
               <div class="tab-wrap six-cols">
                 <div class="tab-row tab-head hide-for-small">
-                  <div class="tab-col col-val" data-mh="tab-col"></div>
-                  <div class="tab-col col-xtb" data-mh="tab-col"><p>TD Ameritrade</p></div>
-                  <div class="tab-col col-ava" data-mh="tab-col"><p>E*TRADE</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Charles Schwab</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Fidelity</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Merrill Edge</p></div>
+                  <div class="tab-col col-val" ></div>
+                  <div class="tab-col col-xtb" ><p>TD Ameritrade</p></div>
+                  <div class="tab-col col-ava" ><p>E*TRADE</p></div>
+                  <div class="tab-col col-city" ><p>Charles Schwab</p></div>
+                  <div class="tab-col col-city" ><p>Fidelity</p></div>
+                  <div class="tab-col col-city" ><p>Merrill Edge</p></div>
                 </div>
                 {broker.cptBrokers.tableResearch.map((row) => {
                   return (
                     <div class="tab-row">
-                      <div class="tab-col col-val" data-mh="tab-col"><p>{row.rowLabel}</p></div>
-                      <div class="tab-col col-amer" data-mh="tab-col">
+                      <div class="tab-col col-val" ><p>{row.rowLabel}</p></div>
+                      <div class="tab-col col-amer" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">TD Ameritrade:</strong>{row.tdAmeritradeValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1300,7 +1303,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-etrade" data-mh="tab-col">
+                      <div class="tab-col col-etrade" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">E*TRADE:</strong>{row.etradeValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1318,7 +1321,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-schwab" data-mh="tab-col">
+                      <div class="tab-col col-schwab" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Charles Schwab:</strong>{row.charlesSchwabValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1336,7 +1339,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-fidelity" data-mh="tab-col">
+                      <div class="tab-col col-fidelity" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Fidelity:</strong>{row.fidelityValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1354,7 +1357,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-merrill" data-mh="tab-col">
+                      <div class="tab-col col-merrill" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Merrill Edge:</strong>{row.merrillEdgeValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1409,18 +1412,18 @@ export default function BrokersSingle({ data }) {
             {broker.cptBrokers.tableMobTrad ? (
               <div class="tab-wrap six-cols">
                 <div class="tab-row tab-head hide-for-small">
-                  <div class="tab-col col-val" data-mh="tab-col"></div>
-                  <div class="tab-col col-xtb" data-mh="tab-col"><p>TD Ameritrade</p></div>
-                  <div class="tab-col col-ava" data-mh="tab-col"><p>E*TRADE</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Charles Schwab</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Fidelity</p></div>
-                  <div class="tab-col col-city" data-mh="tab-col"><p>Merrill Edge</p></div>
+                  <div class="tab-col col-val" ></div>
+                  <div class="tab-col col-xtb" ><p>TD Ameritrade</p></div>
+                  <div class="tab-col col-ava" ><p>E*TRADE</p></div>
+                  <div class="tab-col col-city" ><p>Charles Schwab</p></div>
+                  <div class="tab-col col-city" ><p>Fidelity</p></div>
+                  <div class="tab-col col-city" ><p>Merrill Edge</p></div>
                 </div>
                 {broker.cptBrokers.tableMobTrad.map((row) => {
                   return (
                     <div class="tab-row">
-                      <div class="tab-col col-val" data-mh="tab-col"><p>{row.rowLabel}</p></div>
-                      <div class="tab-col col-amer" data-mh="tab-col">
+                      <div class="tab-col col-val" ><p>{row.rowLabel}</p></div>
+                      <div class="tab-col col-amer" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">TD Ameritrade:</strong>{row.tdAmeritradeValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1438,7 +1441,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-etrade" data-mh="tab-col">
+                      <div class="tab-col col-etrade" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">E*TRADE:</strong>{row.etradeValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1456,7 +1459,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-schwab" data-mh="tab-col">
+                      <div class="tab-col col-schwab" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Charles Schwab:</strong>{row.charlesSchwabValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1474,7 +1477,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-fidelity" data-mh="tab-col">
+                      <div class="tab-col col-fidelity" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Fidelity:</strong>{row.fidelityValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1492,7 +1495,7 @@ export default function BrokersSingle({ data }) {
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-merrill" data-mh="tab-col">
+                      <div class="tab-col col-merrill" >
                         {row.valueType === 'Text' ? <p><strong class="show-for-small">Merrill Edge:</strong>{row.merrillEdgeValueText}</p> : null}
                         {row.valueType === 'Rating' ? (
                           <>
@@ -1596,17 +1599,17 @@ export default function BrokersSingle({ data }) {
               {broker.cptBrokers.predefinedRelatedBrokers.map((brok) => {
                 return (
                   <div class="row collapse broker-wrap">
-                    <div class="broker-tab-col img-col" data-mh="broker-col">
+                    <div class="broker-tab-col img-col">
                       <div class="thumb-wrap" >
                         {brok.featuredImage.node ? <img class="img-list-default" src={brok.featuredImage.node.mediaItemUrl} alt="WCB Logo" /> : <img class="img-list-default" src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
                       </div>
                     </div>
 
-                    <div class="broker-tab-col broker-name" data-mh="broker-col">
+                    <div class="broker-tab-col broker-name">
                       <h3>{brok.title}</h3>
                     </div>
 
-                    <div class="broker-tab-col broker-content" data-mh="broker-col">
+                    <div class="broker-tab-col broker-content">
                       <div class="points-col broker-content-col text-center">
                         <div class="wrap">
                           <p class="val">{Parser(brok.cptBrokers.allSpreadsPoints ? brok.cptBrokers.allSpreadsPoints : '')}</p>
@@ -1622,7 +1625,7 @@ export default function BrokersSingle({ data }) {
                         {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Learn More</Link> : ''}
                       </div>
                       <div class="platf-col broker-content-col text-center">
-                        <div class="wrap" data-mh="cont-col">
+                        <div class="wrap cont-col" >
                           <ul>
                             {platfomsList.map(platf => {
                               if (brok.cptBrokers.platformsList) {
@@ -1640,7 +1643,7 @@ export default function BrokersSingle({ data }) {
                         {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Platforms</Link> : ''}
                       </div>
                       <div class="acc-col broker-content-col text-center">
-                        <div class="wrap" data-mh="cont-col">
+                        <div class="wrap cont-col" >
                           <ul>
                             {accountsList.map(account => {
                               if (brok.cptBrokers.accountsList) {
@@ -1658,7 +1661,7 @@ export default function BrokersSingle({ data }) {
                         {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Accounts</Link> : ''}
                       </div>
                       <div class="spreads-col broker-content-col text-center">
-                        <div class="wrap" data-mh="cont-col">
+                        <div class="wrap cont-col" >
                           <ul>
                             {spreadsList.map(spread => {
                               if (brok.cptBrokers.spreadsList) {
@@ -1676,7 +1679,7 @@ export default function BrokersSingle({ data }) {
                         {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Spreads</Link> : ''}
                       </div>
                       <div class="methods-col broker-content-col text-center">
-                        <div class="wrap" data-mh="cont-col">
+                        <div class="wrap cont-col" >
                           <ul>
                             {methodsList.map(method => {
                               if (brok.cptBrokers.methodsList) {
@@ -1695,7 +1698,7 @@ export default function BrokersSingle({ data }) {
                       </div>
                     </div>
 
-                    <div class="broker-tab-col btn-col" data-mh="broker-col">
+                    <div class="broker-tab-col btn-col">
                       {brok.cptBrokers.affiliateLink ? (
                         <span class="aff-wrap">
                           <a class="btn small" href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Take Me To Broker</a>
@@ -1716,17 +1719,17 @@ export default function BrokersSingle({ data }) {
                 {themeGeneralSettings.brokerRelatedGuides.map((brok) => {
                   return (
                     <div class="row collapse broker-wrap">
-                      <div class="broker-tab-col img-col" data-mh="broker-col">
+                      <div class="broker-tab-col img-col">
                         <div class="thumb-wrap" >
                           {brok.featuredImage.node ? <img class="img-list-default" src={brok.featuredImage.node.mediaItemUrl} alt="WCB Logo" /> : <img class="img-list-default" src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
                         </div>
                       </div>
 
-                      <div class="broker-tab-col broker-name" data-mh="broker-col">
+                      <div class="broker-tab-col broker-name">
                         <h3>{brok.title}</h3>
                       </div>
 
-                      <div class="broker-tab-col broker-content" data-mh="broker-col">
+                      <div class="broker-tab-col broker-content">
                         <div class="points-col broker-content-col text-center">
                           <div class="wrap">
                             <p class="val">{Parser(brok.cptBrokers.allSpreadsPoints ? brok.cptBrokers.allSpreadsPoints : '')}</p>
@@ -1742,7 +1745,7 @@ export default function BrokersSingle({ data }) {
                           {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Learn More</Link> : ''}
                         </div>
                         <div class="platf-col broker-content-col text-center">
-                          <div class="wrap" data-mh="cont-col">
+                          <div class="wrap cont-col" >
                             <ul>
                               {platfomsList.map(platf => {
                                 if (brok.cptBrokers.platformsList) {
@@ -1760,7 +1763,7 @@ export default function BrokersSingle({ data }) {
                           {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Platforms</Link> : ''}
                         </div>
                         <div class="acc-col broker-content-col text-center">
-                          <div class="wrap" data-mh="cont-col">
+                          <div class="wrap cont-col" >
                             <ul>
                               {accountsList.map(account => {
                                 if (brok.cptBrokers.accountsList) {
@@ -1778,7 +1781,7 @@ export default function BrokersSingle({ data }) {
                           {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Accounts</Link> : ''}
                         </div>
                         <div class="spreads-col broker-content-col text-center">
-                          <div class="wrap" data-mh="cont-col">
+                          <div class="wrap cont-col" >
                             <ul>
                               {spreadsList.map(spread => {
                                 if (brok.cptBrokers.spreadsList) {
@@ -1796,7 +1799,7 @@ export default function BrokersSingle({ data }) {
                           {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Spreads</Link> : ''}
                         </div>
                         <div class="methods-col broker-content-col text-center">
-                          <div class="wrap" data-mh="cont-col">
+                          <div class="wrap cont-col" >
                             <ul>
                               {methodsList.map(method => {
                                 if (brok.cptBrokers.methodsList) {
@@ -1815,7 +1818,7 @@ export default function BrokersSingle({ data }) {
                         </div>
                       </div>
 
-                      <div class="broker-tab-col btn-col" data-mh="broker-col">
+                      <div class="broker-tab-col btn-col">
                         {brok.cptBrokers.affiliateLink ? (
                           <span class="aff-wrap">
                             <a class="btn small" href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Take Me To Broker</a>
