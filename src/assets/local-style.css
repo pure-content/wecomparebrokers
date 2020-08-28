@@ -112,3 +112,119 @@ footer .app-img {
     /* height: inherit; */
     /* justify-content: center; */
 }
+
+.wp-block-uagb-table-of-contents.uagb-toc__align-left {
+    text-align: left;
+}
+
+.uagb-block-903894d2 .uagb-toc__wrap {
+    border-style: solid;
+    border-width: 4px;
+    border-color: #0693e3;
+    border-radius: 18px;
+    padding-left: 34px;
+    padding-right: 34px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    background: #ffffff;
+    width: 100%;
+}
+
+.wp-block-uagb-table-of-contents .uagb-toc__title-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wp-block-uagb-table-of-contents .uagb-toc__is-collapsible.uagb-toc__title-wrap {
+    cursor: pointer;
+}
+
+.wp-block-uagb-table-of-contents.uagb-toc__collapse .uagb-toc__list-wrap {
+    display: none;
+}
+
+.uagb-block-903894d2 .uagb-toc__list-wrap {
+    column-count: 2;
+    overflow: hidden;
+}
+
+.uagb-block-903894d2 .uagb-toc__title {
+    font-weight: 500;
+    font-size: 31.2px;
+    color: #0693e3;
+}
+
+.wp-block-uagb-table-of-contents .uag-toc__collapsible-wrap {
+    margin-left: 10px;
+    display: flex;
+    cursor: pointer;
+}
+
+.wp-block-uagb-table-of-contents .uag-toc__collapsible-wrap svg {
+    width: 20px;
+    height: 20px;
+}
+
+.wp-block-uagb-table-of-contents ul.uagb-toc__list {
+    margin-left: 1.2em;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.uagb-block-903894d2 .uagb-toc__list-wrap ul.uagb-toc__list:first-child {
+    margin-left: 31px;
+    margin-right: 31px;
+    margin-top: 11px;
+    margin-bottom: 11px;
+}
+
+.wp-block-uagb-table-of-contents ul.uagb-toc__list li {
+    margin: 0;
+}
+
+.uagb-block-903894d2 .uagb-toc__list-wrap>ul.uagb-toc__list>li:first-child {
+    padding-top: 0;
+}
+
+.wp-block-uagb-table-of-contents .uagb-toc__list-wrap ul li a {
+    color: inherit;
+    line-height: inherit;
+    font-size: inherit;
+}
+
+.uagb-block-903894d2 .uagb-toc__list-wrap ul li a {
+    color: #333;
+}
+
+@media (min-width: 782px) {
+    .wp-block-columns {
+        flex-wrap: nowrap;
+    }
+}
+
+@media (min-width: 782px) {
+    .wp-block-column {
+        flex-basis: 0%;
+        flex-grow: 1;
+    }
+}
+
+.wp-block-columns {
+    display: flex;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.wp-block-column {
+    flex-grow: 1;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.broker-thumb-img {
+    display: block;
+    max-width: 230px;
+    margin-bottom: 20px;
+}

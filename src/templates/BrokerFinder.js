@@ -8,6 +8,8 @@ import Helmet from "react-helmet"
 import CompareFrom from "../components/CompareFrom"
 import RecommendedBroker from "../components/RecommendedBroker"
 import BrokerTableSingleItem from "../components/BrokerTableSingleItem"
+import { brokerRegions } from "../data/brokerRegions"
+import { brokerTypes } from "../data/brokerTypes"
 const shortid = require("shortid")
 
 export const query = graphql`
@@ -213,19 +215,6 @@ export default function BrokerFinderTemplate({ data }) {
   }
 
   const Filter = () => {
-    const brokerRegions = ["USA", "EU", "APAC", "ASIA", "Africa"]
-    const brokerTypes = {
-      forex: "Forex",
-      etf: "ETF",
-      stocks: "Stocks",
-      cfd: "CFD",
-      crypto: "Crypto",
-      soc_trad: "Social Trading",
-      spread_bet: "Spread Betting",
-      commodities: "Commodities",
-      bin_opt: "Binary Options",
-    }
-
     return (
       <div class="row">
         <div class="small-12 columns">
@@ -261,14 +250,6 @@ export default function BrokerFinderTemplate({ data }) {
     )
   }
 
-  // const BrokersList = () => {
-  //   return (
-  //     <div class="row brokers-list">
-  //       <div class="small-12 columns"></div>
-  //     </div>
-  //   )
-  // }
-
   const pageInfo = {
     isFrontPage: page.isFrontPage,
     contentType: page.contentType,
@@ -277,6 +258,14 @@ export default function BrokerFinderTemplate({ data }) {
 
   return (
     <Layout pageInfo={pageInfo}>
+      <Helmet
+        htmlAttributes={{ lang: "en", amp: undefined }}
+        title={page.seo.title}
+        meta={[
+          { name: "description", content: page.seo.metaDesc },
+          { property: "og:type", content: page.seo.opengraphType },
+        ]}
+      />
       <CompareFrom />
       <TopContent />
       <Filter />

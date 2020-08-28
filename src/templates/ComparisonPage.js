@@ -117,9 +117,7 @@ export const query = graphql`
 
 function ComparisonPageTemplate({ data, search }) {
   const firstUsr = search["first-usr"] ? JSON.parse(search["first-usr"]) : null
-  console.log(firstUsr)
   const secUsr = search["sec-usr"] ? JSON.parse(search["sec-usr"]) : null
-  console.log(secUsr)
   const firstBrokerRef = useRef(null)
   const secondBrokerRef = useRef(null)
   const topContentCol = useRef(null)
@@ -152,46 +150,58 @@ function ComparisonPageTemplate({ data, search }) {
         },
       })
     }
-    $(document).ready(function () {
-      if (firstUsr) {
-        var first = $(
-          `form #first-usr option[id="1${firstUsr ? firstUsr.id : ""}"]`
-        )
-        var firstVal = first.val()
-        $("form #first-usr").val(firstVal).trigger("change")
-      }
-      if (secUsr) {
-        var sec = $(`form #sec-usr option[id="2${secUsr ? secUsr.id : ""}"]`)
-        var secVal = sec.val()
-        $("form #sec-usr").val(secVal).trigger("change")
-      }
+    if (firstUsr) {
+      var first = $(
+        `form #first-usr option[id="1${firstUsr ? firstUsr.id : ""}"]`
+      )
+      var firstVal = first.val()
+      $("form #first-usr").val(firstVal).trigger("change")
+    }
+    if (secUsr) {
+      var sec = $(`form #sec-usr option[id="2${secUsr ? secUsr.id : ""}"]`)
+      var secVal = sec.val()
+      $("form #sec-usr").val(secVal).trigger("change")
+    }
 
-      $(".compare-btn").click(function () {
-        var brokId = $(this).attr("data-id")
-        $("#first-user").val(brokId)
-        $("#compare-form-wrap").fadeIn("fast")
-      })
-      $("#popup-sec-usr").select2({
-        placeholder: "Second Broker",
-        allowClear: true,
-      })
-      $(firstBrokerRef.current).select2({
-        placeholder: "First Broker",
-        allowClear: true,
-      })
-      $(secondBrokerRef.current).select2({
-        placeholder: "Second Broker",
-        allowClear: true,
-      })
-      $(".top-content-col").matchHeight()
-      $(".broker-col").matchHeight()
-
-      $(".brok-info-wrap").each(function () {
-        var list = $(this).find(".list-cont"),
-          listItems = list.find("li").slice(0, 4)
-        $(this).find(".advant-list").append(listItems)
-      })
+    $(".compare-btn").click(function () {
+      var brokId = $(this).attr("data-id")
+      $("#first-user").val(brokId)
+      $("#compare-form-wrap").fadeIn("fast")
     })
+    $("#popup-sec-usr").select2({
+      placeholder: "Second Broker",
+      allowClear: true,
+    })
+    $(firstBrokerRef.current).select2({
+      placeholder: "First Broker",
+      allowClear: true,
+    })
+    $("#first-usr").select2({
+      placeholder: "First Broker",
+      allowClear: true,
+    })
+    $(firstBrokerRef.current).trigger("change")
+    $(secondBrokerRef.current).trigger("change")
+    $(secondBrokerRef.current).select2({
+      placeholder: "Second Broker",
+      allowClear: true,
+    })
+
+    $("#sec-usr").select2({
+      placeholder: "Second Broker",
+      allowClear: true,
+    })
+    $(".brok-info-wrap").each(function () {
+      var list = $(this).find(".list-cont"),
+        listItems = list.find("li").slice(0, 4)
+      $(this).find(".advant-list").append(listItems)
+    })
+
+    $(".top-content-col").matchHeight()
+    $(".broker-col").matchHeight()
+    $(".tabs-brok-card-wrap").matchHeight()
+
+    console.log("reloaded")
   }, [])
 
   const TopContent = () => {
@@ -283,7 +293,6 @@ function ComparisonPageTemplate({ data, search }) {
   }
 
   const BrokerButtons = user => {
-    console.log(user)
     if (
       user.user.cptBrokers.affiliateLink &&
       !user.user.cptBrokers.tabButtonAlternativeText
@@ -321,7 +330,7 @@ function ComparisonPageTemplate({ data, search }) {
       let content = firstUsr.cptBrokers.likesList
 
       return (
-        <div class="tabs-brok-card-wrap" data-mh="tabs-card">
+        <div class="tabs-brok-card-wrap">
           <div class="top-wrap">
             <div class="top-left top-cols" data-mh="top-cols">
               <img src={firstUsr.featuredImage.node.mediaItemUrl} />
@@ -364,7 +373,7 @@ function ComparisonPageTemplate({ data, search }) {
     if (secUsr) {
       let content = secUsr.cptBrokers.likesList
       return (
-        <div class="tabs-brok-card-wrap" data-mh="tabs-card">
+        <div class="tabs-brok-card-wrap">
           <div class="top-wrap">
             <div class="top-left top-cols" data-mh="top-cols">
               <img src={secUsr.featuredImage.node.mediaItemUrl} />

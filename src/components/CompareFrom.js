@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+const shortid = require("shortid")
 
 export default function CompareFrom() {
   const brokers = useStaticQuery(graphql`
@@ -33,7 +34,11 @@ export default function CompareFrom() {
             <option></option>
             {brokers.wpgraphql.brokers123.nodes.map(brok => {
               return (
-                <option id={brok.id} value={JSON.stringify(brok)}>
+                <option
+                  key={shortid.generate()}
+                  id={brok.id}
+                  value={JSON.stringify(brok)}
+                >
                   {brok.title}
                 </option>
               )
