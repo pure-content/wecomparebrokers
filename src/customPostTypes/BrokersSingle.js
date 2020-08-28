@@ -443,7 +443,6 @@ export const query = graphql`
 export default function BrokersSingle({ data }) {
   const broker = data.wpgraphql.broker123
   const themeGeneralSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings
-  //console.log(broker)
 
   useEffect(() => {
     $(document).ready(function () {
