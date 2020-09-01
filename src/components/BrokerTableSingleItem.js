@@ -58,89 +58,42 @@ export default function BrokerTableSingleItem(props) {
     : null
 
   const BrokerButtons = () => {
-    if (
-      brokerInfo.cptBrokers.affiliateLink &&
-      !themeGeneralSettings.wpgraphql.themeGeneralSettings.optGeneralSettings
-        .takeMeToBrokerButtonAlternativeText
-    ) {
-      return (
-        <>
-          <span className="aff-wrap">
-            <Link
-              className="btn small"
-              to={brokerInfo.cptBrokers.affiliateLink}
-              target="_blank"
-              rel="nofollow sponsored"
-            >
-              Take Me To Broker
-            </Link>
-            {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText && (
-              <span className="floating-note">
-                {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText}
-              </span>
-            )}
-          </span>
-          <span data-id={brokerInfo.id} className="btn small compare-btn">
-            {themeGeneralSettings.wpgraphql.themeGeneralSettings
-              .optGeneralSettings.compareBrokerSideBySideButtonAlternativeText
-              ? themeGeneralSettings.wpgraphql.themeGeneralSettings
-                  .optGeneralSettings
-                  .compareBrokerSideBySideButtonAlternativeText
-              : "Compare Brokers Side by Side"}
-          </span>
-          <Link className="btn small" to={brokerInfo.uri}>
-            {themeGeneralSettings.wpgraphql.themeGeneralSettings
-              .optGeneralSettings.readFullReviewButtonAlternativeText
-              ? themeGeneralSettings.wpgraphql.themeGeneralSettings
-                  .optGeneralSettings.readFullReviewButtonAlternativeText
-              : "Read Full Review"}
+
+    return (
+      <>
+        <span className="aff-wrap">
+          <Link
+            className="btn small"
+            to={brokerInfo.cptBrokers.affiliateLink}
+            target="_blank"
+            rel="nofollow sponsored"
+          >
+            {themeGeneralSettings.wpgraphql.themeGeneralSettings.optGeneralSettings.takeMeToBrokerButtonAlternativeText ? themeGeneralSettings.wpgraphql.themeGeneralSettings.optGeneralSettings.takeMeToBrokerButtonAlternativeText : 'Take Me To Broker'}
+
           </Link>
-        </>
-      )
-    } else if (
-      brokerInfo.cptBrokers.affiliateLink &&
-      themeGeneralSettings.wpgraphql.themeGeneralSettings.optGeneralSettings
-        .takeMeToBrokerButtonAlternativeText
-    ) {
-      return (
-        <>
-          <span className="aff-wrap">
-            <Link
-              className="btn small"
-              to={brokerInfo.cptBrokers.affiliateLink}
-              target="_blank"
-              rel="nofollow sponsored"
-            >
-              {
-                themeGeneralSettings.wpgraphql.themeGeneralSettings
-                  .optGeneralSettings.takeMeToBrokerButtonAlternativeText
-              }
-            </Link>
-            {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText && (
-              <span className="floating-note">
-                {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText}
-              </span>
-            )}
-          </span>
-          <span data-id={brokerInfo.id} className="btn small compare-btn">
-            {themeGeneralSettings.wpgraphql.themeGeneralSettings
-              .optGeneralSettings.compareBrokerSideBySideButtonAlternativeText
-              ? themeGeneralSettings.wpgraphql.themeGeneralSettings
-                  .optGeneralSettings
-                  .compareBrokerSideBySideButtonAlternativeText
-              : "Compare Brokers Side by Side"}
-          </span>
-          <Link className="btn small" to={brokerInfo.uri}>
-            {themeGeneralSettings.wpgraphql.themeGeneralSettings
+          {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText && (
+            <span className="floating-note">
+              {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText}
+            </span>
+          )}
+        </span>
+        <span data-id={brokerInfo.id} value={JSON.stringify(brokerInfo)} className="btn small compare-btn">
+          {themeGeneralSettings.wpgraphql.themeGeneralSettings
+            .optGeneralSettings.compareBrokerSideBySideButtonAlternativeText
+            ? themeGeneralSettings.wpgraphql.themeGeneralSettings
+              .optGeneralSettings
+              .compareBrokerSideBySideButtonAlternativeText
+            : "Compare Brokers Side by Side"}
+        </span>
+        <Link className="btn small" to={brokerInfo.uri}>
+          {themeGeneralSettings.wpgraphql.themeGeneralSettings
+            .optGeneralSettings.readFullReviewButtonAlternativeText
+            ? themeGeneralSettings.wpgraphql.themeGeneralSettings
               .optGeneralSettings.readFullReviewButtonAlternativeText
-              ? themeGeneralSettings.wpgraphql.themeGeneralSettings
-                  .optGeneralSettings.readFullReviewButtonAlternativeText
-              : "Read Full Review"}
-          </Link>
-        </>
-      )
-    }
-    return null
+            : "Read Full Review"}
+        </Link>
+      </>
+    )
   }
 
   if (brokerInfo) {
@@ -166,12 +119,12 @@ export default function BrokerTableSingleItem(props) {
                   alt="WCB Logo"
                 />
               ) : (
-                <img
-                  className="img-list-default"
-                  src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
-                  alt="WCB Logo"
-                />
-              )}
+                  <img
+                    className="img-list-default"
+                    src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
+                    alt="WCB Logo"
+                  />
+                )}
             </div>
           </div>
 
@@ -189,7 +142,7 @@ export default function BrokerTableSingleItem(props) {
               {themeGeneralSettings.wpgraphql.themeGeneralSettings
                 .optGeneralSettings.brokerCallBackButtonAlternativeText
                 ? themeGeneralSettings.wpgraphql.themeGeneralSettings
-                    .optGeneralSettings.brokerCallBackButtonAlternativeText
+                  .optGeneralSettings.brokerCallBackButtonAlternativeText
                 : "Broker Callback"}
             </Link>
             <Link
@@ -200,7 +153,7 @@ export default function BrokerTableSingleItem(props) {
               {themeGeneralSettings.wpgraphql.themeGeneralSettings
                 .optGeneralSettings.visitBrokerButtonAlternativeText
                 ? themeGeneralSettings.wpgraphql.themeGeneralSettings
-                    .optGeneralSettings.visitBrokerButtonAlternativeText
+                  .optGeneralSettings.visitBrokerButtonAlternativeText
                 : "Visit Broker"}
             </Link>
           </div>
@@ -256,10 +209,10 @@ export default function BrokerTableSingleItem(props) {
                     return brokerInfo.cptBrokers.platformsList.includes(
                       platf
                     ) ? (
-                      <li className="checked">{platf}</li>
-                    ) : (
-                      <li>{platf}</li>
-                    )
+                        <li className="checked">{platf}</li>
+                      ) : (
+                        <li>{platf}</li>
+                      )
                   }
                 })}
               </ul>
@@ -282,10 +235,10 @@ export default function BrokerTableSingleItem(props) {
                     return brokerInfo.cptBrokers.accountsList.includes(
                       account
                     ) ? (
-                      <li className="checked">{account}</li>
-                    ) : (
-                      <li>{account}</li>
-                    )
+                        <li className="checked">{account}</li>
+                      ) : (
+                        <li>{account}</li>
+                      )
                   }
                 })}
               </ul>
@@ -308,10 +261,10 @@ export default function BrokerTableSingleItem(props) {
                     return brokerInfo.cptBrokers.spreadsList.includes(
                       spread
                     ) ? (
-                      <li className="checked">{spread}</li>
-                    ) : (
-                      <li>{spread}</li>
-                    )
+                        <li className="checked">{spread}</li>
+                      ) : (
+                        <li>{spread}</li>
+                      )
                   }
                 })}
               </ul>
@@ -334,10 +287,10 @@ export default function BrokerTableSingleItem(props) {
                     return brokerInfo.cptBrokers.methodsList.includes(
                       method
                     ) ? (
-                      <li className="checked">{method}</li>
-                    ) : (
-                      <li>{method}</li>
-                    )
+                        <li className="checked">{method}</li>
+                      ) : (
+                        <li>{method}</li>
+                      )
                   }
                 })}
               </ul>

@@ -97,6 +97,7 @@ exports.createPages = async({ actions, graphql }) => {
 
     // pull the page data out of the query response
     const pages = result.data.wpgraphql.pages.nodes
+    const brokers = result.data.wpgraphql.brokers123.nodes
     const templates = []
     pages.forEach(page => {
         templates.includes(page.template.templateName) ? '' : templates.push(page.template.templateName.split(' ').join(''));
@@ -198,7 +199,7 @@ exports.createPages = async({ actions, graphql }) => {
 
     })
 
-    const brokers = result.data.wpgraphql.brokers123.nodes
+
     brokers.forEach(broker => {
         actions.createPage({
             path: broker.uri,

@@ -5,7 +5,6 @@ import $ from "jquery"
 import "jquery-match-height"
 import "easy-pie-chart/dist/jquery.easypiechart"
 import Layout from "../components/layout"
-import BrokerList from "../components/BrokerList"
 import { Helmet } from "react-helmet"
 import BrokerTableSingleItem from "../components/BrokerTableSingleItem"
 import CompareFrom from "../components/CompareFrom"
@@ -202,7 +201,7 @@ function ComparisonPageTemplate({ data, search }) {
     $(".tabs-brok-card-wrap").matchHeight()
 
     console.log("reloaded")
-  }, [])
+  })
 
   const TopContent = () => {
     return (
@@ -228,8 +227,8 @@ function ComparisonPageTemplate({ data, search }) {
                     alt="Title"
                   />
                 ) : (
-                  ""
-                )}
+                    ""
+                  )}
                 {page.allPagesFields.alternativeTitle
                   ? Parser(page.allPagesFields.alternativeTitle)
                   : Parser(page.title)}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import $ from "jquery"
 import "jquery-match-height"
 import { graphql, Link } from "gatsby"
@@ -10,6 +10,9 @@ import RecommendedBroker from "../components/RecommendedBroker"
 import BrokerTableSingleItem from "../components/BrokerTableSingleItem"
 import { brokerRegions } from "../data/brokerRegions"
 import { brokerTypes } from "../data/brokerTypes"
+import withLocation from "../hoc/withLocation"
+import PageTopContent from "../components/PageTopContent"
+import Pagination from "../components/Pagination"
 const shortid = require("shortid")
 
 export const query = graphql`
@@ -30,6 +33,15 @@ export const query = graphql`
             }
           }
           cptBrokers {
+            brokerType
+            ratingCommFees
+            ratingCustResearch
+            ratingCustServ
+            ratingEase
+            ratingMobTrad
+            ratingPlatfTools
+            likesList
+            tabButtonAlternativeText
             brokerRegion
             specialOffer
             affiliateLink
@@ -119,23 +131,30 @@ export const query = graphql`
   }
 `
 
-export default function BrokerFinderTemplate({ data }) {
+function BrokerFinderTemplate({ data, search }) {
+
   const page = data.wpgraphql.page
   const brokers = data.wpgraphql.brokers123.nodes
   const pageTemplate = data.wpgraphql.page.tmplBrokerFinder
   const dt = new Date()
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage] = useState(6)
+  const indexOfLastPost = currentPage * postsPerPage
+  const indexOfFirstPost = indexOfLastPost - postsPerPage
+  const currentBrokers = brokers.slice(indexOfFirstPost, indexOfLastPost)
+
   useEffect(() => {
-    let country = $(
-        '#main-form #country option[value="<?php echo $country; ?>"]'
-      ),
-      catVal = country.val(),
-      instrument = $(
-        '#main-form #instrument option[value="<?php echo $instrum; ?>"]'
-      ),
-      instVal = instrument.val()
-    $("#main-form #country").val(catVal).trigger("change")
-    $("#main-form #instrument").val(instVal).trigger("change")
+    if (search) {
+      let country = $(`#main-form #country option[value="${search.country}"]`),
+        catVal = country.val(),
+        instrument = $(`#main-form #instrument option[value="${search.instrument}"]`),
+        instVal = instrument.val()
+      $("#main-form #country").val(catVal).trigger("change")
+      $("#main-form #instrument").val(instVal).trigger("change")
+    }
+
+
     $("#popup-sec-usr").select2({
       placeholder: "Second Broker",
       minimumResultsForSearch: Infinity,
@@ -154,65 +173,21 @@ export default function BrokerFinderTemplate({ data }) {
     })
     $(".top-content-col").matchHeight()
     $(".broker-col").matchHeight()
-  }, [])
 
-  const TopContent = () => {
-    return (
-      <div className="top-content-wrap find-page">
-        <div className="row top-content">
-          <div className="large-5 medium-6 columns top-content-col">
-            <div className="crumbs">
-              <Link to="/">Home page</Link> -&gt;
-              <span>
-                {page.allPagesFields.alternativeTitle
-                  ? Parser(page.allPagesFields.alternativeTitle)
-                  : Parser(page.title)}
-              </span>
-            </div>
-            <article>
-              <h1 className="page_title">
-                {page.allPagesFields.pageIcon.mediaItemUrl ? (
-                  <img
-                    src={page.allPagesFields.pageIcon.mediaItemUrl}
-                    alt="Title"
-                  />
-                ) : (
-                  ""
-                )}
-                {page.allPagesFields.alternativeTitle
-                  ? Parser(page.allPagesFields.alternativeTitle)
-                  : Parser(page.title)}
-              </h1>
-              <div className="dot-sep">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </article>
-          </div>
-          <div className="medium-6 columns top-content-col">
-            <div className="thumb-wrap">
-              {pageTemplate.rightColumnTitle ? (
-                <h2>
-                  {pageTemplate.rightColumnTitle} {dt.getFullYear()}
-                </h2>
-              ) : (
-                ""
-              )}
-              {page.allPagesFields.videoPage ? (
-                page.allPagesFields.videoPage
-              ) : page.featuredImage ? (
-                <img src={page.featuredImage.node.mediaItemUrl} />
-              ) : (
-                ""
-              )}
-              {Parser(page.content)}
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
+    $('.compare-btn').click(function () {
+      var brokValue = $(this).attr('value');
+      $('#first-user').val(brokValue);
+      $('#compare-form-wrap').fadeIn('fast');
+    });
+    $('#compare-form .close').click(function () {
+      $('#compare-form-wrap').fadeOut('fast');
+    });
+
+    $('.compare-btn-add').click(function () {
+      var brokValue = $(this).attr('value');
+      $('#first-user-add').val(brokValue);
+    });
+  })
 
   const Filter = () => {
     return (
@@ -267,7 +242,7 @@ export default function BrokerFinderTemplate({ data }) {
         ]}
       />
       <CompareFrom />
-      <TopContent />
+      <PageTopContent page={page} template={pageTemplate} />
       <Filter />
       <div class="row brokers-list">
         <div class="small-12 columns">
@@ -277,9 +252,26 @@ export default function BrokerFinderTemplate({ data }) {
               pageTemplate.recommendedBrokerAdditionalText
             }
           />
-          {brokers.map(eachBroker => {
-            return <BrokerTableSingleItem brokerInfo={eachBroker} />
+          {currentBrokers.map(eachBroker => {
+            if (search.country && search.instrument) {
+              if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument) && eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
+                return <BrokerTableSingleItem brokerInfo={eachBroker} />
+              }
+            } else if (search.country && !search.instrument) {
+              if (eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
+                return <BrokerTableSingleItem brokerInfo={eachBroker} />
+              }
+            } else if (!search.country && search.instrument) {
+              if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument)) {
+                return <BrokerTableSingleItem brokerInfo={eachBroker} />
+              }
+            } else {
+              return <BrokerTableSingleItem brokerInfo={eachBroker} />
+            }
           })}
+        </div>
+        <div class="small-12 columns text-right btn-navi-wrap">
+          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={brokers.length} noNumbers={true} />
         </div>
       </div>
       <div class="choose-wrap bot-text">
@@ -291,12 +283,8 @@ export default function BrokerFinderTemplate({ data }) {
           </div>
         </div>
       </div>
-      {/* <BrokerList
-        recommendedBroker={pageTemplate.recommendedBroker}
-        recommendedBrokerAdditionalText={
-          pageTemplate.recommendedBrokerAdditionalText
-        }
-      /> */}
     </Layout>
   )
 }
+
+export default withLocation(BrokerFinderTemplate)

@@ -10,7 +10,7 @@ import { brokerTypes } from "../data/brokerTypes"
 import Parser from "html-react-parser"
 import { useEffect } from "react"
 import { avarageRatingCounter } from "../functions/avarageRatingCounter"
-// import '../assets/js/plugins/jquery.sticky-kit.min.js'
+import '../assets/js/plugins/jquery.sticky-kit.min.js'
 
 const shortid = require("shortid")
 
@@ -458,27 +458,37 @@ export default function BrokersSingle({ data }) {
       $('.broker-tab-col').matchHeight()
       $('.tab-col').matchHeight()
       $('.cont-col').matchHeight()
+      //smoth scroling
+      var $root = $('html, body');
 
-      // //broker floating button descktop
-      // if ($(window).innerWidth() > 1024) {
-      //   var wH = $(window).height() + 32,
-      //     bH = $('.broker-floating-btn .btn').height() + 2,
-      //     offset = (wH - bH) / 2 - 40;
-      //   // console.log(wH, bH, offset);
-      //   $('.rev-nav-col .broker-floating-btn').stick_in_parent({
-      //     parent: '.review-cols',
-      //     inner_scrolling: false,
-      //     offset_top: offset,
-      //   });
-      // }
-      // //broker floating button mobile
-      // if ($(window).innerWidth() < 641) {
-      //   $('.broker-floating-btn').stick_in_parent({
-      //     parent: '.single-broker-wrap',
-      //     inner_scrolling: false,
-      //     offset_top: 20,
-      //   });
-      // }
+      $('a[href^="#"]').click(function () {
+        $root.animate({
+          scrollTop: $($.attr(this, 'href')).offset().top
+        }, 500);
+
+        return false;
+      });
+
+      //broker floating button descktop
+      if ($(window).innerWidth() > 1024) {
+        var wH = $(window).height() + 32,
+          bH = $('.broker-floating-btn .btn').height() + 2,
+          offset = (wH - bH) / 2 - 40;
+        // console.log(wH, bH, offset);
+        $('.rev-nav-col .broker-floating-btn').stick_in_parent({
+          parent: '.review-cols',
+          inner_scrolling: false,
+          offset_top: offset,
+        });
+      }
+      //broker floating button mobile
+      if ($(window).innerWidth() < 641) {
+        $('.broker-floating-btn').stick_in_parent({
+          parent: '.single-broker-wrap',
+          inner_scrolling: false,
+          offset_top: 20,
+        });
+      }
     })
   })
 

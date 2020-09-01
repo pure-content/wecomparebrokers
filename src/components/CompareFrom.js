@@ -14,6 +14,23 @@ export default function CompareFrom() {
             title
             uri
             id
+            featuredImage {
+              node {
+                mediaItemUrl
+              }
+            }
+            cptBrokers {
+              ratingCommFees
+              ratingCustResearch
+              ratingCustServ
+              ratingEase
+              ratingMobTrad
+              ratingPlatfTools
+              ourScore
+              likesList
+              affiliateLink
+              tabButtonAlternativeText
+            }
           }
         }
       }

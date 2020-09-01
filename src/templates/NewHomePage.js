@@ -154,7 +154,7 @@ export default function NewHomePage({ data }) {
       $(".slide-wrap").matchHeight()
       $(".tabs-brok-card-wrap .top-cols").matchHeight()
     })
-  }, [])
+  })
 
   const AwardCol = () => {
     let brokAmount = 0
@@ -322,31 +322,31 @@ export default function NewHomePage({ data }) {
       const bannerDropdownHandler = side => {
         side === "left"
           ? setLeftDropdownOpen({
-              isVisible: !leftDropdownOpen.isVisible,
-              className: leftDropdownOpen.className === "" ? "open" : "",
-              style: {
-                maxHeight:
-                  leftDropdownOpen.style.maxHeight === "0" ? "inherit" : "0",
-                opacity: leftDropdownOpen.style.opacity === "0" ? "1" : "0",
-                visibility:
-                  leftDropdownOpen.style.visibility === "hidden"
-                    ? "visible"
-                    : "hidden",
-              },
-            })
+            isVisible: !leftDropdownOpen.isVisible,
+            className: leftDropdownOpen.className === "" ? "open" : "",
+            style: {
+              maxHeight:
+                leftDropdownOpen.style.maxHeight === "0" ? "inherit" : "0",
+              opacity: leftDropdownOpen.style.opacity === "0" ? "1" : "0",
+              visibility:
+                leftDropdownOpen.style.visibility === "hidden"
+                  ? "visible"
+                  : "hidden",
+            },
+          })
           : setRightDropdownOpen({
-              isVisible: !rightDropdownOpen.isVisible,
-              className: rightDropdownOpen.className === "" ? "open" : "",
-              style: {
-                maxHeight:
-                  rightDropdownOpen.style.maxHeight === "0" ? "inherit" : "0",
-                opacity: rightDropdownOpen.style.opacity === "0" ? "1" : "0",
-                visibility:
-                  rightDropdownOpen.style.visibility === "hidden"
-                    ? "visible"
-                    : "hidden",
-              },
-            })
+            isVisible: !rightDropdownOpen.isVisible,
+            className: rightDropdownOpen.className === "" ? "open" : "",
+            style: {
+              maxHeight:
+                rightDropdownOpen.style.maxHeight === "0" ? "inherit" : "0",
+              opacity: rightDropdownOpen.style.opacity === "0" ? "1" : "0",
+              visibility:
+                rightDropdownOpen.style.visibility === "hidden"
+                  ? "visible"
+                  : "hidden",
+            },
+          })
       }
 
       return (

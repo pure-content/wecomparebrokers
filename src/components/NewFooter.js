@@ -217,7 +217,8 @@ export default function Footer() {
   `)
   useEffect(() => {
     $(".light-grey-wrap .columns").matchHeight()
-  }, [])
+    $('.fooler-col').matchHeight()
+  })
 
   const { url } = footer.wpgraphql.generalSettings
   const footerOptions = footer.wpgraphql.themeFooterSettings.optFooter
@@ -262,9 +263,9 @@ export default function Footer() {
               const linkItself =
                 linkType === "text"
                   ? eachLink.linkText
-                      .split("/")
-                      .splice(3, eachLink.linkText.split("/").length - 1)
-                      .join("/")
+                    .split("/")
+                    .splice(3, eachLink.linkText.split("/").length - 1)
+                    .join("/")
                   : eachLink.link.uri
               return (
                 <li key={shortid.generate()}>
