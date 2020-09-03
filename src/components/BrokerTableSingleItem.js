@@ -2,6 +2,8 @@ import React, { useEffect } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import $ from "jquery"
 import Parser from "html-react-parser"
+import "jquery-match-height"
+import "easy-pie-chart/dist/jquery.easypiechart"
 import { scoreAnimation } from "../functions/scoreAnimation"
 
 export default function BrokerTableSingleItem(props) {
@@ -25,6 +27,30 @@ export default function BrokerTableSingleItem(props) {
   `)
   useEffect(() => {
     $(document).ready(function () {
+      $(".broker-col").matchHeight()
+      if ($(".small-chart") != "") {
+        $(".small-chart").easyPieChart({
+          size: 84,
+          barColor: "#2A79FF",
+          trackColor: "#F6F7F8",
+          scaleColor: false,
+          lineWidth: 5,
+          onStep: function (from, to, percent) {
+            $(this.el).find(".percent").text(Math.round(percent))
+          },
+        })
+      }
+      if ($(".big-chart") != "") {
+        $(".big-chart").easyPieChart({
+          barColor: "#2A79FF",
+          trackColor: "#F6F7F8",
+          scaleColor: false,
+          lineWidth: 8,
+          onStep: function (from, to, percent) {
+            $(this.el).find(".percent").text(Math.round(percent))
+          },
+        })
+      }
       //   var first = $('form #first-usr option[value="<?php echo $user_one; ?>"]'),
       //     firstVal = first.val(),
       //     sec = $('form #sec-usr option[value="<?php echo $user_two; ?>"]'),

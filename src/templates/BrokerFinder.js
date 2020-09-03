@@ -191,9 +191,9 @@ function BrokerFinderTemplate({ data, search }) {
 
   const Filter = () => {
     return (
-      <div class="row">
-        <div class="small-12 columns">
-          <div class="filter-wrap">
+      <div className="row">
+        <div className="small-12 columns">
+          <div className="filter-wrap">
             <h3>
               <img
                 src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg"
@@ -215,7 +215,7 @@ function BrokerFinderTemplate({ data, search }) {
                 })}
               </select>
 
-              <button id="form-submit" class="btn blue" type="submit">
+              <button id="form-submit" className="btn blue" type="submit">
                 Find Me a Broker
               </button>
             </form>
@@ -244,8 +244,8 @@ function BrokerFinderTemplate({ data, search }) {
       <CompareFrom />
       <PageTopContent page={page} template={pageTemplate} />
       <Filter />
-      <div class="row brokers-list">
-        <div class="small-12 columns">
+      <div className="row brokers-list">
+        <div className="small-12 columns">
           <RecommendedBroker
             recommendedBroker={pageTemplate.recommendedBroker}
             recommendedBrokerAdditionalText={
@@ -270,13 +270,13 @@ function BrokerFinderTemplate({ data, search }) {
             }
           })}
         </div>
-        <div class="small-12 columns text-right btn-navi-wrap">
+        <div className="small-12 columns text-right btn-navi-wrap">
           <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={brokers.length} noNumbers={true} />
         </div>
       </div>
-      <div class="choose-wrap bot-text">
-        <div class="row">
-          <div class="medium-10 columns small-centered">
+      <div className="choose-wrap bot-text">
+        <div className="row">
+          <div className="medium-10 columns small-centered">
             {Parser(
               pageTemplate.bodyTextChoosing ? pageTemplate.bodyTextChoosing : ""
             )}

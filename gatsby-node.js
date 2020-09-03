@@ -78,17 +78,50 @@ exports.createPages = async({ actions, graphql }) => {
                     }
                 }
             }
+
             posts {
                 nodes {
                     id
                     uri
                 }
             }
+
             brokers123(first: 5000) {
                 nodes {
                   title
                   uri
                   id
+                }
+            }
+
+            contentTypes(first: 1000) {
+                nodes {
+                  name
+                  id
+                  uri
+                }
+            }
+
+            brokerInfoTaxonomies {
+                nodes {
+                  name
+                  id
+                  uri
+                }
+            }
+
+            topBrokerAreas {
+                nodes {
+                  name
+                  uri
+                  id
+                }
+            }
+
+            forexMarketNews123(first: 1000) {
+                nodes {
+                    uri
+                    id
                 }
             }
         }
@@ -97,7 +130,6 @@ exports.createPages = async({ actions, graphql }) => {
 
     // pull the page data out of the query response
     const pages = result.data.wpgraphql.pages.nodes
-    const brokers = result.data.wpgraphql.brokers123.nodes
     const templates = []
     pages.forEach(page => {
         templates.includes(page.template.templateName) ? '' : templates.push(page.template.templateName.split(' ').join(''));
@@ -199,7 +231,133 @@ exports.createPages = async({ actions, graphql }) => {
 
     })
 
+    const contentTypes = result.data.wpgraphql.contentTypes.nodes
+    contentTypes.forEach(type => {
+        switch (type.name) {
+            case 'cma_thread':
+                actions.createPage({
+                    path: type.uri,
+                    component: require.resolve("./src/templates/archives/CMAThread.js"),
+                    context: {
+                        id: type.id,
+                    },
+                })
+                break;
+            case 'brokers':
+                actions.createPage({
+                    path: type.uri,
+                    component: require.resolve("./src/templates/archives/ArchiveBrokers.js"),
+                    context: {
+                        id: type.id,
+                    },
+                })
+                break;
 
+            case 'platforms':
+                actions.createPage({
+                    path: type.uri,
+                    component: require.resolve("./src/templates/archives/ArchivePlatforms.js"),
+                    context: {
+                        id: type.id,
+                    },
+                })
+                break;
+
+            case 'compare':
+                actions.createPage({
+                    path: type.uri,
+                    component: require.resolve("./src/templates/archives/ArchiveCompare.js"),
+                    context: {
+                        id: type.id,
+                    },
+                })
+                break;
+
+            case 'crypto_currency':
+                actions.createPage({
+                    path: type.uri,
+                    component: require.resolve("./src/templates/archives/ArchiveCryptoCurrency.js"),
+                    context: {
+                        id: type.id,
+                    },
+                })
+                break;
+
+            case 'broker_comparison':
+
+                break;
+
+            case 'broker_info':
+                const brokerInfoTaxonomies = result.data.wpgraphql.brokerInfoTaxonomies.nodes
+                actions.createPage({
+                    path: '/broker-info/',
+                    component: require.resolve("./src/templates/archives/ArchiveBrokerInfo.js"),
+                    context: {
+                        id: type.id,
+                    },
+                })
+                brokerInfoTaxonomies.forEach((tax) => {
+                    actions.createPage({
+                        path: tax.uri,
+                        component: require.resolve("./src/templates/archives/ArchiveBrokerInfoTax.js"),
+                        context: {
+                            id: tax.id,
+                        },
+                    })
+                })
+                break;
+
+            case 'top_brokers':
+                const topBrokerAreas = result.data.wpgraphql.topBrokerAreas.nodes
+                actions.createPage({
+                    path: 'top-brokers',
+                    component: require.resolve("./src/templates/archives/ArchiveBrokerInfo.js"),
+                    context: {
+                        id: type.id,
+                    },
+                })
+                topBrokerAreas.forEach((tax) => {
+                    actions.createPage({
+                        path: tax.uri,
+                        component: require.resolve("./src/templates/archives/ArchiveBrokerArea.js"),
+                        context: {
+                            id: tax.id,
+                        },
+                    })
+                })
+                break;
+            case 'forex_market_news':
+                actions.createPage({
+                    path: type.uri,
+                    component: require.resolve("./src/templates/archives/ArchiveForexMarketNews.js"),
+                    context: {
+                        id: type.id,
+                    },
+                })
+                break;
+            default:
+                // actions.createPage({
+                //     path: type.uri,
+                //     component: require.resolve("./src/templates/Default.js"),
+                //     context: {
+                //         id: type.id,
+                //     },
+                // })
+                break;
+        }
+    })
+    const forexMarketNews123 = result.data.wpgraphql.forexMarketNews123.nodes
+    forexMarketNews123.forEach(article => {
+        actions.createPage({
+            path: article.uri,
+            component: require.resolve("./src/customPostTypes/ForexMarketNewsSingle.js"),
+            context: {
+                id: article.id,
+            },
+        })
+    })
+
+    const brokers = result.data.wpgraphql.brokers123.nodes
     brokers.forEach(broker => {
         actions.createPage({
             path: broker.uri,

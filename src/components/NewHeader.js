@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import $ from "jquery"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 export default function Header(props) {
@@ -42,6 +43,12 @@ export default function Header(props) {
     url: item.url.replace(url, ""),
   }))
 
+  useEffect(() => {
+    $('.toggle-topbar').on('click', function () {
+      $('.top-bar').toggleClass('expanded')
+    })
+  })
+
   return (
     <header className="new_header" style={{ backgroundColor: "#223144" }}>
       <div className="row large-uncollapse medium-uncollapse small-collapse">
@@ -62,9 +69,9 @@ export default function Header(props) {
             <ul className="title-area">
               <li className="name"></li>
               <li className="toggle-topbar menu-icon">
-                <Link to="#" className="home">
+                <a className="home">
                   <span>Menu</span>
-                </Link>
+                </a>
               </li>
             </ul>
             <section className="top-bar-section">
@@ -75,7 +82,7 @@ export default function Header(props) {
                       key={item.id}
                       className={`menu-item ${
                         title === item.label ? "current-menu-item" : ""
-                      }`}
+                        }`}
                     >
                       <Link key={item.url} to={item.url}>
                         {item.label}

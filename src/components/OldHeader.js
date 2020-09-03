@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import $ from "jquery"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 export default function OldHeader(props) {
@@ -30,7 +31,7 @@ export default function OldHeader(props) {
   `)
 
   const { url } = menu.wpgraphql.generalSettings
-  const { title } = props
+  const { title, uri } = props
   const {
     altText,
     mediaItemUrl,
@@ -41,6 +42,12 @@ export default function OldHeader(props) {
     ...item,
     url: item.url.replace(url, ""),
   }))
+
+  useEffect(() => {
+    $('.toggle-topbar').on('click', function () {
+      $('.top-bar').toggleClass('expanded')
+    })
+  })
 
   return (
     <header style={{ backgroundColor: "#fff" }}>
@@ -67,9 +74,9 @@ export default function OldHeader(props) {
             <ul className="title-area">
               <li className="name"></li>
               <li className="toggle-topbar menu-icon">
-                <Link to="#" className="home">
+                <a className="home">
                   <span>Menu</span>
-                </Link>
+                </a>
               </li>
             </ul>
             <section className="top-bar-section">
@@ -78,9 +85,7 @@ export default function OldHeader(props) {
                   {items.map(item => (
                     <li
                       key={item.id}
-                      className={`menu-item ${
-                        title === item.label ? "current-menu-item" : ""
-                      }`}
+                      className={`menu-item ${title === item.label ? "current-menu-item" : ""} ${uri === item.url ? "current-menu-item" : ""}`}
                     >
                       <Link key={item.url} to={item.url}>
                         {item.label}

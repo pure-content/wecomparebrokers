@@ -50,6 +50,13 @@ export const query = graphql`
               id
               databaseId
               cptBrokers {
+                ratingCommFees
+                ratingCustResearch
+                ratingCustServ
+                ratingEase
+                ratingMobTrad
+                ratingPlatfTools
+                likesList
                 brokerRegion
                 specialOffer
                 affiliateLink
@@ -120,6 +127,8 @@ function ComparisonPageTemplate({ data, search }) {
   const firstBrokerRef = useRef(null)
   const secondBrokerRef = useRef(null)
   const topContentCol = useRef(null)
+  console.log(firstUsr)
+  console.log(secUsr)
 
   const page = data.wpgraphql.page
   const seo = page.seo
@@ -150,9 +159,7 @@ function ComparisonPageTemplate({ data, search }) {
       })
     }
     if (firstUsr) {
-      var first = $(
-        `form #first-usr option[id="1${firstUsr ? firstUsr.id : ""}"]`
-      )
+      var first = $(`form #first-usr option[id="1${firstUsr ? firstUsr.id : ""}"]`)
       var firstVal = first.val()
       $("form #first-usr").val(firstVal).trigger("change")
     }
@@ -163,7 +170,7 @@ function ComparisonPageTemplate({ data, search }) {
     }
 
     $(".compare-btn").click(function () {
-      var brokId = $(this).attr("data-id")
+      var brokId = $(this).attr("value")
       $("#first-user").val(brokId)
       $("#compare-form-wrap").fadeIn("fast")
     })
@@ -199,8 +206,8 @@ function ComparisonPageTemplate({ data, search }) {
     $(".top-content-col").matchHeight()
     $(".broker-col").matchHeight()
     $(".tabs-brok-card-wrap").matchHeight()
+    $('.top-cols').matchHeight()
 
-    console.log("reloaded")
   })
 
   const TopContent = () => {
@@ -331,10 +338,10 @@ function ComparisonPageTemplate({ data, search }) {
       return (
         <div class="tabs-brok-card-wrap">
           <div class="top-wrap">
-            <div class="top-left top-cols" data-mh="top-cols">
+            <div class="top-left top-cols">
               <img src={firstUsr.featuredImage.node.mediaItemUrl} />
             </div>
-            <div class="top-right top-cols text-center" data-mh="top-cols">
+            <div class="top-right top-cols text-center" >
               {scoreAnimation(firstUsr.cptBrokers.ourScore, "big-chart", true)}
             </div>
             <div class="brok-info-wrap">
@@ -374,10 +381,10 @@ function ComparisonPageTemplate({ data, search }) {
       return (
         <div class="tabs-brok-card-wrap">
           <div class="top-wrap">
-            <div class="top-left top-cols" data-mh="top-cols">
+            <div class="top-left top-cols" >
               <img src={secUsr.featuredImage.node.mediaItemUrl} />
             </div>
-            <div class="top-right top-cols text-center" data-mh="top-cols">
+            <div class="top-right top-cols text-center">
               {scoreAnimation(secUsr.cptBrokers.ourScore, "big-chart", true)}
             </div>
             <div class="brok-info-wrap">

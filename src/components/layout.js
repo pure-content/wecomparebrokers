@@ -22,12 +22,12 @@ import "../assets/css/plugins/slick.css"
 
 const Layout = props => {
   const { children, pageInfo } = props
-  const { isFrontPage, contentType, title } = pageInfo ? pageInfo : ""
+  const { isFrontPage, contentType, title, uri } = pageInfo ? pageInfo : ""
   const mainClass = isFrontPage ? "homePage" : ""
   const CurrentHeader = isFrontPage ? (
     <NewHeader title={title} />
   ) : (
-      <OldHeader title={title} />
+      <OldHeader title={title} uri={uri} />
     )
   const CurrentFooter = isFrontPage ? (
     <NewFooter />

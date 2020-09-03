@@ -88,7 +88,6 @@ function BrokerHealthTemplate({ data, search }) {
   const [postsPerPage] = useState(6)
 
   useEffect(() => {
-    console.log(currentPage)
     $('.broker-col').matchHeight()
   }, [currentPage])
   const indexOfLastPost = currentPage * postsPerPage
@@ -98,21 +97,21 @@ function BrokerHealthTemplate({ data, search }) {
   const HealthFilter = () => {
 
     return (
-      <div class="row">
-        <div class="small-12 columns">
-          <div class="filter-wrap health-filter">
+      <div className="row">
+        <div className="small-12 columns">
+          <div className="filter-wrap health-filter">
             <h3>Search <strong>Here</strong></h3>
             <form id="health-form" action={page.uri} method="get">
-              <div class="inp-wrap">
+              <div className="inp-wrap">
                 <input id="broker-name" name="broker-name" type="text" value={name ? name : null} placeholder="Company name here..." autoComplete="off" />
-                <div class="inp-popup">
+                <div className="inp-popup">
                 </div>
               </div>
-              <div class="check-wrap">
+              <div className="check-wrap">
                 <label><input id="good" name="good" type="checkbox" value="good" />Show only good brokers<span></span></label>
                 <label><input id="banned" name="banned" type="checkbox" value="banned" />Show brokers with warnings<span></span></label>
               </div>
-              <button id="form-submit" class="btn blue" type="submit">Check Broker Health</button>
+              <button id="form-submit" className="btn blue" type="submit">Check Broker Health</button>
             </form>
           </div>
         </div>
@@ -123,12 +122,12 @@ function BrokerHealthTemplate({ data, search }) {
   const alphabetArr = [...Array(26)].map((_, y) => String.fromCharCode(y + 65))
   const AlphabetFilter = () => {
     return (
-      <div class="row">
-        <div class="small-12 columns">
-          <div class="filter-wrap alph-filter">
-            <ul class="alph-pag">
+      <div className="row">
+        <div className="small-12 columns">
+          <div className="filter-wrap alph-filter">
+            <ul className="alph-pag">
               {alphabetArr.map((letter) => {
-                return <li key={shortid.generate()}><Link to={`${page.uri}/?char=${letter}`}>{letter}</Link></li>
+                return <li key={shortid.generate()}><Link to={`${page.uri}?char=${letter}`}>{letter}</Link></li>
               })}
             </ul>
           </div>
@@ -141,24 +140,24 @@ function BrokerHealthTemplate({ data, search }) {
     const { brok } = props
     const bg = brok.cptBrokers.brokerHealth === 'good' ? 'green' : 'red'
     return (
-      <div class="row collapse broker-wrap health-wrap">
-        <div class="large-2 medium-4 columns img-col broker-col">
-          <div class='thumb-wrap'>
-            {brok.featuredImage ? <img src={brok.featuredImage.node.mediaItemUrl} /> : <img class="img-list-default" src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
+      <div className="row collapse broker-wrap health-wrap">
+        <div className="large-2 medium-4 columns img-col broker-col">
+          <div className='thumb-wrap'>
+            {brok.featuredImage ? <img onLoad={() => $('.broker-col').matchHeight()} src={brok.featuredImage.node.mediaItemUrl} /> : <img className="img-list-default" src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
           </div>
         </div>
-        <div class="large-4 medium-8 columns broker-content broker-col">
+        <div className="large-4 medium-8 columns broker-content broker-col">
           <h3>{brok.title}</h3>
           {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored"><span>{brok.cptBrokers.brokerLink}</span></a> : null}
           {Parser(brok.excerpt ? brok.excerpt : '')}
         </div>
-        <div class="large-6 medium-12 columns health-btns broker-col">
-          {brok.cptBrokers.brokerHealth === 'banned' ? <Link class="btn small warning" to={brok.uri}>Warning</Link> : null}
+        <div className="large-6 medium-12 columns health-btns broker-col">
+          {brok.cptBrokers.brokerHealth === 'banned' ? <Link className="btn small warning" to={brok.uri}>Warning</Link> : null}
           {brok.cptBrokers.affiliateLink ? (
-            <a class="btn small" href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{generalSettings.takeMeToBrokerButtonAlternativeText ? generalSettings.takeMeToBrokerButtonAlternativeText : 'Take Me To Broker'}</a>
+            <a className="btn small" href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{generalSettings.takeMeToBrokerButtonAlternativeText ? generalSettings.takeMeToBrokerButtonAlternativeText : 'Take Me To Broker'}</a>
           ) : null}
 
-          <Link class="btn small" to={brok.uri}>{generalSettings.readFullReviewButtonAlternativeText ? generalSettings.readFullReviewButtonAlternativeText : 'Read Full Review'}</Link>
+          <Link className="btn small" to={brok.uri}>{generalSettings.readFullReviewButtonAlternativeText ? generalSettings.readFullReviewButtonAlternativeText : 'Read Full Review'}</Link>
 
         </div>
       </div>
@@ -184,8 +183,8 @@ function BrokerHealthTemplate({ data, search }) {
       <PageTopContent page={page} template={template} />
       <HealthFilter />
       <AlphabetFilter />
-      <div class="row brokers-list plarform-list">
-        <div class="small-12 columns">
+      <div className="row brokers-list plarform-list">
+        <div className="small-12 columns">
           {currentBrokers.map((brok) => {
             return <BrokerTableItem brok={brok} />
           })}
@@ -193,8 +192,8 @@ function BrokerHealthTemplate({ data, search }) {
         </div>
       </div>
       {template.bottomText ? (
-        <div class="row bot-text bot-text-health">
-          <div class="small-12 columns">
+        <div className="row bot-text bot-text-health">
+          <div className="small-12 columns">
             {Parser(template.bottomText ? template.bottomText : '')}
           </div>
         </div>

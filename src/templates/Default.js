@@ -1,5 +1,7 @@
 import React, { useEffect } from "react"
 import { graphql } from "gatsby"
+import $ from "jquery"
+import "jquery-match-height"
 import Layout from "../components/layout"
 import Parser from "html-react-parser"
 
@@ -11,6 +13,7 @@ export const query = graphql`
         content
         id
         isFrontPage
+        uri
         featuredImage {
           node {
             mediaItemUrl
@@ -32,11 +35,19 @@ export const query = graphql`
 `
 
 export default function DefaultTemplate({ data }) {
+
+  useEffect(() => {
+    $('.uagb-toc__title-wrap').on('click', function () {
+      $('.uagb-toc__list-wrap').slideToggle('fast')
+    })
+  })
+
   const page = data.wpgraphql.page
   const pageInfo = {
     isFrontPage: page.isFrontPage,
     contentType: page.contentType,
     title: page.title,
+    uri: page.uri
   }
   return (
     <Layout pageInfo={pageInfo}>
