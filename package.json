@@ -6,9 +6,11 @@
     "license": "0BSD",
     "scripts": {
         "build": "gatsby build",
+        "build:lambda": "netlify-lambda build src/lambda",
         "develop": "gatsby develop",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
         "start": "npm run develop",
+        "start:lambda": "netlify-lambda serve src/lambda",
         "serve": "gatsby serve",
         "clean": "gatsby clean",
         "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
@@ -31,6 +33,7 @@
         "jquery": "^3.5.1",
         "jquery-match-height": "^0.7.2",
         "nanoid": "^3.1.12",
+        "netlify-lambda": "^2.0.1",
         "node-sass": "^4.14.1",
         "oauth-signature": "^1.5.0",
         "query-string": "^6.13.1",
