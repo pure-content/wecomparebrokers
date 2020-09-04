@@ -213,14 +213,6 @@ export default function Footer() {
           }
         }
       }
-
-      allGfForm {
-        edges {
-            node {
-                ...GravityFormComponent
-            }
-        }
-      }
       
       gfForm(formId: {eq: 1}) {
         formId
