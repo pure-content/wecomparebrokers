@@ -29,6 +29,7 @@ module.exports = {
                     secret: process.env.CONSUMER_SECRET,
                 },
             },
-        }
+        },
+        `gatsby-transformer-remark`
     ]
 }
