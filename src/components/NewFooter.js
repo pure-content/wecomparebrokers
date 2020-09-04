@@ -4,6 +4,39 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Parser from "html-react-parser"
 import Equalizer from "./Equalizer"
 const shortid = require("shortid")
+// gfForm(formId: {eq: 1}) {
+//   formId
+//   slug
+//   apiURL
+//   descriptionPlacement
+//   formFields {
+//       id
+//       label
+//       labelPlacement
+//       description
+//       descriptionPlacement
+//       type
+//       choices
+//       content
+//       errorMessage
+//       inputMaskValue
+//       isRequired
+//       visibility
+//       cssClass
+//       placeholder
+//       size
+//       defaultValue
+//       maxLength
+//       conditionalLogic
+//       emailConfirmEnabled
+//   }
+//   button {
+//       text
+//   }
+//   confirmations {
+//       message
+//   }
+// }
 
 export default function Footer() {
   const footer = useStaticQuery(graphql`
@@ -214,39 +247,7 @@ export default function Footer() {
         }
       }
       
-      gfForm(formId: {eq: 1}) {
-        formId
-        slug
-        apiURL
-        descriptionPlacement
-        formFields {
-            id
-            label
-            labelPlacement
-            description
-            descriptionPlacement
-            type
-            choices
-            content
-            errorMessage
-            inputMaskValue
-            isRequired
-            visibility
-            cssClass
-            placeholder
-            size
-            defaultValue
-            maxLength
-            conditionalLogic
-            emailConfirmEnabled
-        }
-        button {
-            text
-        }
-        confirmations {
-            message
-        }
-      }
+      
     }
   `)
   useEffect(() => {

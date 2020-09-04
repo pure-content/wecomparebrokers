@@ -4,7 +4,40 @@ import Parser from "html-react-parser"
 import Equalizer from "./Equalizer"
 //import GravityFormForm from 'gatsby-gravityforms-component'
 const shortid = require("shortid")
-require('dotenv').config()
+
+// gfForm(formId: {eq: 1}) {
+//   formId
+//   slug
+//   apiURL
+//   descriptionPlacement
+//   formFields {
+//       id
+//       label
+//       labelPlacement
+//       description
+//       descriptionPlacement
+//       type
+//       choices
+//       content
+//       errorMessage
+//       inputMaskValue
+//       isRequired
+//       visibility
+//       cssClass
+//       placeholder
+//       size
+//       defaultValue
+//       maxLength
+//       conditionalLogic
+//       emailConfirmEnabled
+//   }
+//   button {
+//       text
+//   }
+//   confirmations {
+//       message
+//   }
+// }
 
 export default function OldFooter(props) {
   const footer = useStaticQuery(graphql`
@@ -236,39 +269,7 @@ export default function OldFooter(props) {
         }
       }
       
-      gfForm(formId: {eq: 1}) {
-        formId
-        slug
-        apiURL
-        descriptionPlacement
-        formFields {
-            id
-            label
-            labelPlacement
-            description
-            descriptionPlacement
-            type
-            choices
-            content
-            errorMessage
-            inputMaskValue
-            isRequired
-            visibility
-            cssClass
-            placeholder
-            size
-            defaultValue
-            maxLength
-            conditionalLogic
-            emailConfirmEnabled
-        }
-        button {
-            text
-        }
-        confirmations {
-            message
-        }
-      }
+      
     }
   `)
 
