@@ -97,7 +97,7 @@ export default function ForexMarketNewsSingle({ data }) {
     const page = data.wpgraphql.forexMarketNewsPage123
     const seo = page.seo
     const { forexMarketBrokerList } = page.cptForexMarketNews
-    console.log(forexMarketBrokerList)
+
     return (
         <Layout>
             <Helmet

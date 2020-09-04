@@ -229,6 +229,7 @@ function BrokerFinderTemplate({ data, search }) {
     isFrontPage: page.isFrontPage,
     contentType: page.contentType,
     title: page.title,
+    uri: page.uri
   }
 
   return (

@@ -18,6 +18,9 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             },
         })
     }
+    actions.setWebpackConfig({
+        node: { fs: 'empty' },
+    })
 }
 
 exports.createPages = async({ actions, graphql }) => {
@@ -120,6 +123,14 @@ exports.createPages = async({ actions, graphql }) => {
 
             forexMarketNews123(first: 1000) {
                 nodes {
+                    uri
+                    id
+                }
+            }
+
+            comparisons123(first: 10000) {
+                nodes {
+                    title
                     uri
                     id
                 }
@@ -356,6 +367,18 @@ exports.createPages = async({ actions, graphql }) => {
             },
         })
     })
+
+    const comparisons123 = result.data.wpgraphql.comparisons123.nodes
+    comparisons123.forEach(comparison => {
+        actions.createPage({
+            path: comparison.uri,
+            component: require.resolve("./src/customPostTypes/CompareSingle.js"),
+            context: {
+                id: comparison.id,
+            },
+        })
+    })
+
 
     const brokers = result.data.wpgraphql.brokers123.nodes
     brokers.forEach(broker => {
