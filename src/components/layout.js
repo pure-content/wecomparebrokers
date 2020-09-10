@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import $ from "jquery"
 import NewHeader from "./NewHeader"
 import OldHeader from "./OldHeader"
@@ -21,9 +21,17 @@ import "../assets/css/plugins/select2.min.css"
 import "../assets/css/plugins/slick.css"
 
 const Layout = props => {
+
   const { children, pageInfo } = props
   const { isFrontPage, contentType, title, uri } = pageInfo ? pageInfo : ""
   const mainClass = isFrontPage ? "homePage" : ""
+
+  useEffect(() => {
+    $('a').each(function (i, link) {
+      link.href = link.href.replace('https://www.wecomparebrokers.com', window.location.host)
+    })
+  })
+
   const CurrentHeader = isFrontPage ? (
     <NewHeader title={title} />
   ) : (

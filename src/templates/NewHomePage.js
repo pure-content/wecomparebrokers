@@ -577,6 +577,7 @@ export default function NewHomePage({ data }) {
           { property: "og:type", content: seo.opengraphType },
         ]}
       />
+      <Helmet><meta name="google-site-verification" content="LpG-zlER00N7KP55u-bULwtUxop1FcoyzA6M3PeClJU" /></Helmet>
       <div className="new-hp-wrap">
         <div
           className="new_banner_bg"

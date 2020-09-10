@@ -135,6 +135,14 @@ exports.createPages = async({ actions, graphql }) => {
                     id
                 }
             }
+
+            topBrokers123(first: 1000) {
+                nodes {
+                  title
+                  uri
+                  id
+                }
+            }
         }
     }
     `)
@@ -242,6 +250,7 @@ exports.createPages = async({ actions, graphql }) => {
 
     })
 
+    //Archive Pages for Custom Post Types
     const contentTypes = result.data.wpgraphql.contentTypes.nodes
     contentTypes.forEach(type => {
         switch (type.name) {
@@ -320,13 +329,6 @@ exports.createPages = async({ actions, graphql }) => {
 
             case 'top_brokers':
                 const topBrokerAreas = result.data.wpgraphql.topBrokerAreas.nodes
-                actions.createPage({
-                    path: 'top-brokers',
-                    component: require.resolve("./src/templates/archives/ArchiveBrokerInfo.js"),
-                    context: {
-                        id: type.id,
-                    },
-                })
                 topBrokerAreas.forEach((tax) => {
                     actions.createPage({
                         path: tax.uri,
@@ -357,6 +359,9 @@ exports.createPages = async({ actions, graphql }) => {
                 break;
         }
     })
+
+
+    //Single Pages for Custom Post Types
     const forexMarketNews123 = result.data.wpgraphql.forexMarketNews123.nodes
     forexMarketNews123.forEach(article => {
         actions.createPage({
@@ -385,6 +390,17 @@ exports.createPages = async({ actions, graphql }) => {
         actions.createPage({
             path: broker.uri,
             component: require.resolve("./src/customPostTypes/BrokersSingle.js"),
+            context: {
+                id: broker.id,
+            },
+        })
+    })
+
+    const topBrokers123 = result.data.wpgraphql.topBrokers123.nodes
+    topBrokers123.forEach(broker => {
+        actions.createPage({
+            path: broker.uri,
+            component: require.resolve("./src/customPostTypes/TopBrokerSingle.js"),
             context: {
                 id: broker.id,
             },
