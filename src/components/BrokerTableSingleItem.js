@@ -88,15 +88,15 @@ export default function BrokerTableSingleItem(props) {
     return (
       <>
         <span className="aff-wrap">
-          <Link
+          <a
             className="btn small"
-            to={brokerInfo.cptBrokers.affiliateLink}
+            href={brokerInfo.cptBrokers.affiliateLink}
             target="_blank"
             rel="nofollow sponsored"
           >
             {themeGeneralSettings.wpgraphql.themeGeneralSettings.optGeneralSettings.takeMeToBrokerButtonAlternativeText ? themeGeneralSettings.wpgraphql.themeGeneralSettings.optGeneralSettings.takeMeToBrokerButtonAlternativeText : 'Take Me To Broker'}
 
-          </Link>
+          </a>
           {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText && (
             <span className="floating-note">
               {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText}
@@ -111,13 +111,13 @@ export default function BrokerTableSingleItem(props) {
               .compareBrokerSideBySideButtonAlternativeText
             : "Compare Brokers Side by Side"}
         </span>
-        <Link className="btn small" to={brokerInfo.uri}>
+        <a className="btn small" href={brokerInfo.uri}>
           {themeGeneralSettings.wpgraphql.themeGeneralSettings
             .optGeneralSettings.readFullReviewButtonAlternativeText
             ? themeGeneralSettings.wpgraphql.themeGeneralSettings
               .optGeneralSettings.readFullReviewButtonAlternativeText
             : "Read Full Review"}
-        </Link>
+        </a>
       </>
     )
   }
@@ -164,16 +164,16 @@ export default function BrokerTableSingleItem(props) {
             )}
           </div>
           <div className="btn-wrap">
-            <Link className="btn" to={brokerInfo.uri}>
+            <a className="btn" href={brokerInfo.uri}>
               {themeGeneralSettings.wpgraphql.themeGeneralSettings
                 .optGeneralSettings.brokerCallBackButtonAlternativeText
                 ? themeGeneralSettings.wpgraphql.themeGeneralSettings
                   .optGeneralSettings.brokerCallBackButtonAlternativeText
                 : "Broker Callback"}
-            </Link>
-            <Link
+            </a>
+            <a
               className="btn"
-              to={brokerInfo.cptBrokers.affiliateLink}
+              href={brokerInfo.cptBrokers.affiliateLink}
               target="_blank"
             >
               {themeGeneralSettings.wpgraphql.themeGeneralSettings
@@ -181,7 +181,7 @@ export default function BrokerTableSingleItem(props) {
                 ? themeGeneralSettings.wpgraphql.themeGeneralSettings
                   .optGeneralSettings.visitBrokerButtonAlternativeText
                 : "Visit Broker"}
-            </Link>
+            </a>
           </div>
         </div>
         <div className="broker-tab-col broker-content broker-col">
@@ -197,13 +197,13 @@ export default function BrokerTableSingleItem(props) {
               <p>Spreads:</p>
             </div>
             {brokerInfo.cptBrokers.affiliateLink && (
-              <Link
-                to={brokerInfo.cptBrokers.affiliateLink}
+              <a
+                href={brokerInfo.cptBrokers.affiliateLink}
                 target="_blank"
                 rel="nofollow sponsored"
               >
                 See All Spreads
-              </Link>
+              </a>
             )}
           </div>
           <div className="min-dep-col broker-content-col text-center">
@@ -218,13 +218,13 @@ export default function BrokerTableSingleItem(props) {
               <p>Min. deposit</p>
             </div>
             {brokerInfo.cptBrokers.affiliateLink && (
-              <Link
-                to={brokerInfo.cptBrokers.affiliateLink}
+              <a
+                href={brokerInfo.cptBrokers.affiliateLink}
                 target="_blank"
                 rel="nofollow sponsored"
               >
                 Learn More
-              </Link>
+              </a>
             )}
           </div>
           <div className="platf-col broker-content-col text-center">
@@ -244,13 +244,13 @@ export default function BrokerTableSingleItem(props) {
               </ul>
             </div>
             {brokerInfo.cptBrokers.affiliateLink && (
-              <Link
-                to={brokerInfo.cptBrokers.affiliateLink}
+              <a
+                href={brokerInfo.cptBrokers.affiliateLink}
                 target="_blank"
                 rel="nofollow sponsored"
               >
                 See Platforms
-              </Link>
+              </a>
             )}
           </div>
           <div className="acc-col broker-content-col text-center">
@@ -270,13 +270,13 @@ export default function BrokerTableSingleItem(props) {
               </ul>
             </div>
             {brokerInfo.cptBrokers.affiliateLink && (
-              <Link
-                to={brokerInfo.cptBrokers.affiliateLink}
+              <a
+                href={brokerInfo.cptBrokers.affiliateLink}
                 target="_blank"
                 rel="nofollow sponsored"
               >
                 See Accounts
-              </Link>
+              </a>
             )}
           </div>
           <div className="spreads-col broker-content-col text-center">
@@ -296,13 +296,13 @@ export default function BrokerTableSingleItem(props) {
               </ul>
             </div>
             {brokerInfo.cptBrokers.affiliateLink && (
-              <Link
-                to={brokerInfo.cptBrokers.affiliateLink}
+              <a
+                href={brokerInfo.cptBrokers.affiliateLink}
                 target="_blank"
                 rel="nofollow sponsored"
               >
                 See Spreads
-              </Link>
+              </a>
             )}
           </div>
           <div className="methods-col broker-content-col text-center">
@@ -322,13 +322,13 @@ export default function BrokerTableSingleItem(props) {
               </ul>
             </div>
             {brokerInfo.cptBrokers.affiliateLink && (
-              <Link
-                to={brokerInfo.cptBrokers.affiliateLink}
+              <a
+                href={brokerInfo.cptBrokers.affiliateLink}
                 target="_blank"
                 rel="nofollow sponsored"
               >
                 See Methods
-              </Link>
+              </a>
             )}
           </div>
           {brokerInfo.cptBrokers.tableInfo && (

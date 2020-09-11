@@ -65,12 +65,12 @@ export default function ComplainsComponent() {
                 </div>
             ) : null}
             <div class="small-12 columns text-center add-new-comp">
-                <Link to={"/complaints-form/"} class="btn blue">SUBMIT MY COMPLAINT</Link>
+                <a href={"/complaints-form/"} class="btn blue">SUBMIT MY COMPLAINT</a>
             </div>
             {complainsInfo.wpgraphql.qas ? (
                 qas.map((qa) => (
                     <div class={`large-3 medium-6 columns comp-col ${qa.postmeta.resolved}`}>
-                        <Link class='comp-col-link' to={qa.uri}>
+                        <a class='comp-col-link' href={qa.uri}>
                             <div class="comp-top text-center">
                                 {qa.postmeta.resolved === 'resolved' ? (
                                     <>
@@ -87,7 +87,7 @@ export default function ComplainsComponent() {
                             <div class="comp-bot">
                                 <h3>{qa.title}</h3>
                             </div>
-                        </Link>
+                        </a>
                     </div>
                 ))
             ) : <h5 class="text-center">There is no complaints yet.</h5>}

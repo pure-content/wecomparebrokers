@@ -49,12 +49,12 @@ export default function SideBarRight() {
                     </div>
                     <div class="top-list">
                         {topNewsList.map((post, i) => (
-                            <Link key={shortid.generate()} to={post.uri} class="top-itm" style={{ backgroundImage: `url(${post.featuredImage.node.mediaItemUrl})` }}>
+                            <a key={shortid.generate()} href={post.uri} class="top-itm" style={{ backgroundImage: `url(${post.featuredImage.node.mediaItemUrl})` }}>
                                 <span class="num">{i}</span>
                                 <span class="cover"></span>
                                 <h6>{post.title}</h6>
                                 <span class="date">{post.date.split('T')[0]}</span>
-                            </Link>
+                            </a>
                         ))}
                     </div>
                 </aside>
@@ -69,13 +69,13 @@ export default function SideBarRight() {
                 </div>
                 <ul class="post-list">
                     {posts.map(post => (
-                        <li key={shortid.generate()}><Link to={post.uri} class="sidebar-post">
+                        <li key={shortid.generate()}><a href={post.uri} class="sidebar-post">
                             <span class="date">{post.date.split('T')[0]}</span>
                             <h6>{post.title}</h6>
-                        </Link></li>
+                        </a></li>
                     ))}
                 </ul>
-                <Link class="btn small transparent" to={'/forex-market-news'}>Show All Popular News</Link>
+                <a class="btn small transparent" href={'/forex-market-news'}>Show All Popular News</a>
             </aside>
 
             <aside class="widget latest-news-widget">
@@ -87,13 +87,13 @@ export default function SideBarRight() {
                 </div>
                 <ul class="post-list">
                     {posts.map(post => (
-                        <li key={shortid.generate()}><Link to={post.uri} class="sidebar-post">
+                        <li key={shortid.generate()}><a href={post.uri} class="sidebar-post">
                             <span class="date">{post.date.split('T')[0]}</span>
                             <h6>{post.title}</h6>
-                        </Link></li>
+                        </a></li>
                     ))}
                 </ul>
-                <Link class="btn small transparent" to={'/forex-market-news'}>Show All Latest News</Link>
+                <a class="btn small transparent" href={'/forex-market-news'}>Show All Latest News</a>
             </aside>
         </>
     )

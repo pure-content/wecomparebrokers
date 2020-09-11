@@ -51,7 +51,7 @@ export default function ArchiveCompare() {
                 <div class="row top-content">
                     <div class="small-12 columns" data-mh="top-content-col">
                         <div class="crumbs">
-                            <a href="<?php echo get_home_url(); ?>">Home page</a> -&gt;
+                            <a href={'/'}>Home page</a> -&gt;
                         </div>
                         <article>
                             <h1 class="page_title"></h1>
@@ -69,7 +69,7 @@ export default function ArchiveCompare() {
                         <ul class="comparison-list">
                             {comparisons123 ? (
                                 comparisons123.map(post => (
-                                    <li key={post.id} class='compare-itm' ><Link to={post.uri}>{post.title}</Link></li>
+                                    <li key={post.id} class='compare-itm' ><a href={post.uri}>{post.title}</a></li>
                                 ))
                             ) : null}
                         </ul>

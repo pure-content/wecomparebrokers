@@ -42,10 +42,10 @@ export default function SideBarComplaints() {
                 <ul>
                     {sidebarPopularBrokersList.map((brok) => (
                         <li>
-                            <Link to={brok.broker.uri}>
+                            <a href={brok.broker.uri}>
                                 {brok.broker.featuredImage ? <span class="logo-wrap"><img src={brok.broker.featuredImage.node.mediaItemUrl} /></span> : null}
                                 {brok.alternativeBrokerName ? <h3>{brok.alternativeBrokerName}</h3> : <h3>{brok.broker.title}</h3>}
-                            </Link>
+                            </a>
                         </li>
                     ))}
                 </ul>

@@ -174,8 +174,8 @@ export default function CompareSingle({ data }) {
             <div class="row top-content">
                 <div class="small-12 columns">
                     <div class="crumbs">
-                        <Link to={'/'}>Home page</Link> -&gt;
-                        <Link to={'/compare'}>Comparison</Link> -&gt;
+                        <a href={'/'}>Home page</a> -&gt;
+                        <a href={'/compare'}>Comparison</a> -&gt;
                         <span>{page.title}</span>
                     </div>
                     <article>
@@ -225,8 +225,8 @@ export default function CompareSingle({ data }) {
                             <span class="rat-color" style={{ width: `${avarageRatingCounter(firstBrokerReview.cptBrokers) * 20}%` }}></span>
                         </span>
                     </div>
-                    <Link class="btn" to={firstBrokerReview.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{firstBrokerReview.cptBrokers.tabButtonAlternativeText ? Parser(firstBrokerReview.cptBrokers.tabButtonAlternativeText ? firstBrokerReview.cptBrokers.tabButtonAlternativeText : '') : 'Take Me To Broker'}</Link>
-                    <Link class="btn" to={firstBrokerReview.uri}>Read Full Review</Link>
+                    <a class="btn" href={firstBrokerReview.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{firstBrokerReview.cptBrokers.tabButtonAlternativeText ? Parser(firstBrokerReview.cptBrokers.tabButtonAlternativeText ? firstBrokerReview.cptBrokers.tabButtonAlternativeText : '') : 'Take Me To Broker'}</a>
+                    <a class="btn" href={firstBrokerReview.uri}>Read Full Review</a>
                     {firstBrokerReview.cptBrokers.brokerWarningMessage ? <p class="warning_message">{firstBrokerReview.cptBrokers.brokerWarningMessage}</p> : null}
                 </div>
                 <div class="medium-4 small-6 columns text-center broker-col">
@@ -239,8 +239,8 @@ export default function CompareSingle({ data }) {
                             <span class="rat-color" style={{ width: `${avarageRatingCounter(secondBroker.cptBrokers) * 20}%` }}></span>
                         </span>
                     </div>
-                    <Link class="btn" to={secondBroker.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{secondBroker.cptBrokers.tabButtonAlternativeText ? Parser(secondBroker.cptBrokers.tabButtonAlternativeText ? secondBroker.cptBrokers.tabButtonAlternativeText : '') : 'Take Me To Broker'}</Link>
-                    <Link class="btn" to={secondBroker.uri}>Read Full Review</Link>
+                    <a class="btn" href={secondBroker.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{secondBroker.cptBrokers.tabButtonAlternativeText ? Parser(secondBroker.cptBrokers.tabButtonAlternativeText ? secondBroker.cptBrokers.tabButtonAlternativeText : '') : 'Take Me To Broker'}</a>
+                    <a class="btn" href={secondBroker.uri}>Read Full Review</a>
                     {secondBroker.cptBrokers.brokerWarningMessage ? <p class="warning_message">{secondBroker.cptBrokers.brokerWarningMessage}</p> : null}
                 </div>
             </div>
@@ -699,13 +699,13 @@ export default function CompareSingle({ data }) {
                     </div>
                     <div class="medium-4 columns text-center tab-col">
                         <span class="show-for-small-only">First broker: </span>
-                        <Link class="btn" to={firstBrokerReview.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{firstBrokerReview.cptBrokers.tabButtonAlternativeText ? firstBrokerReview.cptBrokers.tabButtonAlternativeText : 'Take Me To Broker'}</Link>
-                        <Link class="btn" to={firstBrokerReview.uri}>Read Full Review</Link>
+                        <a class="btn" href={firstBrokerReview.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{firstBrokerReview.cptBrokers.tabButtonAlternativeText ? firstBrokerReview.cptBrokers.tabButtonAlternativeText : 'Take Me To Broker'}</a>
+                        <a class="btn" href={firstBrokerReview.uri}>Read Full Review</a>
                     </div>
                     <div class="medium-4 columns text-center tab-col">
                         <span class="show-for-small-only">Second broker: </span>
-                        <Link class="btn" to={secondBroker.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{secondBroker.cptBrokers.tabButtonAlternativeText ? secondBroker.cptBrokers.tabButtonAlternativeText : 'Take Me To Broker'}</Link>
-                        <Link class="btn" to={secondBroker.uri}>Read Full Review</Link>
+                        <a class="btn" href={secondBroker.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{secondBroker.cptBrokers.tabButtonAlternativeText ? secondBroker.cptBrokers.tabButtonAlternativeText : 'Take Me To Broker'}</a>
+                        <a class="btn" href={secondBroker.uri}>Read Full Review</a>
                     </div>
                 </div>
             </div>

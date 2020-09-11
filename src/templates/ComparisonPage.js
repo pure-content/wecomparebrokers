@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Parser from "html-react-parser"
 import $ from "jquery"
 import "jquery-match-height"
@@ -11,7 +11,6 @@ import CompareFrom from "../components/CompareFrom"
 import withLocation from "../hoc/withLocation"
 import { scoreAnimation } from "../functions/scoreAnimation"
 import { avarageRatingCounter } from "../functions/avarageRatingCounter"
-import { Link } from "@reach/router"
 
 const queryString = require("query-string")
 
@@ -304,28 +303,28 @@ function ComparisonPageTemplate({ data, search }) {
       !user.user.cptBrokers.tabButtonAlternativeText
     ) {
       return (
-        <Link
+        <a
           class="btn small"
-          to={user.user.cptBrokers.affiliateLink}
+          href={user.user.cptBrokers.affiliateLink}
           target="_blank"
           rel="nofollow sponsored"
         >
           Go to Broker
-        </Link>
+        </a>
       )
     } else if (
       user.user.cptBrokers.affiliateLink &&
       user.user.cptBrokers.tabButtonAlternativeText
     ) {
       return (
-        <Link
+        <a
           class="btn small"
-          to={user.user.cptBrokers.affiliateLink}
+          href={user.user.cptBrokers.affiliateLink}
           target="_blank"
           rel="nofollow sponsored"
         >
           {user.user.cptBrokers.tabButtonAlternativeText}
-        </Link>
+        </a>
       )
     }
     return null
@@ -366,9 +365,9 @@ function ComparisonPageTemplate({ data, search }) {
             </div>
             <div class="btn-wrap">
               <BrokerButtons user={firstUsr} />
-              <Link to={firstUsr.uri} class="btn small blue">
+              <a href={firstUsr.uri} class="btn small blue">
                 Read Full Review
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -409,9 +408,9 @@ function ComparisonPageTemplate({ data, search }) {
             </div>
             <div class="btn-wrap">
               <BrokerButtons user={secUsr} />
-              <Link to={secUsr.uri} class="btn small blue">
+              <a href={secUsr.uri} class="btn small blue">
                 Read Full Review
-              </Link>
+              </a>
             </div>
           </div>
         </div>

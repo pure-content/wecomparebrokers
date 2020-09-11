@@ -55,14 +55,14 @@ export default function RecommendedBroker(props) {
     if (brokerFields.affiliateLink && !brokerFields.tabButtonAlternativeText) {
       return (
         <span className="aff-wrap">
-          <Link
+          <a
             className="btn blue"
-            to={brokerFields.affiliateLink}
+            href={brokerFields.affiliateLink}
             target="_blank"
             rel="nofollow sponsored"
           >
             Take Me To Broker
-          </Link>
+          </a>
           {brokerFields.takeMeToBrokerButtonNoteText && (
             <span className="floating-note">
               {brokerFields.takeMeToBrokerButtonNoteText}
@@ -76,14 +76,14 @@ export default function RecommendedBroker(props) {
     ) {
       return (
         <span className="aff-wrap">
-          <Link
+          <a
             className="btn blue"
-            to={brokerFields.affiliateLink}
+            href={brokerFields.affiliateLink}
             target="_blank"
             rel="nofollow sponsored"
           >
             {brokerFields.tabButtonAlternativeText}
-          </Link>
+          </a>
           {brokerFields.takeMeToBrokerButtonNoteText && (
             <span className="floating-note">
               {brokerFields.takeMeToBrokerButtonNoteText}
@@ -117,12 +117,12 @@ export default function RecommendedBroker(props) {
                 alt="WCB Logo"
               />
             ) : (
-              <img
-                className="img-list-default"
-                src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
-                alt="WCB Logo"
-              />
-            )}
+                <img
+                  className="img-list-default"
+                  src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
+                  alt="WCB Logo"
+                />
+              )}
           </div>
         </div>
 

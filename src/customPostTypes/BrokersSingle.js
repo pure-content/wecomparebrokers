@@ -592,13 +592,13 @@ export default function BrokersSingle({ data }) {
             />
           )}
           {broker.brokerLink && (
-            <Link
-              to={broker.affiliateLink}
+            <a
+              href={broker.affiliateLink}
               target="_blank"
               rel="nofollow sponsored"
             >
               <span>{broker.brokerLink}</span>
-            </Link>
+            </a>
           )}
           {broker.brokerAddress && (
             <div class="brok-add-info address-block">
@@ -619,10 +619,10 @@ export default function BrokersSingle({ data }) {
                       key={shortid.generate()}
                       href={`tel:${telItem.telephoneNumber}`}
                     >
-                      {telItem.telephone}
+                      {Parser(telItem.telephone)}
                     </a>
                   ) : (
-                      <span key={shortid.generate()}>{telItem.telephone}</span>
+                      <span key={shortid.generate()}>{Parser(telItem.telephone)}</span>
                     )
                 })}
               </p>
@@ -887,14 +887,14 @@ export default function BrokersSingle({ data }) {
             <div class="btns-wrap">
               {broker.cptBrokers.affiliateLink && (
                 <span class="aff-wrap">
-                  <Link
+                  <a
                     class="btn"
-                    to={broker.cptBrokers.affiliateLink}
+                    href={broker.cptBrokers.affiliateLink}
                     target="_blank"
                     rel="nofollow sponsored"
                   >
                     Take me to broker
-                  </Link>
+                  </a>
                   {broker.cptBrokers.takeMeToBrokerButtonNoteText ? (
                     <span class="floating-note">
                       {broker.cptBrokers.takeMeToBrokerButtonNoteText}
@@ -1036,16 +1036,16 @@ export default function BrokersSingle({ data }) {
           </li>
         </ul>
         <div class="broker-floating-btn hide-for-small">
-          <Link
+          <a
             class="btn blue"
-            to={broker.cptBrokers.affiliateLink}
+            href={broker.cptBrokers.affiliateLink}
             target="_blank"
             rel="nofollow sponsored"
           >
             {broker.cptBrokers.tabButtonAlternativeText
               ? broker.cptBrokers.tabButtonAlternativeText
               : "Take Me To Broker"}
-          </Link>
+          </a>
           {broker.cptBrokers.takeMeToBrokerButtonNoteText ? (
             <span class="floating-note">
               {broker.cptBrokers.takeMeToBrokerButtonNoteText}
@@ -1646,7 +1646,7 @@ export default function BrokersSingle({ data }) {
           </div>
         ) : null}
         <RelativeGuides />
-        <Link to={'/compare-forex-brokers'} class="btn">GO TO THE compare brokers</Link>
+        <a href={'/compare-forex-brokers'} class="btn">GO TO THE compare brokers</a>
       </div>
     )
   }
@@ -1692,14 +1692,14 @@ export default function BrokersSingle({ data }) {
                           <p class="val">{Parser(brok.cptBrokers.allSpreadsPoints ? brok.cptBrokers.allSpreadsPoints : '')}</p>
                           <p>Spreads:</p>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See All Spreads</Link> : ''}
+                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See All Spreads</a> : ''}
                       </div>
                       <div class="min-dep-col broker-content-col text-center">
                         <div class="wrap">
                           <p class="val">{Parser(brok.cptBrokers.minDeposit ? brok.cptBrokers.minDeposit : '')}</p>
                           <p>Min. deposit</p>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Learn More</Link> : ''}
+                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Learn More</a> : ''}
                       </div>
                       <div class="platf-col broker-content-col text-center">
                         <div class="wrap cont-col" >
@@ -1717,7 +1717,7 @@ export default function BrokersSingle({ data }) {
                             })}
                           </ul>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Platforms</Link> : ''}
+                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Platforms</a> : ''}
                       </div>
                       <div class="acc-col broker-content-col text-center">
                         <div class="wrap cont-col" >
@@ -1735,7 +1735,7 @@ export default function BrokersSingle({ data }) {
                             })}
                           </ul>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Accounts</Link> : ''}
+                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Accounts</a> : ''}
                       </div>
                       <div class="spreads-col broker-content-col text-center">
                         <div class="wrap cont-col" >
@@ -1753,7 +1753,7 @@ export default function BrokersSingle({ data }) {
                             })}
                           </ul>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Spreads</Link> : ''}
+                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Spreads</a> : ''}
                       </div>
                       <div class="methods-col broker-content-col text-center">
                         <div class="wrap cont-col" >
@@ -1771,7 +1771,7 @@ export default function BrokersSingle({ data }) {
                             })}
                           </ul>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Methods</Link> : ''}
+                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Methods</a> : ''}
                       </div>
                     </div>
 
@@ -1783,7 +1783,7 @@ export default function BrokersSingle({ data }) {
                         </span>
                       ) : null}
                       <span data-id={brok.id} class="btn small compare-btn">Compare Brokers Side by Side</span>
-                      <Link class="btn small" to={brok.uri}>Read Full Review</Link>
+                      <a class="btn small" href={brok.uri}>Read Full Review</a>
                     </div>
                   </div>
                 )
@@ -1812,14 +1812,14 @@ export default function BrokersSingle({ data }) {
                             <p class="val">{Parser(brok.cptBrokers.allSpreadsPoints ? brok.cptBrokers.allSpreadsPoints : '')}</p>
                             <p>Spreads:</p>
                           </div>
-                          {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See All Spreads</Link> : ''}
+                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See All Spreads</a> : ''}
                         </div>
                         <div class="min-dep-col broker-content-col text-center">
                           <div class="wrap">
                             <p class="val">{Parser(brok.cptBrokers.minDeposit ? brok.cptBrokers.minDeposit : '')}</p>
                             <p>Min. deposit</p>
                           </div>
-                          {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Learn More</Link> : ''}
+                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Learn More</a> : ''}
                         </div>
                         <div class="platf-col broker-content-col text-center">
                           <div class="wrap cont-col" >
@@ -1837,7 +1837,7 @@ export default function BrokersSingle({ data }) {
                               })}
                             </ul>
                           </div>
-                          {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Platforms</Link> : ''}
+                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Platforms</a> : ''}
                         </div>
                         <div class="acc-col broker-content-col text-center">
                           <div class="wrap cont-col" >
@@ -1855,7 +1855,7 @@ export default function BrokersSingle({ data }) {
                               })}
                             </ul>
                           </div>
-                          {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Accounts</Link> : ''}
+                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Accounts</a> : ''}
                         </div>
                         <div class="spreads-col broker-content-col text-center">
                           <div class="wrap cont-col" >
@@ -1873,7 +1873,7 @@ export default function BrokersSingle({ data }) {
                               })}
                             </ul>
                           </div>
-                          {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Spreads</Link> : ''}
+                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Spreads</a> : ''}
                         </div>
                         <div class="methods-col broker-content-col text-center">
                           <div class="wrap cont-col" >
@@ -1891,7 +1891,7 @@ export default function BrokersSingle({ data }) {
                               })}
                             </ul>
                           </div>
-                          {brok.cptBrokers.affiliateLink ? <Link to={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Methods</Link> : ''}
+                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Methods</a> : ''}
                         </div>
                       </div>
 
@@ -1903,7 +1903,7 @@ export default function BrokersSingle({ data }) {
                           </span>
                         ) : null}
                         <span data-id={brok.id} class="btn small compare-btn">Compare Brokers Side by Side</span>
-                        <Link class="btn small" to={brok.uri}>Read Full Review</Link>
+                        <a class="btn small" href={brok.uri}>Read Full Review</a>
                       </div>
                     </div>
                   )
@@ -1949,9 +1949,9 @@ export default function BrokersSingle({ data }) {
       <CompareFrom />
       <div class="single-broker-wrap">
         <div class="broker-floating-btn show-for-small-only">
-          <Link
+          <a
             class="btn blue"
-            to={
+            href={
               broker.cptBrokers.affiliateLink
                 ? broker.cptBrokers.affiliateLink
                 : ""
@@ -1962,7 +1962,7 @@ export default function BrokersSingle({ data }) {
             {broker.cptBrokers.tabButtonAlternativeText
               ? broker.cptBrokers.tabButtonAlternativeText
               : "Take Me To Broker"}
-          </Link>
+          </a>
           {broker.cptBrokers.takeMeToBrokerButtonNoteText && (
             <span class="floating-note">
               {broker.cptBrokers.takeMeToBrokerButtonNoteText}
@@ -1972,8 +1972,8 @@ export default function BrokersSingle({ data }) {
         <div class="row">
           <div class="small-12 columns">
             <div class="crumbs">
-              <Link to={"/"}>Home page</Link> -&gt;
-              <Link to={"/find-a-broker"}>Broker finder</Link> -&gt;
+              <a href={"/"}>Home page</a> -&gt;
+              <a href={"/find-a-broker"}>Broker finder</a> -&gt;
               <span>{broker.title}</span>
             </div>
           </div>
@@ -1993,7 +1993,7 @@ export default function BrokersSingle({ data }) {
                     <h4>Related articles:</h4>
                     <ul>
                       {broker.cptBrokers.brokerInfoRelatedArticles.map((article) => {
-                        return <li><Link to={article.uri}>{article.uri}</Link></li>
+                        return <li><a href={article.uri}>{article.uri}</a></li>
                       })}
                     </ul>
                   </div>

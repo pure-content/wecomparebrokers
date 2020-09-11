@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import $ from "jquery"
 import "jquery-match-height"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Slider from "react-slick"
 import Parser from "html-react-parser"

@@ -307,9 +307,9 @@ export default function OldFooter(props) {
                 data-src={foot_app_img}
                 alt="Application"
               />
-              <Link
+              <a
                 className="footer-btn left"
-                to={footerOptions.appstoreButtonLink}
+                href={footerOptions.appstoreButtonLink}
               >
                 <img
                   className="lazy footer-appstore"
@@ -317,10 +317,10 @@ export default function OldFooter(props) {
                   data-src={store_img}
                   alt="AppStore"
                 />
-              </Link>
-              <Link
+              </a>
+              <a
                 className="footer-btn left"
-                to={footerOptions.googlePlayButtonLink}
+                href={footerOptions.googlePlayButtonLink}
               >
                 <img
                   className="lazy footer-playmarket"
@@ -328,7 +328,7 @@ export default function OldFooter(props) {
                   data-src={market_img}
                   alt="GooglePlay"
                 />
-              </Link>
+              </a>
             </div>
             <div className="large-5 columns">
               {Parser(footerOptions.newFooterSidebarContent)}
@@ -349,9 +349,9 @@ export default function OldFooter(props) {
                 {footerOptions.partnersList.map(partner => (
                   <li key={shortid.generate()}>
                     {partner.link && (
-                      <Link to={partner.link} target="_blank">
+                      <a href={partner.link} target="_blank">
                         <img src={partner.logo.mediaItemUrl} alt="Partner" />
-                      </Link>
+                      </a>
                     )}
                     {!partner.link && (
                       <img src={partner.logo.mediaItemUrl} alt="Partner" />
@@ -371,9 +371,9 @@ export default function OldFooter(props) {
       return (
         <div className="large-3 medium-6 columns" data-mh="fooler-col">
           {logo && (
-            <Link className="logo-link" to={url}>
+            <a className="logo-link" href={url}>
               <img className="lazy" src={logo.mediaItemUrl} alt="Footer logo" />
-            </Link>
+            </a>
           )}
           {title && <h3>{title}</h3>}
           <ul>
@@ -386,7 +386,7 @@ export default function OldFooter(props) {
                   : eachLink.link.uri
               return (
                 <li key={shortid.generate()}>
-                  <Link to={linkItself}>{linkTitle}</Link>
+                  <a href={linkItself}>{linkTitle}</a>
                 </li>
               )
             })}
@@ -452,9 +452,9 @@ export default function OldFooter(props) {
                 {footerOptions.socialsList.map(soc => {
                   return (
                     <li key={shortid.generate()}>
-                      <Link to={soc.link} target="_blank">
+                      <a href={soc.link} target="_blank">
                         <img src={soc.icon.mediaItemUrl} alt={soc.icon.title} />
-                      </Link>
+                      </a>
                     </li>
                   )
                 })}
@@ -528,7 +528,7 @@ export default function OldFooter(props) {
                 {menuItems.map(menuItem => {
                   return (
                     <li key={shortid.generate()} className="menu-item">
-                      <Link to={menuItem.url}>{menuItem.label}</Link>
+                      <a href={menuItem.url}>{menuItem.label}</a>
                     </li>
                   )
                 })}

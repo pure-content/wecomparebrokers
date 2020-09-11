@@ -127,7 +127,7 @@ function BrokerHealthTemplate({ data, search }) {
           <div className="filter-wrap alph-filter">
             <ul className="alph-pag">
               {alphabetArr.map((letter) => {
-                return <li key={shortid.generate()}><Link to={`${page.uri}?char=${letter}`}>{letter}</Link></li>
+                return <li key={shortid.generate()}><a href={`${page.uri}?char=${letter}`}>{letter}</a></li>
               })}
             </ul>
           </div>
@@ -152,12 +152,12 @@ function BrokerHealthTemplate({ data, search }) {
           {Parser(brok.excerpt ? brok.excerpt : '')}
         </div>
         <div className="large-6 medium-12 columns health-btns broker-col">
-          {brok.cptBrokers.brokerHealth === 'banned' ? <Link className="btn small warning" to={brok.uri}>Warning</Link> : null}
+          {brok.cptBrokers.brokerHealth === 'banned' ? <a className="btn small warning" href={brok.uri}>Warning</a> : null}
           {brok.cptBrokers.affiliateLink ? (
             <a className="btn small" href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{generalSettings.takeMeToBrokerButtonAlternativeText ? generalSettings.takeMeToBrokerButtonAlternativeText : 'Take Me To Broker'}</a>
           ) : null}
 
-          <Link className="btn small" to={brok.uri}>{generalSettings.readFullReviewButtonAlternativeText ? generalSettings.readFullReviewButtonAlternativeText : 'Read Full Review'}</Link>
+          <a className="btn small" href={brok.uri}>{generalSettings.readFullReviewButtonAlternativeText ? generalSettings.readFullReviewButtonAlternativeText : 'Read Full Review'}</a>
 
         </div>
       </div>

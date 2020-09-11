@@ -151,7 +151,7 @@ export default function CheapestBrokerTemplate({ data }) {
             {brokTableInfo.anyOtherFees ? Parser(brokTableInfo.anyOtherFees) : <span class="dash"></span>}
           </div>
         </div>
-        <Link class="btn" to={brokTableInfo.thisBroker.uri} data-wpel-link="internal">Go to broker</Link>
+        <a class="btn" href={brokTableInfo.thisBroker.uri} data-wpel-link="internal">Go to broker</a>
       </div>
     )
   }

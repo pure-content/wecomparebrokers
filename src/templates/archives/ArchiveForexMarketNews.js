@@ -54,7 +54,7 @@ export default function ArchiveForexMarketNews() {
             <div class="row top-content">
                 <div class="small-12 columns">
                     <div class="crumbs">
-                        <Link to={'/'}>Home page</Link> -&gt;
+                        <a href={'/'}>Home page</a> -&gt;
                         <span>{forexNews.wpgraphql.forexArchiveData.title}</span>
                     </div>
                 </div>
@@ -81,11 +81,11 @@ export default function ArchiveForexMarketNews() {
                             <div class="row post-row">
                                 {currentNews.map((article) => (
                                     <div class="medium-6 columns">
-                                        <Link class="post-wrap" to={article.uri} >
+                                        <a class="post-wrap" href={article.uri} >
                                             {article.featuredImage ? <img onLoad={() => $('.post-wrap').matchHeight()} src={article.featuredImage.node.mediaItemUrl} sizes={article.featuredImage.node.sizes} srcSet={article.featuredImage.node.srcSet} /> : null}
                                             <h4>{article.title}</h4>
                                             {article.cptForexMarketNews.forexMarketMainTextExerpt ? <p>{Parser(article.cptForexMarketNews.forexMarketMainTextExerpt ? article.cptForexMarketNews.forexMarketMainTextExerpt : '')} ...</p> : null}
-                                        </Link>
+                                        </a>
                                     </div>
                                 ))}
                             </div>

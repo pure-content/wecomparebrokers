@@ -54,9 +54,9 @@ export default function Header(props) {
       <div className="row large-uncollapse medium-uncollapse small-collapse">
         <div className="large-3 columns">
           <div className="logo small-only-text-center">
-            <Link to="/" className="home">
+            <a href="/" className="home">
               <img src={mediaItemUrl} alt={altText} />
-            </Link>
+            </a>
           </div>
         </div>
         <div className="large-7 columns">
@@ -84,9 +84,9 @@ export default function Header(props) {
                         title === item.label ? "current-menu-item" : ""
                         }`}
                     >
-                      <Link key={item.url} to={item.url}>
+                      <a key={item.url} href={item.url}>
                         {item.label}
-                      </Link>
+                      </a>
                     </li>
                   ))}
                 </ul>
