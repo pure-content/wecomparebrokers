@@ -28,7 +28,7 @@ const Layout = props => {
 
   useEffect(() => {
     $('a').each(function (i, link) {
-      link.href = link.href.replace('https://wecomparebrokers.netlify.app/', 'https://www.wecomparebrokers.com')
+      link.href = link.href.replace('https://wecomparebrokers.netlify.app/', 'https://www.wecomparebrokers.com/')
     })
   })
 
