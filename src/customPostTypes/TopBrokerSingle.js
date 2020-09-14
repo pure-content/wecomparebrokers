@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import $ from "jquery"
 import "jquery-match-height"
+import "easy-pie-chart/dist/jquery.easypiechart"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Parser from "html-react-parser"
