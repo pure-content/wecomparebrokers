@@ -554,3 +554,121 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 #gravityform--id-1 .gform_footer button.button:hover {
     opacity: .8;
 }
+
+.wpusb-item {
+    display: inline-flex;
+    font-family: Arial, Sans-serif;
+    margin-bottom: 10px;
+    margin-right: 8px;
+}
+
+.wpusb .wpusb-item,
+.wpusb .wpusb-count {
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.wpusb-item {
+    margin: 0;
+    margin-left: 5px;
+}
+
+.wpusb-item .wpusb-btn {
+    -moz-transition: background .3s ease;
+    -webkit-transition: background .3s ease;
+    border: none;
+    color: #424242;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial, Sans-serif, Helvetica;
+    text-decoration: none;
+    transition: background .3s ease;
+}
+
+.wpusb-buttons .wpusb-facebook a {
+    background-color: #3b5998;
+    -moz-box-shadow: 0 2px #2a3f6c;
+    -webkit-box-shadow: 0 2px #2a3f6c;
+    box-shadow: 0 2px #2a3f6c;
+}
+
+.wpusb-buttons .wpusb-item .wpusb-btn {
+    color: #fff;
+}
+
+.wpusb-rounded .wpusb-item .wpusb-button,
+.wpusb-square .wpusb-item .wpusb-button,
+.wpusb-default .wpusb-item .wpusb-button,
+.wpusb-buttons .wpusb-item .wpusb-button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.wpusb-item .wpusb-btn svg {
+    font-style: normal;
+    height: 35px;
+    width: 35px;
+}
+
+.wpusb .wpusb-facebook svg,
+.wpusb .wpusb-facebook svg:hover,
+#wpusb-container-follow .wpusb-facebook svg,
+#wpusb-container-follow .wpusb-facebook svg:hover {
+    color: #3b5998;
+}
+
+.wpusb-buttons .wpusb-item .wpusb-btn svg,
+.wpusb-buttons .wpusb-item .wpusb-btn svg:hover {
+    width: 22px;
+    height: 22px;
+    color: inherit;
+    line-height: 1;
+}
+
+#wpusb-container-buttons .wpusb-facebook svg {
+    position: relative;
+    top: 2px;
+}
+
+.wpusb-item .wpusb-btn i,
+.wpusb-item .wpusb-btn span {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.wpusb-item .wpusb-btn span {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.wpusb-buttons .wpusb-item .wpusb-btn span {
+    margin-left: 0;
+    padding: 0 5px;
+    position: relative;
+    right: 3px;
+}
+
+.wpusb-item .wpusb-btn span:before {
+    content: attr(data-title);
+}
+
+.wpusb-buttons:not(#wpusb-container-fixed) .wpusb-item .wpusb-btn {
+    border-radius: 3px;
+    padding: 4px 6px;
+}
+
+.wpusb-buttons .wpusb-twitter a {
+    background-color: #00aced;
+    -moz-box-shadow: 0 2px #0080b0;
+    -webkit-box-shadow: 0 2px #0080b0;
+    box-shadow: 0 2px #0080b0;
+}
+
+.wpusb-buttons .wpusb-telegram a {
+    background-color: #08c;
+    -moz-box-shadow: 0 2px #005f8f;
+    -webkit-box-shadow: 0 2px #005f8f;
+    box-shadow: 0 2px #005f8f;
+}

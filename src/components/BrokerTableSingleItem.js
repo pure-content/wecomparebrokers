@@ -64,7 +64,7 @@ export default function BrokerTableSingleItem(props) {
     //   $("#first-user").val(brokId)
     //   $("#compare-form-wrap").fadeIn("fast")
     // })
-  }, [])
+  })
 
   const platfomsList = [
     "MT5",

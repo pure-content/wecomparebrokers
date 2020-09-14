@@ -18,9 +18,10 @@ export const avarageRatingCounter = cptBrokers => {
         ratingMobTrad,
         ratingPlatfTools,
     ]
+
     let divider = 0
     Object.values(arrayOfRatings).map((item) =>
-        typeof item !== 'null' ? divider++ : divider
+        item !== null ? divider++ : divider
     )
     let avarage =
         Object.values(arrayOfRatings).reduce((a, b) =>

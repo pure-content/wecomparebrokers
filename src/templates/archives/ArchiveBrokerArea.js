@@ -42,7 +42,7 @@ export const query = graphql`
 export default function ArchiveBrokerArea({ data }) {
 
     const { topBrokerArea } = data.wpgraphql
-    console.log(topBrokerArea)
+
     return (
         <Layout>
             <div class="row">

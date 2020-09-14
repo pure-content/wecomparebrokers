@@ -5,15 +5,6 @@ import { graphql, Link, useStaticQuery } from "gatsby"
 import Layout from "../../components/layout"
 import Parser from "html-react-parser"
 import Helmet from "react-helmet"
-import CompareFrom from "../../components/CompareFrom"
-import RecommendedBroker from "../../components/RecommendedBroker"
-import BrokerTableSingleItem from "../../components/BrokerTableSingleItem"
-import { brokerRegions } from "../../data/brokerRegions"
-import { brokerTypes } from "../../data/brokerTypes"
-import withLocation from "../../hoc/withLocation"
-import PageTopContent from "../../components/PageTopContent"
-import Pagination from "../../components/Pagination"
-const shortid = require("shortid")
 
 export default function ArchiveCompare() {
 
@@ -35,7 +26,6 @@ export default function ArchiveCompare() {
     `)
 
     const comparisons123 = comparisonsInfo.wpgraphql.comparisons123.nodes
-    console.log(comparisons123)
 
     return (
         <Layout >

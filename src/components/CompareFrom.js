@@ -1,4 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
+import $ from "jquery"
+import "jquery-match-height"
 import { graphql, useStaticQuery } from "gatsby"
 const shortid = require("shortid")
 
@@ -36,6 +38,22 @@ export default function CompareFrom() {
       }
     }
   `)
+
+  useEffect(() => {
+    $('.compare-btn').click(function () {
+      var brokValue = $(this).attr('value');
+      $('#first-user').val(brokValue);
+      $('#compare-form-wrap').fadeIn('fast');
+    });
+    $('#compare-form .close').click(function () {
+      $('#compare-form-wrap').fadeOut('fast');
+    });
+
+    $('.compare-btn-add').click(function () {
+      var brokValue = $(this).attr('value');
+      $('#first-user-add').val(brokValue);
+    });
+  })
 
   return (
     <div id="compare-form-wrap">

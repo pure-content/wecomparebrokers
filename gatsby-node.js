@@ -143,6 +143,22 @@ exports.createPages = async({ actions, graphql }) => {
                   id
                 }
             }
+
+            brokerComparisons123(first: 1000) {
+                nodes {
+                    title
+                    uri
+                    id
+                }
+            }
+
+            brokerInfo123(first: 1000) {
+                nodes {
+                    title
+                    uri
+                    id
+                }
+            }
         }
     }
     `)
@@ -401,6 +417,29 @@ exports.createPages = async({ actions, graphql }) => {
         actions.createPage({
             path: broker.uri,
             component: require.resolve("./src/customPostTypes/TopBrokerSingle.js"),
+            context: {
+                id: broker.id,
+            },
+        })
+    })
+
+
+    const brokerComparisons123 = result.data.wpgraphql.brokerComparisons123.nodes
+    brokerComparisons123.forEach(broker => {
+        actions.createPage({
+            path: broker.uri,
+            component: require.resolve("./src/customPostTypes/BrokerComparisonSingle.js"),
+            context: {
+                id: broker.id,
+            },
+        })
+    })
+
+    const brokerInfo123 = result.data.wpgraphql.brokerInfo123.nodes
+    brokerInfo123.forEach(broker => {
+        actions.createPage({
+            path: broker.uri,
+            component: require.resolve("./src/customPostTypes/BrokerInfoSingle.js"),
             context: {
                 id: broker.id,
             },

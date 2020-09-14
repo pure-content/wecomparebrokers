@@ -126,8 +126,6 @@ function ComparisonPageTemplate({ data, search }) {
   const firstBrokerRef = useRef(null)
   const secondBrokerRef = useRef(null)
   const topContentCol = useRef(null)
-  console.log(firstUsr)
-  console.log(secUsr)
 
   const page = data.wpgraphql.page
   const seo = page.seo
@@ -338,7 +336,7 @@ function ComparisonPageTemplate({ data, search }) {
         <div class="tabs-brok-card-wrap">
           <div class="top-wrap">
             <div class="top-left top-cols">
-              <img src={firstUsr.featuredImage.node.mediaItemUrl} />
+              <img onLoad={() => $(".tabs-brok-card-wrap").matchHeight()} src={firstUsr.featuredImage.node.mediaItemUrl} />
             </div>
             <div class="top-right top-cols text-center" >
               {scoreAnimation(firstUsr.cptBrokers.ourScore, "big-chart", true)}
@@ -381,7 +379,7 @@ function ComparisonPageTemplate({ data, search }) {
         <div class="tabs-brok-card-wrap">
           <div class="top-wrap">
             <div class="top-left top-cols" >
-              <img src={secUsr.featuredImage.node.mediaItemUrl} />
+              <img onLoad={() => $(".tabs-brok-card-wrap").matchHeight()} src={secUsr.featuredImage.node.mediaItemUrl} />
             </div>
             <div class="top-right top-cols text-center">
               {scoreAnimation(secUsr.cptBrokers.ourScore, "big-chart", true)}
