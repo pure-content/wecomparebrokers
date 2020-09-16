@@ -27,9 +27,9 @@ const Layout = props => {
   const mainClass = isFrontPage ? "homePage" : ""
 
   useEffect(() => {
-    $('a').each(function (i, link) {
-      link.href = link.href.replace('https://wecomparebrokers.netlify.app/', 'https://www.wecomparebrokers.com/')
-    })
+    // $('a').each(function (i, link) {
+    //   link.href = link.href.replace('https://wecomparebrokers.netlify.app/', 'https://www.wecomparebrokers.com/')
+    // })
   })
 
   const CurrentHeader = isFrontPage ? (

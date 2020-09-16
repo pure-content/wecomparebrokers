@@ -39,12 +39,28 @@ export const query = graphql`
 
 
       }
+
+      complaintsSettings {
+        optComplaintsSettings {
+          optListCopy {
+            value
+            type
+            optionDescriptionText
+            option
+            icon {
+              mediaItemUrl
+            }
+          }
+        }
+      }
     }
   }
 `
 
 export default function ComplaintsFormTemplate({ data }) {
   const page = data.wpgraphql.page
+  const { optListCopy } = data.wpgraphql.complaintsSettings.optComplaintsSettings
+  console.log(optListCopy)
 
   const TopContent = () => {
     return (
@@ -75,9 +91,39 @@ export default function ComplaintsFormTemplate({ data }) {
   }
 
   const FormContent = () => {
+    let optgr_count = 0;
+    let opt_count = 0;
+    let opt_num = 0;
+    optListCopy.forEach(opt => (
+      opt.type === 'optgroup' ? opt_num++ : opt_num
+    ))
     return (
       <div class="cma-comp-list-wrap form">
-        Form
+        {optListCopy ? (
+          <>
+            <h2>SELECT AN OPTION THAT BEST DESCRIBES THE ISSUE</h2>
+            {Parser(page.content ? page.content : '')}
+
+            <div class="opt-wrap">
+              <div class="list-wrap">
+                {optListCopy.map(opt => {
+                  let res = ''
+                  if (opt.type === 'optgroup') {
+                    optgr_count++
+                    if (opt_count != 0 && opt_num != optgr_count) {
+                      res += '</div><div class="list-wrap">'
+                    }
+                    res += `<h5><img src=${opt.icon.mediaItemUrl} >${opt.option}</h5>`
+                  } else {
+                    res += `<div class="complaint-radio__item"><input type="radio" name="comp_cat" id="<?php echo $val; ?>" value="<?php echo $val; ?>" /><label for="<?php echo $val; ?>"><?php echo $opt; ?></label></div>`
+                  }
+                  opt_count++
+                  return Parser(res)
+                })}
+              </div>
+            </div>
+          </>
+        ) : null}
       </div>
     )
   }
