@@ -254,6 +254,15 @@ exports.createPages = async({ actions, graphql }) => {
                     },
                 })
                 break;
+            case "ComplaintsForm":
+                actions.createPage({
+                    path: page.uri,
+                    component: require.resolve("./src/templates/ComplaintsForm.js"),
+                    context: {
+                        id: page.id,
+                    },
+                })
+                break;
             default:
                 actions.createPage({
                     path: page.uri,
@@ -324,7 +333,6 @@ exports.createPages = async({ actions, graphql }) => {
                 break;
 
             case 'broker_info':
-                const brokerInfoTaxonomies = result.data.wpgraphql.brokerInfoTaxonomies.nodes
                 actions.createPage({
                     path: '/broker-info/',
                     component: require.resolve("./src/templates/archives/ArchiveBrokerInfo.js"),
@@ -332,6 +340,7 @@ exports.createPages = async({ actions, graphql }) => {
                         id: type.id,
                     },
                 })
+                const brokerInfoTaxonomies = result.data.wpgraphql.brokerInfoTaxonomies.nodes
                 brokerInfoTaxonomies.forEach((tax) => {
                     actions.createPage({
                         path: tax.uri,

@@ -78,7 +78,7 @@ export default function ComplaintsArchivePageTemplate({ data }) {
         <div class="row top-content fraud-top">
           <div class="small-12 columns">
             <div class="crumbs">
-              <a href={'/'}>Home page</a> -&gt;
+              <Link to={'/'}>Home page</Link> -&gt;
                     <span>
                 {page.title}
               </span>

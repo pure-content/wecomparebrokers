@@ -61,7 +61,7 @@ export default function BrokerInfoSingle({ data }) {
                 <div class="row top-content top-single-post">
                     <div class="small-12 columns">
                         <div class="crumbs">
-                            <a href={'/'}>Home page</a> -&gt;
+                            <Link to={'/'}>Home page</Link> -&gt;
                             <span>{article123.title}</span>
                         </div>
                     </div>

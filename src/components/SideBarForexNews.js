@@ -44,10 +44,10 @@ export default function SideBarForexNews() {
                 <ul>
                     {sidebarPopularBrokersList.map((brok) => (
                         <li>
-                            <a href={brok.broker.uri}>
+                            <Link to={brok.broker.uri}>
                                 {brok.broker.featuredImage ? <span class="logo-wrap"><img sizes={brok.broker.featuredImage.node.sizes} srcSet={brok.broker.featuredImage.node.srcSet} src={brok.broker.featuredImage.node.mediaItemUrl} /></span> : null}
                                 {brok.alternativeBrokerName ? <h3>{brok.alternativeBrokerName}</h3> : <h3>{brok.broker.title}</h3>}
-                            </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>

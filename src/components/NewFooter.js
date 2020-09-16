@@ -287,9 +287,9 @@ export default function Footer() {
       return (
         <div className="large-3 medium-6 columns" data-mh="fooler-col">
           {logo && (
-            <a className="logo-link" href={url}>
+            <Link className="logo-link" to={url}>
               <img className="lazy" src={logo.mediaItemUrl} alt="Footer logo" />
-            </a>
+            </Link>
           )}
           {title && <h3>{title}</h3>}
           <ul>
@@ -305,7 +305,7 @@ export default function Footer() {
                   : eachLink.link.uri
               return (
                 <li key={shortid.generate()}>
-                  <a href={linkItself}>{linkTitle}</a>
+                  <Link to={linkItself}>{linkTitle}</Link>
                 </li>
               )
             })}
@@ -369,9 +369,9 @@ export default function Footer() {
                 {footerOptions.socialsList.map(soc => {
                   return (
                     <li key={shortid.generate()}>
-                      <a href={soc.link} target="_blank">
+                      <Link to={soc.link} target="_blank">
                         <img src={soc.icon.mediaItemUrl} alt={soc.icon.title} />
-                      </a>
+                      </Link>
                     </li>
                   )
                 })}
@@ -445,7 +445,7 @@ export default function Footer() {
                 {menuItems.map(menuItem => {
                   return (
                     <li key={shortid.generate()} className="menu-item">
-                      <a href={menuItem.url}>{menuItem.label}</a>
+                      <Link to={menuItem.url}>{menuItem.label}</Link>
                     </li>
                   )
                 })}

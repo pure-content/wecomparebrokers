@@ -83,16 +83,67 @@ function BrokerHealthTemplate({ data, search }) {
   const name = search['broker-name'] ? search['broker-name'] : ''
   const good = search.good ? search.good : ''
   const banned = search.banned ? search.banned : ''
+  const char = search.char ? search.char : ''
 
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(6)
 
   useEffect(() => {
     $('.broker-col').matchHeight()
-  }, [currentPage])
+  })
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
-  const currentBrokers = brokers.slice(indexOfFirstPost, indexOfLastPost)
+
+  const brokerSorter = () => {
+    if (name) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.title.toLowerCase().includes(name.toLowerCase())) {
+          return eachBroker
+        }
+      })
+      return sortedBrokers
+    } else if (name && good) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.title.toLowerCase().includes(name.toLowerCase()) && eachBroker.cptBrokers.brokerHealth === 'good') {
+          return eachBroker
+        }
+      })
+      return sortedBrokers
+    } else if (name && banned) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.title.toLowerCase().includes(name.toLowerCase()) && eachBroker.cptBrokers.brokerHealth === 'banned') {
+          return eachBroker
+        }
+      })
+      return sortedBrokers
+    } else if (good) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.cptBrokers.brokerHealth === 'good') {
+          return eachBroker
+        }
+      })
+      return sortedBrokers
+    } else if (banned) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.cptBrokers.brokerHealth === 'banned') {
+          return eachBroker
+        }
+      })
+      return sortedBrokers
+    } else if (char) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.title.toLowerCase().split('')[0] === char.toLowerCase()) {
+          return eachBroker
+        }
+      })
+      return sortedBrokers
+    }
+    else {
+      const sortedBrokers = brokers
+      return sortedBrokers
+    }
+  }
+  const currentBrokers = brokerSorter().slice(indexOfFirstPost, indexOfLastPost)
 
   const HealthFilter = () => {
 
@@ -127,7 +178,7 @@ function BrokerHealthTemplate({ data, search }) {
           <div className="filter-wrap alph-filter">
             <ul className="alph-pag">
               {alphabetArr.map((letter) => {
-                return <li key={shortid.generate()}><a href={`${page.uri}?char=${letter}`}>{letter}</a></li>
+                return <li key={shortid.generate()}><Link to={`${page.uri}?char=${letter}`}>{letter}</Link></li>
               })}
             </ul>
           </div>
@@ -152,12 +203,12 @@ function BrokerHealthTemplate({ data, search }) {
           {Parser(brok.excerpt ? brok.excerpt : '')}
         </div>
         <div className="large-6 medium-12 columns health-btns broker-col">
-          {brok.cptBrokers.brokerHealth === 'banned' ? <a className="btn small warning" href={brok.uri}>Warning</a> : null}
+          {brok.cptBrokers.brokerHealth === 'banned' ? <Link className="btn small warning" to={brok.uri}>Warning</Link> : null}
           {brok.cptBrokers.affiliateLink ? (
             <a className="btn small" href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{generalSettings.takeMeToBrokerButtonAlternativeText ? generalSettings.takeMeToBrokerButtonAlternativeText : 'Take Me To Broker'}</a>
           ) : null}
 
-          <a className="btn small" href={brok.uri}>{generalSettings.readFullReviewButtonAlternativeText ? generalSettings.readFullReviewButtonAlternativeText : 'Read Full Review'}</a>
+          <Link className="btn small" to={brok.uri}>{generalSettings.readFullReviewButtonAlternativeText ? generalSettings.readFullReviewButtonAlternativeText : 'Read Full Review'}</Link>
 
         </div>
       </div>
@@ -188,7 +239,7 @@ function BrokerHealthTemplate({ data, search }) {
           {currentBrokers.map((brok) => {
             return <BrokerTableItem brok={brok} />
           })}
-          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={brokers.length} />
+          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={brokerSorter().length} noNumbers={brokerSorter().length <= 6 ? true : false} />
         </div>
       </div>
       {template.bottomText ? (

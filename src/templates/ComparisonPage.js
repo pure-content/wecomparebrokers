@@ -216,7 +216,7 @@ function ComparisonPageTemplate({ data, search }) {
             ref={topContentCol}
           >
             <div class="crumbs">
-              <a href={"/"}>Home page</a> -&gt;
+              <Link to={"/"}>Home page</Link> -&gt;
               <span>
                 {page.allPagesFields.alternativeTitle
                   ? Parser(page.allPagesFields.alternativeTitle)
@@ -363,9 +363,9 @@ function ComparisonPageTemplate({ data, search }) {
             </div>
             <div class="btn-wrap">
               <BrokerButtons user={firstUsr} />
-              <a href={firstUsr.uri} class="btn small blue">
+              <Link to={firstUsr.uri} class="btn small blue">
                 Read Full Review
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -406,9 +406,9 @@ function ComparisonPageTemplate({ data, search }) {
             </div>
             <div class="btn-wrap">
               <BrokerButtons user={secUsr} />
-              <a href={secUsr.uri} class="btn small blue">
+              <Link to={secUsr.uri} class="btn small blue">
                 Read Full Review
-              </a>
+              </Link>
             </div>
           </div>
         </div>

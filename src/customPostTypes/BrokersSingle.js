@@ -864,8 +864,7 @@ export default function BrokersSingle({ data }) {
                     <span
                       class="rat-color"
                       style={{
-                        width: `${
-                          avarageRatingCounter(broker.cptBrokers) * 20
+                        width: `${avarageRatingCounter(broker.cptBrokers) * 20
                           }%`,
                       }}
                     ></span>
@@ -1646,7 +1645,7 @@ export default function BrokersSingle({ data }) {
           </div>
         ) : null}
         <RelativeGuides />
-        <a href={'/compare-forex-brokers'} class="btn">GO TO THE compare brokers</a>
+        <Link to={'/compare-forex-brokers'} class="btn">GO TO THE compare brokers</Link>
       </div>
     )
   }
@@ -1783,7 +1782,7 @@ export default function BrokersSingle({ data }) {
                         </span>
                       ) : null}
                       <span data-id={brok.id} class="btn small compare-btn">Compare Brokers Side by Side</span>
-                      <a class="btn small" href={brok.uri}>Read Full Review</a>
+                      <Link class="btn small" to={brok.uri}>Read Full Review</Link>
                     </div>
                   </div>
                 )
@@ -1903,7 +1902,7 @@ export default function BrokersSingle({ data }) {
                           </span>
                         ) : null}
                         <span data-id={brok.id} class="btn small compare-btn">Compare Brokers Side by Side</span>
-                        <a class="btn small" href={brok.uri}>Read Full Review</a>
+                        <Link class="btn small" to={brok.uri}>Read Full Review</Link>
                       </div>
                     </div>
                   )
@@ -1972,8 +1971,8 @@ export default function BrokersSingle({ data }) {
         <div class="row">
           <div class="small-12 columns">
             <div class="crumbs">
-              <a href={"/"}>Home page</a> -&gt;
-              <a href={"/find-a-broker"}>Broker finder</a> -&gt;
+              <Link to={"/"}>Home page</Link> -&gt;
+              <Link to={"/find-a-broker"}>Broker finder</Link> -&gt;
               <span>{broker.title}</span>
             </div>
           </div>
@@ -1993,7 +1992,7 @@ export default function BrokersSingle({ data }) {
                     <h4>Related articles:</h4>
                     <ul>
                       {broker.cptBrokers.brokerInfoRelatedArticles.map((article) => {
-                        return <li><a href={article.uri}>{article.uri}</a></li>
+                        return <li><Link to={article.uri}>{article.uri}</Link></li>
                       })}
                     </ul>
                   </div>

@@ -54,14 +54,14 @@ export default function OldHeader(props) {
       <div className="row large-uncollapse medium-uncollapse small-collapse">
         <div className="large-3 columns">
           <div className="logo small-only-text-center">
-            <a href="/" className="home">
+            <Link to="/" className="home">
               <img
                 src={
                   "https://www.wecomparebrokers.com/wp-content/uploads/2018/10/Group.svg"
                 }
                 alt={altText}
               />
-            </a>
+            </Link>
           </div>
         </div>
         <div className="large-7 columns">
@@ -87,9 +87,9 @@ export default function OldHeader(props) {
                       key={item.id}
                       className={`menu-item ${title === item.label ? "current-menu-item" : ""} ${uri === item.url ? "current-menu-item" : ""}`}
                     >
-                      <a key={item.url} href={item.url}>
+                      <Link key={item.url} to={item.url}>
                         {item.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

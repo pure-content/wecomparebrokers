@@ -11,7 +11,7 @@ export default function PageTopContent(props) {
             <div className="row top-content">
                 <div className="large-5 medium-6 columns top-content-col">
                     <div className="crumbs">
-                        <a href="/">Home page</a> -&gt;
+                        <Link to="/">Home page</Link> -&gt;
                         <span>
                             {page.allPagesFields.alternativeTitle
                                 ? Parser(page.allPagesFields.alternativeTitle)

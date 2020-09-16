@@ -261,9 +261,9 @@ export default function NewHomePage({ data }) {
                 >
                   Go to award
                 </a>
-                <a href={brokerInfo.uri} className="btn small">
+                <Link to={brokerInfo.uri} className="btn small">
                   View More
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -359,9 +359,9 @@ export default function NewHomePage({ data }) {
             <div style={{ display: "none" }} className="banner_body">
               {templateFields.leftDropdown.map(ddbrok => {
                 return (
-                  <a key={ddbrok.id} href={ddbrok.uri}>
+                  <Link key={ddbrok.id} to={ddbrok.uri}>
                     {Parser(ddbrok.title)}
-                  </a>
+                  </Link>
                 )
               })}
             </div>
@@ -389,9 +389,9 @@ export default function NewHomePage({ data }) {
             <div style={{ display: "none" }} className="banner_body">
               {templateFields.rightDropdown.map(ddbrok => {
                 return (
-                  <a key={ddbrok.id} href={ddbrok.uri}>
+                  <Link key={ddbrok.id} to={ddbrok.uri}>
                     {Parser(ddbrok.title)}
-                  </a>
+                  </Link>
                 )
               })}
             </div>

@@ -18,7 +18,7 @@ export const query = graphql`
 const PageTemplate = ({ data }) => {
   const page = data.wpgraphql.page
   const TemplateName = page.template.templateName.split(" ").join("")
-  console.log(TemplateName)
+
   return (
     <Layout isFrontPage={page.isFrontPage}>
       <TemplateName page={page} />

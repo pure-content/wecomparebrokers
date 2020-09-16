@@ -142,7 +142,36 @@ function BrokerFinderTemplate({ data, search }) {
   const [postsPerPage] = useState(6)
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
-  const currentBrokers = brokers.slice(indexOfFirstPost, indexOfLastPost)
+
+  const brokerSorter = () => {
+    if (search.country && search.instrument) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument) && eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
+          return eachBroker
+        }
+      })
+      console.log(sortedBrokers)
+      return sortedBrokers
+    } else if (search.country && !search.instrument) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
+          return eachBroker
+        }
+      })
+      return sortedBrokers
+    } else if (!search.country && search.instrument) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument)) {
+          return eachBroker
+        }
+      })
+      return sortedBrokers
+    }
+    const sortedBrokers = brokers
+    return sortedBrokers
+  }
+
+  const currentBrokers = brokerSorter().slice(indexOfFirstPost, indexOfLastPost)
 
   useEffect(() => {
     if (search) {
@@ -254,21 +283,7 @@ function BrokerFinderTemplate({ data, search }) {
             }
           />
           {currentBrokers.map(eachBroker => {
-            if (search.country && search.instrument) {
-              if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument) && eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
-                return <BrokerTableSingleItem brokerInfo={eachBroker} />
-              }
-            } else if (search.country && !search.instrument) {
-              if (eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
-                return <BrokerTableSingleItem brokerInfo={eachBroker} />
-              }
-            } else if (!search.country && search.instrument) {
-              if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument)) {
-                return <BrokerTableSingleItem brokerInfo={eachBroker} />
-              }
-            } else {
-              return <BrokerTableSingleItem brokerInfo={eachBroker} />
-            }
+            return <BrokerTableSingleItem brokerInfo={eachBroker} />
           })}
         </div>
         <div className="small-12 columns text-right btn-navi-wrap">

@@ -52,9 +52,9 @@ export default function ArchiveBrokerArea({ data }) {
                 <div class="large-8 medium-8 small-12 columns">
                     {topBrokerArea.topBrokers123.nodes.map(brok => (
                         <article id={`post-${brok.id}`} >
-                            <h3><a href={brok.uri} rel="bookmark">{brok.title}</a></h3>
+                            <h3><Link to={brok.uri} rel="bookmark">{brok.title}</Link></h3>
                             <h6>{brok.author.node.name} {brok.date.split('T')[0]}</h6>
-                            {brok.featuredImage ? <a href={brok.uri} ><img src={brok.featuredImage.node.mediaItemUrl} /></a> : null}
+                            {brok.featuredImage ? <Link to={brok.uri} ><img src={brok.featuredImage.node.mediaItemUrl} /></Link> : null}
                             {Parser(brok.excerpt)}
                         </article>
                     ))}

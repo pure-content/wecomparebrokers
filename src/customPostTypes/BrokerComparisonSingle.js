@@ -278,8 +278,8 @@ export default function BrokerComparisonSingle({ data }) {
             <div class="row top-content">
                 <div class="large-5 medium-6 columns top-content-col">
                     <div class="crumbs">
-                        <a href={'/'}>Home page</a> -&gt;
-                        <a href={page.uri}>Broker Comparison</a> -&gt;
+                        <Link to={'/'}>Home page</Link> -&gt;
+                        <Link to={page.uri}>Broker Comparison</Link> -&gt;
                         <span>
                             {brokerComparison123.title}
                         </span>
@@ -371,7 +371,7 @@ export default function BrokerComparisonSingle({ data }) {
                     </div>
                     <div class="btn-wrap">
                         {firstBroker.cptBrokers.affiliateLink && firstBroker.cptBrokers.tabButtonAlternativeText ? <a class="btn small blue" href={firstBroker.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{firstBroker.cptBrokers.tabButtonAlternativeText}</a> : <a class="btn small blue" href={firstBroker.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Go to Broker</a>}
-                        <a href={firstBroker.uri} class="btn small blue">Read Full Review</a>
+                        <Link to={firstBroker.uri} class="btn small blue">Read Full Review</Link>
                     </div>
                 </div>
                 {firstBroker.cptBrokers.brokerWarningMessage ? <p class="warning_message">{firstBroker.cptBrokers.brokerWarningMessage}</p> : null}
@@ -408,7 +408,7 @@ export default function BrokerComparisonSingle({ data }) {
                     </div>
                     <div class="btn-wrap">
                         {firstBroker.cptBrokers.affiliateLink && firstBroker.cptBrokers.tabButtonAlternativeText ? <a class="btn small blue" href={firstBroker.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{firstBroker.cptBrokers.tabButtonAlternativeText}</a> : <a class="btn small blue" href={firstBroker.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Go to Broker</a>}
-                        <a href={firstBroker.uri} class="btn small blue">Read Full Review</a>
+                        <Link to={firstBroker.uri} class="btn small blue">Read Full Review</Link>
                     </div>
                 </div>
                 {firstBroker.cptBrokers.brokerWarningMessage ? <p class="warning_message">{firstBroker.cptBrokers.brokerWarningMessage}</p> : null}

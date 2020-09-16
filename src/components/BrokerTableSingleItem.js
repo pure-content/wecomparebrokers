@@ -111,13 +111,13 @@ export default function BrokerTableSingleItem(props) {
               .compareBrokerSideBySideButtonAlternativeText
             : "Compare Brokers Side by Side"}
         </span>
-        <a className="btn small" href={brokerInfo.uri}>
+        <Link className="btn small" to={brokerInfo.uri}>
           {themeGeneralSettings.wpgraphql.themeGeneralSettings
             .optGeneralSettings.readFullReviewButtonAlternativeText
             ? themeGeneralSettings.wpgraphql.themeGeneralSettings
               .optGeneralSettings.readFullReviewButtonAlternativeText
             : "Read Full Review"}
-        </a>
+        </Link>
       </>
     )
   }
@@ -164,13 +164,13 @@ export default function BrokerTableSingleItem(props) {
             )}
           </div>
           <div className="btn-wrap">
-            <a className="btn" href={brokerInfo.uri}>
+            <Link className="btn" to={brokerInfo.uri}>
               {themeGeneralSettings.wpgraphql.themeGeneralSettings
                 .optGeneralSettings.brokerCallBackButtonAlternativeText
                 ? themeGeneralSettings.wpgraphql.themeGeneralSettings
                   .optGeneralSettings.brokerCallBackButtonAlternativeText
                 : "Broker Callback"}
-            </a>
+            </Link>
             <a
               className="btn"
               href={brokerInfo.cptBrokers.affiliateLink}

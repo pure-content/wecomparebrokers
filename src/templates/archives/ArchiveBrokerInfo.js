@@ -28,7 +28,7 @@ export default function ArchiveBrokerInfo() {
             <div className='row'>
                 <div className='column large-12'>
                     {brokersInfo.map(brok => (
-                        <a href={brok.uri}><h2>{brok.title}</h2></a>
+                        <Link to={brok.uri}><h2>{brok.title}</h2></Link>
                     ))}
                 </div>
             </div>
