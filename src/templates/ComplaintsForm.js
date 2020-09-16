@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import Parser from "html-react-parser"
 import Helmet from "react-helmet"
 import SideBarComplaints from "../components/SideBarComplaints"
+const shortid = require("shortid")
 
 export const query = graphql`
   query($id: ID!) {
@@ -53,14 +54,71 @@ export const query = graphql`
           }
         }
       }
+
+      brokers123(first: 10000) {
+        nodes {
+          title
+          uri
+          id
+          databaseId
+        }
+      }
     }
   }
 `
 
 export default function ComplaintsFormTemplate({ data }) {
   const page = data.wpgraphql.page
+  const brokers123 = data.wpgraphql.brokers123.nodes
   const { optListCopy } = data.wpgraphql.complaintsSettings.optComplaintsSettings
-  console.log(optListCopy)
+
+  useEffect(() => {
+
+    $('#thread_broker').select2({
+      placeholder: 'Select a broker',
+    });
+
+    $('input[name="comp_cat"]').click(function () {
+      var opt = $(this).val(),
+        optText = $(this).next().html();
+
+      $('.option-descr').slideUp();
+      $('.options-text-wrap #' + opt).slideDown();
+      $('.helpful-radio').show(500);
+      $('#comp-cat').val(optText);
+    });
+
+    $('.complaint-radio .complaint-radio__item input').click(function () {
+      var radioChecked = $(this).attr('id');
+      if (radioChecked == 'helpful_yes') {
+        $('.cma-form-container').hide(500);
+        $('.thank-you-wrapper').show(500);
+      } else {
+        $('.thank-you-wrapper').hide(500);
+        $('.cma-form-container').show(500);
+      }
+    });
+
+    $('h2').click(function () {
+
+    })
+    $('#comp-submit').click(function () {
+      $('#cma-thread-add').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+          url: 'https://www.wecomparebrokers.com/wp-admin/admin-post.php',
+          type: 'post',
+          data: $('#cma-thread-add').serialize(),
+          success: function () {
+            window.location = page.uri
+          }
+        });
+
+      })
+
+    });
+
+  })
 
   const TopContent = () => {
     return (
@@ -97,6 +155,26 @@ export default function ComplaintsFormTemplate({ data }) {
     optListCopy.forEach(opt => (
       opt.type === 'optgroup' ? opt_num++ : opt_num
     ))
+
+    const ListWrapsView = () => {
+      let view = '<div class="list-wrap">'
+      optListCopy.forEach(opt => {
+
+        if (opt.type === 'optgroup') {
+          optgr_count++
+          if (opt_count != 0 && opt_num != optgr_count) {
+            view += '</div><div class="list-wrap">'
+          }
+          view += `<h5><img src=${opt.icon.mediaItemUrl} >${opt.option}</h5>`
+        } else {
+          view += `<div class="complaint-radio__item"><input type="radio" name="comp_cat" id=${opt.value} value=${opt.value} /><label for=${opt.value}>${opt.option}</label></div>`
+        }
+        opt_count++
+
+      })
+      return Parser(view)
+    }
+
     return (
       <div class="cma-comp-list-wrap form">
         {optListCopy ? (
@@ -105,25 +183,89 @@ export default function ComplaintsFormTemplate({ data }) {
             {Parser(page.content ? page.content : '')}
 
             <div class="opt-wrap">
-              <div class="list-wrap">
-                {optListCopy.map(opt => {
-                  let res = ''
-                  if (opt.type === 'optgroup') {
-                    optgr_count++
-                    if (opt_count != 0 && opt_num != optgr_count) {
-                      res += '</div><div class="list-wrap">'
-                    }
-                    res += `<h5><img src=${opt.icon.mediaItemUrl} >${opt.option}</h5>`
-                  } else {
-                    res += `<div class="complaint-radio__item"><input type="radio" name="comp_cat" id="<?php echo $val; ?>" value="<?php echo $val; ?>" /><label for="<?php echo $val; ?>"><?php echo $opt; ?></label></div>`
-                  }
-                  opt_count++
-                  return Parser(res)
-                })}
-              </div>
+              <ListWrapsView />
             </div>
+
           </>
         ) : null}
+
+        {optListCopy ? (
+          <div class="options-text-wrap">
+            {optListCopy.map(opt => {
+              if (opt.type === 'option') {
+                return <div id={opt.value} class="option-descr">{Parser(opt.optionDescriptionText ? opt.optionDescriptionText : '')}</div>
+              }
+            })}
+          </div>
+        ) : null}
+
+        <div class="helpful-radio">
+          <h4>Was this helpful?</h4>
+          <div class="complaint-radio">
+            <div class="complaint-radio__item">
+              <input type="radio" name="complaint-radio-choice" id="helpful_yes" />
+              <label for="helpful_yes">Yes. I understand how to resolve my issue.</label>
+            </div>
+            <div class="complaint-radio__item">
+              <input type="radio" name="complaint-radio-choice" id="helpful_no" />
+              <label for="helpful_no">No. I want to submit a complaint.</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="thank-you-wrapper">
+          <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/comp-res.svg" alt="Resolved" />
+          <h6>We're glad we could be of help.</h6>
+          <p>Thank you for following the suggested steps to resolve your issue!</p>
+        </div>
+
+        <div class="cma-form-container">
+          <form action="https://www.wecomparebrokers.com/wp-admin/admin-post.php" method="post" class="cma-thread-add" id="cma-thread-add">
+            <input type="hidden" name="action" value="add_complaint" />
+            <input id="comp-cat" type="hidden" name="comp_cat" value="" />
+            <input type="hidden" name="nonce" value="<?php echo esc_attr(wp_create_nonce('cma_question')); ?>" />
+            <h4>Fill in the complaint submission form</h4>
+            <ul>
+              <li>Be descriptive</li>
+              <li>Provide proof to support your claim</li>
+              <li>Play fair</li>
+              <li>Using false or fake evidence is against the law</li>
+              <li>Don’t use caps lock</li>
+            </ul>
+            <div id="summary"></div>
+
+            <input class="inp-half inp-left" type="text" name="thread_title" placeholder="Complaint title" />
+            <select name="thread_broker" id="thread_broker">
+              <option></option>
+              {brokers123.map(brok => {
+                return (
+                  <option
+                    key={shortid.generate()}
+                    id={brok.id}
+                    value={brok.databaseId}
+                  >
+                    {brok.title}
+                  </option>
+                )
+              })}
+            </select>
+            <textarea name="thread_comment" cols="50" rows="3" placeholder="What is your complaint about?" ></textarea>
+            <h4>The following information will not be published and will be used to correspond with you and the broker on your behalf.</h4>
+            <input class="inp-half inp-left" type="text" name="thread_user_nick" placeholder="Account name used at this broker site" />
+            <input class="inp-half inp-right" type="text" name="thread_user_email" placeholder="Email used at this broker site" />
+            <div class="clearfix"></div>
+            <label class="notify-checkbox"><input name="thread_notify" type="checkbox" value="1" checked />
+                Notify me of follow</label>
+
+            <div id="g-recaptcha"></div>
+
+            <div class="btn-wrap">
+              <input id="comp-submit" class="btn" type="submit" value="SUBMIT MY COMPLAINT" />
+            </div>
+          </form>
+          <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+        </div>
+
       </div>
     )
   }
@@ -144,6 +286,9 @@ export default function ComplaintsFormTemplate({ data }) {
           { property: "og:type", content: page.seo.opengraphType },
         ]}
       />
+      <Helmet>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+      </Helmet>
       <div class="blog-tmpl-wrap">
         <TopContent />
         <div class="row cma-wrap">
