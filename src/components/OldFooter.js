@@ -39,6 +39,45 @@ const shortid = require("shortid")
 //   }
 // }
 
+
+// allGfForm {
+//   edges {
+//     node {
+//       formId
+//       slug
+//       apiURL
+//       descriptionPlacement
+//       formFields {
+//         id
+//         label
+//         labelPlacement
+//         description
+//         descriptionPlacement
+//         type
+//         choices
+//         content
+//         errorMessage
+//         inputMaskValue
+//         isRequired
+//         visibility
+//         cssClass
+//         placeholder
+//         size
+//         defaultValue
+//         maxLength
+//         conditionalLogic
+//         emailConfirmEnabled
+//       }
+//       button {
+//           text
+//       }
+//       confirmations {
+//           message
+//       }
+//     }
+//   }
+// }
+
 export default function OldFooter(props) {
   const footer = useStaticQuery(graphql`
     query {
@@ -267,47 +306,22 @@ export default function OldFooter(props) {
             }
           }
         }
+
+        gravityForm {
+          gravityForm
+        }
+        
       }
       
-
 
       allGfForm {
         edges {
           node {
-            formId
-            slug
-            apiURL
-            descriptionPlacement
-            formFields {
-              id
-              label
-              labelPlacement
-              description
-              descriptionPlacement
-              type
-              choices
-              content
-              errorMessage
-              inputMaskValue
-              isRequired
-              visibility
-              cssClass
-              placeholder
-              size
-              defaultValue
-              maxLength
-              conditionalLogic
-              emailConfirmEnabled
-            }
-            button {
-                text
-            }
-            confirmations {
-                message
-            }
+              ...GravityFormComponent
           }
         }
       }
+      
       
     }
   `)
@@ -317,7 +331,6 @@ export default function OldFooter(props) {
   const contentType = props.contentType ? props.contentType.node.name : ""
   const footerOptions = footer.wpgraphql.themeFooterSettings.optFooter
   const dt = new Date()
-  console.log(allGfForm)
 
   // loop through the menu items and make the links relative
   const menuItems = footer.wpgraphql.menu.menuItems.nodes.map(item => ({
@@ -501,16 +514,16 @@ export default function OldFooter(props) {
               </ul>
             </div>
           )}
-          {allGfForm ? (
-            <div class="large-6 medium-12 columns footer-half half-right">
-              <GravityFormForm
-                id={1}
-                formData={allGfForm}
-                lambda={process.env.LAMBDA_ENDPOINT}
-                successCallback={handleSuccess}
-                errorCallback={handleError}
-              />
-              {/* <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_1">
+
+          <div class="large-6 medium-12 columns footer-half half-right">
+            <GravityFormForm
+              id={1}
+              formData={allGfForm}
+              lambda={process.env.LAMBDA_ENDPOINT}
+              successCallback={handleSuccess}
+              errorCallback={handleError}
+            />
+            {/* <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_1">
                 <div id="gf_1" class="gform_anchor" tabindex="-1"></div>
                 <form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="">
                   <div class="gform_body">
@@ -536,8 +549,8 @@ export default function OldFooter(props) {
                   </div>
                 </form>
               </div> */}
-            </div>
-          ) : null}
+          </div>
+
           {footerOptions.footerText.length > 0 && (
             <div className="small-12 columns footer-full">
               <div className="text-wrap">

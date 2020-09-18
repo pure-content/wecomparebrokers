@@ -20,7 +20,7 @@ const secretData = {
 // For those requests
 // Update with correct origin when on production!
 const headers = {
-    'Access-Control-Allow-Origin': '*', // THIS SHOULD BE CHANGED TO YOUR ORIGIN ONCE IN PRODUCTION
+    'Access-Control-Allow-Origin': 'https://www.wecomparebrokers.com', // THIS SHOULD BE CHANGED TO YOUR ORIGIN ONCE IN PRODUCTION
     'Access-Control-Allow-Headers': 'Content-Type',
 }
 
