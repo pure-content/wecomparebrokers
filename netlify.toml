@@ -3,5 +3,5 @@
   Command = "npm run build:lambda && gatsby build"
 
 [build.environment]
-  GF_CONSUMER_KEY = ck_e64b8c1dd0c16e14c37c9f7a60186d9531183e3f
-  GF_CONSUMER_SECRET = cs_c0a64e43b0ae30a117f3c8306ce3d50ea4433c3d
+  GF_CONSUMER_KEY = "ck_e64b8c1dd0c16e14c37c9f7a60186d9531183e3f"
+  GF_CONSUMER_SECRET = "cs_c0a64e43b0ae30a117f3c8306ce3d50ea4433c3d"
