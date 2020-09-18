@@ -2,6 +2,8 @@ const axios = require('axios')
 const nanoid = require('nanoid')
 const oauthSignature = require('oauth-signature')
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+
 let activeEnv =
     process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
 

@@ -5,7 +5,39 @@ import Equalizer from "./Equalizer"
 import GravityFormForm from 'gatsby-gravityforms-component'
 const shortid = require("shortid")
 
-
+// gfForm(formId: {eq: 1}) {
+//   formId
+//   slug
+//   apiURL
+//   descriptionPlacement
+//   formFields {
+//       id
+//       label
+//       labelPlacement
+//       description
+//       descriptionPlacement
+//       type
+//       choices
+//       content
+//       errorMessage
+//       inputMaskValue
+//       isRequired
+//       visibility
+//       cssClass
+//       placeholder
+//       size
+//       defaultValue
+//       maxLength
+//       conditionalLogic
+//       emailConfirmEnabled
+//   }
+//   button {
+//       text
+//   }
+//   confirmations {
+//       message
+//   }
+// }
 
 export default function OldFooter(props) {
   const footer = useStaticQuery(graphql`
@@ -237,44 +269,42 @@ export default function OldFooter(props) {
         }
       }
       
-      gfForm(formId: {eq: 1}) {
-        formId
-        slug
-        apiURL
-        descriptionPlacement
-        formFields {
-            id
-            label
-            labelPlacement
-            description
-            descriptionPlacement
-            type
-            choices
-            content
-            errorMessage
-            inputMaskValue
-            isRequired
-            visibility
-            cssClass
-            placeholder
-            size
-            defaultValue
-            maxLength
-            conditionalLogic
-            emailConfirmEnabled
-        }
-        button {
-            text
-        }
-        confirmations {
-            message
-        }
-      }
+
 
       allGfForm {
         edges {
           node {
-              ...GravityFormComponent
+            formId
+            slug
+            apiURL
+            descriptionPlacement
+            formFields {
+              id
+              label
+              labelPlacement
+              description
+              descriptionPlacement
+              type
+              choices
+              content
+              errorMessage
+              inputMaskValue
+              isRequired
+              visibility
+              cssClass
+              placeholder
+              size
+              defaultValue
+              maxLength
+              conditionalLogic
+              emailConfirmEnabled
+            }
+            button {
+                text
+            }
+            confirmations {
+                message
+            }
           }
         }
       }
@@ -287,6 +317,7 @@ export default function OldFooter(props) {
   const contentType = props.contentType ? props.contentType.node.name : ""
   const footerOptions = footer.wpgraphql.themeFooterSettings.optFooter
   const dt = new Date()
+  console.log(allGfForm)
 
   // loop through the menu items and make the links relative
   const menuItems = footer.wpgraphql.menu.menuItems.nodes.map(item => ({
@@ -470,7 +501,7 @@ export default function OldFooter(props) {
               </ul>
             </div>
           )}
-          {gfForm ? (
+          {allGfForm ? (
             <div class="large-6 medium-12 columns footer-half half-right">
               <GravityFormForm
                 id={1}
