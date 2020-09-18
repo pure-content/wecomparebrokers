@@ -217,7 +217,7 @@ export default function CompareSingle({ data }) {
             <div class="row choosen-traders-wrap">
                 <div class="medium-4 small-6 columns text-center broker-col">
                     <div class="logo-wrap">
-                        <img src={firstBrokerReview.featuredImage.node.mediaItemUrl} sizes={firstBrokerReview.featuredImage.node.sizes} srcSet={firstBrokerReview.featuredImage.node.srcSet} />
+                        <img onLoad={() => $('.logo-wrap').matchHeight()} src={firstBrokerReview.featuredImage.node.mediaItemUrl} sizes={firstBrokerReview.featuredImage.node.sizes} srcSet={firstBrokerReview.featuredImage.node.srcSet} />
                     </div>
                     <div class="rat-wrap">
                         <span class="rating">
@@ -231,7 +231,7 @@ export default function CompareSingle({ data }) {
                 </div>
                 <div class="medium-4 small-6 columns text-center broker-col">
                     <div class="logo-wrap">
-                        <img src={secondBroker.featuredImage.node.mediaItemUrl} sizes={secondBroker.featuredImage.node.sizes} srcSet={secondBroker.featuredImage.node.srcSet} />
+                        <img onLoad={() => $('.logo-wrap').matchHeight()} src={secondBroker.featuredImage.node.mediaItemUrl} sizes={secondBroker.featuredImage.node.sizes} srcSet={secondBroker.featuredImage.node.srcSet} />
                     </div>
                     <div class="rat-wrap">
                         <span class="rating">

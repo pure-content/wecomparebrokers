@@ -2,42 +2,10 @@ import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Parser from "html-react-parser"
 import Equalizer from "./Equalizer"
-//import GravityFormForm from 'gatsby-gravityforms-component'
+import GravityFormForm from 'gatsby-gravityforms-component'
 const shortid = require("shortid")
 
-// gfForm(formId: {eq: 1}) {
-//   formId
-//   slug
-//   apiURL
-//   descriptionPlacement
-//   formFields {
-//       id
-//       label
-//       labelPlacement
-//       description
-//       descriptionPlacement
-//       type
-//       choices
-//       content
-//       errorMessage
-//       inputMaskValue
-//       isRequired
-//       visibility
-//       cssClass
-//       placeholder
-//       size
-//       defaultValue
-//       maxLength
-//       conditionalLogic
-//       emailConfirmEnabled
-//   }
-//   button {
-//       text
-//   }
-//   confirmations {
-//       message
-//   }
-// }
+
 
 export default function OldFooter(props) {
   const footer = useStaticQuery(graphql`
@@ -269,6 +237,47 @@ export default function OldFooter(props) {
         }
       }
       
+      gfForm(formId: {eq: 1}) {
+        formId
+        slug
+        apiURL
+        descriptionPlacement
+        formFields {
+            id
+            label
+            labelPlacement
+            description
+            descriptionPlacement
+            type
+            choices
+            content
+            errorMessage
+            inputMaskValue
+            isRequired
+            visibility
+            cssClass
+            placeholder
+            size
+            defaultValue
+            maxLength
+            conditionalLogic
+            emailConfirmEnabled
+        }
+        button {
+            text
+        }
+        confirmations {
+            message
+        }
+      }
+
+      allGfForm {
+        edges {
+          node {
+              ...GravityFormComponent
+          }
+        }
+      }
       
     }
   `)
@@ -430,11 +439,11 @@ export default function OldFooter(props) {
     }
 
     const handleError = ({ values, error, reset }) => {
-      //handle error
+      console.log(values, error, reset)
     }
 
     const handleSuccess = ({ values, reset, confirmations }) => {
-      //handle success
+      console.log(values, reset, confirmations)
     }
 
     return (
@@ -463,15 +472,14 @@ export default function OldFooter(props) {
           )}
           {gfForm ? (
             <div class="large-6 medium-12 columns footer-half half-right">
-              {/* <GravityFormForm
+              <GravityFormForm
                 id={1}
                 formData={allGfForm}
-                presetValues={{ input_1: 'Get Daily Email Alerts' }}
                 lambda={process.env.LAMBDA_ENDPOINT}
                 successCallback={handleSuccess}
                 errorCallback={handleError}
-              /> */}
-              <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_1">
+              />
+              {/* <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_1">
                 <div id="gf_1" class="gform_anchor" tabindex="-1"></div>
                 <form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="">
                   <div class="gform_body">
@@ -496,7 +504,7 @@ export default function OldFooter(props) {
                     <input type="hidden" name="gform_field_values" value="" />
                   </div>
                 </form>
-              </div>
+              </div> */}
             </div>
           ) : null}
           {footerOptions.footerText.length > 0 && (
