@@ -106,7 +106,7 @@ export default function ComplaintsFormTemplate({ data }) {
       $('#cma-thread-add').submit(function (e) {
         e.preventDefault();
         $.ajax({
-          url: 'https://www.wecomparebrokers.com/wp-admin/admin-post.php',
+          url: 'https://cors-anywhere.herokuapp.com/wecomparebrokers.com/wp-admin/admin-post.php',
           type: 'post',
           data: $('#cma-thread-add').serialize(),
           success: function () {

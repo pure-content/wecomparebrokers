@@ -287,7 +287,7 @@ function BrokerFinderTemplate({ data, search }) {
           })}
         </div>
         <div className="small-12 columns text-right btn-navi-wrap">
-          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={brokers.length} noNumbers={true} />
+          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={brokerSorter().length} noNumbers={false} />
         </div>
       </div>
       <div className="choose-wrap bot-text">
