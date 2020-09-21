@@ -506,8 +506,6 @@ export default function OldFooter(props) {
               errorCallback={handleError}
             /> */}
 
-            {/* {Parser(gravityForm)} */}
-
             <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_1">
               <div id="gf_1" class="gform_anchor" tabindex="-1"></div>
               <form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="https://www.wecomparebrokers.com/#gf_1">

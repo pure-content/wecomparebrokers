@@ -255,8 +255,6 @@ export default function Footer() {
   })
 
   const { url } = footer.wpgraphql.generalSettings
-  const { allGfForm, gfForm } = footer
-  const { gravityForm } = footer.wpgraphql.gravityForm
   const footerOptions = footer.wpgraphql.themeFooterSettings.optFooter
   const dt = new Date()
 
