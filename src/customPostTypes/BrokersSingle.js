@@ -570,7 +570,7 @@ export default function BrokersSingle({ data }) {
             />
             <h1 class="page_title">
               {broker.title}
-              <strong>Broker Review</strong>
+              <strong> Broker Review</strong>
             </h1>
           </div>
 
