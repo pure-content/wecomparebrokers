@@ -26,15 +26,10 @@ module.exports = {
                 // Gravity Forms API
                 api: {
                     key: process.env.CONSUMER_KEY,
-                    secret: process.env.CONSUMER_SECRET,
-                },
-                basicAuth: {
-                    username: process.env.WORDPRESS_USER,
-                    password: process.env.WORDPRESS_PASSWORD,
-                },
+                    secret: process.env.CONSUMER_SECRET
+                }
             },
         },
         `gatsby-transformer-remark`
     ]
 }
-console.log('WORDPRESS USER ' + process.env.WORDPRESS_USER)
