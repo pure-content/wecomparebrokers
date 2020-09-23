@@ -4,8 +4,6 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Parser from "html-react-parser"
 import "jquery-match-height"
 
-//cG9zdDoxMjY=
-
 export default function ComplainsComponent() {
     const complainsInfo = useStaticQuery(graphql`
         query {
@@ -74,12 +72,12 @@ export default function ComplainsComponent() {
                             <div class="comp-top text-center">
                                 {qa.postmeta.resolved === 'resolved' ? (
                                     <>
-                                        <img onLoad={() => $('.comp-col-link').matchHeight()} src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/comp-res.svg" alt="Resolved" />
+                                        <img onLoad={() => $('.comp-col-link').matchHeight()} src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/comp-res.svg" alt="Resolved" />
                                         <p>resolved</p>
                                     </>
                                 ) : (
                                         <>
-                                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/comp-unres.svg" alt="Resolved" />
+                                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/comp-unres.svg" alt="Resolved" />
                                             <p>unresolved</p>
                                         </>
                                     )}

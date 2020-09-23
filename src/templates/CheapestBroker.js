@@ -85,27 +85,27 @@ export default function CheapestBrokerTemplate({ data }) {
         <div class="cheap-column first-column">
 
           <div class="cheap-column__cell">
-            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/TRADING_FEE.png" />
+            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/TRADING_FEE.png" />
             <p class="cheap-column__head"><strong>TRADING FEE</strong></p>
           </div>
           <div class="cheap-column__cell">
-            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/COMMISSION.png" />
+            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/COMMISSION.png" />
             <p class="cheap-column__head"><strong>COMMISSION</strong></p>
           </div>
           <div class="cheap-column__cell">
-            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/SPREAD (EURUSD).png" />
+            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/SPREAD (EURUSD).png" />
             <p class="cheap-column__head"><strong>SPREAD</strong> (EUR/USD)</p>
           </div>
           <div class="cheap-column__cell">
-            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/AVERAGE COMMISSION.png" />
+            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/AVERAGE COMMISSION.png" />
             <p class="cheap-column__head"><strong>AVERAGE COMMISSION</strong> ON A 1K TRADE (EUR/USD)</p>
           </div>
           <div class="cheap-column__cell">
-            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/OVERNIGHTS FEE.png" />
+            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/OVERNIGHTS FEE.png" />
             <p class="cheap-column__head"><strong>OVERNIGHTS FEE</strong></p>
           </div>
           <div class="cheap-column__cell">
-            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/ANY OTHER FEES.png" />
+            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/ANY OTHER FEES.png" />
             <p class="cheap-column__head"><strong>ANY OTHER FEES</strong></p>
           </div>
         </div>
@@ -184,7 +184,7 @@ export default function CheapestBrokerTemplate({ data }) {
           ) : null}
         </div>
         <div class="cheap-compare__logo">
-          <img src="https://www.wecomparebrokers.com/wp-content/uploads/2018/10/Group.svg" />
+          <img src="https://meek-hint.flywheelsites.com/wp-content/uploads/2018/10/Group.svg" />
         </div>
       </div>
     </Layout>

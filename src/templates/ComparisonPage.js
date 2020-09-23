@@ -252,7 +252,7 @@ function ComparisonPageTemplate({ data, search }) {
             <div class="compare-filter-wrap">
               <h4>
                 <img
-                  src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg"
+                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg"
                   alt="Filter"
                 />
                 Choose Brokers to Compare
@@ -349,7 +349,7 @@ function ComparisonPageTemplate({ data, search }) {
             <div class="rat-wrap">
               <span class="rating">
                 <img
-                  src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
                   alt="Rating"
                 />
                 <span
@@ -392,7 +392,7 @@ function ComparisonPageTemplate({ data, search }) {
             <div class="rat-wrap">
               <span class="rating">
                 <img
-                  src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
                   alt="Rating"
                 />
                 <span

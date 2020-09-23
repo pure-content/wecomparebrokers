@@ -1,6 +1,6 @@
 import React from 'react'
 import Parser from "html-react-parser"
-import { graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 
 export default function PageTopContent(props) {
     const { page } = props

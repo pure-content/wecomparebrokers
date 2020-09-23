@@ -194,7 +194,7 @@ function BrokerHealthTemplate({ data, search }) {
       <div className="row collapse broker-wrap health-wrap">
         <div className="large-2 medium-4 columns img-col broker-col">
           <div className='thumb-wrap'>
-            {brok.featuredImage ? <img onLoad={() => $('.broker-col').matchHeight()} src={brok.featuredImage.node.mediaItemUrl} /> : <img className="img-list-default" src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
+            {brok.featuredImage ? <img onLoad={() => $('.broker-col').matchHeight()} src={brok.featuredImage.node.mediaItemUrl} /> : <img className="img-list-default" src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
           </div>
         </div>
         <div className="large-4 medium-8 columns broker-content broker-col">

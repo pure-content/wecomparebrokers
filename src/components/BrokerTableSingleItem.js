@@ -147,7 +147,7 @@ export default function BrokerTableSingleItem(props) {
               ) : (
                   <img
                     className="img-list-default"
-                    src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
+                    src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
                     alt="WCB Logo"
                   />
                 )}

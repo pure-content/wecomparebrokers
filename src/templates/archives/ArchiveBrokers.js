@@ -162,7 +162,7 @@ function ArchiveBrokers({ search }) {
             <div className="row">
                 <div className="small-12 columns">
                     <div className="filter-wrap">
-                        <h3><img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg" alt="Filter" /> Filters </h3>
+                        <h3><img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg" alt="Filter" /> Filters </h3>
                         <form id="main-form" action='' method="get">
                             <select id="country" name="country">
                                 <option></option>

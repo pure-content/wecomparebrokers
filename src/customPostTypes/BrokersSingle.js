@@ -5,12 +5,10 @@ import { graphql, Link } from "gatsby"
 import Helmet from "react-helmet"
 import Layout from "../components/layout"
 import CompareFrom from "../components/CompareFrom"
-import { brokerRegions } from "../data/brokerRegions"
 import { brokerTypes } from "../data/brokerTypes"
 import Parser from "html-react-parser"
 import { useEffect } from "react"
 import { avarageRatingCounter } from "../functions/avarageRatingCounter"
-//import '../assets/js/plugins/jquery.sticky-kit.min.js'
 
 const shortid = require("shortid")
 
@@ -565,7 +563,7 @@ export default function BrokersSingle({ data }) {
         <div class="medium-6 columns rew-user-left">
           <div class="heading-wrap">
             <img
-              src="https://www.wecomparebrokers.com/wp-content/uploads/2018/10/brok-rew-title.svg"
+              src="https://meek-hint.flywheelsites.com/wp-content/uploads/2018/10/brok-rew-title.svg"
               alt="Title"
             />
             <h1 class="page_title">
@@ -858,7 +856,7 @@ export default function BrokersSingle({ data }) {
                 <div class="rat-wrap">
                   <span class="rating">
                     <img
-                      src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                      src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
                       alt="Rating"
                     />
                     <span
@@ -1067,7 +1065,7 @@ export default function BrokersSingle({ data }) {
               <h4>{Parser('Commissions &amp; Fees')}</h4>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                   <span class="rat-color" style={{ width: `${avarageRatingCounter(broker.cptBrokers) * 20}%` }}></span>
                 </span>
               </div>
@@ -1094,7 +1092,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">TD Ameritrade:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.tdAmeritradeValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1103,9 +1101,9 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">TD Ameritrade:</strong></p>
                             {row.tdAmeritradeValueCheck ? (
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" />
                             ) : (
-                                <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />
+                                <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />
                               )}
                           </>
                         ) : ''}
@@ -1117,7 +1115,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">E*TRADE:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.etradeValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1125,7 +1123,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">E*TRADE:</strong></p>
-                            {row.etradeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.etradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1136,7 +1134,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Charles Schwab:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.charlesSchwabValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1144,7 +1142,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Charles Schwab:</strong></p>
-                            {row.charlesSchwabValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.charlesSchwabValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1155,7 +1153,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Fidelity:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.fidelityValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1163,7 +1161,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Fidelity:</strong></p>
-                            {row.fidelityValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.fidelityValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1174,7 +1172,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Merrill Edge:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.merrillEdgeValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1182,7 +1180,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Merrill Edge:</strong></p>
-                            {row.merrillEdgeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.merrillEdgeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1201,7 +1199,7 @@ export default function BrokersSingle({ data }) {
               <h4>{Parser('Platforms &amp; Tools')}</h4>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                   <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingPlatfTools * 20}%` }}></span>
                 </span>
               </div>
@@ -1228,7 +1226,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">TD Ameritrade:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.td_ameritradeValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1236,7 +1234,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">TD Ameritrade:</strong></p>
-                            {row.td_ameritradeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.td_ameritradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1246,7 +1244,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">E*TRADE:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.etradeValueRat}%` }}></span>
                             </span>
                           </>
@@ -1254,7 +1252,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">E*TRADE:</strong></p>
-                            {row.etradeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.etradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1264,7 +1262,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Charles Schwab:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.charlesSchwabValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1272,7 +1270,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Charles Schwab:</strong></p>
-                            {row.charlesSchwabValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.charlesSchwabValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1282,7 +1280,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Fidelity:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.fidelityValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1290,7 +1288,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Fidelity:</strong></p>
-                            {row.fidelityValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.fidelityValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1300,7 +1298,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Merrill Edge:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.merrillEdgeValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1308,7 +1306,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Merrill Edge:</strong></p>
-                            {row.merrillEdgeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.merrillEdgeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1326,7 +1324,7 @@ export default function BrokersSingle({ data }) {
               <h4>Customer Service</h4>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                   <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingCustServ * 20}%` }}></span>
                 </span>
               </div>
@@ -1340,7 +1338,7 @@ export default function BrokersSingle({ data }) {
               <h4>Research</h4>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                   <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingCustResearch * 20}%` }}></span>
                 </span>
               </div>
@@ -1367,7 +1365,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">TD Ameritrade:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.td_ameritradeValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1375,7 +1373,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">TD Ameritrade:</strong></p>
-                            {row.td_ameritradeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.td_ameritradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1385,7 +1383,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">E*TRADE:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.etradeValueRat}%` }}></span>
                             </span>
                           </>
@@ -1393,7 +1391,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">E*TRADE:</strong></p>
-                            {row.etradeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.etradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1403,7 +1401,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Charles Schwab:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.charlesSchwabValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1411,7 +1409,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Charles Schwab:</strong></p>
-                            {row.charlesSchwabValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.charlesSchwabValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1421,7 +1419,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Fidelity:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.fidelityValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1429,7 +1427,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Fidelity:</strong></p>
-                            {row.fidelityValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.fidelityValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1439,7 +1437,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Merrill Edge:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.merrillEdgeValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1447,7 +1445,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Merrill Edge:</strong></p>
-                            {row.merrillEdgeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.merrillEdgeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1464,7 +1462,7 @@ export default function BrokersSingle({ data }) {
               <h4>Ease of Use</h4>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                   <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingEase * 20}%` }}></span>
                 </span>
               </div>
@@ -1478,7 +1476,7 @@ export default function BrokersSingle({ data }) {
               <h4>Mobile Trading</h4>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                   <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingMobTrad * 20}%` }}></span>
                 </span>
               </div>
@@ -1505,7 +1503,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">TD Ameritrade:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.td_ameritradeValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1513,7 +1511,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">TD Ameritrade:</strong></p>
-                            {row.td_ameritradeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.td_ameritradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1523,7 +1521,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">E*TRADE:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.etradeValueRat}%` }}></span>
                             </span>
                           </>
@@ -1531,7 +1529,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">E*TRADE:</strong></p>
-                            {row.etradeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.etradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1541,7 +1539,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Charles Schwab:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.charlesSchwabValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1549,7 +1547,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Charles Schwab:</strong></p>
-                            {row.charlesSchwabValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.charlesSchwabValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1559,7 +1557,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Fidelity:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.fidelityValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1567,7 +1565,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Fidelity:</strong></p>
-                            {row.fidelityValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.fidelityValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1577,7 +1575,7 @@ export default function BrokersSingle({ data }) {
                           <>
                             <p><strong class="show-for-small">Merrill Edge:</strong></p>
                             <span class="rating">
-                              <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
+                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
                               <span class="rat-color" style={{ width: `${row.merrillEdgeValueRat * 20}%` }}></span>
                             </span>
                           </>
@@ -1585,7 +1583,7 @@ export default function BrokersSingle({ data }) {
                         {row.valueType === 'Check' ? (
                           <>
                             <p><strong class="show-for-small">Merrill Edge:</strong></p>
-                            {row.merrillEdgeValueCheck ? <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            {row.merrillEdgeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
                           </>
                         ) : null}
                       </div>
@@ -1677,7 +1675,7 @@ export default function BrokersSingle({ data }) {
                   <div class="row collapse broker-wrap">
                     <div class="broker-tab-col img-col">
                       <div class="thumb-wrap" >
-                        {brok.featuredImage.node ? <img class="img-list-default" src={brok.featuredImage.node.mediaItemUrl} alt="WCB Logo" /> : <img class="img-list-default" src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
+                        {brok.featuredImage.node ? <img class="img-list-default" src={brok.featuredImage.node.mediaItemUrl} alt="WCB Logo" /> : <img class="img-list-default" src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
                       </div>
                     </div>
 
@@ -1797,7 +1795,7 @@ export default function BrokersSingle({ data }) {
                     <div class="row collapse broker-wrap">
                       <div class="broker-tab-col img-col">
                         <div class="thumb-wrap" >
-                          {brok.featuredImage.node ? <img class="img-list-default" src={brok.featuredImage.node.mediaItemUrl} alt="WCB Logo" /> : <img class="img-list-default" src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
+                          {brok.featuredImage.node ? <img class="img-list-default" src={brok.featuredImage.node.mediaItemUrl} alt="WCB Logo" /> : <img class="img-list-default" src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
                         </div>
                       </div>
 
@@ -2007,7 +2005,7 @@ export default function BrokersSingle({ data }) {
                     <div class="title-wrap">
                       <h4>Ratings</h4>
                       <span class="rating">
-                        <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                        <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                         <span class="rat-color" style={{ width: `${avarageRatingCounter(broker.cptBrokers) * 20}%` }}></span>
                       </span>
                     </div>
@@ -2016,7 +2014,7 @@ export default function BrokersSingle({ data }) {
                         <li>
                           {Parser('Commissions &amp; Fees')}
                           <span class="rating">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                             <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingCommFees * 20}%` }}></span>
                           </span>
                         </li>
@@ -2025,7 +2023,7 @@ export default function BrokersSingle({ data }) {
                         <li>
                           {Parser('Platforms & Tools')}
                           <span class="rating">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                             <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingPlatfTools * 20}%` }}></span>
                           </span>
                         </li>
@@ -2034,7 +2032,7 @@ export default function BrokersSingle({ data }) {
                         <li>
                           Customer Service
                           <span class="rating">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                             <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingCustServ * 20}%` }}></span>
                           </span>
                         </li>
@@ -2043,7 +2041,7 @@ export default function BrokersSingle({ data }) {
                         <li>
                           Research
                           <span class="rating">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                             <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingCustResearch * 20}%` }}></span>
                           </span>
                         </li>
@@ -2052,7 +2050,7 @@ export default function BrokersSingle({ data }) {
                         <li>
                           Ease of Use
                           <span class="rating">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                             <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingEase * 20}%` }}></span>
                           </span>
                         </li>
@@ -2061,7 +2059,7 @@ export default function BrokersSingle({ data }) {
                         <li>
                           Mobile Trading
                           <span class="rating">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                             <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingMobTrad * 20}%` }}></span>
                           </span>
                         </li>
@@ -2079,7 +2077,7 @@ export default function BrokersSingle({ data }) {
                               <div class="hist-col col-type"><p>Overall</p></div>
                               <div class="hist-col col-rat">
                                 <span class="rating">
-                                  <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey-light.svg" alt="Rating" />
+                                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey-light.svg" alt="Rating" />
                                   <span class="rat-color" style={{ width: `${year.overallRating * 20}%` }}></span>
                                 </span>
                               </div>

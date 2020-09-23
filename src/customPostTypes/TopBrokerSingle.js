@@ -182,7 +182,7 @@ export default function TopBrokerSingle({ data }) {
                 {brokInfo.cptBrokers.specialOffer ? <img class="spec-offer-ico" src={themeGeneralSettings.optGeneralSettings.specialOfferIcon.mediaItemUrl} alt="Special Offer" /> : null}
                 <div class="broker-tab-col img-col">
                     <div class="thumb-wrap" >
-                        {brokInfo.featuredImage ? <img src={brokInfo.featuredImage.node.mediaItemUrl} sizes={brokInfo.featuredImage.node.sizes} srcSet={brokInfo.featuredImage.node.srcSet} /> : <img class="img-list-default" src="https://www.wecomparebrokers.com/wp-content/uploads/images/generic-logo.png" alt="WCB Logo" />}
+                        {brokInfo.featuredImage ? <img src={brokInfo.featuredImage.node.mediaItemUrl} sizes={brokInfo.featuredImage.node.sizes} srcSet={brokInfo.featuredImage.node.srcSet} /> : <img class="img-list-default" src="https://meek-hint.flywheelsites.com/wp-content/uploads/images/generic-logo.png" alt="WCB Logo" />}
                     </div>
                     <Link class="btn top-brok-link" to={brokInfo.uri}>Read Full Review</Link>
                 </div>

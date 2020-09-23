@@ -232,9 +232,9 @@ export default function NewHomePage({ data }) {
                     <span className="rating">
                       <img
                         className="lazy"
-                        data-src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                        data-src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
                         alt="Rating"
-                        src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                        src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
                       />
                       <span
                         className="rat-color"

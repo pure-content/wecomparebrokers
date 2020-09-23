@@ -103,7 +103,7 @@ export default function ComplaintsFormTemplate({ data }) {
       e.preventDefault();
       window.location = page.uri
       $.ajax({
-        url: 'https://www.wecomparebrokers.com/wp-admin/admin-post.php',
+        url: 'https://meek-hint.flywheelsites.com/wp-admin/admin-post.php',
         type: 'post',
         xhrFields: {
           withCredentials: true
@@ -213,13 +213,13 @@ export default function ComplaintsFormTemplate({ data }) {
         </div>
 
         <div class="thank-you-wrapper">
-          <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/comp-res.svg" alt="Resolved" />
+          <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/comp-res.svg" alt="Resolved" />
           <h6>We're glad we could be of help.</h6>
           <p>Thank you for following the suggested steps to resolve your issue!</p>
         </div>
 
         <div class="cma-form-container">
-          <form action="https://www.wecomparebrokers.com/wp-admin/admin-post.php" method="post" class="cma-thread-add" id="cma-thread-add">
+          <form action="https://meek-hint.flywheelsites.com/wp-admin/admin-post.php" method="post" class="cma-thread-add" id="cma-thread-add">
             <input type="hidden" name="action" value="add_complaint" />
             <input id="comp-cat" type="hidden" name="comp_cat" value="" />
             <input type="hidden" name="nonce" value="<?php echo esc_attr(wp_create_nonce('cma_question')); ?>" />

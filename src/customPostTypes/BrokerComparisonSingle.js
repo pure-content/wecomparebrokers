@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import $ from "jquery"
 import "jquery-match-height"
 import { graphql, Link } from "gatsby"
@@ -302,7 +302,7 @@ export default function BrokerComparisonSingle({ data }) {
                     <div class="compare-filter-wrap">
                         <h4>
                             <img
-                                src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg"
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg"
                                 alt="Filter"
                             />
                         Choose Brokers to Compare
@@ -364,7 +364,7 @@ export default function BrokerComparisonSingle({ data }) {
                     </div>
                     <div class="rat-wrap">
                         <span class="rating">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                             <span class="rat-color" style={{ width: `${avarageRatingCounter(firstBroker.cptBrokers) * 20}%` }}></span>
                         </span>
                         {avarageRatingCounter(firstBroker.cptBrokers)}
@@ -401,7 +401,7 @@ export default function BrokerComparisonSingle({ data }) {
                     </div>
                     <div class="rat-wrap">
                         <span class="rating">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                             <span class="rat-color" style={{ width: `${avarageRatingCounter(firstBroker.cptBrokers) * 20}%` }}></span>
                         </span>
                         {avarageRatingCounter(firstBroker.cptBrokers)}

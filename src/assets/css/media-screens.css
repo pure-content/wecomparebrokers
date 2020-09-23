@@ -1239,6 +1239,14 @@
         width: 100%;
         padding-left: 0;
     }
+    .brokers-list .broker-content.new-view .likes-col,
+    .brokers-list .broker-content.new-view .text-col {
+        width: 100%;
+        padding-left: 0;
+    }
+    .brokers-list .broker-content.new-view .likes-col {
+        margin-bottom: 15px;
+    }
     .brokers-list .rec-brok-wrap .broker-content .likes-col {
         margin-bottom: 15px;
     }

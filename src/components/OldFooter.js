@@ -1,9 +1,9 @@
 import React, { useEffect } from "react"
 import $ from "jquery"
+import "jquery-match-height"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Parser from "html-react-parser"
 import Equalizer from "./Equalizer"
-import GravityFormForm from 'gatsby-gravityforms-component'
 const shortid = require("shortid")
 
 // gfForm(formId: {eq: 1}) {
@@ -508,7 +508,7 @@ export default function OldFooter(props) {
 
             <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_1">
               <div id="gf_1" class="gform_anchor" tabindex="-1"></div>
-              <form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="https://www.wecomparebrokers.com/#gf_1">
+              <form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="https://meek-hint.flywheelsites.com/#gf_1">
                 <div class="gform_body">
                   <ul id="gform_fields_1" class="gform_fields top_label form_sublabel_below description_below">
                     <li id="field_1_1" class="gfield gfield_contains_required field_sublabel_below field_description_below hidden_label gfield_visibility_visible">

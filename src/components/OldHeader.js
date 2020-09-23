@@ -57,7 +57,7 @@ export default function OldHeader(props) {
             <Link to="/" className="home">
               <img
                 src={
-                  "https://www.wecomparebrokers.com/wp-content/uploads/2018/10/Group.svg"
+                  "https://meek-hint.flywheelsites.com/wp-content/uploads/2018/10/Group.svg"
                 }
                 alt={altText}
               />

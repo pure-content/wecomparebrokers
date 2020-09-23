@@ -180,7 +180,7 @@ export default function CompareSingle({ data }) {
                     </div>
                     <article>
                         <h1 class="page_title">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/compare-title-img.svg" alt="Title" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/compare-title-img.svg" alt="Title" />
                             {page.title}
                         </h1>
                         <div class="dot-sep">
@@ -221,7 +221,7 @@ export default function CompareSingle({ data }) {
                     </div>
                     <div class="rat-wrap">
                         <span class="rating">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                             <span class="rat-color" style={{ width: `${avarageRatingCounter(firstBrokerReview.cptBrokers) * 20}%` }}></span>
                         </span>
                     </div>
@@ -235,7 +235,7 @@ export default function CompareSingle({ data }) {
                     </div>
                     <div class="rat-wrap">
                         <span class="rating">
-                            <img src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
+                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
                             <span class="rat-color" style={{ width: `${avarageRatingCounter(secondBroker.cptBrokers) * 20}%` }}></span>
                         </span>
                     </div>

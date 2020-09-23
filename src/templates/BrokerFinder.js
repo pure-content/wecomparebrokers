@@ -13,6 +13,7 @@ import { brokerTypes } from "../data/brokerTypes"
 import withLocation from "../hoc/withLocation"
 import PageTopContent from "../components/PageTopContent"
 import Pagination from "../components/Pagination"
+import BrokerTableSingleItemNewView from "../components/BrokerTableSingleItemNewView"
 const shortid = require("shortid")
 
 export const query = graphql`
@@ -225,7 +226,7 @@ function BrokerFinderTemplate({ data, search }) {
           <div className="filter-wrap">
             <h3>
               <img
-                src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg"
+                src="https://wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg"
                 alt="Filter"
               />
               Filters
@@ -278,12 +279,10 @@ function BrokerFinderTemplate({ data, search }) {
         <div className="small-12 columns">
           <RecommendedBroker
             recommendedBroker={pageTemplate.recommendedBroker}
-            recommendedBrokerAdditionalText={
-              pageTemplate.recommendedBrokerAdditionalText
-            }
+            recommendedBrokerAdditionalText={pageTemplate.recommendedBrokerAdditionalText}
           />
           {currentBrokers.map(eachBroker => {
-            return <BrokerTableSingleItem brokerInfo={eachBroker} />
+            return <BrokerTableSingleItemNewView brokerInfo={eachBroker} recommendedBrokerAdditionalText={pageTemplate.recommendedBrokerAdditionalText} />
           })}
         </div>
         <div className="small-12 columns text-right btn-navi-wrap">

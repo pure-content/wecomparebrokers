@@ -12,7 +12,7 @@ module.exports = {
             options: {
                 typeName: 'WPGraphQL',
                 fieldName: 'wpgraphql',
-                url: 'https://www.wecomparebrokers.com/graphql',
+                url: 'https://meek-hint.flywheelsites.com/graphql',
             }
         },
         {
@@ -22,7 +22,7 @@ module.exports = {
             resolve: 'gatsby-source-gravityforms',
             options: {
                 // Base URL needs to include protocol (http/https)
-                baseUrl: 'https://www.wecomparebrokers.com',
+                baseUrl: 'https://meek-hint.flywheelsites.com',
                 // Gravity Forms API
                 api: {
                     key: process.env.CONSUMER_KEY,

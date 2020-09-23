@@ -3514,6 +3514,10 @@ ul.pagination li a:focus {
     background-image: url(images/check-green.svg);
 }
 
+.brokers-list .broker-content.new-view .likes-col ul li:before {
+    background-image: url(images/check-green.svg);
+}
+
 .brokers-list:not(.plarform-list) .broker-content p.val {
     color: #3b4956;
     font-size: 16px;
@@ -3541,7 +3545,9 @@ ul.pagination li a:focus {
 }
 
 .brokers-list .rec-brok-wrap .broker-content .likes-col,
-.brokers-list .rec-brok-wrap .broker-content .text-col {
+.brokers-list .rec-brok-wrap .broker-content .text-col,
+.brokers-list .broker-content.new-view .likes-col,
+.brokers-list .broker-content.new-view .text-col {
     width: 50%;
     padding-left: 30px;
 }
@@ -3593,6 +3599,11 @@ ul.pagination li a:focus {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-name.align-right {
+    align-items: flex-end;
+    padding-right: 20px !important;
 }
 
 #rel-guides .brokers-list:not(.plarform-list) .broker-wrap .broker-name {
@@ -6126,6 +6137,11 @@ body .wpusb-buttons .wpusb-item a.wpusb-btn {
 .brokers-list:not(.plarform-list) .broker-wrap .broker-identity .img-col,
 .brokers-list:not(.plarform-list) .broker-wrap .broker-identity .broker-name {
     width: 50%;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-identity .img-col.img-center {
+    display: flex;
+    align-items: center;
 }
 
 .broker-identity .btn-wrap {

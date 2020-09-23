@@ -119,15 +119,15 @@ export default function RecommendedBroker(props) {
             ) : (
                 <img
                   className="img-list-default"
-                  src="https://www.wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
+                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
                   alt="WCB Logo"
                 />
               )}
           </div>
         </div>
 
-        <div className="broker-tab-col broker-name broker-col">
-          <h3>{recommendedBroker.title}</h3>
+        <div className="broker-tab-col broker-name broker-col align-right">
+          {/* <h3>{recommendedBroker.title}</h3> */}
           {scoreAnimation(brokerFields.ourScore, "small-chart", true)}
         </div>
 
