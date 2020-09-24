@@ -633,9 +633,9 @@ export default function BrokersSingle({ data }) {
                 <strong>Email: </strong>
                 {broker.cptBrokers.brokerEmails.map(em => {
                   return em.telephoneNumber ? (
-                    <a href={`mailto:${em.emailLink}`}>{em.email}</a>
+                    <a href={`mailto:${em.emailLink}`}>{Parser(em.email ? em.email : '')}</a>
                   ) : (
-                      <span>{em.email}</span>
+                      <span>{Parser(em.email ? em.email : '')}</span>
                     )
                 })}
               </p>
