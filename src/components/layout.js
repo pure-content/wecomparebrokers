@@ -31,14 +31,6 @@ const Layout = props => {
     // $('a').each(function (i, link) {
     //   link.href = link.href.replace('https://wecomparebrokers.netlify.app/', 'https://www.wecomparebrokers.com/')
     // })
-
-    // if (window) {
-    //   $('head').append(`<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    //     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    //     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    //     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    //     })(window,document,'script','dataLayer','GTM-NBXR75M');</script>`)
-    // }
   })
 
   const CurrentHeader = isFrontPage ? (
@@ -64,21 +56,7 @@ const Layout = props => {
           integrity="sha512-/bOVV1DV1AQXcypckRwsR9ThoCj7FqTV2/0Bm79bL3YSyLkVideFLE3MIZkq1u5t28ke1c0n31WYCOrO01dsUg=="
           crossorigin="anonymous"
         ></script>
-        <script>
-          {
-            window ? (
-              (function (w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-                var f = d.getElementsByTagName(s)[0],
-                  j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-              })(window, document, 'script', 'dataLayer', 'GTM-NBXR75M')
-            ) : null
-          }
-        </script>
       </Helmet>
-
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBXR75M" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
 
       {CurrentHeader}
       <main className={mainClass}>{children}</main>
