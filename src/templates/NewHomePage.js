@@ -259,10 +259,10 @@ export default function NewHomePage({ data }) {
                   target="_blank"
                   rel="nofollow sponsored"
                 >
-                  Go to award
+                  Visit Broker
                 </a>
                 <Link to={brokerInfo.uri} className="btn small">
-                  View More
+                  Broker Review
                 </Link>
               </div>
             </div>

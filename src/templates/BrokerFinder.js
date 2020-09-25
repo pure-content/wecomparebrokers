@@ -226,7 +226,7 @@ function BrokerFinderTemplate({ data, search }) {
           <div className="filter-wrap">
             <h3>
               <img
-                src="https://wecomparebrokers.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg"
+                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/filter-ico.svg"
                 alt="Filter"
               />
               Filters
