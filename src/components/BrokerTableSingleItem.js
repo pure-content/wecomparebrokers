@@ -136,7 +136,7 @@ export default function BrokerTableSingleItem(props) {
           />
         )}
         <div className="broker-tab-col first-col broker-identity full broker-col">
-          <div className=" img-col">
+          <div className="img-col img-center">
             <div className="thumb-wrap">
               {brokerInfo.featuredImage ? (
                 <img
@@ -154,9 +154,9 @@ export default function BrokerTableSingleItem(props) {
             </div>
           </div>
 
-          <div className="broker-name">
+          <div className="broker-name align-right">
             {platformThumb && <img src={platformThumb} />}
-            <h3>{brokerInfo.title}</h3>
+            {/* <h3>{brokerInfo.title}</h3> */}
             {scoreAnimation(
               brokerInfo.cptBrokers.ourScore,
               "small-chart",
