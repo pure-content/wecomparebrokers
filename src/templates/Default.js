@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import $ from "jquery"
 import "jquery-match-height"
 import Layout from "../components/layout"
+import Helmet from "react-helmet"
 import Parser from "html-react-parser"
 
 export const query = graphql`
@@ -51,6 +52,15 @@ export default function DefaultTemplate({ data }) {
   }
   return (
     <Layout pageInfo={pageInfo}>
+
+      <Helmet
+        htmlAttributes={{ lang: "en", amp: undefined }}
+        title={page.seo.title}
+        meta={[
+          { name: "description", content: page.seo.metaDesc },
+          { property: "og:type", content: page.seo.opengraphType },
+        ]}
+      />
       <div class="row page-wrap">
         <div class="small-12 columns">
           <article>

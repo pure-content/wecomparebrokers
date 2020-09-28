@@ -99,7 +99,7 @@ export default function OldHeader(props) {
         </div>
 
         <div className="large-2 columns search-header">
-          <form method="get" id="searchform" action={"/"}>
+          <form method="get" id="searchform" action={"/search"}>
             <input
               type="text"
               name="s"
@@ -110,7 +110,6 @@ export default function OldHeader(props) {
             <input
               type="submit"
               className="prefix"
-              name="submit"
               id="searchsubmit"
               value=""
             />

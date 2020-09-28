@@ -151,7 +151,7 @@ function BrokerFinderTemplate({ data, search }) {
           return eachBroker
         }
       })
-      console.log(sortedBrokers)
+
       return sortedBrokers
     } else if (search.country && !search.instrument) {
       const sortedBrokers = brokers.filter(eachBroker => {

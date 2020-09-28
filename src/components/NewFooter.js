@@ -294,13 +294,7 @@ export default function Footer() {
             {links.map(eachLink => {
               const linkTitle = eachLink.title
               const linkType = eachLink.linkType
-              const linkItself =
-                linkType === "text"
-                  ? eachLink.linkText
-                    .split("/")
-                    .splice(3, eachLink.linkText.split("/").length - 1)
-                    .join("/")
-                  : eachLink.link.uri
+              const linkItself = linkType === "text" ? eachLink.linkText.includes('wp-content') ? eachLink.linkText : eachLink.linkText.replace(url, "") : eachLink.link.uri
               return (
                 <li key={shortid.generate()}>
                   <Link to={linkItself}>{linkTitle}</Link>
@@ -433,11 +427,19 @@ export default function Footer() {
             <div className="menu-footer-menu-container">
               <ul id="menu-footer-menu" className="inline-list">
                 {menuItems.map(menuItem => {
-                  return (
-                    <li key={shortid.generate()} className="menu-item">
-                      <Link to={menuItem.url}>{menuItem.label}</Link>
-                    </li>
-                  )
+                  if (menuItem.url.includes('sitemap')) {
+                    return (
+                      <li key={shortid.generate()} className="menu-item">
+                        <a href='https://meek-hint.flywheelsites.com/sitemap_index.xml'>{menuItem.label}</a>
+                      </li>
+                    )
+                  } else {
+                    return (
+                      <li key={shortid.generate()} className="menu-item">
+                        <Link to={menuItem.url}>{menuItem.label}</Link>
+                      </li>
+                    )
+                  }
                 })}
               </ul>
             </div>

@@ -420,12 +420,10 @@ export default function OldFooter(props) {
           {title && <h3>{title}</h3>}
           <ul>
             {links.map(eachLink => {
+              console.log(eachLink.linkText)
               const linkTitle = eachLink.title
               const linkType = eachLink.linkType
-              const linkItself =
-                linkType === "text"
-                  ? eachLink.linkText.replace(url, "")
-                  : eachLink.link.uri
+              const linkItself = linkType === "text" ? eachLink.linkText.includes('wp-content') ? eachLink.linkText : eachLink.linkText.replace(url, "") : eachLink.link.uri
               return (
                 <li key={shortid.generate()}>
                   <Link to={linkItself}>{linkTitle}</Link>
@@ -562,11 +560,19 @@ export default function OldFooter(props) {
             <div className="menu-footer-menu-container">
               <ul id="menu-footer-menu" className="inline-list">
                 {menuItems.map(menuItem => {
-                  return (
-                    <li key={shortid.generate()} className="menu-item">
-                      <Link to={menuItem.url}>{menuItem.label}</Link>
-                    </li>
-                  )
+                  if (menuItem.url.includes('sitemap')) {
+                    return (
+                      <li key={shortid.generate()} className="menu-item">
+                        <a href='https://meek-hint.flywheelsites.com/sitemap_index.xml'>{menuItem.label}</a>
+                      </li>
+                    )
+                  } else {
+                    return (
+                      <li key={shortid.generate()} className="menu-item">
+                        <Link to={menuItem.url}>{menuItem.label}</Link>
+                      </li>
+                    )
+                  }
                 })}
               </ul>
             </div>
