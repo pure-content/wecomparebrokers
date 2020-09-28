@@ -152,7 +152,6 @@ function SearchPage({ search }) {
     // ...info.wpgraphql.pages.nodes,
     // ...info.wpgraphql.topBrokers123.nodes
     // ]
-    console.log(allData)
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage] = useState(24)
     const indexOfLastPost = currentPage * postsPerPage
@@ -172,7 +171,6 @@ function SearchPage({ search }) {
     }
 
     const currentResult = brokerSorter().slice(indexOfFirstPost, indexOfLastPost)
-    console.log(currentResult)
 
     // const ResultTableItem = (props) => {
     //     const {res} = props
