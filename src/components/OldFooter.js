@@ -420,7 +420,6 @@ export default function OldFooter(props) {
           {title && <h3>{title}</h3>}
           <ul>
             {links.map(eachLink => {
-              console.log(eachLink.linkText)
               const linkTitle = eachLink.title
               const linkType = eachLink.linkType
               const linkItself = linkType === "text" ? eachLink.linkText.includes('wp-content') ? eachLink.linkText : eachLink.linkText.replace(url, "") : eachLink.link.uri
