@@ -218,7 +218,7 @@ function SearchPage({ search }) {
         const spreadsList = ["Fixed", "Variable"]
         const methodsList = ["Bank transfer", "Credit Cards", "PayPal"]
         const themeGeneralSettings = info
-        if ('cptBrokers' in res) {
+        if (res.hasOwnProperty('cptBrokers')) {
             const platfThumbURL = res.cptBrokers.platformRelation ? res.cptBrokers.platformRelation.featuredImage.node.mediaItemUrl : null
             return (
                 <div class="row collapse broker-wrap">

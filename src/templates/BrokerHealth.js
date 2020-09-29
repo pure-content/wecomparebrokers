@@ -84,6 +84,7 @@ function BrokerHealthTemplate({ data, search }) {
   const good = search.good ? search.good : ''
   const banned = search.banned ? search.banned : ''
   const char = search.char ? search.char : ''
+  const [brokerNameState, setBrokerNameState] = useState(name)
 
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(6)
@@ -154,7 +155,7 @@ function BrokerHealthTemplate({ data, search }) {
             <h3>Search <strong>Here</strong></h3>
             <form id="health-form" action={page.uri} method="get">
               <div className="inp-wrap">
-                <input id="broker-name" name="broker-name" type="text" value={name ? name : null} placeholder="Company name here..." autoComplete="off" />
+                <input id="broker-name" name="broker-name" onChange={e => setBrokerNameState(e.target.value)} type="text" value={brokerNameState} placeholder="Company name here..." autoComplete="off" />
                 <div className="inp-popup">
                 </div>
               </div>
