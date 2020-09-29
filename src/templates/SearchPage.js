@@ -180,31 +180,38 @@ function SearchPage({ search }) {
 
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage] = useState(24)
+    const [sortedData, setSortedData] = useState(search ? allData.sort((a, b) => new Date(b.date.split('T')[0]) - new Date(a.date.split('T')[0])).filter(eachData => eachData.title.toLowerCase().includes(searchString.toLowerCase()) ? eachData : null) : allData.sort((a, b) => new Date(b.date.split('T')[0]) - new Date(a.date.split('T')[0])))
     const indexOfLastPost = currentPage * postsPerPage
     const indexOfFirstPost = indexOfLastPost - postsPerPage
 
     useEffect(() => {
-        brokerSorter()
-    })
-
-    const brokerSorter = () => {
+        // brokerSorter()
         if (Object.keys(search).length > 0) {
-            const filteredData = allData.filter(eachData => {
+            const filteredData = sortedData.filter(eachData => {
                 if (eachData.title.toLowerCase().includes(searchString.toLowerCase())) {
                     return eachData
                 }
             })
-            const sortedData = filteredData.sort((a, b) => new Date(b.date.split('T')[0]) - new Date(a.date.split('T')[0]))
-            console.log(sortedData)
-            return sortedData
+            console.log(filteredData)
+            //setSortedData(filteredData.sort((a, b) => new Date(b.date.split('T')[0]) - new Date(a.date.split('T')[0])))
+            // console.log(sortedData)
+            // return sortedData
         }
-        const filteredData = allData
-        const sortedData = filteredData.sort((a, b) => new Date(b.date.split('T')[0]) - new Date(a.date.split('T')[0]))
-        return sortedData
+
+    }, [sortedData])
+
+
+
+
+    const brokerSorter = () => {
+
+
+        // const filteredData = allData
+        // const sortedData = filteredData.sort((a, b) => new Date(b.date.split('T')[0]) - new Date(a.date.split('T')[0]))
+        // return sortedData
     }
 
-    const currentResult = brokerSorter().slice(indexOfFirstPost, indexOfLastPost)
-    console.log(currentResult)
+    const currentResult = sortedData.slice(indexOfFirstPost, indexOfLastPost)
 
     const ResultTableItem = (props) => {
         const { res } = props
@@ -444,7 +451,7 @@ function SearchPage({ search }) {
                             ))}
                         </div>
                     </div>
-                    <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={brokerSorter().length} noNumbers={false} />
+                    <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={sortedData.length} noNumbers={false} />
                 </div>
             </div>
 
