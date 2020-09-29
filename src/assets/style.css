@@ -2629,6 +2629,9 @@ form#health-form input:-moz-placeholder {
 
 .search-row .brokers-list .row.broker-wrap {
     padding-right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .search-row .broker-wrap .columns:first-child {
@@ -3371,10 +3374,6 @@ ul.pagination li a:focus {
 
 .brokers-list:not(.plarform-list) .broker-wrap .img-col .thumb-wrap {
     position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
     text-align: center;
 }
 
@@ -7718,4 +7717,13 @@ ul.trust-list li img {
 .dark-blue-wrap h3 {
     font-weight: 700;
     margin-bottom: 10px;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-content.not-broker {
+    /* background-image: none; */
+    display: none;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-name.not-broker {
+    flex-grow: 1;
 }

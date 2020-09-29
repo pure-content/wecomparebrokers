@@ -42,7 +42,8 @@ export default function Pagination({ postsPerPage, totalPosts, currentPage, setC
             {pageNumbers.map(number => {
                 return <li key={number}>{currentPage === number ? <span aria-current="page" class="pagination current">{number}</span> : <a class='pagination' onClick={() => setCurrentPage(number)}>{number}</a>}</li>
             })}
-            {currentPage !== pageNumbers ? <li><a class="next pagination" onClick={() => setCurrentPage(currentPage++)} >Next <i class="fa fa-angle-right" aria-hidden="true"></i></a></li> : null}
+            {currentPage !== pageNumbers.length ? <li><a class="next pagination" onClick={() => setCurrentPage(currentPage++)} >Next <i class="fa fa-angle-right" aria-hidden="true"></i></a></li> : null}
         </ul>
     )
 }
+

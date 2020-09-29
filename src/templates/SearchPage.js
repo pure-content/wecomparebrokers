@@ -7,20 +7,25 @@ import Parser from "html-react-parser"
 import Helmet from "react-helmet"
 import CompareFrom from "../components/CompareFrom"
 import withLocation from "../hoc/withLocation"
+import BrokerTableSingleItem from "../components/BrokerTableSingleItem"
+import Pagination from "../components/Pagination"
 
 function SearchPage({ search }) {
     const info = useStaticQuery(graphql`
         query {
             wpgraphql {
-                brokers123( first: 10000 where: { health: "good", orderby: { field: MENU_ORDER, order: DESC } } ){
+                brokers123( first: 10000 where: { orderby: { field: MENU_ORDER, order: DESC } } ){
                     nodes {
                         uri
                         title
                         id
                         databaseId
+                        date
                         featuredImage {
                           node {
                             mediaItemUrl
+                            sizes(size: BROKERS_LIST_THUMB)
+                            srcSet(size: BROKERS_LIST_THUMB)
                           }
                         }
                         cptBrokers {
@@ -66,6 +71,7 @@ function SearchPage({ search }) {
                     nodes {
                         title
                         uri
+                        date
                     }
                 }
 
@@ -73,6 +79,7 @@ function SearchPage({ search }) {
                     nodes {
                         title
                         uri
+                        date
                         featuredImage {
                             node {
                                 mediaItemUrl
@@ -87,6 +94,7 @@ function SearchPage({ search }) {
                     nodes {
                         title
                         uri
+                        date
                     }
                 }
 
@@ -94,6 +102,7 @@ function SearchPage({ search }) {
                     nodes {
                       uri
                       title
+                      date
                       featuredImage {
                         node {
                             mediaItemUrl
@@ -108,6 +117,7 @@ function SearchPage({ search }) {
                     nodes {
                       title
                       uri
+                      date
                       featuredImage{
                         node {
                             mediaItemUrl
@@ -122,6 +132,7 @@ function SearchPage({ search }) {
                     nodes {
                       uri
                       title
+                      date
                       featuredImage {
                         node {
                           mediaItemUrl
@@ -129,6 +140,20 @@ function SearchPage({ search }) {
                           sizes(size: BROKERS_LIST_THUMB)
                         }
                       }
+                    }
+                }
+
+
+                themeGeneralSettings {
+                    optGeneralSettings {
+                      specialOfferIcon {
+                        mediaItemUrl
+                      }
+                      brokerCallBackButtonAlternativeText
+                      visitBrokerButtonAlternativeText
+                      compareBrokerSideBySideButtonAlternativeText
+                      readFullReviewButtonAlternativeText
+                      takeMeToBrokerButtonAlternativeText
                     }
                 }
             }
@@ -152,208 +177,259 @@ function SearchPage({ search }) {
     // ...info.wpgraphql.pages.nodes,
     // ...info.wpgraphql.topBrokers123.nodes
     // ]
+
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage] = useState(24)
     const indexOfLastPost = currentPage * postsPerPage
     const indexOfFirstPost = indexOfLastPost - postsPerPage
 
+
     const brokerSorter = () => {
         if (Object.keys(search).length > 0) {
-            const sortedData = allData.filter(eachData => {
-                if (eachData.title.includes(searchString)) {
+            const filteredData = allData.filter(eachData => {
+                if (eachData.title.toLowerCase().includes(searchString)) {
                     return eachData
                 }
             })
+            const sortedData = filteredData.sort((a, b) => new Date(b.date.split('T')[0]) - new Date(a.date.split('T')[0]))
+            console.log(sortedData)
             return sortedData
         }
-        const sortedData = allData
+        const filteredData = allData
+        const sortedData = filteredData.sort((a, b) => new Date(b.date.split('T')[0]) - new Date(a.date.split('T')[0]))
         return sortedData
     }
 
     const currentResult = brokerSorter().slice(indexOfFirstPost, indexOfLastPost)
+    console.log(currentResult)
 
-    // const ResultTableItem = (props) => {
-    //     const {res} = props
-    //     const class_for_arrow = res
-    //     return (
-    //         <div class="row collapse broker-wrap">
-    //             <div class="broker-tab-col img-col">
-    //                 <?php //$broker_img = get_the_post_thumbnail_url(get_the_ID(),'brokers-list-thumb'); ?>
-    //                 <div class="thumb-wrap" >
-    //                     <?php if (get_the_post_thumbnail()): ?>
-    //                         <?php the_post_thumbnail('brokers-list-thumb'); ?>
-    //                     <?php else: ?>
-    //                         <img class="img-list-default" src="<?php echo get_stylesheet_directory_uri(); ?>/images/generic-logo.png" alt="WCB Logo">
-    //                     <?php endif; ?>
-    //                 </div>
-    //             </div>
-    //             <?php
-    //             $class_for_arrow = '';
+    const ResultTableItem = (props) => {
+        const { res } = props
+        const class_for_arrow = 'cptBrokers' in res ? '' : 'not-broker'
+        const platfomsList = [
+            "MT5",
+            "MT4",
+            "WebTrader",
+            "Mobile",
+            "apps",
+            "Proprietary",
+            "cTrader",
+        ]
+        const accountsList = ["Micro", "Retail", "VIP", "Professional"]
+        const spreadsList = ["Fixed", "Variable"]
+        const methodsList = ["Bank transfer", "Credit Cards", "PayPal"]
+        const themeGeneralSettings = info
+        if ('cptBrokers' in res) {
+            const platfThumbURL = res.cptBrokers.platformRelation ? res.cptBrokers.platformRelation.featuredImage.node.mediaItemUrl : null
+            return (
+                <div class="row collapse broker-wrap">
+                    <div class="broker-tab-col img-col">
+                        <div class="thumb-wrap" >
+                            {res.featuredImage ? <img src={res.featuredImage.node.mediaItemUrl} sizes={res.featuredImage.node.sizes} srcSet={res.featuredImage.node.srcSet} /> : <img class="img-list-default" src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
+                        </div>
+                    </div>
 
-    //             if($post_type !== 'brokers') {
-    //                 $class_for_arrow = 'not-broker';
-    //             } else { 
-    //                 $class_for_arrow = '';
-    //             } ?>
-    //             <div class="broker-tab-col broker-name <?php echo $class_for_arrow;?>">
-    //                 <?php if ($platf) {
-    //                     echo $platf_thumb;
-    //                 } ?>
-    //                 <h3><?php the_title(); ?></h3>
-    //                 <!-- <?php if (get_field('affiliate_link')): ?>
-    //                     <a href="<?php the_field('affiliate_link'); ?>" target="_blank">
-    //                         <span><?php the_field('broker_link'); ?></span>
-    //                     </a>
-    //                 <?php endif ?> -->
-    //             </div>
+                    <div class={`broker-tab-col broker-name ${class_for_arrow}`}>
+                        {platfThumbURL ? <img src={platfThumbURL} /> : null}
+                        <h3>{res.title}</h3>
+                    </div>
 
-    //             <div class="broker-tab-col broker-content <?php echo $class_for_arrow;?>">
-    //                 <?php if($post_type == 'brokers'):?>
-    //                 <div class="points-col broker-content-col text-center">
-    //                     <div class="wrap">
-    //                         <p class="val"><?php the_field('all_spreads_points'); ?></p>
-    //                         <p><?php _e('Spreads:', 'foundation'); ?></p>
-    //                     </div>
-    //                     <?php if (get_field('affiliate_link')): ?>
-    //                         <a href="<?php the_field('affiliate_link'); ?>" target="_blank" rel="nofollow sponsored"><?php _e('See All Spreads', 'foundation'); ?></a>
-    //                     <?php endif; ?>
-    //                 </div>
-    //                 <div class="min-dep-col broker-content-col text-center">
-    //                     <div class="wrap">
-    //                         <p class="val"><?php the_field('min_deposit'); ?></p>
-    //                         <p><?php _e('Min. deposit', 'foundation'); ?></p>
-    //                     </div>
-    //                     <?php if (get_field('affiliate_link')): ?>
-    //                         <a href="<?php the_field('affiliate_link'); ?>" target="_blank" rel="nofollow sponsored"><?php _e('Learn More', 'foundation'); ?></a>
-    //                     <?php endif; ?>
-    //                 </div>
-    //                 <div class="platf-col broker-content-col text-center">
-    //                     <div class="wrap" data-mh="cont-col">
-    //                         <?php
-    //                         $values = get_field('platforms_list');
-    //                         $field = get_field_object('platforms_list');
-    //                         $choices = $field['choices'];
-    //                         echo '<ul>';
-    //                         foreach ($choices as $value => $label) {
-    //                             if ($values && in_array($value, $values)) {
-    //                                 echo '<li class="checked">';
-    //                             } else {
-    //                                 echo '<li>';
-    //                             }
-    //                             echo $label . '</li>';
-    //                         }
-    //                         echo '</ul>';
-    //                         ?>
-    //                     </div>
-    //                     <?php if (get_field('affiliate_link')): ?>
-    //                         <a href="<?php the_field('affiliate_link'); ?>" target="_blank" rel="nofollow sponsored"><?php _e('See Platforms', 'foundation'); ?></a>
-    //                     <?php endif; ?>
-    //                 </div>
-    //                 <div class="acc-col broker-content-col text-center">
-    //                     <div class="wrap" data-mh="cont-col">
-    //                         <?php
-    //                         $values = get_field('accounts_list');
-    //                         $field = get_field_object('accounts_list');
-    //                         $choices = $field['choices'];
-    //                         echo '<ul>';
-    //                         foreach ($choices as $value => $label) {
-    //                             if ($values && in_array($value, $values)) {
-    //                                 echo '<li class="checked">';
-    //                             } else {
-    //                                 echo '<li>';
-    //                             }
-    //                             echo $label . '</li>';
-    //                         }
-    //                         echo '</ul>';
-    //                         ?>
-    //                     </div>
-    //                     <?php if (get_field('affiliate_link')): ?>
-    //                         <a href="<?php the_field('affiliate_link'); ?>" target="_blank" rel="nofollow sponsored"><?php _e('See Accounts', 'foundation'); ?></a>
-    //                     <?php endif; ?>
-    //                 </div>
-    //                 <div class="spreads-col broker-content-col text-center">
-    //                     <div class="wrap" data-mh="cont-col">
-    //                         <?php
-    //                         $values = get_field('spreads_list');
-    //                         $field = get_field_object('spreads_list');
-    //                         $choices = $field['choices'];
-    //                         echo '<ul>';
-    //                         foreach ($choices as $value => $label) {
-    //                             if ($values && in_array($value, $values)) {
-    //                                 echo '<li class="checked">';
-    //                             } else {
-    //                                 echo '<li>';
-    //                             }
-    //                             echo $label . '</li>';
-    //                         }
-    //                         echo '</ul>';
-    //                         ?>
-    //                     </div>
-    //                     <?php if (get_field('affiliate_link')): ?>
-    //                         <a href="<?php the_field('affiliate_link'); ?>" target="_blank" rel="nofollow sponsored"><?php _e('See Spreads', 'foundation'); ?></a>
-    //                     <?php endif; ?>
-    //                 </div>
-    //                 <div class="methods-col broker-content-col text-center">
-    //                     <div class="wrap" data-mh="cont-col">
-    //                         <?php
-    //                         $values = get_field('methods_list');
-    //                         $field = get_field_object('methods_list');
-    //                         $choices = $field['choices'];
-    //                         echo '<ul>';
-    //                         foreach ($choices as $value => $label) {
-    //                             if ($values && in_array($value, $values)) {
-    //                                 echo '<li class="checked">';
-    //                             } else {
-    //                                 echo '<li>';
-    //                             }
-    //                             echo $label . '</li>';
-    //                         }
-    //                         echo '</ul>';
-    //                         ?>
-    //                     </div>
-    //                     <?php if (get_field('affiliate_link')): ?>
-    //                         <a href="<?php the_field('affiliate_link'); ?>" target="_blank" rel="nofollow sponsored"><?php _e('See Methods', 'foundation'); ?></a>
-    //                     <?php endif; ?>
-    //                 </div>
-    //                 <?php endif; ?>
-    //             </div>
+                    <div className="broker-tab-col broker-content broker-col">
+                        <div className="points-col broker-content-col text-center">
+                            <div className="wrap">
+                                <p className="val"> {Parser(res.cptBrokers.allSpreadsPoints ? res.cptBrokers.allSpreadsPoints : "")}
+                                </p>
+                                <p>Spreads:</p>
+                            </div>
+                            {res.cptBrokers.affiliateLink && (
+                                <a
+                                    href={res.cptBrokers.affiliateLink}
+                                    target="_blank"
+                                    rel="nofollow sponsored"
+                                >
+                                    See All Spreads
+                                </a>
+                            )}
+                        </div>
+                        <div className="min-dep-col broker-content-col text-center">
+                            <div className="wrap">
+                                <p className="val">
+                                    {Parser(
+                                        res.cptBrokers.minDeposit
+                                            ? res.cptBrokers.minDeposit
+                                            : ""
+                                    )}
+                                </p>
+                                <p>Min. deposit</p>
+                            </div>
+                            {res.cptBrokers.affiliateLink && (
+                                <a
+                                    href={res.cptBrokers.affiliateLink}
+                                    target="_blank"
+                                    rel="nofollow sponsored"
+                                >
+                                    Learn More
+                                </a>
+                            )}
+                        </div>
+                        <div className="platf-col broker-content-col text-center">
+                            <div className="wrap" data-mh="cont-col">
+                                <ul>
+                                    {platfomsList.map(platf => {
+                                        if (res.cptBrokers.platformsList) {
+                                            return res.cptBrokers.platformsList.includes(platf) ? <li className="checked">{platf}</li> : <li>{platf}</li>
+                                        }
+                                    })}
+                                </ul>
+                            </div>
+                            {res.cptBrokers.affiliateLink && (
+                                <a
+                                    href={res.cptBrokers.affiliateLink}
+                                    target="_blank"
+                                    rel="nofollow sponsored"
+                                >
+                                    See Platforms
+                                </a>
+                            )}
+                        </div>
+                        <div className="acc-col broker-content-col text-center">
+                            <div className="wrap" data-mh="cont-col">
+                                <ul>
+                                    {accountsList.map(account => {
+                                        if (res.cptBrokers.accountsList) {
+                                            return res.cptBrokers.accountsList.includes(
+                                                account
+                                            ) ? (
+                                                    <li className="checked">{account}</li>
+                                                ) : (
+                                                    <li>{account}</li>
+                                                )
+                                        }
+                                    })}
+                                </ul>
+                            </div>
+                            {res.cptBrokers.affiliateLink && (
+                                <a
+                                    href={res.cptBrokers.affiliateLink}
+                                    target="_blank"
+                                    rel="nofollow sponsored"
+                                >
+                                    See Accounts
+                                </a>
+                            )}
+                        </div>
+                        <div className="spreads-col broker-content-col text-center">
+                            <div className="wrap" data-mh="cont-col">
+                                <ul>
+                                    {spreadsList.map(spread => {
+                                        if (res.cptBrokers.spreadsList) {
+                                            return res.cptBrokers.spreadsList.includes(
+                                                spread
+                                            ) ? (
+                                                    <li className="checked">{spread}</li>
+                                                ) : (
+                                                    <li>{spread}</li>
+                                                )
+                                        }
+                                    })}
+                                </ul>
+                            </div>
+                            {res.cptBrokers.affiliateLink && (
+                                <a
+                                    href={res.cptBrokers.affiliateLink}
+                                    target="_blank"
+                                    rel="nofollow sponsored"
+                                >
+                                    See Spreads
+                                </a>
+                            )}
+                        </div>
+                        <div className="methods-col broker-content-col text-center">
+                            <div className="wrap" data-mh="cont-col">
+                                <ul>
+                                    {methodsList.map(method => {
+                                        if (res.cptBrokers.methodsList) {
+                                            return res.cptBrokers.methodsList.includes(
+                                                method
+                                            ) ? (
+                                                    <li className="checked">{method}</li>
+                                                ) : (
+                                                    <li>{method}</li>
+                                                )
+                                        }
+                                    })}
+                                </ul>
+                            </div>
+                            {res.cptBrokers.affiliateLink && (
+                                <a
+                                    href={res.cptBrokers.affiliateLink}
+                                    target="_blank"
+                                    rel="nofollow sponsored"
+                                >
+                                    See Methods
+                                </a>
+                            )}
+                        </div>
+                        {res.cptBrokers.tableInfo && (
+                            <div className="info-text-col text-center">
+                                <p>{res.cptBrokers.tableInfo}</p>
+                            </div>
+                        )}
+                    </div>
 
-    //             <div class="broker-tab-col btn-col">
-    //                 <?php if (get_field('affiliate_link')): ?>
-    //                     <!-- <a class="btn small" href="<?php the_field('affiliate_link'); ?>" target="_blank"><?php _e('Take Me To Broker', 'foundation'); ?></a> -->
-    //                     <?php if (get_field('affiliate_link') && !get_field('tab_button_alternative_text')): ?>
-    //                         <span class="aff-wrap">
-    //                             <a class="btn small" href="<?php the_field('affiliate_link'); ?>" target="_blank" rel="nofollow sponsored"><?php _e('Take Me To Broker', 'foundation'); ?></a>
-    //                             <?php if (get_field('take_me_to_broker_button_note_text')): ?>
-    //                                 <span class="floating-note"><?php the_field('take_me_to_broker_button_note_text'); ?></span>
-    //                             <?php endif; ?>
-    //                         </span>
-    //                     <?php elseif (get_field('affiliate_link') && get_field('tab_button_alternative_text')): ?>
-    //                         <span class="aff-wrap">
-    //                             <a class="btn small" href="<?php the_field('affiliate_link'); ?>" target="_blank" rel="nofollow sponsored"><?php the_field('tab_button_alternative_text'); ?></a>
-    //                             <?php if (get_field('take_me_to_broker_button_note_text')): ?>
-    //                                 <span class="floating-note"><?php the_field('take_me_to_broker_button_note_text'); ?></span>
-    //                             <?php endif; ?>
-    //                         </span>
-    //                     <?php endif; ?>
-    //                 <?php endif; ?>
-    //                 <!-- <span data-id="<?php //echo $post->ID; ?>" data-fancybox data-src="#compare-form" class="btn small compare-btn"><?php //_e('Compare Broker', 'foundation'); ?></span> -->
-    //                 <?php if($post_type == 'brokers'):?>
-    //                     <span data-id="<?php echo $post->ID; ?>" class="btn small compare-btn"><?php _e('Compare Brokers Side by Side', 'foundation'); ?></span>
-    //                 <?php endif; ?>
-    //                 <?php $more_text = $post_type !== 'brokers' ? __('Read article', 'foundation') : __('Read Full Review', 'foundation'); ?>
-    //                 <a class="btn small" href="<?php the_permalink(); ?>"><?php echo $more_text; ?></a>
+                    <div class="broker-tab-col btn-col">
+                        <span className="aff-wrap">
+                            <a className="btn small" href={res.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored" >
+                                {themeGeneralSettings.wpgraphql.themeGeneralSettings.optGeneralSettings.takeMeToBrokerButtonAlternativeText ? themeGeneralSettings.wpgraphql.themeGeneralSettings.optGeneralSettings.takeMeToBrokerButtonAlternativeText : 'Take Me To Broker'}
+                            </a>
+                            {res.cptBrokers.takeMeToBrokerButtonNoteText && (<span className="floating-note"> {res.cptBrokers.takeMeToBrokerButtonNoteText} </span>)}
+                        </span>
+                        <span data-id={res.id} value={JSON.stringify(res)} className="btn small compare-btn">
+                            {themeGeneralSettings.wpgraphql.themeGeneralSettings
+                                .optGeneralSettings.compareBrokerSideBySideButtonAlternativeText
+                                ? themeGeneralSettings.wpgraphql.themeGeneralSettings
+                                    .optGeneralSettings
+                                    .compareBrokerSideBySideButtonAlternativeText
+                                : "Compare Brokers Side by Side"}
+                        </span>
+                        <Link className="btn small" to={res.uri}>
+                            {themeGeneralSettings.wpgraphql.themeGeneralSettings
+                                .optGeneralSettings.readFullReviewButtonAlternativeText
+                                ? themeGeneralSettings.wpgraphql.themeGeneralSettings
+                                    .optGeneralSettings.readFullReviewButtonAlternativeText
+                                : "Read Full Review"}
+                        </Link>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div class="row collapse broker-wrap">
+                    <div class="broker-tab-col img-col">
+                        <div class="thumb-wrap" >
+                            {res.featuredImage ? <img src={res.featuredImage.node.mediaItemUrl} sizes={res.featuredImage.node.sizes} srcSet={res.featuredImage.node.srcSet} /> : <img class="img-list-default" src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
+                        </div>
+                    </div>
 
-    //             </div>
-    //         </div>
-    //     )
-    // }
+                    <div class='broker-tab-col broker-name not-broker'>
+                        <h3>{res.title}</h3>
+                    </div>
+
+                    <div className="broker-tab-col broker-content broker-col not-broker"></div>
+
+                    <div class="broker-tab-col btn-col">
+                        <Link className="btn small" to={res.uri}>Read article</Link>
+                    </div>
+                </div>
+            )
+        }
+    }
 
     return (
         <Layout>
             <Helmet
                 htmlAttributes={{ lang: "en", amp: undefined }}
-                title='You searched for'
+                title={`You searched for ${searchString}`}
             />
             <CompareFrom />
             <div class="row search-row">
@@ -361,11 +437,12 @@ function SearchPage({ search }) {
                     <h3 class="archive-title">Search results for: <strong>{search.s}</strong></h3>
                     <div class="row brokers-list">
                         <div class="small-12 columns">
-                            {/* {currentResult.map(res => (
+                            {currentResult.map(res => (
                                 <ResultTableItem res={res} />
-                            ))} */}
+                            ))}
                         </div>
                     </div>
+                    <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={brokerSorter().length} noNumbers={false} />
                 </div>
             </div>
 

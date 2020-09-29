@@ -78,7 +78,7 @@ footer .app-img {
 }
 
 .broker-wrap .img-col img.img-list-default {
-    max-width: unset;
+    /* max-width: unset; */
 }
 
 .score-head {
