@@ -112,7 +112,6 @@ export default function RecommendedBroker(props) {
           <div className="thumb-wrap">
             {brokerImage ? (
               <img
-                className="img-list-default"
                 src={brokerImage.mediaItemUrl}
                 alt="WCB Logo"
               />

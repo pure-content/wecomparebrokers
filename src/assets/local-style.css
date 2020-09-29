@@ -672,3 +672,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     -webkit-box-shadow: 0 2px #005f8f;
     box-shadow: 0 2px #005f8f;
 }
+
+.brokers-list:not(.plarform-list) .rec-brok-wrap .broker-wrap .img-col {
+    display: flex;
+    align-items: center;
+}

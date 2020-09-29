@@ -140,7 +140,6 @@ export default function BrokerTableSingleItem(props) {
             <div className="thumb-wrap">
               {brokerInfo.featuredImage ? (
                 <img
-                  className="img-list-default"
                   src={brokerInfo.featuredImage.node.mediaItemUrl}
                   alt="WCB Logo"
                 />

@@ -205,7 +205,6 @@ function SearchPage({ search }) {
 
     const ResultTableItem = (props) => {
         const { res } = props
-        const class_for_arrow = 'cptBrokers' in res ? '' : 'not-broker'
         const platfomsList = [
             "MT5",
             "MT4",
@@ -229,7 +228,7 @@ function SearchPage({ search }) {
                         </div>
                     </div>
 
-                    <div class={`broker-tab-col broker-name ${class_for_arrow}`}>
+                    <div class='broker-tab-col broker-name'>
                         {platfThumbURL ? <img src={platfThumbURL} /> : null}
                         <h3>{res.title}</h3>
                     </div>
