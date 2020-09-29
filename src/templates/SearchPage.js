@@ -183,11 +183,14 @@ function SearchPage({ search }) {
     const indexOfLastPost = currentPage * postsPerPage
     const indexOfFirstPost = indexOfLastPost - postsPerPage
 
+    useEffect(() => {
+        brokerSorter()
+    })
 
     const brokerSorter = () => {
         if (Object.keys(search).length > 0) {
             const filteredData = allData.filter(eachData => {
-                if (eachData.title.toLowerCase().includes(searchString)) {
+                if (eachData.title.toLowerCase().includes(searchString.toLowerCase())) {
                     return eachData
                 }
             })
