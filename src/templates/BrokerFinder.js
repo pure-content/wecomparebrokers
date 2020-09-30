@@ -143,36 +143,10 @@ function BrokerFinderTemplate({ data, search }) {
   const [postsPerPage] = useState(6)
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
+  const [filteredBrokers, setFilteredBrokers] = useState(brokers)
 
-  const brokerSorter = () => {
-    if (search.country && search.instrument) {
-      const sortedBrokers = brokers.filter(eachBroker => {
-        if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument) && eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
-          return eachBroker
-        }
-      })
 
-      return sortedBrokers
-    } else if (search.country && !search.instrument) {
-      const sortedBrokers = brokers.filter(eachBroker => {
-        if (eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
-          return eachBroker
-        }
-      })
-      return sortedBrokers
-    } else if (!search.country && search.instrument) {
-      const sortedBrokers = brokers.filter(eachBroker => {
-        if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument)) {
-          return eachBroker
-        }
-      })
-      return sortedBrokers
-    }
-    const sortedBrokers = brokers
-    return sortedBrokers
-  }
-
-  const currentBrokers = brokerSorter().slice(indexOfFirstPost, indexOfLastPost)
+  const currentBrokers = filteredBrokers.slice(indexOfFirstPost, indexOfLastPost)
 
   useEffect(() => {
     if (search) {
@@ -218,6 +192,33 @@ function BrokerFinderTemplate({ data, search }) {
       $('#first-user-add').val(brokValue);
     });
   })
+
+  useEffect(() => {
+    if (search.country && search.instrument) {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
+        if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument) && eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
+          return eachBroker
+        }
+      })
+      setFilteredBrokers(sortedBrokers)
+    }
+    if (search.country && !search.instrument) {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
+        if (eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
+          return eachBroker
+        }
+      })
+      setFilteredBrokers(sortedBrokers)
+    }
+    if (!search.country && search.instrument) {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
+        if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument)) {
+          return eachBroker
+        }
+      })
+      setFilteredBrokers(sortedBrokers)
+    }
+  }, [search])
 
   const Filter = () => {
     return (
@@ -286,7 +287,7 @@ function BrokerFinderTemplate({ data, search }) {
           })}
         </div>
         <div className="small-12 columns text-right btn-navi-wrap">
-          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={brokerSorter().length} noNumbers={false} />
+          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={filteredBrokers.length} noNumbers={false} />
         </div>
       </div>
       <div className="choose-wrap bot-text">
