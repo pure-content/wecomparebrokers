@@ -14,6 +14,7 @@ import withLocation from "../hoc/withLocation"
 import PageTopContent from "../components/PageTopContent"
 import Pagination from "../components/Pagination"
 import BrokerTableSingleItemNewView from "../components/BrokerTableSingleItemNewView"
+import CallBackFormPopUp from "../components/CallBackFormPopUp"
 const shortid = require("shortid")
 
 export const query = graphql`
@@ -157,8 +158,6 @@ function BrokerFinderTemplate({ data, search }) {
       $("#main-form #country").val(catVal).trigger("change")
       $("#main-form #instrument").val(instVal).trigger("change")
     }
-
-
     $("#popup-sec-usr").select2({
       placeholder: "Second Broker",
       minimumResultsForSearch: Infinity,
@@ -191,6 +190,8 @@ function BrokerFinderTemplate({ data, search }) {
       var brokValue = $(this).attr('value');
       $('#first-user-add').val(brokValue);
     });
+
+
   })
 
   useEffect(() => {
@@ -274,6 +275,7 @@ function BrokerFinderTemplate({ data, search }) {
         ]}
       />
       <CompareFrom />
+      <CallBackFormPopUp />
       <PageTopContent page={page} template={pageTemplate} />
       <Filter />
       <div className="row brokers-list">

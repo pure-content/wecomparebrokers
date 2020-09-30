@@ -1603,8 +1603,8 @@ form#health-form input:-moz-placeholder {
     line-height: 46px;
 }
 
-.select2 .selection .select2-selection .select2-selection__placeholder {
-    color: #858585;
+#callback-form .select2 .selection .select2-selection .select2-selection__placeholder {
+    color: #B6B6B6;
 }
 
 .select2 .selection .select2-selection .select2-selection__arrow {
@@ -2042,7 +2042,8 @@ form#health-form input:-moz-placeholder {
     background: url(images/comp-bg-left.svg) no-repeat left 40px, url(images/comp-bg-right.svg) no-repeat top right;
 }
 
-#compare-form-wrap {
+#compare-form-wrap,
+#callback-form-wrap {
     position: fixed;
     top: 0;
     left: 0;
@@ -2053,7 +2054,8 @@ form#health-form input:-moz-placeholder {
     z-index: 99999;
 }
 
-#compare-form {
+#compare-form,
+#callback-form {
     max-width: 600px;
     width: 100%;
     padding: 40px 30px;
@@ -2069,7 +2071,8 @@ form#health-form input:-moz-placeholder {
     position: relative;
 }
 
-#compare-form .close {
+#compare-form .close,
+#callback-form .close {
     position: absolute;
     right: 15px;
     top: 10px;
@@ -2081,7 +2084,8 @@ form#health-form input:-moz-placeholder {
     transition: all 0.3s ease;
 }
 
-#compare-form .close:hover {
+#compare-form .close:hover,
+#callback-form .close:hover {
     opacity: 0.8;
 }
 
@@ -7726,4 +7730,45 @@ ul.trust-list li img {
 
 .brokers-list:not(.plarform-list) .broker-wrap .broker-name.not-broker {
     flex-grow: 1;
+}
+
+#callback-form .select2-container {
+    width: 100%;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+#callback-form ul li::before {
+    display: none;
+}
+
+#callback-form input {
+    float: none;
+}
+
+.callback-form--heading {
+    margin-bottom: 16px;
+}
+
+.callback-form--terms {
+    display: flex;
+}
+
+.callback-form--terms input[type="checkbox"] {
+    margin-bottom: 0;
+}
+
+#callback-form #gform_fields_2>li:last-of-type {
+    margin-bottom: 15px;
+}
+
+.callback-form--submit.callback-form--submit {
+    background-color: #2A79FF;
+    color: #fff;
+}
+
+.callback-form--submit.callback-form--submit:hover {
+    background-color: #fff;
+    color: #2A79FF;
+    border: 1px solid #2A79FF;
 }

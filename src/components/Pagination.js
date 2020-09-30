@@ -28,7 +28,7 @@ export default function Pagination({ postsPerPage, totalPosts, currentPage, setC
             </ul>
         )
     }
-    if (noNumbers) {
+    if (noNumbers && pageNumbers > 1) {
         return (
             <>
                 {currentPage > 1 ? <a class="prev pagination" onClick={() => setCurrentPage(--currentPage)}> Previous</a> : <span class="prev">Previous</span>}

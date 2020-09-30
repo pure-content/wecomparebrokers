@@ -163,13 +163,13 @@ export default function BrokerTableSingleItem(props) {
             )}
           </div>
           <div className="btn-wrap">
-            <Link className="btn" to={brokerInfo.uri}>
+            <a className="btn call-back-form" data-brokname={brokerInfo.title}>
               {themeGeneralSettings.wpgraphql.themeGeneralSettings
                 .optGeneralSettings.brokerCallBackButtonAlternativeText
                 ? themeGeneralSettings.wpgraphql.themeGeneralSettings
                   .optGeneralSettings.brokerCallBackButtonAlternativeText
                 : "Broker Callback"}
-            </Link>
+            </a>
             <a
               className="btn"
               href={brokerInfo.cptBrokers.affiliateLink}
@@ -238,6 +238,8 @@ export default function BrokerTableSingleItem(props) {
                       ) : (
                         <li>{platf}</li>
                       )
+                  } else {
+                    return <li>{platf}</li>
                   }
                 })}
               </ul>
@@ -264,6 +266,8 @@ export default function BrokerTableSingleItem(props) {
                       ) : (
                         <li>{account}</li>
                       )
+                  } else {
+                    return <li>{account}</li>
                   }
                 })}
               </ul>
@@ -290,6 +294,8 @@ export default function BrokerTableSingleItem(props) {
                       ) : (
                         <li>{spread}</li>
                       )
+                  } else {
+                    return <li>{spread}</li>
                   }
                 })}
               </ul>
@@ -316,6 +322,8 @@ export default function BrokerTableSingleItem(props) {
                       ) : (
                         <li>{method}</li>
                       )
+                  } else {
+                    return <li>{method}</li>
                   }
                 })}
               </ul>
