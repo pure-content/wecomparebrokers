@@ -80,58 +80,88 @@ function BrokerHealthTemplate({ data, search }) {
   const template = page.tmplBrokerHealth
   const brokers = data.wpgraphql.brokers123.nodes
   const generalSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings
+
   const name = search['broker-name'] ? search['broker-name'] : ''
   const good = search.good ? search.good : ''
   const banned = search.banned ? search.banned : ''
   const char = search.char ? search.char : ''
-  const [brokerNameState, setBrokerNameState] = useState(name)
+
 
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(6)
 
   useEffect(() => {
     $('.broker-col').matchHeight()
-  })
+    brokerSorter()
+    if (name) {
+      $('#broker-name').focus()
+    }
+  }, [search])
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
 
   const brokerSorter = () => {
-    if (name) {
+    if (name && !good && !banned) {
       const sortedBrokers = brokers.filter(eachBroker => {
         if (eachBroker.title.toLowerCase().includes(name.toLowerCase())) {
           return eachBroker
         }
       })
       return sortedBrokers
-    } else if (name && good) {
+    }
+    if (name && good && !banned) {
+      console.log('name and good')
       const sortedBrokers = brokers.filter(eachBroker => {
         if (eachBroker.title.toLowerCase().includes(name.toLowerCase()) && eachBroker.cptBrokers.brokerHealth === 'good') {
           return eachBroker
         }
       })
       return sortedBrokers
-    } else if (name && banned) {
+    }
+    if (name && banned && !good) {
       const sortedBrokers = brokers.filter(eachBroker => {
         if (eachBroker.title.toLowerCase().includes(name.toLowerCase()) && eachBroker.cptBrokers.brokerHealth === 'banned') {
           return eachBroker
         }
       })
       return sortedBrokers
-    } else if (good) {
+    }
+    if (good && !name && !banned) {
       const sortedBrokers = brokers.filter(eachBroker => {
         if (eachBroker.cptBrokers.brokerHealth === 'good') {
           return eachBroker
         }
       })
       return sortedBrokers
-    } else if (banned) {
+    }
+    if (banned && !good && !name) {
       const sortedBrokers = brokers.filter(eachBroker => {
         if (eachBroker.cptBrokers.brokerHealth === 'banned') {
           return eachBroker
         }
       })
       return sortedBrokers
-    } else if (char) {
+    }
+    if (banned && good && !name) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.cptBrokers.brokerHealth === 'banned' || eachBroker.cptBrokers.brokerHealth === 'good') {
+          return eachBroker
+        }
+      })
+      return sortedBrokers
+    }
+    if (banned && good && name) {
+      const sortedBrokers = brokers.filter(eachBroker => {
+        if (eachBroker.cptBrokers.brokerHealth === 'banned' || eachBroker.cptBrokers.brokerHealth === 'good' && eachBroker.title.toLowerCase().includes(name.toLowerCase())) {
+          return eachBroker
+        }
+      })
+      return sortedBrokers
+    }
+
+
+
+    if (char) {
       const sortedBrokers = brokers.filter(eachBroker => {
         if (eachBroker.title.toLowerCase().split('')[0] === char.toLowerCase()) {
           return eachBroker
@@ -148,6 +178,10 @@ function BrokerHealthTemplate({ data, search }) {
 
   const HealthFilter = () => {
 
+    const [brokerNameState, setBrokerNameState] = useState(name ? name : '')
+    const [goodCheck, setGoodCheck] = useState(good ? true : false)
+    const [bannedCheck, setBannedCheck] = useState(banned ? true : false)
+
     return (
       <div className="row">
         <div className="small-12 columns">
@@ -156,12 +190,11 @@ function BrokerHealthTemplate({ data, search }) {
             <form id="health-form" action={page.uri} method="get">
               <div className="inp-wrap">
                 <input id="broker-name" name="broker-name" onChange={e => setBrokerNameState(e.target.value)} type="text" value={brokerNameState} placeholder="Company name here..." autoComplete="off" />
-                <div className="inp-popup">
-                </div>
+                <div className="inp-popup"></div>
               </div>
               <div className="check-wrap">
-                <label><input id="good" name="good" type="checkbox" value="good" />Show only good brokers<span></span></label>
-                <label><input id="banned" name="banned" type="checkbox" value="banned" />Show brokers with warnings<span></span></label>
+                <label><input id="good" name="good" type="checkbox" value="good" onChange={() => setGoodCheck(!goodCheck)} checked={goodCheck} />Show only good brokers<span></span></label>
+                <label><input id="banned" name="banned" type="checkbox" value="banned" onChange={() => setBannedCheck(!bannedCheck)} checked={bannedCheck} />Show brokers with warnings<span></span></label>
               </div>
               <button id="form-submit" className="btn blue" type="submit">Check Broker Health</button>
             </form>

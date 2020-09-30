@@ -191,7 +191,6 @@ function SearchPage({ search }) {
                     return eachData
                 }
             })
-            console.log(filteredData)
             setSortedData(filteredData.sort((a, b) => new Date(b.date.split('T')[0]) - new Date(a.date.split('T')[0])))
         }
 
