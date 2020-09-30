@@ -2018,17 +2018,17 @@ form#health-form input:-moz-placeholder {
 
 .btn-navi-wrap a.prev,
 .btn-navi-wrap span.prev {
-    /* padding: 15px 25px 15px 45px; */
+    padding: 0 !important;
     margin-left: 0;
-    /* background-image: url(images/navi-left.svg); */
+    background-image: none !important;
     background-position: 12px center;
 }
 
 .btn-navi-wrap a.next,
 .btn-navi-wrap span.next {
-    /* padding: 15px 45px 15px 25px; */
+    padding: 0 !important;
     margin-right: 0;
-    /* background-image: url(images/navi-right.svg); */
+    background-image: none !important;
     background-position: calc(100% - 12px) center;
 }
 
