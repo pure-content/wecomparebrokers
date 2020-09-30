@@ -89,92 +89,85 @@ function BrokerHealthTemplate({ data, search }) {
 
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(6)
+  const [filteredBrokers, setFilteredBrokers] = useState(brokers)
 
   useEffect(() => {
     $('.broker-col').matchHeight()
-    brokerSorter()
     if (name) {
       $('#broker-name').focus()
     }
-  }, [search])
-  const indexOfLastPost = currentPage * postsPerPage
-  const indexOfFirstPost = indexOfLastPost - postsPerPage
 
-  const brokerSorter = () => {
     if (name && !good && !banned) {
-      const sortedBrokers = brokers.filter(eachBroker => {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
         if (eachBroker.title.toLowerCase().includes(name.toLowerCase())) {
           return eachBroker
         }
       })
-      return sortedBrokers
+      setFilteredBrokers(sortedBrokers)
     }
     if (name && good && !banned) {
-      console.log('name and good')
-      const sortedBrokers = brokers.filter(eachBroker => {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
         if (eachBroker.title.toLowerCase().includes(name.toLowerCase()) && eachBroker.cptBrokers.brokerHealth === 'good') {
           return eachBroker
         }
       })
-      return sortedBrokers
+      setFilteredBrokers(sortedBrokers)
     }
     if (name && banned && !good) {
-      const sortedBrokers = brokers.filter(eachBroker => {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
         if (eachBroker.title.toLowerCase().includes(name.toLowerCase()) && eachBroker.cptBrokers.brokerHealth === 'banned') {
           return eachBroker
         }
       })
-      return sortedBrokers
+      setFilteredBrokers(sortedBrokers)
     }
     if (good && !name && !banned) {
-      const sortedBrokers = brokers.filter(eachBroker => {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
         if (eachBroker.cptBrokers.brokerHealth === 'good') {
           return eachBroker
         }
       })
-      return sortedBrokers
+      setFilteredBrokers(sortedBrokers)
     }
     if (banned && !good && !name) {
-      const sortedBrokers = brokers.filter(eachBroker => {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
         if (eachBroker.cptBrokers.brokerHealth === 'banned') {
           return eachBroker
         }
       })
-      return sortedBrokers
+      setFilteredBrokers(sortedBrokers)
     }
     if (banned && good && !name) {
-      const sortedBrokers = brokers.filter(eachBroker => {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
         if (eachBroker.cptBrokers.brokerHealth === 'banned' || eachBroker.cptBrokers.brokerHealth === 'good') {
           return eachBroker
         }
       })
-      return sortedBrokers
+      setFilteredBrokers(sortedBrokers)
     }
     if (banned && good && name) {
-      const sortedBrokers = brokers.filter(eachBroker => {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
         if (eachBroker.cptBrokers.brokerHealth === 'banned' || eachBroker.cptBrokers.brokerHealth === 'good' && eachBroker.title.toLowerCase().includes(name.toLowerCase())) {
           return eachBroker
         }
       })
-      return sortedBrokers
+      setFilteredBrokers(sortedBrokers)
     }
-
-
-
     if (char) {
-      const sortedBrokers = brokers.filter(eachBroker => {
+      const sortedBrokers = filteredBrokers.filter(eachBroker => {
         if (eachBroker.title.toLowerCase().split('')[0] === char.toLowerCase()) {
           return eachBroker
         }
       })
-      return sortedBrokers
+      setFilteredBrokers(sortedBrokers)
     }
-    else {
-      const sortedBrokers = brokers
-      return sortedBrokers
-    }
-  }
-  const currentBrokers = brokerSorter().slice(indexOfFirstPost, indexOfLastPost)
+
+
+  }, [search])
+
+  const indexOfLastPost = currentPage * postsPerPage
+  const indexOfFirstPost = indexOfLastPost - postsPerPage
+  const currentBrokers = filteredBrokers.slice(indexOfFirstPost, indexOfLastPost)
 
   const HealthFilter = () => {
 
@@ -212,7 +205,7 @@ function BrokerHealthTemplate({ data, search }) {
           <div className="filter-wrap alph-filter">
             <ul className="alph-pag">
               {alphabetArr.map((letter) => {
-                return <li key={shortid.generate()}><Link to={`${page.uri}?char=${letter}`}>{letter}</Link></li>
+                return <li key={shortid.generate()}><a href={`${page.uri}?char=${letter}`}>{letter}</a></li>
               })}
             </ul>
           </div>
@@ -273,7 +266,7 @@ function BrokerHealthTemplate({ data, search }) {
           {currentBrokers.map((brok) => {
             return <BrokerTableItem brok={brok} />
           })}
-          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={brokerSorter().length} noNumbers={brokerSorter().length <= 6 ? true : false} />
+          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={filteredBrokers.length} noNumbers={filteredBrokers.length <= 6 ? true : false} />
         </div>
       </div>
       {template.bottomText ? (
