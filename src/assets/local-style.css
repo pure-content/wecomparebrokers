@@ -677,3 +677,28 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     display: flex;
     align-items: center;
 }
+
+#callback-form .gfield_select {
+    height: 48px;
+    border-color: #2A79FF;
+    border-radius: 24px !important;
+    outline: none;
+    font-size: 18px;
+    color: #B6B6B6;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: #fff;
+    margin-bottom: 16px;
+}
+
+.callback-form--loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 111;
+    transform: translate(-50%, -50%);
+}
+
+.callback-form--message {
+    margin-bottom: 15px;
+}
