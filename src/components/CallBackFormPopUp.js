@@ -63,6 +63,7 @@ export default function CallBackFormPopUp(props) {
     const [showReqMessage, setShowReqMessage] = useState(false)
     const [loading, setLoading] = useState(false)
 
+    //TODO: Handle error
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!termsCheck) {

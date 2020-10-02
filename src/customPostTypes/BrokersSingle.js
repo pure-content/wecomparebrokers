@@ -397,8 +397,10 @@ export const query = graphql`
           }
         }
       }
+
       themeGeneralSettings {
         optGeneralSettings {
+          takeMeToBrokerButtonAlternativeText
           disqusBodyText
           brokerRelatedGuides {
             ... on WPGraphQL_Broker123 {
@@ -890,7 +892,8 @@ export default function BrokersSingle({ data }) {
                     target="_blank"
                     rel="nofollow sponsored"
                   >
-                    Take me to broker
+                    {themeGeneralSettings.takeMeToBrokerButtonAlternativeText ? themeGeneralSettings.takeMeToBrokerButtonAlternativeText : 'Take me to broker'}
+
                   </a>
                   {broker.cptBrokers.takeMeToBrokerButtonNoteText ? (
                     <span class="floating-note">
@@ -1032,23 +1035,23 @@ export default function BrokersSingle({ data }) {
             <a href="#rel-guides">Related Guides</a>
           </li>
         </ul>
-        <div class="broker-floating-btn hide-for-small">
-          <a
-            class="btn blue"
-            href={broker.cptBrokers.affiliateLink}
-            target="_blank"
-            rel="nofollow sponsored"
-          >
-            {broker.cptBrokers.tabButtonAlternativeText
-              ? broker.cptBrokers.tabButtonAlternativeText
-              : "Take Me To Broker"}
-          </a>
-          {broker.cptBrokers.takeMeToBrokerButtonNoteText ? (
-            <span class="floating-note">
-              {broker.cptBrokers.takeMeToBrokerButtonNoteText}
-            </span>
-          ) : null}
-        </div>
+        {broker.cptBrokers.affiliateLink ? (
+          <div class="broker-floating-btn hide-for-small">
+            <a
+              class="btn blue"
+              href={broker.cptBrokers.affiliateLink}
+              target="_blank"
+              rel="nofollow sponsored"
+            >
+              {themeGeneralSettings.takeMeToBrokerButtonAlternativeText ? themeGeneralSettings.takeMeToBrokerButtonAlternativeText : 'Take me to broker'}
+            </a>
+            {broker.cptBrokers.takeMeToBrokerButtonNoteText ? (
+              <span class="floating-note">
+                {broker.cptBrokers.takeMeToBrokerButtonNoteText}
+              </span>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     )
   }
