@@ -1437,6 +1437,23 @@
     .right_banner_dropdown.open .new_banner_dropdown_arrow {
         top: 10px;
     }
+    #gform_fields_2 {
+        padding-left: 0;
+    }
+    #callback-form {
+        max-width: 90vw;
+    }
+    form input[type="text"],
+    form input[type="password"],
+    #callback-form .gfield_select {
+        height: 35px;
+        line-height: 11px;
+        font-size: 14px;
+    }
+    #callback-form .gfield_checkbox {
+        margin-left: 0;
+        padding-left: 0;
+    }
 }
 
 
