@@ -471,4 +471,10 @@ exports.createPages = async({ actions, graphql }) => {
         path: 'search',
         component: require.resolve("./src/templates/SearchPage.js")
     })
+
+    //Forex Market News Feed Page
+    actions.createPage({
+        path: 'forex-market-news/feed/',
+        component: require.resolve("./src/templates/ForexMarketNewsFeed.js")
+    })
 }
