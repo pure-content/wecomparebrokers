@@ -702,3 +702,105 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 .callback-form--message {
     margin-bottom: 15px;
 }
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-tab-col.broker-identity.one-column {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-tab-col.broker-identity.one-column .btn-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-tab-col.broker-identity.one-column .btn-wrap a,
+.brokers-list:not(.plarform-list) .broker-wrap .broker-tab-col.broker-identity.one-column .btn-wrap span {
+    text-decoration: underline;
+    color: #2A79FF;
+    cursor: pointer;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-identity.one-column .broker-name {
+    flex-direction: row;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-name img {
+    max-width: 100%;
+}
+
+.broker-identity.one-column .rat-val {
+    line-height: 18px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: #F2994A;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-identity.one-column .img-col.img-center {
+    width: 60%;
+    padding-top: 0;
+}
+
+.broker-content--first-col {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-content.three-columns {
+    padding: 0 25px 25px 25px !important;
+    background: none;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap .broker-content.three-columns span {
+    color: #3B4956;
+}
+
+.brokers-list:not(.plarform-list) .row.broker-wrap.new {
+    padding-top: 40px;
+}
+
+.brokers-list:not(.plarform-list) .broker-content.three-columns ul li {
+    color: #3B4956;
+    text-decoration: none;
+}
+
+.table-icon {
+    margin-bottom: 15px;
+}
+
+.broker-content--first-col,
+.broker-content--second-col,
+.broker-content--third-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap.new .btn-col {
+    padding-top: 0 !important;
+    justify-content: flex-start;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap.new .btn-col a {
+    background-color: #2A79FF;
+    color: #fff;
+    font-size: 16px;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap.new .btn-col a:hover {
+    color: #2a79ff;
+    background-color: #fff;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap.new .btn-col .aff-wrap {
+    margin-bottom: 25px;
+}
+
+.brokers-list:not(.plarform-list) .broker-wrap.new .btn-col>a {
+    margin-bottom: 25px;
+}

@@ -50,7 +50,7 @@ export default function DefaultTemplate({ data }) {
     title: page.title,
     uri: page.uri
   }
-  console.log(page.seo.title)
+
   return (
     <Layout pageInfo={pageInfo}>
 

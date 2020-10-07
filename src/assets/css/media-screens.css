@@ -1454,6 +1454,22 @@
         margin-left: 0;
         padding-left: 0;
     }
+    .rating {
+        height: 14px;
+    }
+    .broker-identity.one-column .rat-val {
+        margin-left: 10px;
+    }
+    .broker-content--first-col,
+    .broker-content--second-col,
+    .broker-content--third-col {
+        align-items: center;
+    }
+    .broker-content--first-col,
+    .broker-content--second-col,
+    .broker-content--third-col:not(:last-of-type) {
+        margin-bottom: 15px;
+    }
 }
 
 
@@ -2467,6 +2483,9 @@
     }
     .hp-icons .icons-list li {
         margin-bottom: 10px;
+    }
+    .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col {
+        justify-content: center;
     }
 }
 

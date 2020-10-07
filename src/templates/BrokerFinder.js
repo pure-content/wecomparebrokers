@@ -285,7 +285,7 @@ function BrokerFinderTemplate({ data, search }) {
             recommendedBrokerAdditionalText={pageTemplate.recommendedBrokerAdditionalText}
           />
           {currentBrokers.map(eachBroker => {
-            return <BrokerTableSingleItem brokerInfo={eachBroker} recommendedBrokerAdditionalText={pageTemplate.recommendedBrokerAdditionalText} />
+            return <BrokerTableSingleItemNewView brokerInfo={eachBroker} recommendedBrokerAdditionalText={pageTemplate.recommendedBrokerAdditionalText} />
           })}
         </div>
         <div className="small-12 columns text-right btn-navi-wrap">
