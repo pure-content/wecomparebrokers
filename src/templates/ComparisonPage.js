@@ -211,10 +211,7 @@ function ComparisonPageTemplate({ data, search }) {
     return (
       <div class="top-content-compare">
         <div class="row top-content">
-          <div
-            class="large-5 medium-6 columns top-content-col"
-            ref={topContentCol}
-          >
+          <div class="large-12 columns top-content-col" ref={topContentCol} >
             <div class="crumbs">
               <Link to={"/"}>Home page</Link> -&gt;
               <span>
@@ -225,28 +222,26 @@ function ComparisonPageTemplate({ data, search }) {
             </div>
             <article>
               <h1 class="page_title">
-                {page.allPagesFields.pageIcon.mediaItemUrl ? (
+                {/* {page.allPagesFields.pageIcon.mediaItemUrl ? (
                   <img
                     src={page.allPagesFields.pageIcon.mediaItemUrl}
                     alt="Title"
                   />
                 ) : (
                     ""
-                  )}
-                {page.allPagesFields.alternativeTitle
-                  ? Parser(page.allPagesFields.alternativeTitle)
-                  : Parser(page.title)}
+                  )} */}
+                {page.allPagesFields.alternativeTitle ? Parser(page.allPagesFields.alternativeTitle) : Parser(page.title)}
               </h1>
-              <div class="dot-sep">
+              {/* <div class="dot-sep">
                 <span></span>
                 <span></span>
                 <span></span>
-              </div>
+              </div> */}
               {Parser(page.content)}
             </article>
           </div>
           <div
-            class="medium-6 columns text-center top-content-col"
+            class="large-12 columns text-center top-content-col"
             ref={topContentCol}
           >
             <div class="compare-filter-wrap">

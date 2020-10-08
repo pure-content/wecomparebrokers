@@ -9,7 +9,7 @@ export default function PageTopContent(props) {
     return (
         <div className="top-content-wrap find-page">
             <div className="row top-content">
-                <div className="large-5 medium-6 columns top-content-col">
+                <div className="large-12 columns top-content-col">
                     <div className="crumbs">
                         <Link to="/">Home page</Link> -&gt;
                         <span>
@@ -20,26 +20,29 @@ export default function PageTopContent(props) {
                     </div>
                     <article>
                         <h1 className="page_title">
-                            {page.allPagesFields.pageIcon.mediaItemUrl ? (
+                            {/* {page.allPagesFields.pageIcon.mediaItemUrl ? (
                                 <img
                                     src={page.allPagesFields.pageIcon.mediaItemUrl}
                                     alt="Title"
                                 />
                             ) : (
                                     ""
-                                )}
-                            {page.allPagesFields.alternativeTitle
-                                ? Parser(page.allPagesFields.alternativeTitle)
-                                : Parser(page.title)}
+                                )} */}
+                            {page.allPagesFields.alternativeTitle ? Parser(page.allPagesFields.alternativeTitle) : Parser(page.title)}
                         </h1>
-                        <div className="dot-sep">
+                        <img
+                            className="page-title-icon"
+                            src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
+                            alt="WCB Logo"
+                        />
+                        {/* <div className="dot-sep">
                             <span></span>
                             <span></span>
                             <span></span>
-                        </div>
+                        </div> */}
                     </article>
                 </div>
-                <div className="medium-6 columns top-content-col">
+                <div className="large-12 columns top-content-col">
                     <div className="thumb-wrap">
                         {pageTemplate.rightColumnTitle ? (
                             <h2>

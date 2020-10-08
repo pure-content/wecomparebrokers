@@ -174,7 +174,7 @@ function BrokerFinderTemplate({ data, search }) {
       minimumResultsForSearch: Infinity,
       allowClear: true,
     })
-    $(".top-content-col").matchHeight()
+    // $(".top-content-col").matchHeight()
     $(".broker-col").matchHeight()
 
     $('.compare-btn').click(function () {

@@ -804,3 +804,50 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col>a {
     margin-bottom: 25px;
 }
+
+.crumbs {
+    margin-bottom: 15px;
+}
+
+.top-content-col article {
+    display: flex;
+    align-items: center;
+}
+
+.page-title-icon {
+    max-width: 30px;
+}
+
+.top-content h1 {
+    margin-bottom: 0;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.top-content-wrap.find-page .top-content .thumb-wrap {
+    padding-top: 20px;
+}
+
+.top-content-compare .top-content-col article {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.compare-filter-wrap {
+    top: 0;
+    transform: none;
+}
+
+.compare-filter-wrap h4 {
+    text-align: left;
+    padding-left: 15px;
+    margin-bottom: 0;
+}
+
+.compare-filter-wrap form {
+    text-align: left;
+}
+
+.top-content-compare .page_title {
+    margin-bottom: 20px;
+}
