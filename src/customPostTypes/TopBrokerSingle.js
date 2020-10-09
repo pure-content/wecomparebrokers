@@ -108,15 +108,41 @@ export const query = graphql`
                             title
                             uri
                             cptBrokers {
+                                brokerType
+                                ratingCommFees
+                                ratingCustResearch
+                                ratingCustServ
+                                ratingEase
+                                ratingMobTrad
+                                ratingPlatfTools
+                                likesList
+                                tabButtonAlternativeText
+                                brokerRegion
                                 specialOffer
-                                ourScore
-                                allSpreadsPoints
+                                affiliateLink
                                 minDeposit
                                 platformsList
                                 accountsList
                                 spreadsList
                                 methodsList
+                                takeMeToBrokerButtonNoteText
+                                ourScore
+                                allSpreadsPoints
+                                tableInfo
+                                platformRelation {
+                                  ... on WPGraphQL_Platform123 {
+                                    id
+                                    title
+                                    featuredImage {
+                                      node {
+                                        mediaItemUrl
+                                      }
+                                    }
+                                  }
+                                }
                             }
+
+
                             featuredImage {
                                 node {
                                     mediaItemUrl
@@ -285,7 +311,7 @@ export default function TopBrokerSingle({ data }) {
             </div>
         )
     }
-    console.log(topBroker123.cptPpcPages.brokersList)
+    topBroker123.cptPpcPages.brokersList.map(each => console.log(each.broker))
     return (
         <Layout>
             <Helmet
@@ -329,7 +355,7 @@ export default function TopBrokerSingle({ data }) {
                     <div class="row brokers-list">
                         <div class="small-12 columns">
                             {topBroker123.cptPpcPages.optionalBrokersList.map(brok => (
-                                <BrokerTableSingleItemNewView brokerInfo={brok.broker} />
+                                <BrokerTableSingleItemNewView brokerInfo={brok.brokerOpt} />
                             ))}
                         </div>
                     </div>
