@@ -57,7 +57,6 @@ export default function BrokerTableSingleItemNewView(props) {
     const spreadsList = ["Fixed", "Variable"]
     const methodsList = ["Bank transfer", "Credit Cards", "PayPal"]
     const { brokerInfo } = props
-    console.log(brokerInfo)
     const platformThumb = brokerInfo.cptBrokers.platformRelation
         ? brokerInfo.cptBrokers.platformRelation.featuredImage.node.mediaItemUrl
         : null

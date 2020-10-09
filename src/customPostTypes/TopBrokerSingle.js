@@ -311,7 +311,7 @@ export default function TopBrokerSingle({ data }) {
             </div>
         )
     }
-    topBroker123.cptPpcPages.brokersList.map(each => console.log(each.broker))
+
     return (
         <Layout>
             <Helmet
