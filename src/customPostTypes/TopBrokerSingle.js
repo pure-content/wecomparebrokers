@@ -7,6 +7,8 @@ import Layout from "../components/layout"
 import Parser from "html-react-parser"
 import Helmet from "react-helmet"
 import { scoreAnimation } from "../functions/scoreAnimation"
+import BrokerTableSingleItemNewView from '../components/BrokerTableSingleItemNewView'
+import CallBackFormPopUp from '../components/CallBackFormPopUp'
 
 export const query = graphql`
     query($id: ID!) {
@@ -53,15 +55,40 @@ export const query = graphql`
                             title
                             uri
                             cptBrokers {
+                                brokerType
+                                ratingCommFees
+                                ratingCustResearch
+                                ratingCustServ
+                                ratingEase
+                                ratingMobTrad
+                                ratingPlatfTools
+                                likesList
+                                tabButtonAlternativeText
+                                brokerRegion
                                 specialOffer
-                                ourScore
-                                allSpreadsPoints
+                                affiliateLink
                                 minDeposit
                                 platformsList
                                 accountsList
                                 spreadsList
                                 methodsList
+                                takeMeToBrokerButtonNoteText
+                                ourScore
+                                allSpreadsPoints
+                                tableInfo
+                                platformRelation {
+                                  ... on WPGraphQL_Platform123 {
+                                    id
+                                    title
+                                    featuredImage {
+                                      node {
+                                        mediaItemUrl
+                                      }
+                                    }
+                                  }
+                                }
                             }
+
                             featuredImage {
                                 node {
                                     mediaItemUrl
@@ -127,36 +154,13 @@ export default function TopBrokerSingle({ data }) {
             $(".broker-wrap").each(function () {
                 var str = $(this).html(),
                     minDep = $(this).find('.min-dep-col .val').html();
-                if (minDep.length) {
+                if (minDep) {
                     var currChar = minDep.charAt(0),
                         newStr = str.replaceAll(currChar, "<?php echo $curr; ?>");
                     $(this).html(newStr);
                 }
             });
             $(".broker-col").matchHeight()
-            if ($(".small-chart") != "") {
-                $(".small-chart").easyPieChart({
-                    size: 84,
-                    barColor: "#2A79FF",
-                    trackColor: "#F6F7F8",
-                    scaleColor: false,
-                    lineWidth: 5,
-                    onStep: function (from, to, percent) {
-                        $(this.el).find(".percent").text(Math.round(percent))
-                    },
-                })
-            }
-            if ($(".big-chart") != "") {
-                $(".big-chart").easyPieChart({
-                    barColor: "#2A79FF",
-                    trackColor: "#F6F7F8",
-                    scaleColor: false,
-                    lineWidth: 8,
-                    onStep: function (from, to, percent) {
-                        $(this.el).find(".percent").text(Math.round(percent))
-                    },
-                })
-            }
             $('.broker-tab-col').matchHeight()
         });
     })
@@ -281,7 +285,7 @@ export default function TopBrokerSingle({ data }) {
             </div>
         )
     }
-
+    console.log(topBroker123.cptPpcPages.brokersList)
     return (
         <Layout>
             <Helmet
@@ -292,6 +296,7 @@ export default function TopBrokerSingle({ data }) {
                     { property: "og:type", content: seo.opengraphType },
                 ]}
             />
+            <CallBackFormPopUp />
             <div class="top-brokers-wrap">
 
                 <div class="row top-brokers-intro">
@@ -312,7 +317,7 @@ export default function TopBrokerSingle({ data }) {
                     <div class="row brokers-list">
                         <div class="small-12 columns">
                             {topBroker123.cptPpcPages.brokersList.map(brok => (
-                                <BrokTableItem brok={brok} />
+                                <BrokerTableSingleItemNewView brokerInfo={brok.broker} />
                             ))}
                         </div>
                     </div>
@@ -324,7 +329,7 @@ export default function TopBrokerSingle({ data }) {
                     <div class="row brokers-list">
                         <div class="small-12 columns">
                             {topBroker123.cptPpcPages.optionalBrokersList.map(brok => (
-                                <BrokTableItem brok={brok} />
+                                <BrokerTableSingleItemNewView brokerInfo={brok.broker} />
                             ))}
                         </div>
                     </div>

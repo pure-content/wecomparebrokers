@@ -95,7 +95,7 @@ export default function Header(props) {
         </div>
 
         <div className="large-2 columns search-header">
-          <form method="get" id="searchform" action={"/search"}>
+          <form method="get" id="searchform" action={"/search/"}>
             <input
               type="text"
               name="s"

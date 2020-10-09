@@ -851,3 +851,7 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 .top-content-compare .page_title {
     margin-bottom: 20px;
 }
+
+.top-brokers-wrap .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col .call-back-form {
+    margin-top: 25px !important;
+}
