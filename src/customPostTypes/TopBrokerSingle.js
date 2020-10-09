@@ -186,8 +186,8 @@ export default function TopBrokerSingle({ data }) {
                     $(this).html(newStr);
                 }
             });
-            $(".broker-col").matchHeight()
-            $('.broker-tab-col').matchHeight()
+            // $(".broker-col").matchHeight()
+            // $('.broker-tab-col').matchHeight()
         });
     })
 
