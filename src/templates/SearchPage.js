@@ -168,14 +168,6 @@ function SearchPage({ search }) {
         info.wpgraphql.pages.nodes,
         info.wpgraphql.topBrokers123.nodes
     )
-    // [...info.wpgraphql.brokers123.nodes,
-    // ...info.wpgraphql.brokerComparisons123.nodes,
-    // ...info.wpgraphql.posts.nodes,
-    // ...info.wpgraphql.comparisons123.nodes,
-    // ...info.wpgraphql.forexMarketNews123.nodes,
-    // ...info.wpgraphql.pages.nodes,
-    // ...info.wpgraphql.topBrokers123.nodes
-    // ]
 
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage] = useState(24)
@@ -417,7 +409,6 @@ function SearchPage({ search }) {
             )
         }
     }
-
     return (
         <Layout>
             <Helmet
@@ -430,12 +421,18 @@ function SearchPage({ search }) {
                     <h3 class="archive-title">Search results for: <strong>{search.s}</strong></h3>
                     <div class="row brokers-list">
                         <div class="small-12 columns">
-                            {currentResult.map(res => (
-                                <ResultTableItem res={res} />
-                            ))}
+                            {currentResult.length > 0 ? (
+                                currentResult.map(res => (
+                                    <ResultTableItem res={res} />
+                                ))
+                            ) : (
+                                    <h1>Sorry, nothing was found</h1>
+                                )}
                         </div>
                     </div>
-                    <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={sortedData.length} noNumbers={false} />
+                    {currentResult.length > 0 ? (
+                        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={sortedData.length} noNumbers={false} />
+                    ) : null}
                 </div>
             </div>
 
