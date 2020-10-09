@@ -8,7 +8,7 @@ import Helmet from "react-helmet"
 import { scoreAnimation } from "../functions/scoreAnimation"
 import CompareFrom from "../components/CompareFrom"
 import { avarageRatingCounter } from "../functions/avarageRatingCounter"
-import BrokerTableSingleItem from "../components/BrokerTableSingleItem"
+import BrokerTableSingleItemNewView from "../components/BrokerTableSingleItemNewView"
 
 export const query = graphql`
     query($id: ID!) {
@@ -438,7 +438,8 @@ export default function BrokerComparisonSingle({ data }) {
             <div class="row brokers-list">
                 <div class="small-12 columns">
                     {page.tmplComparisonPage.predefinedBrokersListSingle.map(brok => (
-                        <BrokerTableSingleItem brokerInfo={brok} />
+                        <BrokerTableSingleItemNewView brokerInfo={brok} />
+
                     ))}
                 </div>
             </div>

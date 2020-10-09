@@ -6,7 +6,7 @@ import "jquery-match-height"
 import { scoreAnimation } from "../functions/scoreAnimation"
 import { avarageRatingCounter } from "../functions/avarageRatingCounter"
 
-export default function BrokerTableSingleItem(props) {
+export default function BrokerTableSingleItemNewView(props) {
     const themeGeneralSettings = useStaticQuery(graphql`
     query {
       wpgraphql {

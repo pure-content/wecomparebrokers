@@ -10,7 +10,7 @@ import { brokerTypes } from "../../data/brokerTypes"
 import withLocation from "../../hoc/withLocation"
 import CompareFrom from "../../components/CompareFrom"
 import Pagination from "../../components/Pagination"
-import BrokerTableSingleItem from "../../components/BrokerTableSingleItem"
+import BrokerTableSingleItemNewView from "../../components/BrokerTableSingleItemNewView"
 
 function ArchiveBrokers({ search }) {
 
@@ -203,7 +203,7 @@ function ArchiveBrokers({ search }) {
             <div className="row brokers-list">
                 <div className="small-12 columns">
                     {currentBrokers.map(eachBroker => {
-                        return <BrokerTableSingleItem brokerInfo={eachBroker} />
+                        return <BrokerTableSingleItemNewView brokerInfo={eachBroker} />
                     })}
                 </div>
                 <div className="small-12 columns text-right btn-navi-wrap">

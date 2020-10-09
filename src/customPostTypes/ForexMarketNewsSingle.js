@@ -5,7 +5,7 @@ import Parser from "html-react-parser"
 import Layout from "../components/layout"
 import CompareFrom from '../components/CompareFrom'
 import SideBarForexNews from '../components/SideBarForexNews'
-import BrokerTableSingleItem from '../components/BrokerTableSingleItem'
+import BrokerTableSingleItemNewView from '../components/BrokerTableSingleItemNewView'
 import ComplainsComponent from '../components/ComplainsComponent'
 
 export const query = graphql`
@@ -125,7 +125,7 @@ export default function ForexMarketNewsSingle({ data }) {
                 <div class="columns small-12 brokers-list">
                     {forexMarketBrokerList ? (
                         forexMarketBrokerList.map(broker => {
-                            return <BrokerTableSingleItem key={broker.id} brokerInfo={broker} />
+                            return <BrokerTableSingleItemNewView key={broker.id} brokerInfo={broker} />
                         })
                     ) : null}
                 </div>

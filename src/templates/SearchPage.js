@@ -7,7 +7,6 @@ import Parser from "html-react-parser"
 import Helmet from "react-helmet"
 import CompareFrom from "../components/CompareFrom"
 import withLocation from "../hoc/withLocation"
-import BrokerTableSingleItem from "../components/BrokerTableSingleItem"
 import Pagination from "../components/Pagination"
 
 function SearchPage({ search }) {

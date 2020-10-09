@@ -6,7 +6,7 @@ import "jquery-match-height"
 import "easy-pie-chart/dist/jquery.easypiechart"
 import Layout from "../components/layout"
 import { Helmet } from "react-helmet"
-import BrokerTableSingleItem from "../components/BrokerTableSingleItem"
+import BrokerTableSingleItemNewView from "../components/BrokerTableSingleItemNewView"
 import CompareFrom from "../components/CompareFrom"
 import withLocation from "../hoc/withLocation"
 import { scoreAnimation } from "../functions/scoreAnimation"
@@ -457,7 +457,7 @@ function ComparisonPageTemplate({ data, search }) {
       <div class="row brokers-list">
         <div class="small-12 columns">
           {templateFields.predefinedBrokersList.map(broker => {
-            return <BrokerTableSingleItem key={broker.id} brokerInfo={broker} />
+            return <BrokerTableSingleItemNewView key={broker.id} brokerInfo={broker} />
           })}
         </div>
       </div>
