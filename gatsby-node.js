@@ -159,6 +159,14 @@ exports.createPages = async({ actions, graphql }) => {
                     id
                 }
             }
+
+            qas(first: 1000) {
+                nodes {
+                    title   
+                    uri
+                    id
+                }
+            }
         }
     }
     `)
@@ -460,6 +468,17 @@ exports.createPages = async({ actions, graphql }) => {
         actions.createPage({
             path: post.uri,
             component: require.resolve("./src/templates/post-template.js"),
+            context: {
+                id: post.id,
+            },
+        })
+    })
+
+    const qas = result.data.wpgraphql.qas.nodes
+    qas.forEach(qa => {
+        actions.createPage({
+            path: qa.uri,
+            component: require.resolve("./src/customPostTypes/QandASingle.js"),
             context: {
                 id: post.id,
             },
