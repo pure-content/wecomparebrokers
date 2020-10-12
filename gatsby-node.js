@@ -480,7 +480,7 @@ exports.createPages = async({ actions, graphql }) => {
             path: qa.uri,
             component: require.resolve("./src/customPostTypes/QandASingle.js"),
             context: {
-                id: post.id,
+                id: qa.id,
             },
         })
     })
