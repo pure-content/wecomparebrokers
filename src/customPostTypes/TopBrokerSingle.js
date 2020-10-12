@@ -9,6 +9,7 @@ import Helmet from "react-helmet"
 import { scoreAnimation } from "../functions/scoreAnimation"
 import BrokerTableSingleItemNewView from '../components/BrokerTableSingleItemNewView'
 import CallBackFormPopUp from '../components/CallBackFormPopUp'
+import CompareFrom from '../components/CompareFrom'
 
 export const query = graphql`
     query($id: ID!) {
@@ -322,6 +323,8 @@ export default function TopBrokerSingle({ data }) {
                     { property: "og:type", content: seo.opengraphType },
                 ]}
             />
+            <CompareFrom />
+
             <CallBackFormPopUp />
             <div class="top-brokers-wrap">
 

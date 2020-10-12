@@ -37,11 +37,19 @@ export default function BrokerTableSingleItemNewView(props) {
             //   $("form #sec-usr").val(secVal).trigger("change")
             //$(".broker-col").matchHeight()
         })
-        // $(".compare-btn").click(function () {
-        //   var brokId = $(this).attr("data-id")
-        //   $("#first-user").val(brokId)
-        //   $("#compare-form-wrap").fadeIn("fast")
-        // })
+        $('.compare-btn').click(function () {
+            var brokValue = $(this).attr('value');
+            $('#first-user').val(brokValue);
+            $('#compare-form-wrap').fadeIn('fast');
+        });
+
+        $('#compare-form .close').click(function () {
+            $('#compare-form-wrap').fadeOut('fast');
+        });
+        $("#popup-sec-usr").select2({
+            placeholder: "Second Broker",
+            minimumResultsForSearch: Infinity,
+        })
     })
 
     const platfomsList = [
@@ -66,7 +74,7 @@ export default function BrokerTableSingleItemNewView(props) {
         return (
             <>
                 <span className="aff-wrap">
-                    <Link className="btn " to={brokerInfo.uri}>Visit Broker</Link>
+                    <Link className="btn " to={brokerInfo.cptBrokers.affiliateLink}>Visit Broker</Link>
                     {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText && (
                         <span className="floating-note">
                             {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText}
