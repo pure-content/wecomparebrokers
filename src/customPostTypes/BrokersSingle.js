@@ -904,9 +904,9 @@ export default function BrokersSingle({ data }) {
                     )}
                 </span>
               )}
-              <span data-id={broker.id} class="btn compare-btn">
-                Compare Brokers Side by Side
-              </span>
+              <a href={broker.cptBrokers.affiliateLink} class="btn">
+                Visit Boker
+              </a>
             </div>
             {broker.cptBrokers.textBelowVideo ? (
               <div class="video-text-wrap text-left">
