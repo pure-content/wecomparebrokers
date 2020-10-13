@@ -29,18 +29,6 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-sass'
         },
-        {
-            resolve: 'gatsby-source-gravityforms',
-            options: {
-                // Base URL needs to include protocol (http/https)
-                baseUrl: 'https://meek-hint.flywheelsites.com',
-                // Gravity Forms API
-                api: {
-                    key: process.env.CONSUMER_KEY,
-                    secret: process.env.CONSUMER_SECRET
-                }
-            },
-        },
         `gatsby-transformer-remark`,
         `gatsby-plugin-netlify`,
         `gatsby-plugin-sitemap`
