@@ -4,7 +4,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Parser from "html-react-parser"
 import "jquery-match-height"
 
-export default function ComplainsComponent() {
+export default function ComplainsComponent({ showList }) {
     const complainsInfo = useStaticQuery(graphql`
         query {
             wpgraphql{
@@ -52,7 +52,7 @@ export default function ComplainsComponent() {
             <div class="small-12 columns intro-content">
                 {Parser(page.pageBrokerFraudComplaints.textIntro ? page.pageBrokerFraudComplaints.textIntro : '')}
             </div>
-            {page.pageBrokerFraudComplaints.pointsList ? (
+            {page.pageBrokerFraudComplaints.pointsList && showList ? (
                 <div class="small-12 columns points-list-wrap">
                     {page.pageBrokerFraudComplaints.pointsList.map((pointsItem) => (
                         <div class="item-wrap">

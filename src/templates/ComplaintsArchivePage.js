@@ -104,7 +104,7 @@ export default function ComplaintsArchivePageTemplate({ data }) {
     return (
       <div class="large-9 medium-8 columns">
         <div class="cma-comp-list-wrap">
-          <ComplainsComponent />
+          <ComplainsComponent showList={true} />
           {page.pageBrokerFraudComplaints.bottomText ? (
             <div class="row bot-text">
               <div class="small-12 columns">
