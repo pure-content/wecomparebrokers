@@ -65,7 +65,6 @@ const PostTemplate = ({ data }) => {
           <div class="small-12 columns">
             <div class="crumbs">
               <Link to={'/'}>Home page</Link> {Parser('->')}
-              <Link to={'/broker-news'}>Latest<strong>Broker <strong>News</strong></strong></Link> {Parser('->')}
               <span>{post.title}</span>
             </div>
             <article>
