@@ -129,7 +129,7 @@ export default function BrokerTableSingleItemNewView(props) {
                             <span class="rat-color" style={{ width: `${avarageRatingCounter(brokerInfo.cptBrokers) * 20}%` }}></span>
                         </span>
                         <span class="rat-val">
-                            {avarageRatingCounter(brokerInfo.cptBrokers)}
+                            {isNaN(avarageRatingCounter(brokerInfo.cptBrokers)) ? '0' : avarageRatingCounter(brokerInfo.cptBrokers)}
                         </span>
                         {platformThumb && <img src={platformThumb} />}
                         {/* <h3>{brokerInfo.title}</h3> */}
