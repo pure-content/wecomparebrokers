@@ -5,6 +5,7 @@ import Parser from "html-react-parser"
 import "jquery-match-height"
 import { scoreAnimation } from "../functions/scoreAnimation"
 import { avarageRatingCounter } from "../functions/avarageRatingCounter"
+import AllData from '../data/allData'
 
 export default function BrokerTableSingleItemNewView(props) {
     const themeGeneralSettings = useStaticQuery(graphql`
@@ -52,18 +53,20 @@ export default function BrokerTableSingleItemNewView(props) {
         })
     })
 
-    const platfomsList = [
-        "MT5",
-        "MT4",
-        "WebTrader",
-        "Mobile",
-        "apps",
-        "Proprietary",
-        "cTrader",
-    ]
-    const accountsList = ["Micro", "Retail", "VIP", "Professional"]
-    const spreadsList = ["Fixed", "Variable"]
-    const methodsList = ["Bank transfer", "Credit Cards", "PayPal"]
+    const { platfomsList, accountsList, spreadsList, methodsList } = AllData()
+
+    // const platfomsList = [
+    //     "MT5",
+    //     "MT4",
+    //     "WebTrader",
+    //     "Mobile apps",
+    //     "Proprietary",
+    //     "cTrader",
+    // ]
+    // const accountsList = ["Micro", "Retail", "VIP", "Professional"]
+    // const spreadsList = ["Fixed", "Variable"]
+    // const methodsList = ["Bank transfer", "Credit Cards", "PayPal"]
+
     const { brokerInfo } = props
     const platformThumb = brokerInfo.cptBrokers.platformRelation
         ? brokerInfo.cptBrokers.platformRelation.featuredImage.node.mediaItemUrl

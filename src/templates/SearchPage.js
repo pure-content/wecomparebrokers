@@ -196,8 +196,7 @@ function SearchPage({ search }) {
             "MT5",
             "MT4",
             "WebTrader",
-            "Mobile",
-            "apps",
+            "Mobile apps",
             "Proprietary",
             "cTrader",
         ]
@@ -206,7 +205,6 @@ function SearchPage({ search }) {
         const methodsList = ["Bank transfer", "Credit Cards", "PayPal"]
         const themeGeneralSettings = info
         if (res.hasOwnProperty('cptBrokers')) {
-            console.log(res)
             const platfThumbURL = res.cptBrokers.platformRelation ? res.cptBrokers.platformRelation.featuredImage.node.mediaItemUrl : null
             return <BrokerTableSingleItemNewView brokerInfo={res} />
         } else {
