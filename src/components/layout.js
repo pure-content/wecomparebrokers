@@ -7,7 +7,6 @@ import OldFooter from "./OldFooter"
 import ExitPopUp from "./ExitPopUp"
 import Helmet from "react-helmet"
 import Parser from "html-react-parser"
-import exitIntent from 'exit-intent'
 import 'exit-intent/dist/exit-intent'
 
 import "../assets/css/foundation.min.css"
