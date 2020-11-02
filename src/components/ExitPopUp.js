@@ -6,12 +6,6 @@ import markets from '../assets/images/markets.png'
 
 
 export default function ExitPopUp({ setShowModal }) {
-    useEffect(() => {
-        document.addEventListener('om.Campaigns.init', function (event) {
-            // This event is passed the Campaigns object
-            console.log('Dododo');
-        });
-    })
     return (
         <div className="exit_popup_wrap">
 

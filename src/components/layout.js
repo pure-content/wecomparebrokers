@@ -29,7 +29,6 @@ const Layout = props => {
   const { isFrontPage, contentType, title, uri } = pageInfo ? pageInfo : ""
   const mainClass = isFrontPage ? "homePage" : ""
   const [showModal, setShowModal] = useState(false);
-  const [modalHasShown, setModalHasShown] = useState(false);
 
   const removeExitIntent = exitIntent({
     threshold: 50,
@@ -38,11 +37,11 @@ const Layout = props => {
     onExitIntent: () => {
       console.log('exit-intent triggered')
       setShowModal(true)
-      setModalHasShown(true)
+      sessionStorage.setItem('modalHasShown', true)
     }
   })
 
-  if (modalHasShown) {
+  if (sessionStorage.getItem('modalHasShown')) {
     removeExitIntent()
   }
 
