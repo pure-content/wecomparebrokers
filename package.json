@@ -21,7 +21,6 @@
         "base-64": "^0.1.0",
         "dotenv": "^8.2.0",
         "easy-pie-chart": "^2.1.7",
-        "exit-intent": "^1.1.0",
         "foundation-sites": "^6.6.3",
         "fs": "0.0.1-security",
         "gatsby": "^2.24.26",

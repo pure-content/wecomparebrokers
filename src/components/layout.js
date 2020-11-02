@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import $ from "jquery"
 import NewHeader from "./NewHeader"
 import OldHeader from "./OldHeader"
 import NewFooter from "./NewFooter"
 import OldFooter from "./OldFooter"
-import ExitPopUp from "./ExitPopUp"
 import Helmet from "react-helmet"
-import Parser from "html-react-parser"
-import exitIntent from 'exit-intent'
 
 import "../assets/css/foundation.min.css"
 import "../assets/css/normalize.css"
@@ -28,26 +25,8 @@ const Layout = props => {
   const { children, pageInfo } = props
   const { isFrontPage, contentType, title, uri } = pageInfo ? pageInfo : ""
   const mainClass = isFrontPage ? "homePage" : ""
-  const [showModal, setShowModal] = useState(false);
-
-
-
-
 
   useEffect(() => {
-    const removeExitIntent = exitIntent({
-      threshold: 50,
-      maxDisplays: 1,
-      eventThrottle: 100,
-      onExitIntent: () => {
-        setShowModal(true)
-        sessionStorage.setItem('modalHasShown', true)
-      }
-    })
-
-    if (sessionStorage.getItem('modalHasShown')) {
-      removeExitIntent()
-    }
     if (!document.querySelector('#omappapi')) {
       let script = document.createElement('script');
       script.setAttribute('data-campaign', 'z4rlnrgbdtn59cdhqhdf');
@@ -80,7 +59,6 @@ const Layout = props => {
       {CurrentHeader}
       <main className={mainClass}>{children}</main>
       {CurrentFooter}
-      {showModal && <ExitPopUp setShowModal={setShowModal} />}
     </>
   )
 }
