@@ -8,6 +8,7 @@ import ExitPopUp from "./ExitPopUp"
 import Helmet from "react-helmet"
 import Parser from "html-react-parser"
 import exitIntent from 'exit-intent'
+import 'exit-intent/dist/exit-intent'
 
 import "../assets/css/foundation.min.css"
 import "../assets/css/normalize.css"
@@ -35,7 +36,6 @@ const Layout = props => {
     maxDisplays: 1,
     eventThrottle: 100,
     onExitIntent: () => {
-      console.log('exit-intent triggered')
       setShowModal(true)
       sessionStorage.setItem('modalHasShown', true)
     }
@@ -44,6 +44,8 @@ const Layout = props => {
   if (sessionStorage.getItem('modalHasShown')) {
     removeExitIntent()
   }
+
+
 
   useEffect(() => {
     if (!document.querySelector('#omappapi')) {
