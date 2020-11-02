@@ -7,7 +7,7 @@ import OldFooter from "./OldFooter"
 import ExitPopUp from "./ExitPopUp"
 import Helmet from "react-helmet"
 import Parser from "html-react-parser"
-import 'exit-intent/dist/exit-intent'
+import exitIntent from 'exit-intent'
 
 import "../assets/css/foundation.min.css"
 import "../assets/css/normalize.css"
@@ -30,23 +30,24 @@ const Layout = props => {
   const mainClass = isFrontPage ? "homePage" : ""
   const [showModal, setShowModal] = useState(false);
 
-  const removeExitIntent = exitIntent({
-    threshold: 50,
-    maxDisplays: 1,
-    eventThrottle: 100,
-    onExitIntent: () => {
-      setShowModal(true)
-      sessionStorage.setItem('modalHasShown', true)
-    }
-  })
 
-  if (sessionStorage.getItem('modalHasShown')) {
-    removeExitIntent()
-  }
 
 
 
   useEffect(() => {
+    const removeExitIntent = exitIntent({
+      threshold: 50,
+      maxDisplays: 1,
+      eventThrottle: 100,
+      onExitIntent: () => {
+        setShowModal(true)
+        sessionStorage.setItem('modalHasShown', true)
+      }
+    })
+
+    if (sessionStorage.getItem('modalHasShown')) {
+      removeExitIntent()
+    }
     if (!document.querySelector('#omappapi')) {
       let script = document.createElement('script');
       script.setAttribute('data-campaign', 'z4rlnrgbdtn59cdhqhdf');
