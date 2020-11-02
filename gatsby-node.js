@@ -13,7 +13,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
                     {
                         test: /easy-pie-chart/,
                         use: loaders.null(),
-                    }
+                    }, {
+                        test: /exit-intent/,
+                        use: loaders.null(),
+                    },
                 ],
             },
         })
