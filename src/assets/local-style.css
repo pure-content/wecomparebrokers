@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 .homePage .new-hp-wrap p,
 .homePage .new-hp-wrap ul,
 .homePage .new-hp-wrap ol {
@@ -859,4 +860,117 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 .top-brokers-wrap .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col .aff-wrap .btn,
 .top-brokers-wrap .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col .btn {
     height: auto;
+}
+
+.exit_popup_wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #8080805e;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.exit_popup_body {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    max-height: 700px;
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 50px !important;
+    border-radius: 20px;
+    background-image: url('../assets/images/WCB-Exit-Pop.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.exit_popup_body h3 {
+    color: #fff;
+    font-size: 35px;
+    font-family: 'Lato';
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.exit_popup_broker_img img {
+    border-radius: 10px;
+}
+
+.exit_popup_broker_img {
+    margin-bottom: 10px;
+}
+
+.exit_popup_descr {
+    color: rgb(161, 163, 180);
+    font-size: 18px;
+    font-family: 'Lato';
+    text-align: center;
+    max-width: 480px;
+}
+
+.exit_popup_broker:not(:last-of-type) {
+    margin-right: 10px;
+}
+
+.demo_link {
+    background: rgb(250, 189, 41);
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.35);
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
+    color: rgb(255, 255, 255);
+    font-family: 'Lato';
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0px;
+    line-height: 1;
+    margin: 0px;
+    max-width: 100%;
+    padding: 10px 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-style: initial;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.demo_link:hover {
+    color: rgb(250, 189, 41);
+    background-color: transparent;
+    border: 2px solid rgb(250, 189, 41);
+}
+
+.exit_popup_brokers_wrap {
+    display: flex;
+}
+
+.exit_popup_close {
+    top: -15px;
+    right: -15px;
+    bottom: auto;
+    left: auto;
+    position: absolute;
+    cursor: pointer;
+    z-index: 999;
+    border: none;
+    background-color: rgb(53, 57, 69);
+    padding: 5px;
+    margin: 0px;
+    fill: rgb(255, 255, 255);
+    border-radius: 100%;
+    min-width: auto;
 }

@@ -1,11 +1,13 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import $ from "jquery"
 import NewHeader from "./NewHeader"
 import OldHeader from "./OldHeader"
 import NewFooter from "./NewFooter"
 import OldFooter from "./OldFooter"
+import ExitPopUp from "./ExitPopUp"
 import Helmet from "react-helmet"
 import Parser from "html-react-parser"
+import exitIntent from 'exit-intent'
 
 import "../assets/css/foundation.min.css"
 import "../assets/css/normalize.css"
@@ -26,23 +28,35 @@ const Layout = props => {
   const { children, pageInfo } = props
   const { isFrontPage, contentType, title, uri } = pageInfo ? pageInfo : ""
   const mainClass = isFrontPage ? "homePage" : ""
+  const [showModal, setShowModal] = useState(false);
+  const [modalHasShown, setModalHasShown] = useState(false);
 
-  useEffect(() => {
-    // $('a').each(function (i, link) {
-    //   link.href = link.href.replace('https://wecomparebrokers.netlify.app/', 'https://www.wecomparebrokers.com/')
-    // })
+  const removeExitIntent = exitIntent({
+    threshold: 50,
+    maxDisplays: 1,
+    eventThrottle: 100,
+    onExitIntent: () => {
+      console.log('exit-intent triggered')
+      setShowModal(true)
+      setModalHasShown(true)
+    }
   })
 
-  const CurrentHeader = isFrontPage ? (
-    <NewHeader title={title} />
-  ) : (
-      <OldHeader title={title} uri={uri} />
-    )
-  const CurrentFooter = isFrontPage ? (
-    <NewFooter />
-  ) : (
-      <OldFooter contentType={contentType} />
-    )
+  if (modalHasShown) {
+    removeExitIntent()
+  }
+
+  useEffect(() => {
+    let script = document.createElement('script');
+    script.setAttribute('data-campaign', 'z4rlnrgbdtn59cdhqhdf');
+    script.setAttribute('data-user', '71002');
+    script.setAttribute('async', true);
+    script.src = 'https://a.omappapi.com/app/js/api.min.js';
+    document.body.appendChild(script);
+  })
+
+  const CurrentHeader = isFrontPage ? (<NewHeader title={title} />) : (<OldHeader title={title} uri={uri} />)
+  const CurrentFooter = isFrontPage ? (<NewFooter />) : (<OldFooter contentType={contentType} />)
   return (
     <>
       <Helmet>
@@ -61,6 +75,7 @@ const Layout = props => {
       {CurrentHeader}
       <main className={mainClass}>{children}</main>
       {CurrentFooter}
+      {showModal && <ExitPopUp setShowModal={setShowModal} />}
     </>
   )
 }
