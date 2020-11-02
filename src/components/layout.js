@@ -46,12 +46,16 @@ const Layout = props => {
   }
 
   useEffect(() => {
-    let script = document.createElement('script');
-    script.setAttribute('data-campaign', 'z4rlnrgbdtn59cdhqhdf');
-    script.setAttribute('data-user', '71002');
-    script.setAttribute('async', true);
-    script.src = 'https://a.omappapi.com/app/js/api.min.js';
-    document.body.appendChild(script);
+    if (!document.querySelector('#omappapi')) {
+      let script = document.createElement('script');
+      script.setAttribute('data-campaign', 'z4rlnrgbdtn59cdhqhdf');
+      script.setAttribute('data-user', '71002');
+      script.setAttribute('async', true);
+      script.setAttribute('id', 'omappapi');
+      script.src = 'https://a.omappapi.com/app/js/api.min.js';
+      document.body.appendChild(script);
+    }
+
   })
 
   const CurrentHeader = isFrontPage ? (<NewHeader title={title} />) : (<OldHeader title={title} uri={uri} />)
