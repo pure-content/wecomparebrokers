@@ -207,7 +207,7 @@ export default function BrokerComparisonSingle({ data }) {
     const secondBrokerRef = useRef(null)
 
     useEffect(() => {
-        if ($(".small-chart") != "") {
+        if ($(".small-chart").length) {
             $(".small-chart").easyPieChart({
                 size: 84,
                 barColor: "#2A79FF",
@@ -219,7 +219,7 @@ export default function BrokerComparisonSingle({ data }) {
                 },
             })
         }
-        if ($(".big-chart") != "") {
+        if ($(".big-chart").length) {
             $(".big-chart").easyPieChart({
                 barColor: "#2A79FF",
                 trackColor: "#F6F7F8",
