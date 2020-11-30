@@ -835,22 +835,22 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .compare-filter-wrap {
-    top: 0;
-    transform: none;
+    /* top: 0;
+    transform: none; */
 }
 
 .compare-filter-wrap h4 {
-    text-align: left;
+    /* text-align: left;
     padding-left: 15px;
-    margin-bottom: 0;
+    margin-bottom: 0; */
 }
 
 .compare-filter-wrap form {
-    text-align: left;
+    /* text-align: left; */
 }
 
 .top-content-compare .page_title {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .top-brokers-wrap .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col .call-back-form {
@@ -973,4 +973,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     fill: rgb(255, 255, 255);
     border-radius: 100%;
     min-width: auto;
+}
+
+.compare-cols .tabs-brok-card-wrap .top-wrap .top-left .wp-post-image {
+    max-height: 88px;
 }

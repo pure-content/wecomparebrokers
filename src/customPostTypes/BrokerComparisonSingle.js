@@ -350,7 +350,7 @@ export default function BrokerComparisonSingle({ data }) {
                 <div class="tabs-brok-card-wrap tabs-card">
                     <div class="top-wrap">
                         <div class="top-left top-cols">
-                            {<img class='wp-post-image' src={firstBroker.featuredImage.node.mediaItemUrl} srcSet={firstBroker.featuredImage.node.srcSet} sizes={firstBroker.featuredImage.node.sizes} />}
+                            {<img class='wp-post-image' onLoad={() => $('.top-cols').matchHeight()} src={firstBroker.featuredImage.node.mediaItemUrl} srcSet={firstBroker.featuredImage.node.srcSet} sizes={firstBroker.featuredImage.node.sizes} />}
                         </div>
                         <div class="top-right top-cols text-center">
                             {scoreAnimation(firstBroker.cptBrokers.ourScore, 'big-chart', true)}
@@ -387,7 +387,7 @@ export default function BrokerComparisonSingle({ data }) {
                 <div class="tabs-brok-card-wrap tabs-card">
                     <div class="top-wrap">
                         <div class="top-left top-cols">
-                            {<img class='wp-post-image' src={firstBroker.featuredImage.node.mediaItemUrl} srcSet={firstBroker.featuredImage.node.srcSet} sizes={firstBroker.featuredImage.node.sizes} />}
+                            {<img class='wp-post-image' onLoad={() => $('.top-cols').matchHeight()} src={firstBroker.featuredImage.node.mediaItemUrl} srcSet={firstBroker.featuredImage.node.srcSet} sizes={firstBroker.featuredImage.node.sizes} />}
                         </div>
                         <div class="top-right top-cols text-center">
                             {scoreAnimation(firstBroker.cptBrokers.ourScore, 'big-chart', true)}
