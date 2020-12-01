@@ -905,7 +905,7 @@ export default function BrokersSingle({ data }) {
                 </span>
               )}
               <a href={broker.cptBrokers.affiliateLink} class="btn">
-                Visit Boker
+                Visit Broker
               </a>
             </div>
             {broker.cptBrokers.textBelowVideo ? (
