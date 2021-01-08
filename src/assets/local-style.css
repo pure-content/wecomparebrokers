@@ -723,6 +723,12 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     color: #2A79FF;
     cursor: pointer;
 }
+.brokers-list:not(.plarform-list) .broker-wrap.new .broker-tab-col.broker-identity.one-column{
+    width: 27%;
+}
+#rel-guides .brokers-list:not(.plarform-list) .broker-wrap.new .broker-name{
+    width: 63%;
+}
 
 .brokers-list:not(.plarform-list) .broker-wrap .broker-identity.one-column .broker-name {
     flex-direction: row;
@@ -835,8 +841,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .compare-filter-wrap {
-    /* top: 0;
-    transform: none; */
+    top: 0;
+    transform: none;
 }
 
 .compare-filter-wrap h4 {
@@ -977,4 +983,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 
 .compare-cols .tabs-brok-card-wrap .top-wrap .top-left .wp-post-image {
     max-height: 88px;
+}
+.broker-wrap.new .rating{
+    height: 65%;
+    
 }

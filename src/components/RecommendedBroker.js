@@ -95,7 +95,7 @@ export default function RecommendedBroker(props) {
   }
 
   return (
-    <div className="rec-brok-wrap">
+    <div className="rec-brok-wrap" id="rec-brok-wrap">
       <h3>Recommended broker</h3>
       <div className="row collapse broker-wrap">
         {brokerFields.specialOffer && (

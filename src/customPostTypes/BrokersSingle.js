@@ -9,6 +9,8 @@ import { brokerTypes } from "../data/brokerTypes"
 import Parser from "html-react-parser"
 import { useEffect } from "react"
 import { avarageRatingCounter } from "../functions/avarageRatingCounter"
+import BrokerTableSingleItemNewView from '../components/BrokerTableSingleItemNewView';
+import CallBackFormPopUp from '../components/CallBackFormPopUp';
 
 const shortid = require("shortid")
 
@@ -425,6 +427,12 @@ export const query = graphql`
                 spreadsList
                 methodsList
                 takeMeToBrokerButtonNoteText
+                ratingCommFees
+                ratingCustResearch
+                ratingCustServ
+                ratingEase
+                ratingMobTrad
+                ratingPlatfTools
               }
               featuredImage {
                 node {
@@ -1793,121 +1801,7 @@ export default function BrokersSingle({ data }) {
         ) : (
             <div class="row collapse brokers-list">
               <div class="small-12 columns">
-                {themeGeneralSettings.brokerRelatedGuides.map((brok) => {
-                  return (
-                    <div class="row collapse broker-wrap">
-                      <div class="broker-tab-col img-col">
-                        <div class="thumb-wrap" >
-                          {brok.featuredImage.node ? <img class="img-list-default" src={brok.featuredImage.node.mediaItemUrl} alt="WCB Logo" /> : <img class="img-list-default" src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
-                        </div>
-                      </div>
-
-                      <div class="broker-tab-col broker-name">
-                        <h3>{brok.title}</h3>
-                      </div>
-
-                      <div class="broker-tab-col broker-content">
-                        <div class="points-col broker-content-col text-center">
-                          <div class="wrap">
-                            <p class="val">{Parser(brok.cptBrokers.allSpreadsPoints ? brok.cptBrokers.allSpreadsPoints : '')}</p>
-                            <p>Spreads:</p>
-                          </div>
-                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See All Spreads</a> : ''}
-                        </div>
-                        <div class="min-dep-col broker-content-col text-center">
-                          <div class="wrap">
-                            <p class="val">{Parser(brok.cptBrokers.minDeposit ? brok.cptBrokers.minDeposit : '')}</p>
-                            <p>Min. deposit</p>
-                          </div>
-                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Learn More</a> : ''}
-                        </div>
-                        <div class="platf-col broker-content-col text-center">
-                          <div class="wrap cont-col" >
-                            <ul>
-                              {platfomsList.map(platf => {
-                                if (brok.cptBrokers.platformsList) {
-                                  return brok.cptBrokers.platformsList.includes(
-                                    platf
-                                  ) ? (
-                                      <li className="checked">{platf}</li>
-                                    ) : (
-                                      <li>{platf}</li>
-                                    )
-                                }
-                              })}
-                            </ul>
-                          </div>
-                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Platforms</a> : ''}
-                        </div>
-                        <div class="acc-col broker-content-col text-center">
-                          <div class="wrap cont-col" >
-                            <ul>
-                              {accountsList.map(account => {
-                                if (brok.cptBrokers.accountsList) {
-                                  return brok.cptBrokers.accountsList.includes(
-                                    account
-                                  ) ? (
-                                      <li className="checked">{account}</li>
-                                    ) : (
-                                      <li>{account}</li>
-                                    )
-                                }
-                              })}
-                            </ul>
-                          </div>
-                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Accounts</a> : ''}
-                        </div>
-                        <div class="spreads-col broker-content-col text-center">
-                          <div class="wrap cont-col" >
-                            <ul>
-                              {spreadsList.map(spread => {
-                                if (brok.cptBrokers.spreadsList) {
-                                  return brok.cptBrokers.spreadsList.includes(
-                                    spread
-                                  ) ? (
-                                      <li className="checked">{spread}</li>
-                                    ) : (
-                                      <li>{spread}</li>
-                                    )
-                                }
-                              })}
-                            </ul>
-                          </div>
-                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Spreads</a> : ''}
-                        </div>
-                        <div class="methods-col broker-content-col text-center">
-                          <div class="wrap cont-col" >
-                            <ul>
-                              {methodsList.map(method => {
-                                if (brok.cptBrokers.methodsList) {
-                                  return brok.cptBrokers.methodsList.includes(
-                                    method
-                                  ) ? (
-                                      <li className="checked">{method}</li>
-                                    ) : (
-                                      <li>{method}</li>
-                                    )
-                                }
-                              })}
-                            </ul>
-                          </div>
-                          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Methods</a> : ''}
-                        </div>
-                      </div>
-
-                      <div class="broker-tab-col btn-col">
-                        {brok.cptBrokers.affiliateLink ? (
-                          <span class="aff-wrap">
-                            <a class="btn small" href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Take Me To Broker</a>
-                            {brok.cptBrokers.takeMeToBrokerButtonNoteText ? <span class="floating-note">{brok.cptBrokers.takeMeToBrokerButtonNoteText}</span> : ''}
-                          </span>
-                        ) : null}
-                        <span data-id={brok.id} class="btn small compare-btn">Compare Brokers Side by Side</span>
-                        <Link class="btn small" to={brok.uri}>Read Full Review</Link>
-                      </div>
-                    </div>
-                  )
-                })}
+                {themeGeneralSettings.brokerRelatedGuides.map((brok) => <BrokerTableSingleItemNewView brokerInfo={brok}/>)}
               </div>
             </div>
 
@@ -1947,6 +1841,7 @@ export default function BrokersSingle({ data }) {
         ]}
       />
       <CompareFrom />
+      <CallBackFormPopUp />
       <div class="single-broker-wrap">
         <div class="broker-floating-btn show-for-small-only">
           <a

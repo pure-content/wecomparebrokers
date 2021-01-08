@@ -36,6 +36,9 @@ const Layout = props => {
       script.src = 'https://a.omappapi.com/app/js/api.min.js';
       document.body.appendChild(script);
     }
+    $('a[href*="wp-content"]').on('click', function(e){
+      e.preventDefault();
+    });
 
   })
 

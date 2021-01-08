@@ -20,13 +20,9 @@ export const avarageRatingCounter = cptBrokers => {
     ]
 
     let divider = 0
-    Object.values(arrayOfRatings).map((item) =>
-        item !== null ? divider++ : divider
-    )
-    let avarage =
-        Object.values(arrayOfRatings).reduce((a, b) =>
-            typeof b === "number" ? a + b : a
-        ) / divider
+    Object.values(arrayOfRatings).map( (item) => item !== null ? divider++ : divider )
+
+    let avarage = Object.values(arrayOfRatings).reduce((a, b) => typeof b === "number" ? a + b : a ) / divider
     const avarageRound = Math.round(avarage * 10) / 10
     return avarageRound
 }

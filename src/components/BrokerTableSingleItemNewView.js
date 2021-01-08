@@ -101,7 +101,7 @@ export default function BrokerTableSingleItemNewView(props) {
             </>
         )
     }
-
+    
     if (brokerInfo) {
         return (
             <div className="row collapse broker-wrap new">

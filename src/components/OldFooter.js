@@ -517,7 +517,7 @@ export default function OldFooter(props) {
                   </ul>
                 </div>
                 <div class="gform_footer top_label">
-                  <input type="submit" id="gform_submit_button_1" class="gform_button button btn " value="Sign Up" onclick="if(window[&quot;gf_submitting_1&quot;]){return false;}  window[&quot;gf_submitting_1&quot;]=true;  " onkeypress="if( event.keyCode == 13 ){ if(window[&quot;gf_submitting_1&quot;]){return false;} window[&quot;gf_submitting_1&quot;]=true;  jQuery(&quot;#gform_1&quot;).trigger(&quot;submit&quot;,[true]); }" />
+                  <input type="submit" id="gform_submit_button_1" class="gform_button button btn " value="Sign Up" onClick="if(window[&quot;gf_submitting_1&quot;]){return false;}  window[&quot;gf_submitting_1&quot;]=true;  " onKeyPress="if( event.keyCode == 13 ){ if(window[&quot;gf_submitting_1&quot;]){return false;} window[&quot;gf_submitting_1&quot;]=true;  jQuery(&quot;#gform_1&quot;).trigger(&quot;submit&quot;,[true]); }" />
                   <input type="hidden" name="gform_ajax" value="form_id=1&amp;title=&amp;description=&amp;tabindex=0" />
                   <input type="hidden" class="gform_hidden" name="is_submit_1" value="1" />
                   <input type="hidden" class="gform_hidden" name="gform_submit" value="1" />
