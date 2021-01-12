@@ -39,46 +39,46 @@ exports.createPages = async({ actions, graphql }) => {
                         ... on WPGraphQL_DefaultTemplate {
                             templateName
                         }
-                        ... on WPGraphQL_ForexMarketNewsArchiveTemplate {
+                        ... on WPGraphQL_Template_ForexMarketNewsArchive {
                             templateName
                         }
-                        ... on WPGraphQL_ComplaintSinglePageTemplate {
+                        ... on WPGraphQL_Template_ComplaintSinglePage {
                             templateName
                         }
-                        ... on WPGraphQL_CheapestBrokerTemplate {
+                        ... on WPGraphQL_Template_CheapestBroker {
                             templateName
                         }
-                        ... on WPGraphQL_ComparisonPageTemplate {
+                        ... on WPGraphQL_Template_ComparisonPage {
                             templateName
                         }
-                        ... on WPGraphQL_ComplaintsArchivePageTemplate {
+                        ... on WPGraphQL_Template_ComplaintsArchivePage {
                             templateName
                         }
-                        ... on WPGraphQL_ComplaintsFormTemplate {
+                        ... on WPGraphQL_Template_ComplaintsForm {
                             templateName
                         }
-                        ... on WPGraphQL_BrokersPlatformTemplate {
+                        ... on WPGraphQL_Template_BrokersPlatform {
                             templateName
                         }
-                        ... on WPGraphQL_BrokerFinderTemplate {
+                        ... on WPGraphQL_Template_BrokerFinder {
                             templateName
                         }
-                        ... on WPGraphQL_BrokerHealthTemplate {
+                        ... on WPGraphQL_Template_BrokerHealth {
                             templateName
                         }
-                        ... on WPGraphQL_HomePageTemplate {
+                        ... on WPGraphQL_Template_HomePage {
                             templateName
                         }
-                        ... on WPGraphQL_NewHomePageTemplate {
+                        ... on WPGraphQL_Template_NewHomePage {
                             templateName
                         }
-                        ... on WPGraphQL_PlatformsListTemplate {
+                        ... on WPGraphQL_Template_PlatformsList {
                             templateName
                         }
-                        ... on WPGraphQL_PopularPostsTemplate {
+                        ... on WPGraphQL_Template_PopularPosts {
                             templateName
                         }
-                        ... on WPGraphQL_ComingSoonTemplate {
+                        ... on WPGraphQL_Template_ComingSoon {
                             templateName
                         }
                     }
@@ -173,7 +173,7 @@ exports.createPages = async({ actions, graphql }) => {
         }
     }
     `)
-
+    
     // pull the page data out of the query response
     const pages = result.data.wpgraphql.pages.nodes
     const templates = []
