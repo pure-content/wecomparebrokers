@@ -191,7 +191,7 @@ export default function NewHomePage({ data }) {
       if ("traderInformationForStocks" in brokerInfo.cptBrokers) {
         awdclassName = "stock-awd"
         traderInfo = brokerInfo.cptBrokers.traderInformationForStocks
-        bestBrokText = "Best Stock Broker"
+        bestBrokText = "Best Forex Broker"
         brokerAvarage = avarageRatingCounter(
           templateFields.stockBrokerAward.cptBrokers
         )
@@ -199,7 +199,7 @@ export default function NewHomePage({ data }) {
       if ("traderInformationForForex" in brokerInfo.cptBrokers) {
         awdclassName = "forex-awd"
         traderInfo = brokerInfo.cptBrokers.traderInformationForForex
-        bestBrokText = "Best Forex Broker"
+        bestBrokText = "Best Trading Conditions"
         brokerAvarage = avarageRatingCounter(
           templateFields.forexBrokerAward.cptBrokers
         )
@@ -207,7 +207,7 @@ export default function NewHomePage({ data }) {
       if ("traderInformationForEtf" in brokerInfo.cptBrokers) {
         awdclassName = "etf-awd"
         traderInfo = brokerInfo.cptBrokers.traderInformationForEtf
-        bestBrokText = "Best ETF Broker"
+        bestBrokText = "Best Mobile App"
         brokerAvarage = avarageRatingCounter(
           templateFields.etfBrokerAward.cptBrokers
         )
