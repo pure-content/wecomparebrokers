@@ -642,11 +642,7 @@ export default function BrokersSingle({ data }) {
               <p>
                 <strong>Email: </strong>
                 {broker.cptBrokers.brokerEmails.map(em => {
-                  return em.telephoneNumber ? (
-                    <a href={`mailto:${em.emailLink}`}>{Parser(em.email ? em.email : '')}</a>
-                  ) : (
-                      <span>{Parser(em.email ? em.email : '')}</span>
-                    )
+                    return <a href={`mailto:${em.email}`}>{Parser(em.email ? em.email : '')}</a>
                 })}
               </p>
             </div>
@@ -912,9 +908,15 @@ export default function BrokersSingle({ data }) {
                     )}
                 </span>
               )}
-              <a href={broker.cptBrokers.affiliateLink} class="btn">
-                Visit Broker
-              </a>
+              
+              {
+                broker.cptBrokers.affiliateLink && (
+                  <a href={broker.cptBrokers.affiliateLink} class="btn">
+                    Visit Broker
+                  </a>
+                )
+              }
+              
             </div>
             {broker.cptBrokers.textBelowVideo ? (
               <div class="video-text-wrap text-left">

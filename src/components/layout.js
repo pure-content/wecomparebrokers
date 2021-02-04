@@ -35,10 +35,24 @@ const Layout = props => {
       script.setAttribute('id', 'omappapi');
       script.src = 'https://a.omappapi.com/app/js/api.min.js';
       document.body.appendChild(script);
+
+      
+      let mobScript = document.createElement('script');
+      mobScript.setAttribute('data-campaign', 'qrasoppinx7ifldrxr6o');
+      mobScript.setAttribute('data-user', '71002');
+      mobScript.setAttribute('async', true);
+      mobScript.setAttribute('id', 'omappapiMob');
+      mobScript.src = 'https://a.omappapi.com/app/js/api.min.js';
+      document.body.appendChild(mobScript);
     }
-    $('a[href*="wp-content"]').on('click', function(e){
+    
+    $('a[href*="wp-content"]').on('click' ,function(e){
       e.preventDefault();
     });
+    $('a[href*="wp-content"]').each(function(i, elem){
+      $(elem).attr('href', '');
+    });
+    
 
   })
 

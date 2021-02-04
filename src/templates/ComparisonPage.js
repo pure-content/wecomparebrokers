@@ -207,6 +207,15 @@ function ComparisonPageTemplate({ data, search }) {
 
   })
 
+  useEffect(() => {
+    if(firstUsr){
+      $('html, body').animate({
+        scrollTop: $('.compare-cols').offset().top
+      }, 1000);
+    }
+    
+  }, [firstUsr])
+
   const TopContent = () => {
     return (
       <div class="top-content-compare">

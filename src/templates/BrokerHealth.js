@@ -165,6 +165,12 @@ function BrokerHealthTemplate({ data, search }) {
 
   }, [search])
 
+  useEffect(() => {
+    $('html, body').animate({
+      scrollTop: $('.health-filter').offset().top
+    }, 1000);
+  }, [currentPage])
+
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
   const currentBrokers = filteredBrokers.slice(indexOfFirstPost, indexOfLastPost)
