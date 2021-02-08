@@ -33,6 +33,9 @@ export const query = graphql`
           newBannerText
           trustSubsectionText
           bottomTextDropdown
+          etfBrokerInfoBox
+          forexBrokerInfoBox
+          stockBrokerInfoBox
           listSocProof {
             text
           }
@@ -190,7 +193,7 @@ export default function NewHomePage({ data }) {
 
       if ("traderInformationForStocks" in brokerInfo.cptBrokers) {
         awdclassName = "stock-awd"
-        traderInfo = brokerInfo.cptBrokers.traderInformationForStocks
+        traderInfo = templateFields.stockBrokerInfoBox
         bestBrokText = "Best Forex Broker"
         brokerAvarage = avarageRatingCounter(
           templateFields.stockBrokerAward.cptBrokers
@@ -198,7 +201,7 @@ export default function NewHomePage({ data }) {
       }
       if ("traderInformationForForex" in brokerInfo.cptBrokers) {
         awdclassName = "forex-awd"
-        traderInfo = brokerInfo.cptBrokers.traderInformationForForex
+        traderInfo = templateFields.forexBrokerInfoBox
         bestBrokText = "Best Trading Conditions"
         brokerAvarage = avarageRatingCounter(
           templateFields.forexBrokerAward.cptBrokers
@@ -206,7 +209,7 @@ export default function NewHomePage({ data }) {
       }
       if ("traderInformationForEtf" in brokerInfo.cptBrokers) {
         awdclassName = "etf-awd"
-        traderInfo = brokerInfo.cptBrokers.traderInformationForEtf
+        traderInfo = templateFields.etfBrokerInfoBox
         bestBrokText = "Best Mobile App"
         brokerAvarage = avarageRatingCounter(
           templateFields.etfBrokerAward.cptBrokers

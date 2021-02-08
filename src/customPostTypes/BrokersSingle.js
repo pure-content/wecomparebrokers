@@ -608,11 +608,11 @@ export default function BrokersSingle({ data }) {
               <span>{broker.brokerLink}</span>
             </a>
           )}
-          {broker.brokerAddress && (
+          {broker.cptBrokers.brokerAddress && (
             <div class="brok-add-info address-block">
               <p>
                 <strong>Address: </strong>
-                {broker.brokerAddress}
+                {broker.cptBrokers.brokerAddress}
               </p>
             </div>
           )}
