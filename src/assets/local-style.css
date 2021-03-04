@@ -988,3 +988,239 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     height: 65%;
     
 }
+
+.top-a-d-wrap{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.top-a-d-wrap .columns{
+    display: flex;
+    justify-content: center;
+}
+.trust-section-bot-text{
+    background-color: #223144;
+    padding: 90px 0 60px;
+}
+.homePage .trust-section-bot-text p,
+.homePage .trust-section-bot-text h2{
+    color: #fff;
+}
+
+.row.expanded{
+    max-width: unset;
+}
+
+.brokers-top__left-a-d,
+.brokers-top__right-a-d{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brokers-top__left-a-d-each:not(:last-of-type),
+.brokers-top__right-a-d-each:not(:last-of-type){
+    margin-bottom: 30px;
+}
+.top-three{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.top-three:not(:last-of-type){
+    margin-bottom: 130px;
+}
+.top-three h4{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 77px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 24px;
+}
+.top-three-brok-wrap{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px #C4C4C4;
+    width: 100%;
+    max-width: 1154px;
+    margin-bottom: 50px;
+}
+.top-three-brok-each{
+    display: flex;
+}
+.top-three-brok-each:not(:last-of-type){
+    border-bottom: 1px solid #DCDEDF;
+}
+.brok-each-box{
+    padding: 17px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.count-name .count{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+    color: #FFFFFF;
+    min-width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.count-name .count1{
+    background-color: #F2994A;
+}
+.count-name .count2{
+    background-color: #444966;
+}
+.count-name .count3{
+    background-color: #3580D3;
+}
+.count-name .name{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 126.39%;
+    color: #000000;
+}
+.brok-each-box:not(:last-of-type){
+    border-right: 1px solid #DCDEDF;
+}
+.brok-img img{
+    max-width: 100px;
+}
+
+.count-name{
+    max-width: 218px;
+    width: 100%;
+    padding: 1px 15px;
+}
+
+.brok-img{
+    max-width: 205px;
+    width: 100%;
+    justify-content: center;
+}
+
+
+.min-deposit,
+.platforms,
+.leverage,
+.bonus{
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.min-deposit h6,
+.platforms h6,
+.leverage h6,
+.bonus h6{
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 126.39%;
+    color: #000000;
+    margin-bottom: 8px;
+}
+.min-deposit span,
+.platforms span,
+.leverage span,
+.bonus span{
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #000000;
+    line-height: 1.5;
+}
+.min-deposit{
+    max-width: 125px;
+    width: 100%;
+}
+.platforms{
+    max-width: 136px;
+    width: 100%;
+}
+.leverage{
+    max-width: 127px;
+    width: 100%;
+}
+.bonus{
+    max-width: 129px;
+    width: 100%;
+}
+.to-broker{
+    max-width: 212px;
+    width: 100%;
+    justify-content: center;
+}
+.to-broker a{
+    padding: 14px 27px;
+    border: 1px solid transparent;
+    transition: .3s all;
+    color: #fff;
+    background-color: #2A79FF;
+    border-radius: 12px;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.to-broker a:hover{
+    border: 1px solid #2A79FF;
+    transition: .3s all;
+    background-color: #fff;
+    color: #2A79FF;
+}
+
+.top-three-brok-bottom-btn a{
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    color: #2A79FF;
+    border: 1px solid #2A79FF;
+    border-radius: 50px;
+    padding: 15px 45px;
+    display: block;
+    transition: .3s all;
+}
+
+.top-three-brok-bottom-btn a:hover{
+    background-color: #2A79FF;
+    color: #fff;
+}
+
+.brokers-top-section{
+    margin-bottom: 100px;
+}
+
+.soc-heading{
+    margin-bottom: 55px;
+}
+.soc-heading h3{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #000000;
+}
+.brokAd{
+    margin: 30px 0;
+}

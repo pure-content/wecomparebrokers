@@ -1067,6 +1067,7 @@ header {
 
 .hp-icons {
     margin-top: 54px;
+    margin-bottom: 170px;
 }
 
 .hp-icons .icons-list {
@@ -7672,7 +7673,6 @@ ul.trust-list {
     justify-content: space-around;
     -ms-align-items: center;
     align-items: center;
-    margin-top: 59px;
 }
 
 ul.trust-list li:before {

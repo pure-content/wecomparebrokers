@@ -499,4 +499,13 @@ exports.createPages = async({ actions, graphql }) => {
         path: 'forex-market-news/feed/',
         component: require.resolve("./src/templates/ForexMarketNewsFeed.js")
     })
+
+    //Testing Page
+    actions.createPage({
+        path: 'test',
+        component: require.resolve("./src/templates/TestingNewHome.js"),
+        context: {
+            id: 'cG9zdDo5MDY4',
+        },
+    })
 }

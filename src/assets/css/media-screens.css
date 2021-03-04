@@ -1470,6 +1470,56 @@
     .broker-content--third-col:not(:last-of-type) {
         margin-bottom: 15px;
     }
+
+
+    .count-name,
+    .brok-img{
+        max-width: none;
+        width: 50%;
+    }
+    .min-deposit,
+    .platforms,
+    .leverage,
+    .bonus{
+        max-width: none;
+        width: 25%;
+    }
+    .to-broker{
+        max-width: none;
+        width: 100%;
+    }
+
+    .top-three-brok-each{
+        flex-wrap: wrap;
+        box-shadow: 0px 4px 20px #c4c4c4;
+    }
+    .top-three-brok-each:not(:last-of-type){
+        margin-bottom: 15px;
+    }
+    .top-three-brok-wrap{
+        box-shadow: none;
+    }
+    .brok-each-box:not(:last-of-type){
+
+        border-bottom: 1px solid #DCDEDF;
+    }
+    .top-three h4{
+        font-size: 30px;
+        line-height: 45px;
+    }
+    .top-three-brok-bottom-btn a{
+        padding: 10px 16px;
+    }
+    .soc-heading h3{
+        font-size: 35px;
+        line-height: 35px;
+    }
+    .hp-icons{
+        margin-bottom: 75px;
+    }
+    .brokers-top-section{
+        margin-bottom: 50px;
+    }
 }
 
 
@@ -2487,6 +2537,50 @@
     .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col {
         justify-content: center;
     }
+
+    .count-name,
+    .brok-img{
+        max-width: none;
+        width: 50%;
+    }
+    .min-deposit,
+    .platforms,
+    .leverage,
+    .bonus{
+        max-width: none;
+        width: 25%;
+    }
+    .to-broker{
+        max-width: none;
+        width: 100%;
+    }
+
+    .top-three-brok-each{
+        flex-wrap: wrap;
+        box-shadow: 0px 4px 20px #c4c4c4;
+    }
+    .top-three-brok-each:not(:last-of-type){
+        margin-bottom: 15px;
+    }
+    .top-three-brok-wrap{
+        box-shadow: none;
+    }
+    .brok-each-box:not(:last-of-type){
+
+        border-bottom: 1px solid #DCDEDF;
+    }
+    .top-three h4{
+        font-size: 30px;
+        line-height: 45px;
+    }
+    .top-three-brok-bottom-btn a{
+        padding: 10px 16px;
+    }
+    .soc-heading h3{
+        font-size: 35px;
+        line-height: 35px;
+    }
+
 }
 
 
@@ -2560,6 +2654,9 @@
         padding: 5px 10px;
         line-height: 14px;
     }
+    .to-broker a{
+        padding: 10px 20px;
+    }
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1250px) {
@@ -2575,5 +2672,14 @@
 @media only screen and (min-width: 1025px) and (max-width: 1600px) {
     .advant-wrap {
         background-size: contain;
+    }
+}
+
+@media only screen and (min-width: 1441px) {
+    .xlarge-2{
+        width: 16.66667%;
+    }
+    .xlarge-8{
+        width: 66.66667%;
     }
 }

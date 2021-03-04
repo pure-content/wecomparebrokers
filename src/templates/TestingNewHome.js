@@ -14,6 +14,7 @@ export const query = graphql`
   query($id: ID!) {
     wpgraphql {
       page(id: $id) {
+          
         title
         content
         id
@@ -29,6 +30,7 @@ export const query = graphql`
           opengraphType
         }
         newHomePage {
+
           homeBannerColor
           newBannerText
           trustSubsectionText
@@ -36,6 +38,7 @@ export const query = graphql`
           etfBrokerInfoBox
           forexBrokerInfoBox
           stockBrokerInfoBox
+          headingSocProof
           listSocProof {
             text
           }
@@ -45,7 +48,6 @@ export const query = graphql`
               mediaItemUrl
             }
           }
-          trustSubsectionText
           trustSubsectionLogos {
             trustSubsectionLogo {
               mediaItemUrl
@@ -134,8 +136,134 @@ export const query = graphql`
               uri
             }
           }
+          
+          topThreeStockHeading
+          topThreeStockButtonText
+          topThreeStockButtonLink {
+            ... on WPGraphQL_Page {
+              uri
+            }
+          }
+          topThreeStockBrokers {
+            broker {
+              ... on WPGraphQL_Broker123 {
+                uri
+                title
+                featuredImage {
+                  node {
+                    mediaItemUrl
+                  }
+                }
+                cptBrokers {
+                  minDeposit
+                  platformsList
+                  typicalLeverageForStocks
+                  bonusFeatureForStocks
+                  affiliateLink
+                }
+              }
+            }
+          }
+
+          topThreeForexHeading
+          topThreeForexButtonText
+          topThreeForexButtonLink {
+            ... on WPGraphQL_Page {
+              uri
+            }
+          }
+          topThreeForexBrokers {
+            broker {
+              ... on WPGraphQL_Broker123 {
+                uri
+                title
+                featuredImage {
+                  node {
+                    mediaItemUrl
+                  }
+                }
+                cptBrokers {
+                  minDeposit
+                  platformsList
+                  typicalLeverageForForex
+                  bonusFeatureForForex
+                  affiliateLink
+                }
+              }
+            }
+          }
+
+          topThreeCryptoHeading
+          topThreeCryptoButtonText
+          topThreeCryptoButtonLink {
+            ... on WPGraphQL_Page {
+              uri
+            }
+          }
+          topThreeCryptoBrokers {
+            broker {
+              ... on WPGraphQL_Broker123 {
+                uri
+                title
+                featuredImage {
+                  node {
+                    mediaItemUrl
+                  }
+                }
+                cptBrokers {
+                  minDeposit
+                  platformsList
+                  typicalLeverageForCrypto
+                  bonusFeatureForCrypto
+                  affiliateLink
+                }
+              }
+            }
+          }
+
         }
       }
+
+
+      themeGeneralSettings {
+
+        optGeneralSettings {
+          topAdLink
+          topAdImage {
+            mediaItemUrl
+          }
+          leftAdBanners {
+            bannerLink
+            bannerImage {
+              mediaItemUrl
+            }
+          }
+          rightAdBanner {
+            bannerLink
+            bannerImage {
+              mediaItemUrl
+            }
+          }
+          topAdBannerFirstImage {
+            mediaItemUrl
+          }
+          topAdBannerFirstLink
+          topAdBannerSecondImage {
+            mediaItemUrl
+          }
+          topAdBannerSecondLink
+          bottomAdBannerFirstImage {
+            mediaItemUrl
+          }
+          bottomAdBannerFirstLink
+          bottomAdBannerSecondImage {
+            mediaItemUrl
+          }
+          bottomAdBannerSecondLink
+        }
+
+      }
+
     }
   }
 `
@@ -144,6 +272,7 @@ export default function NewHomePage({ data }) {
   const page = data.wpgraphql.page
   const seo = page.seo
   const templateFields = page.newHomePage
+  const generalSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings;
 
   useEffect(() => {
     $(document).ready(function () {
@@ -459,6 +588,260 @@ export default function NewHomePage({ data }) {
     }
   }
 
+  const TopThreeBrokersWIthAds = () => {
+      console.log(generalSettings);
+    
+    return (
+      <div className="brokers-top-section row expanded">
+        {generalSettings.leftAdBanners.length > 0 && (
+          <div className="brokers-top__left-a-d column hide-for-small-only medium-2 large-1 xlarge-2" data-mh="brok-ad">
+            {generalSettings.leftAdBanners.map(ad => {
+              return <a className="brokers-top__left-a-d-each" href={ad.bannerLink}><img src={ad.bannerImage.mediaItemUrl} alt=""/></a>
+            })}
+          </div>
+        )}
+
+        <div className="brokers-top__content column medium-8 large-10 xlarge-8" data-mh="brok-ad">
+          {templateFields.topThreeStockBrokers.length > 0 && (
+            <div className="top-three top-three-stock">
+                {generalSettings.topAdBannerFirstImage && generalSettings.topAdBannerFirstLink && (
+                    <div className="brokAd show-for-small-only">
+                        <a href={generalSettings.topAdBannerFirstLink}><img src={generalSettings.topAdBannerFirstImage.mediaItemUrl} alt=""/></a>
+                    </div>
+                )}
+                {templateFields.topThreeStockHeading && <h4>{templateFields.topThreeStockHeading}</h4>}
+
+                <div class="dot-sep"><span></span><span></span><span></span></div>
+
+                <div className="top-three-brok-wrap">
+                    {templateFields.topThreeStockBrokers.map((brok, i) => {
+                        return (
+                            <div className="top-three-brok-each">
+
+                            <div className="count-name brok-each-box">
+                                <span className={`count count${++i}`}>{i}</span>
+                                <Link to={brok.broker.uri}>
+                                    <span className="name">{brok.broker.title}</span>
+                                </Link>
+                            </div>
+
+                            <div className="brok-img brok-each-box">
+                                <Link to={brok.broker.uri}>
+                                    <img src={brok.broker.featuredImage.node.mediaItemUrl} alt=""/>
+                                </Link>
+                            </div>
+
+                            <div className="min-deposit brok-each-box">
+                                <h6>Min. Deposit</h6>
+                                <span>{brok.broker.cptBrokers.minDeposit}</span>
+                            </div>
+
+                            <div className="platforms brok-each-box">
+                                <h6>Platforms</h6>
+                                <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
+                                    if(i !== list.length - 1){
+                                        return `${platf} and `
+                                    }
+                                    return platf
+                                })}</span>
+                            </div>
+
+                            <div className="leverage brok-each-box">
+                                <h6>Typical Leverage</h6>
+                                <span>{brok.broker.cptBrokers.typicalLeverageForStocks}</span>
+                            </div>
+
+                            <div className="bonus brok-each-box">
+                                <h6>Bonus Feature</h6>
+                                <span>{brok.broker.cptBrokers.bonusFeatureForStocks}</span>
+                            </div>
+
+                            <div className="to-broker brok-each-box">
+                                <a href={brok.broker.cptBrokers.affiliateLink}>Go to Broker</a>
+                            </div>
+                            
+                            </div>
+                        );
+                    })}
+                </div>
+
+                {templateFields.topThreeStockButtonText && templateFields.topThreeStockButtonLink && (
+                    <div className="top-three-brok-bottom-btn">
+                        <Link to={templateFields.topThreeStockButtonLink.uri}>{templateFields.topThreeStockButtonText}</Link>
+                    </div>
+                )}
+
+                {generalSettings.topAdBannerSecondImage && generalSettings.topAdBannerSecondLink && (
+                    <div className="brokAd show-for-small-only">
+                        <a href={generalSettings.topAdBannerSecondLink}><img src={generalSettings.topAdBannerSecondImage.mediaItemUrl} alt=""/></a>
+                    </div>
+                )}
+
+            </div>
+          )}
+
+          {templateFields.topThreeForexBrokers.length > 0 && (
+            <div className="top-three top-three-stock">
+
+              {templateFields.topThreeForexHeading && <h4>{templateFields.topThreeForexHeading}</h4>}
+
+              <div class="dot-sep"><span></span><span></span><span></span></div>
+
+              <div className="top-three-brok-wrap">
+                {templateFields.topThreeForexBrokers.map((brok, i) => {
+                  return (
+                    <div className="top-three-brok-each">
+
+                      <div className="count-name brok-each-box">
+                        <span className={`count count${++i}`}>{i}</span>
+                        <Link to={brok.broker.uri}>
+                          <span className="name">{brok.broker.title}</span>
+                        </Link>
+                      </div>
+
+                      <div className="brok-img brok-each-box">
+                        <Link to={brok.broker.uri}>
+                          <img src={brok.broker.featuredImage.node.mediaItemUrl} alt=""/>
+                        </Link>
+                      </div>
+
+                      <div className="min-deposit brok-each-box">
+                        <h6>Min. Deposit</h6>
+                        <span>{brok.broker.cptBrokers.minDeposit}</span>
+                      </div>
+
+                      <div className="platforms brok-each-box">
+                        <h6>Platforms</h6>
+                        <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
+                          if(i !== list.length - 1){
+                            return `${platf} and `
+                          }
+                          return platf
+                        })}</span>
+                      </div>
+
+                      <div className="leverage brok-each-box">
+                        <h6>Typical Leverage</h6>
+                        <span>{brok.broker.cptBrokers.typicalLeverageForStocks}</span>
+                      </div>
+
+                      <div className="bonus brok-each-box">
+                        <h6>Bonus Feature</h6>
+                        <span>{brok.broker.cptBrokers.bonusFeatureForStocks}</span>
+                      </div>
+
+                      <div className="to-broker brok-each-box">
+                        <a href={brok.broker.cptBrokers.affiliateLink}>Go to Broker</a>
+                      </div>
+                      
+                    </div>
+                  );
+                })}
+              </div>
+
+              {templateFields.topThreeForexButtonText && templateFields.topThreeForexButtonLink && (
+                <div className="top-three-brok-bottom-btn">
+                  <Link to={templateFields.topThreeForexButtonLink.uri}>{templateFields.topThreeForexButtonText}</Link>
+                </div>
+              )}
+
+            </div>
+          )}
+
+          {templateFields.topThreeCryptoBrokers.length > 0 && (
+            <div className="top-three top-three-stock">
+
+                {generalSettings.bottomAdBannerFirstImage && generalSettings.bottomAdBannerFirstLink && (
+                    <div className="brokAd show-for-small-only">
+                        <a href={generalSettings.bottomAdBannerFirstLink}><img src={generalSettings.bottomAdBannerFirstImage.mediaItemUrl} alt=""/></a>
+                    </div>
+                )}
+
+                {templateFields.topThreeCryptoHeading && <h4>{templateFields.topThreeCryptoHeading}</h4>}
+
+                <div class="dot-sep"><span></span><span></span><span></span></div>
+
+                <div className="top-three-brok-wrap">
+                    {templateFields.topThreeCryptoBrokers.map((brok, i) => {
+                        return (
+                            <div className="top-three-brok-each">
+
+                                <div className="count-name brok-each-box">
+                                    <span className={`count count${++i}`}>{i}</span>
+                                    <Link to={brok.broker.uri}>
+                                    <span className="name">{brok.broker.title}</span>
+                                    </Link>
+                                </div>
+
+                                <div className="brok-img brok-each-box">
+                                    <Link to={brok.broker.uri}>
+                                    <img src={brok.broker.featuredImage.node.mediaItemUrl} alt=""/>
+                                    </Link>
+                                </div>
+
+                                <div className="min-deposit brok-each-box">
+                                    <h6>Min. Deposit</h6>
+                                    <span>{brok.broker.cptBrokers.minDeposit}</span>
+                                </div>
+
+                                <div className="platforms brok-each-box">
+                                    <h6>Platforms</h6>
+                                    <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
+                                        if(i !== list.length - 1){
+                                            return `${platf} and `
+                                        }
+                                        return platf
+                                    })}</span>
+                                </div>
+
+                                <div className="leverage brok-each-box">
+                                    <h6>Typical Leverage</h6>
+                                    <span>{brok.broker.cptBrokers.typicalLeverageForStocks}</span>
+                                </div>
+
+                                <div className="bonus brok-each-box">
+                                    <h6>Bonus Feature</h6>
+                                    <span>{brok.broker.cptBrokers.bonusFeatureForStocks}</span>
+                                </div>
+
+                                <div className="to-broker brok-each-box">
+                                    <a href={brok.broker.cptBrokers.affiliateLink}>Go to Broker</a>
+                                </div>
+                            
+                            </div>
+                        );
+                    })}
+                </div>
+
+                {templateFields.topThreeCryptoButtonText && templateFields.topThreeCryptoButtonLink && (
+                    <div className="top-three-brok-bottom-btn">
+                    <Link to={templateFields.topThreeCryptoButtonLink.uri}>{templateFields.topThreeCryptoButtonText}</Link>
+                    </div>
+                )}
+
+                {generalSettings.bottomAdBannerSecondImage && generalSettings.bottomAdBannerSecondLink && (
+                    <div className="brokAd show-for-small-only">
+                        <a href={generalSettings.bottomAdBannerSecondLink}><img src={generalSettings.bottomAdBannerSecondImage.mediaItemUrl} alt=""/></a>
+                    </div>
+                )}
+
+            </div>
+          )}
+        </div>
+
+        {generalSettings.rightAdBanner.length > 0 && (
+          <div className="brokers-top__right-a-d column hide-for-small-only medium-2 large-1 xlarge-2" data-mh="brok-ad">
+            {generalSettings.rightAdBanner.map(ad => {
+              return <a className="brokers-top__right-a-d-each" href={ad.bannerLink}><img src={ad.bannerImage.mediaItemUrl} alt=""/></a>
+            })}
+          </div>
+        )}
+        
+      </div>
+    );
+  }
+  
+
   const TrustSection = () => {
     if (templateFields.trustSubsectionLogos.length > 0) {
       return (
@@ -487,9 +870,11 @@ export default function NewHomePage({ data }) {
   const TrustSectionText = () => {
     if (templateFields.bottomTextDropdown.length > 0) {
       return (
-        <div className="row trust-section-bot-text">
-          <div className="small-12 columns">
-            {Parser(templateFields.bottomTextDropdown)}
+        <div className="trust-section-bot-text">
+          <div className="row">
+            <div className="small-12 columns">
+              {Parser(templateFields.bottomTextDropdown)}
+            </div>
           </div>
         </div>
       )
@@ -537,6 +922,10 @@ export default function NewHomePage({ data }) {
       return (
         <div className="slider-wrap">
           <div className="row slider-row">
+
+            <div className="large-12 columns soc-heading">
+              <h3>{templateFields.headingSocProof}</h3>
+            </div>
             <div className="large-10 columns small-centered">
               <Equalizer>
                 <Slider className="soc-slider" {...sliderSettings}>
@@ -582,10 +971,7 @@ export default function NewHomePage({ data }) {
       />
       <Helmet><meta name="google-site-verification" content="LpG-zlER00N7KP55u-bULwtUxop1FcoyzA6M3PeClJU" /></Helmet>
       <div className="new-hp-wrap">
-        <div
-          className="new_banner_bg"
-          style={{ backgroundColor: templateFields.homeBannerColor }}
-        >
+        <div className="new_banner_bg" style={{ backgroundColor: templateFields.homeBannerColor }} >
           <div className="row">
             <div className="large-12 columns">
               <div className="new_banner_content">
@@ -600,11 +986,22 @@ export default function NewHomePage({ data }) {
             </div>
           </div>
         </div>
+        
+        {generalSettings.topAdLink && generalSettings.topAdImage.mediaItemUrl && (
+          <div className="row top-a-d-wrap">
+            <div className="large-12 columns">
+
+              <a href={generalSettings.topAdLink} className="top-a-d"><img src={generalSettings.topAdImage.mediaItemUrl} alt=""/></a>
+            </div>
+          </div>
+        )}
+
         <div className="row dropdown-wrap">
           <div className="large-12 columns">{<NewBannerDropdown />}</div>
         </div>
         <BodyTextDropdowns />
         <HPIcons />
+        <TopThreeBrokersWIthAds />
         <TrustSection />
         <TrustSectionText />
         <ListSocProof />
