@@ -501,11 +501,11 @@ exports.createPages = async({ actions, graphql }) => {
     })
 
     //Testing Page
-    actions.createPage({
-        path: 'test',
-        component: require.resolve("./src/templates/TestingNewHome.js"),
-        context: {
-            id: 'cG9zdDo5MDY4',
-        },
-    })
+    // actions.createPage({
+    //     path: 'test',
+    //     component: require.resolve("./src/templates/TestingNewHome.js"),
+    //     context: {
+    //         id: 'cG9zdDo5MDY4',
+    //     },
+    // })
 }
