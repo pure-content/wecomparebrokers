@@ -26,6 +26,7 @@
         "gatsby": "^2.24.26",
         "gatsby-awesome-pagination": "^0.3.6",
         "gatsby-gravityforms-component": "^2.0.1",
+        "gatsby-plugin-disqus": "^1.2.2",
         "gatsby-plugin-netlify": "^2.3.17",
         "gatsby-plugin-robots-txt": "^1.5.3",
         "gatsby-plugin-sass": "^2.3.12",

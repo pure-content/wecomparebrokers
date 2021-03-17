@@ -3,7 +3,9 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
-require('dotenv').config();
+ require("dotenv").config({
+    path: `.env`
+  })
 
 module.exports = {
     /* Your site config here */
@@ -28,6 +30,12 @@ module.exports = {
         },
         {
             resolve: 'gatsby-plugin-sass'
+        },
+        {
+            resolve: `gatsby-plugin-disqus`,
+            options: {
+                shortname: `www-wecomparebrokers-com`
+            }
         },
         `gatsby-transformer-remark`,
         `gatsby-plugin-netlify`,

@@ -2,6 +2,7 @@ import React from "react"
 import $ from "jquery"
 import "jquery-match-height"
 import { graphql, Link } from "gatsby"
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 import Helmet from "react-helmet"
 import Layout from "../components/layout"
 import CompareFrom from "../components/CompareFrom"
@@ -11,6 +12,7 @@ import { useEffect } from "react"
 import { avarageRatingCounter } from "../functions/avarageRatingCounter"
 import BrokerTableSingleItemNewView from '../components/BrokerTableSingleItemNewView';
 import CallBackFormPopUp from '../components/CallBackFormPopUp';
+const {siteMetadata: { siteUrl }} = require('../../gatsby-config');
 
 const shortid = require("shortid")
 
@@ -450,6 +452,7 @@ export const query = graphql`
 `
 
 export default function BrokersSingle({ data }) {
+  
   const broker = data.wpgraphql.broker123
   const themeGeneralSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings
 
@@ -1832,6 +1835,13 @@ export default function BrokersSingle({ data }) {
     contentType: broker.contentType,
     title: broker.title,
   }
+
+  let disqusConfig = {
+    url: `${siteUrl + broker.uri}`,
+    identifier: broker.id,
+    title: broker.title,
+  }
+
   return (
     <Layout pageInfo={pageInfo}>
       <Helmet
@@ -1995,7 +2005,7 @@ export default function BrokersSingle({ data }) {
               <div class="row collapse">
                 <div class="small-12 columns">
                   {Parser(themeGeneralSettings.disqusBodyText ? themeGeneralSettings.disqusBodyText : '')}
-                  {/* <?php comments_template(); ?> */}
+                  <Disqus config={disqusConfig} />
                 </div>
               </div>
             </div>
