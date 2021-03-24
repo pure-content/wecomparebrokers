@@ -1,3 +1,5 @@
+
+
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 .homePage .new-hp-wrap p,
 .homePage .new-hp-wrap ul,
@@ -97,18 +99,27 @@ footer .app-img {
     position: absolute;
     top: 68%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 .chart .chart-inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     z-index: 2;
     color: #7b7e91;
     position: relative;
     top: 41%;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
     /* align-items: center; */
     /* height: inherit; */
     /* justify-content: center; */
@@ -132,9 +143,15 @@ footer .app-img {
 }
 
 .wp-block-uagb-table-of-contents .uagb-toc__title-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .wp-block-uagb-table-of-contents .uagb-toc__is-collapsible.uagb-toc__title-wrap {
@@ -146,7 +163,9 @@ footer .app-img {
 }
 
 .uagb-block-903894d2 .uagb-toc__list-wrap {
-    column-count: 2;
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
     overflow: hidden;
 }
 
@@ -158,6 +177,8 @@ footer .app-img {
 
 .wp-block-uagb-table-of-contents .uag-toc__collapsible-wrap {
     margin-left: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     cursor: pointer;
 }
@@ -200,25 +221,34 @@ footer .app-img {
 
 @media (min-width: 782px) {
     .wp-block-columns {
-        flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
     }
 }
 
 @media (min-width: 782px) {
     .wp-block-column {
-        flex-basis: 0%;
-        flex-grow: 1;
+        -ms-flex-preferred-size: 0%;
+            flex-basis: 0%;
+        -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+                flex-grow: 1;
     }
 }
 
 .wp-block-columns {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     margin-bottom: 28px;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
 }
 
 .wp-block-column {
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
     min-width: 0;
     word-break: break-word;
     overflow-wrap: break-word;
@@ -257,7 +287,6 @@ div.wpforms-container-full .wpforms-form * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     -ms-box-shadow: none;
     -o-box-shadow: none;
     box-shadow: none;
@@ -431,23 +460,33 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .uagb-block-0dab5949 .uagb-toc__list-wrap {
-    column-count: 2;
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
     overflow: hidden;
 }
 
 .uagb-cta__outer-wrap .uagb-cta__content-right .uagb-cta__button-link-wrapper,
 .uagb-cta__outer-wrap .uagb-cta__content-right .uagb-cta__block-link,
 .uagb-cta__outer-wrap .uagb-cta__content-right.uagb-cta__button-valign-middle .uagb-cta__left-right-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .uagb-cta__outer-wrap .uagb-cta__icon-position-right .uagb-cta__left-right-wrap {
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
 }
 
 .uagb-cta__outer-wrap .uagb-cta__icon-position-left .uagb-cta__left-right-wrap,
 .uagb-cta__outer-wrap .uagb-cta__icon-position-right .uagb-cta__left-right-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
@@ -500,7 +539,9 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 
 @media only screen and (max-width: 767px) {
     .uagb-block-0dab5949 .uagb-toc__list-wrap {
-        column-count: 1;
+        -webkit-column-count: 1;
+           -moz-column-count: 1;
+                column-count: 1;
         overflow: hidden;
     }
 }
@@ -525,7 +566,9 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .uagb-block-2814cae4 .uagb-toc__list-wrap {
-    column-count: 2;
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
     overflow: hidden;
 }
 
@@ -549,6 +592,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     text-transform: uppercase;
     color: #fff;
     background-color: #3352ee;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
 
@@ -557,6 +602,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .wpusb-item {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
     font-family: Arial, Sans-serif;
     margin-bottom: 10px;
@@ -583,12 +630,12 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     display: inline-block;
     font-family: Arial, Sans-serif, Helvetica;
     text-decoration: none;
+    -o-transition: background .3s ease;
     transition: background .3s ease;
 }
 
 .wpusb-buttons .wpusb-facebook a {
     background-color: #3b5998;
-    -moz-box-shadow: 0 2px #2a3f6c;
     -webkit-box-shadow: 0 2px #2a3f6c;
     box-shadow: 0 2px #2a3f6c;
 }
@@ -601,9 +648,15 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 .wpusb-square .wpusb-item .wpusb-button,
 .wpusb-default .wpusb-item .wpusb-button,
 .wpusb-buttons .wpusb-item .wpusb-button {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .wpusb-item .wpusb-btn svg {
@@ -662,21 +715,23 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 
 .wpusb-buttons .wpusb-twitter a {
     background-color: #00aced;
-    -moz-box-shadow: 0 2px #0080b0;
     -webkit-box-shadow: 0 2px #0080b0;
     box-shadow: 0 2px #0080b0;
 }
 
 .wpusb-buttons .wpusb-telegram a {
     background-color: #08c;
-    -moz-box-shadow: 0 2px #005f8f;
     -webkit-box-shadow: 0 2px #005f8f;
     box-shadow: 0 2px #005f8f;
 }
 
 .brokers-list:not(.plarform-list) .rec-brok-wrap .broker-wrap .img-col {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 #callback-form .gfield_select {
@@ -697,7 +752,9 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     top: 50%;
     left: 50%;
     z-index: 111;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 .callback-form--message {
@@ -705,16 +762,31 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .brokers-list:not(.plarform-list) .broker-wrap .broker-tab-col.broker-identity.one-column {
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
 }
 
 .brokers-list:not(.plarform-list) .broker-wrap .broker-tab-col.broker-identity.one-column .btn-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .brokers-list:not(.plarform-list) .broker-wrap .broker-tab-col.broker-identity.one-column .btn-wrap a,
@@ -731,7 +803,10 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .brokers-list:not(.plarform-list) .broker-wrap .broker-identity.one-column .broker-name {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
 }
 
 .brokers-list:not(.plarform-list) .broker-wrap .broker-name img {
@@ -753,15 +828,23 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 
 .broker-content--first-col {
     font-size: 16px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .brokers-list:not(.plarform-list) .broker-wrap .broker-content.three-columns {
     padding: 0 25px 25px 25px !important;
     background: none;
-    justify-content: space-around;
-    align-items: flex-start;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
 }
 
 .brokers-list:not(.plarform-list) .broker-wrap .broker-content.three-columns span {
@@ -784,13 +867,20 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 .broker-content--first-col,
 .broker-content--second-col,
 .broker-content--third-col {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col {
     padding-top: 0 !important;
-    justify-content: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
 }
 
 .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col a {
@@ -817,8 +907,12 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .top-content-col article {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .page-title-icon {
@@ -836,13 +930,20 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .top-content-compare .top-content-col article {
-    flex-direction: column;
-    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
 }
 
 .compare-filter-wrap {
     top: 0;
-    transform: none;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
 }
 
 .compare-filter-wrap h4 {
@@ -897,9 +998,16 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     background-image: url('../assets/images/WCB-Exit-Pop.png');
     background-size: cover;
     background-repeat: no-repeat;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .exit_popup_body h3 {
@@ -936,7 +1044,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     border-width: 2px;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.35);
-    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
+    -webkit-box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
+            box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
     color: rgb(255, 255, 255);
     font-family: 'Lato';
     font-size: 16px;
@@ -961,6 +1070,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .exit_popup_brokers_wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
@@ -994,8 +1105,12 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     margin-bottom: 50px;
 }
 .top-a-d-wrap .columns{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 .trust-section-bot-text{
     background-color: #223144;
@@ -1012,10 +1127,19 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 
 .brokers-top__left-a-d,
 .brokers-top__right-a-d{
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
     display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .brokers-top__left-a-d-each:not(:last-of-type),
@@ -1023,9 +1147,16 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     margin-bottom: 30px;
 }
 .top-three{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .top-three:not(:last-of-type){
     margin-bottom: 130px;
@@ -1042,12 +1173,15 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 .top-three-brok-wrap{
     background: #FFFFFF;
-    box-shadow: 0px 4px 20px #C4C4C4;
+    -webkit-box-shadow: 0px 4px 20px #C4C4C4;
+            box-shadow: 0px 4px 20px #C4C4C4;
     width: 100%;
     max-width: 1154px;
     margin-bottom: 50px;
 }
 .top-three-brok-each{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 .top-three-brok-each:not(:last-of-type){
@@ -1055,10 +1189,17 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 .brok-each-box{
     padding: 17px 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    flex-basis: 15%;
-    flex-grow: 1;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-preferred-size: 15%;
+        flex-basis: 15%;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
 }
 
 .count-name .count{
@@ -1073,9 +1214,15 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     height: 45px;
     border-radius: 50%;
     margin-right: 26px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 .count-name .count1{
     background-color: #F2994A;
@@ -1106,13 +1253,16 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     /* max-width: 218px; */
     width: 100%;
     padding: 1px 15px;
-    flex-basis: 34%;
+    -ms-flex-preferred-size: 34%;
+        flex-basis: 34%;
 }
 
 .brok-img{
     max-width: 205px;
     width: 100%;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 
@@ -1120,9 +1270,16 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 .platforms,
 .leverage,
 .bonus{
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
 }
 .min-deposit h6,
 .platforms h6,
@@ -1166,13 +1323,20 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 .to-broker{
     max-width: 212px;
     width: 100%;
-    justify-content: center;
-    flex-basis: 25%;
-    flex-grow: 2;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+    -webkit-box-flex: 2;
+        -ms-flex-positive: 2;
+            flex-grow: 2;
 }
 .to-broker a{
     padding: 14px 27px;
     border: 1px solid transparent;
+    -webkit-transition: .3s all;
+    -o-transition: .3s all;
     transition: .3s all;
     color: #fff;
     background-color: #2A79FF;
@@ -1186,6 +1350,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 
 .to-broker a:hover{
     border: 1px solid #2A79FF;
+    -webkit-transition: .3s all;
+    -o-transition: .3s all;
     transition: .3s all;
     background-color: #fff;
     color: #2A79FF;
@@ -1203,6 +1369,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     border-radius: 50px;
     padding: 15px 45px;
     display: block;
+    -webkit-transition: .3s all;
+    -o-transition: .3s all;
     transition: .3s all;
 }
 

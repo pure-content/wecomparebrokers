@@ -67,7 +67,8 @@
         color: #fff;
     }
     .top-bar.expanded .toggle-topbar a span::after {
-        box-shadow: 0 0 0 1px #fff, 0 7px 0 1px #fff, 0 14px 0 1px #fff;
+        -webkit-box-shadow: 0 0 0 1px #fff, 0 7px 0 1px #fff, 0 14px 0 1px #fff;
+                box-shadow: 0 0 0 1px #fff, 0 7px 0 1px #fff, 0 14px 0 1px #fff;
     }
     .logo {
         padding: 0 15px;
@@ -244,10 +245,15 @@
         margin-bottom: 25px;
     }
     .tab-nav ul {
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
     }
     .tab-nav ul li {
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
         font-size: 12px;
         line-height: 30px;
         border-right: 1px solid #2a79ff;
@@ -476,7 +482,9 @@
     }
     .broker-wrap .broker-content {
         padding: 20px 15px !important;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
     .broker-wrap .broker-content h3,
     .broker-wrap .broker-content h3 a {
@@ -598,7 +606,9 @@
     }
     .tab-wrap .tab-col:first-child {
         text-align: center;
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
     }
     .tab-wrap .tab-col.col-val p {
         font-weight: 500;
@@ -808,14 +818,20 @@
         padding-right: 0 !important;
     }
     .overal-left ul li {
-        flex-direction: column;
-        align-items: flex-start;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: flex-start;
     }
     .rat-hist-list {
         margin-top: 30px;
     }
     .rat-hist-list .year-row {
-        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     }
     .rat-hist-list .year-row .hist-col.col-year {
         padding-left: 10px;
@@ -837,9 +853,15 @@
     .plarform-list .broker-wrap.health-wrap .img-col .thumb-wrap {
         /*min-height: none;*/
         /*padding: 5px;*/
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
     }
     .plarform-list .broker-wrap .img-col img {
         top: inherit;
@@ -881,7 +903,10 @@
     }
     .inp-popup .brok-wrap-mini {
         padding: 5px;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
     }
     .inp-popup .brok-wrap-mini .img-wpap {
         margin: 0;
@@ -911,14 +936,22 @@
         margin-bottom: 10px !important;
     }
     .brokers-list:not(.plarform-list) .broker-wrap .broker-name {
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
     .alph-filter .alph-pag {
-        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     }
     .health-btns {
-        flex-direction: column;
-        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
     }
     .health-btns .btn {
         width: 95%;
@@ -1014,7 +1047,10 @@
         font-size: 14px;
     }
     .tab-wrap.tab-btns .tab-col {
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
     }
     .comp-rev-tab .tab-row .tab-col:first-child {
         padding-left: 0.9375em;
@@ -1093,8 +1129,11 @@
         font-size: 14px;
     }
     .opt-wrap {
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     }
     .opt-wrap .list-wrap {
         margin-bottom: 40px;
@@ -1161,11 +1200,12 @@
         margin-bottom: 20px;
     }
     .hero-flags-row .hero-flags ul {
-        -webkit-flex-direction: column;
         -moz-flex-direction: column;
         -ms-flex-direction: column;
         -o-flex-direction: column;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
     }
     .hero-flags-row .hero-flags ul li {
         margin: 0px 10px;
@@ -1173,11 +1213,12 @@
     }
     .hero-flags-row .hero-flags ul li a {
         font-size: 18px;
-        -webkit-flex-direction: column;
         -moz-flex-direction: column;
         -ms-flex-direction: column;
         -o-flex-direction: column;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
     }
     .hero-flags-row .hero-flags ul li a img {
         margin: 0;
@@ -1260,12 +1301,21 @@
         width: 100%;
     }
     .brokers-list:not(.plarform-list) .broker-wrap .broker-identity .img-col {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
     .form-row-wrap .gform_wrapper form {
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
     .form-row-wrap .gform_wrapper .gform_body,
     .form-row-wrap .gform_wrapper .gform_footer {
@@ -1302,18 +1352,20 @@
         display: block;
     }
     .cheap-compare .cheap-compare__table {
-        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     }
     .cheap-column__wrap {
         width: calc(100% - 10px);
         margin-bottom: 30px;
     }
     .footer-partners-wrap ul {
-        -webkit-flex-direction: column;
         -moz-flex-direction: column;
         -ms-flex-direction: column;
         -o-flex-direction: column;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
     }
     .footer-partners-wrap ul li {
         max-width: 200px;
@@ -1364,11 +1416,12 @@
         font-size: 14px;
     }
     ul.trust-list {
-        -webkit-flex-direction: column;
         -moz-flex-direction: column;
         -ms-flex-direction: column;
         -o-flex-direction: column;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
     }
     .new_banner_bg h1 {
         font-size: 28px;
@@ -1400,11 +1453,12 @@
         line-height: 26px;
     }
     .new_banner_dropdown {
-        -webkit-flex-direction: column;
         -moz-flex-direction: column;
         -ms-flex-direction: column;
         -o-flex-direction: column;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
     }
     .new_banner_dropdown .left_banner_dropdown {
         margin-bottom: 30px;
@@ -1413,11 +1467,12 @@
         font-size: 16px;
     }
     .hp-icons .icons-list {
-        -webkit-flex-direction: column;
         -moz-flex-direction: column;
         -ms-flex-direction: column;
         -o-flex-direction: column;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+                flex-direction: column;
     }
     .hp-icons .icons-list li,
     .trust-list li {
@@ -1463,7 +1518,9 @@
     .broker-content--first-col,
     .broker-content--second-col,
     .broker-content--third-col {
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
     .broker-content--first-col,
     .broker-content--second-col,
@@ -1478,7 +1535,8 @@
         width: 50%;
     }
     .count-name{
-        flex-basis: 35%;
+        -ms-flex-preferred-size: 35%;
+            flex-basis: 35%;
     }
     .min-deposit,
     .platforms,
@@ -1493,14 +1551,17 @@
     }
 
     .top-three-brok-each{
-        flex-wrap: wrap;
-        box-shadow: 0px 4px 20px #c4c4c4;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        -webkit-box-shadow: 0px 4px 20px #c4c4c4;
+                box-shadow: 0px 4px 20px #c4c4c4;
     }
     .top-three-brok-each:not(:last-of-type){
         margin-bottom: 15px;
     }
     .top-three-brok-wrap{
-        box-shadow: none;
+        -webkit-box-shadow: none;
+                box-shadow: none;
     }
     .brok-each-box:not(:last-of-type){
 
@@ -1776,9 +1837,14 @@
     }
     .tabs-brok-card-wrap .top-wrap .top-left {
         border: none;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-wrap: wrap;
-        align-items: center;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
     .tabs-brok-card-wrap .top-wrap .top-left h6 {
         top: inherit;
@@ -2007,21 +2073,30 @@
         width: 100%;
         padding-top: 0 !important;
         text-align: center;
-        flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
     }
     .brokers-list:not(.plarform-list) .broker-wrap .btn-col .btn {
         margin: 0 5px;
         max-width: 30%;
-        display: -webkit-flex;
         display: -moz-flex;
         display: -ms-flex;
         display: -o-flex;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         -ms-align-items: center;
-        align-items: center;
-        justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
         -ms-align-self: flex-start;
-        align-self: flex-start;
+        -ms-flex-item-align: start;
+            align-self: flex-start;
     }
     .brokers-list:not(.plarform-list) .rec-brok-wrap .broker-wrap .btn-col .aff-wrap {
         max-width: none;
@@ -2210,15 +2285,21 @@
         padding-right: 15px !important;
     }
     .overal-left ul li {
-        flex-direction: column;
-        align-items: flex-start;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: flex-start;
     }
     .overal-left ul li .rating {
         width: 116px;
         height: 20px;
     }
     .rat-hist-list .year-row {
-        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     }
     .rat-hist-list .year-row .hist-col.col-year {
         padding-left: 10px;
@@ -2268,8 +2349,12 @@
     .tab-nav ul li {
         font-size: 12px;
         padding: 10px 15px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
     /*.tab-nav ul li:first-child{
         border-radius: 15px 15px 0 0;
@@ -2285,7 +2370,9 @@
         transform: none;
     }
     .health-btns {
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
         margin-top: 15px;
     }
     .compare-tab .tab-brok-row .tab-col .first,
@@ -2321,8 +2408,11 @@
         font-size: 14px;
     }
     .opt-wrap {
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     }
     .opt-wrap .list-wrap {
         margin-bottom: 40px;
@@ -2414,8 +2504,11 @@
         width: 50%;
     }
     .broker-identity .btn-wrap {
-        justify-content: center;
-        flex-wrap: nowrap;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
     }
     .broker-identity .btn-wrap .btn {
         margin-bottom: 0;
@@ -2424,13 +2517,24 @@
         margin-right: 15px;
     }
     .brokers-list:not(.plarform-list) .broker-wrap .broker-identity .img-col {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: flex-start;
     }
     .form-row-wrap .gform_wrapper form {
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
     .form-row-wrap .gform_wrapper .gform_body,
     .form-row-wrap .gform_wrapper .gform_footer {
@@ -2462,7 +2566,8 @@
         display: block;
     }
     .cheap-compare .cheap-compare__table {
-        flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     }
     .cheap-column__wrap {
         width: calc(33% - 8px);
@@ -2528,8 +2633,6 @@
         font-size: 18px;
     }
     .hp-icons .icons-list {
-        -webkit-flex-wrap: wrap;
-        -moz-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
         -o-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -2538,7 +2641,9 @@
         margin-bottom: 10px;
     }
     .brokers-list:not(.plarform-list) .broker-wrap.new .btn-col {
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
     }
 
     .count-name,
@@ -2559,14 +2664,17 @@
     }
 
     .top-three-brok-each{
-        flex-wrap: wrap;
-        box-shadow: 0px 4px 20px #c4c4c4;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        -webkit-box-shadow: 0px 4px 20px #c4c4c4;
+                box-shadow: 0px 4px 20px #c4c4c4;
     }
     .top-three-brok-each:not(:last-of-type){
         margin-bottom: 15px;
     }
     .top-three-brok-wrap{
-        box-shadow: none;
+        -webkit-box-shadow: none;
+                box-shadow: none;
     }
     .brok-each-box:not(:last-of-type){
 
@@ -2664,11 +2772,18 @@
 
 @media only screen and (min-width: 1025px) and (max-width: 1250px) {
     .broker-identity .btn-wrap {
-        flex-direction: column;
-        justify-content: flex-start;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
     }
     .brokers-list:not(.plarform-list) .broker-wrap .broker-name {
-        justify-content: flex-end;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
     }
 }
 
