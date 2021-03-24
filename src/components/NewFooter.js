@@ -285,7 +285,7 @@ export default function Footer() {
       return (
         <div className="large-3 medium-6 columns" data-mh="fooler-col">
           {logo && (
-            <Link className="logo-link" to={url}>
+            <Link className="logo-link" to={'/'}>
               <img className="lazy" src={logo.mediaItemUrl} alt="Footer logo" />
             </Link>
           )}

@@ -275,16 +275,15 @@ export default function NewHomePage({ data }) {
   const generalSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings;
 
   useEffect(() => {
-    $(document).ready(function () {
-      $(".left_banner_dropdown, .right_banner_dropdown").on(
-        "click",
-        function () {
+    $(function () {
+      $(".left_banner_dropdown, .right_banner_dropdown").on("click", function () {
           $(this).find(".banner_body").slideToggle("fast")
           $(this).toggleClass("open")
         }
       )
       $(".slide-wrap").matchHeight()
       $(".tabs-brok-card-wrap .top-cols").matchHeight()
+      
     })
   })
 
@@ -589,7 +588,6 @@ export default function NewHomePage({ data }) {
   }
 
   const TopThreeBrokersWIthAds = () => {
-      console.log(generalSettings);
     
     return (
       <div className="brokers-top-section row expanded">

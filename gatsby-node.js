@@ -94,33 +94,33 @@ exports.createPages = async({ actions, graphql }) => {
 
             brokers123(first: 5000) {
                 nodes {
-                  title
-                  uri
-                  id
+                    title
+                    uri
+                    id
                 }
             }
 
             contentTypes(first: 1000) {
                 nodes {
-                  name
-                  id
-                  uri
+                    name
+                    id
+                    uri
                 }
             }
 
             brokerInfoTaxonomies {
                 nodes {
-                  name
-                  id
-                  uri
+                    name
+                    id
+                    uri
                 }
             }
 
             topBrokerAreas {
                 nodes {
-                  name
-                  uri
-                  id
+                    name
+                    uri
+                    id
                 }
             }
 
@@ -141,9 +141,9 @@ exports.createPages = async({ actions, graphql }) => {
 
             topBrokers123(first: 1000) {
                 nodes {
-                  title
-                  uri
-                  id
+                    title
+                    uri
+                    id
                 }
             }
 
@@ -420,8 +420,8 @@ exports.createPages = async({ actions, graphql }) => {
         })
     })
 
-
     const brokers = result.data.wpgraphql.brokers123.nodes
+    
     brokers.forEach(broker => {
         actions.createPage({
             path: broker.uri,

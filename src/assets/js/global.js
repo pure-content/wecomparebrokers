@@ -676,7 +676,6 @@ import "../assets/js/jquery-3.5.1.min.js";
     };
 
     $('.left_banner_dropdown, .right_banner_dropdown').on('click', function() {
-        console.log('click')
         $(this).find('.banner_body').slideToggle('fast');
         $(this).toggleClass('open');
     })

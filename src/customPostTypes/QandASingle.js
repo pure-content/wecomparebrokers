@@ -46,7 +46,6 @@ export const query = graphql`
 
 export default function QandASingle({ data }) {
     const { qa } = data.wpgraphql
-    console.log(qa)
 
     const TopContent = () => {
         return (

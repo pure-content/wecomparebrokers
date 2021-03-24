@@ -14,7 +14,7 @@ function SearchPage({ search }) {
     const info = useStaticQuery(graphql`
         query {
             wpgraphql {
-                brokers123( first: 10000 where: { orderby: { field: MENU_ORDER, order: DESC } } ){
+                brokers123( first: 5000 where: { orderby: { field: MENU_ORDER, order: DESC } } ){
                     nodes {
                         uri
                         title

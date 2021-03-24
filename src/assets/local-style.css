@@ -1031,7 +1031,7 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     margin-bottom: 130px;
 }
 .top-three h4{
-    font-family: 'Ubuntu';
+    font-family: 'Ubuntu', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 48px;
@@ -1057,10 +1057,12 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     padding: 17px 15px;
     display: flex;
     align-items: center;
+    flex-basis: 15%;
+    flex-grow: 1;
 }
 
 .count-name .count{
-    font-family: 'Ubuntu';
+    font-family: 'Ubuntu', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -1085,12 +1087,13 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     background-color: #3580D3;
 }
 .count-name .name{
-    font-family: 'Ubuntu';
+    font-family: 'Ubuntu' , sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 126.39%;
     color: #000000;
+    white-space: nowrap;
 }
 .brok-each-box:not(:last-of-type){
     border-right: 1px solid #DCDEDF;
@@ -1100,9 +1103,10 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 }
 
 .count-name{
-    max-width: 218px;
+    /* max-width: 218px; */
     width: 100%;
     padding: 1px 15px;
+    flex-basis: 34%;
 }
 
 .brok-img{
@@ -1163,6 +1167,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     max-width: 212px;
     width: 100%;
     justify-content: center;
+    flex-basis: 25%;
+    flex-grow: 2;
 }
 .to-broker a{
     padding: 14px 27px;

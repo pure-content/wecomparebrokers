@@ -1477,6 +1477,9 @@
         max-width: none;
         width: 50%;
     }
+    .count-name{
+        flex-basis: 35%;
+    }
     .min-deposit,
     .platforms,
     .leverage,

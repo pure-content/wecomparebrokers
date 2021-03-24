@@ -57,7 +57,9 @@ const Layout = props => {
   })
 
   const CurrentHeader = isFrontPage ? (<NewHeader title={title} />) : (<OldHeader title={title} uri={uri} />)
-  const CurrentFooter = isFrontPage ? (<NewFooter />) : (<OldFooter contentType={contentType} />)
+  // const CurrentFooter = isFrontPage ? (<NewFooter />) : (<OldFooter contentType={contentType} />)
+  const CurrentFooter = <OldFooter contentType={contentType} />
+  
   return (
     <>
       <Helmet>
