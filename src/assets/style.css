@@ -3149,6 +3149,7 @@ ul.pagination li a:focus {
     color: #fff;
     padding: 10px 15px;
     padding-bottom: 5px;
+    text-align: center;
 }
 
 .awards-cols .tabs-brok-card-wrap .award-head .nmbr {

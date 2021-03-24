@@ -351,7 +351,6 @@ export default function NewHomePage({ data }) {
           <div className={`${col_cls} columns ${awdclassName} awd-col`}>
             <div className="tabs-brok-card-wrap">
               <div className="award-head">
-                <span className="nmbr">1</span>
                 <h5>{bestBrokText}</h5>
                 <p>trader award</p>
               </div>
