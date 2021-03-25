@@ -1528,22 +1528,22 @@
         margin-bottom: 15px;
     }
 
-
+    .count-name .count{
+        min-width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
     .count-name,
     .brok-img{
         max-width: none;
         width: 50%;
-    }
-    .count-name{
-        -ms-flex-preferred-size: 35%;
-            flex-basis: 35%;
     }
     .min-deposit,
     .platforms,
     .leverage,
     .bonus{
         max-width: none;
-        width: 25%;
+        width: 50%;
     }
     .to-broker{
         max-width: none;
@@ -1583,6 +1583,9 @@
     }
     .brokers-top-section{
         margin-bottom: 50px;
+    }
+    .hide-for-small-only{
+        display: none !important;
     }
 }
 
@@ -2802,5 +2805,8 @@
     }
     .xlarge-8{
         width: 66.66667%;
+    }
+    .to-broker a{
+        padding: 9px 17px;
     }
 }
