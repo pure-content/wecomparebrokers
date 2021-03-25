@@ -2659,7 +2659,7 @@
         width: 25%;
     }
     .to-broker{
-        max-width: none;
+        /* max-width: none; */
         width: 100%;
     }
 
@@ -2690,6 +2690,9 @@
     .soc-heading h3{
         font-size: 35px;
         line-height: 35px;
+    }
+    .to-broker a{
+        padding: 9px 16px;
     }
 
 }

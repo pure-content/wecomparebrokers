@@ -330,7 +330,7 @@ export default function NewHomePage({ data }) {
       if ("traderInformationForForex" in brokerInfo.cptBrokers) {
         awdclassName = "forex-awd"
         traderInfo = templateFields.forexBrokerInfoBox
-        bestBrokText = "Best Trading Conditions"
+        bestBrokText = "Best Global Broker"
         brokerAvarage = avarageRatingCounter(
           templateFields.forexBrokerAward.cptBrokers
         )
