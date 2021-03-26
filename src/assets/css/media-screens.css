@@ -2779,7 +2779,7 @@
         line-height: 14px;
     }
     .to-broker a{
-        padding: 10px 20px;
+        padding: 10px 15px;
     }
 }
 
@@ -2797,6 +2797,18 @@
         -webkit-box-pack: end;
             -ms-flex-pack: end;
                 justify-content: flex-end;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1254px) {
+    .count-name .name{
+        font-size: 13px;
+    }
+    .count-name .count{
+        margin-right: 13px;
+    }
+    .count-name{
+        padding: 1px 10px;
     }
 }
 
