@@ -2823,6 +2823,12 @@
     .advant-wrap {
         background-size: contain;
     }
+    .count-name .count{
+        margin-right: 13px;
+    }
+    .count-name{
+        padding: 1px 10px;
+    }
 }
 
 @media only screen and (min-width: 1441px) {
