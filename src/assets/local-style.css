@@ -30,12 +30,11 @@
     /* transform: none; */
 }
 
-.homePage .new-hp-wrap h2 {
+.new-hp-wrap h2 {
     font-size: 34px;
     line-height: 1.2;
     font-weight: 700;
     margin-bottom: 45px;
-    text-transform: uppercase;
     color: #223144;
     text-align: center;
 }
@@ -1175,7 +1174,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 .top-three:not(:last-of-type){
     margin-bottom: 130px;
 }
-.top-three h4{
+.top-three h4,
+.top-three h2{
     font-family: 'Ubuntu', sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -1395,7 +1395,8 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
 .soc-heading{
     margin-bottom: 55px;
 }
-.soc-heading h3{
+.soc-heading h3,
+.soc-heading h2{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -1403,6 +1404,7 @@ div.wpforms-container-full .wpforms-form .wpforms-page-button {
     line-height: 50px;
     text-align: center;
     color: #000000;
+    margin-bottom: 0;
 }
 .brokAd{
     margin: 30px 0;

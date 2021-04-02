@@ -1020,12 +1020,14 @@ header {
     text-transform: uppercase;
 }
 
-.new_banner_bg h3 {
+.new_banner_bg h3,
+.homePage .new_banner_bg .new_banner_content h2 {
     font-weight: 400;
     font-size: 30px;
     line-height: 1.2;
     margin-bottom: 65px;
     text-transform: uppercase;
+    color: #fff;
 }
 
 .new_banner_bg p {
@@ -3976,7 +3978,8 @@ p.tab-title {
     display: inline-block;
 }
 
-.rev-part .title-wrap h4 {
+.rev-part .title-wrap h4,
+.rev-part .title-wrap h2 {
     color: #3b4956;
     font-weight: 500;
     margin-right: 15px;
@@ -7772,4 +7775,13 @@ ul.trust-list li img {
     background-color: #fff;
     color: #2A79FF;
     border: 1px solid #2A79FF;
+}
+
+.new-hp-wrap .trust-section-bot-text h2{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 30px;
+    text-align: center;
+    color: #FFFFFF;
 }

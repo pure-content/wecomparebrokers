@@ -606,7 +606,7 @@ export default function NewHomePage({ data }) {
                         <a href={generalSettings.topAdBannerFirstLink}><img src={generalSettings.topAdBannerFirstImage.mediaItemUrl} alt=""/></a>
                     </div>
                 )}
-                {templateFields.topThreeStockHeading && <h4>{templateFields.topThreeStockHeading}</h4>}
+                {templateFields.topThreeStockHeading && <h2>{templateFields.topThreeStockHeading}</h2>}
 
                 <div class="dot-sep"><span></span><span></span><span></span></div>
 
@@ -680,7 +680,7 @@ export default function NewHomePage({ data }) {
           {templateFields.topThreeForexBrokers.length > 0 && (
             <div className="top-three top-three-stock">
 
-              {templateFields.topThreeForexHeading && <h4>{templateFields.topThreeForexHeading}</h4>}
+              {templateFields.topThreeForexHeading && <h2>{templateFields.topThreeForexHeading}</h2>}
 
               <div class="dot-sep"><span></span><span></span><span></span></div>
 
@@ -754,7 +754,7 @@ export default function NewHomePage({ data }) {
                     </div>
                 )}
 
-                {templateFields.topThreeCryptoHeading && <h4>{templateFields.topThreeCryptoHeading}</h4>}
+                {templateFields.topThreeCryptoHeading && <h2>{templateFields.topThreeCryptoHeading}</h2>}
 
                 <div class="dot-sep"><span></span><span></span><span></span></div>
 
@@ -921,7 +921,7 @@ export default function NewHomePage({ data }) {
           <div className="row slider-row">
 
             <div className="large-12 columns soc-heading">
-              <h3>{templateFields.headingSocProof}</h3>
+              <h2>{templateFields.headingSocProof}</h2>
             </div>
             <div className="large-10 columns small-centered">
               <Equalizer>

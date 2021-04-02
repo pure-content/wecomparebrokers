@@ -1078,7 +1078,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.ratingCommFees || broker.cptBrokers.introTextCommFees || broker.cptBrokers.tableCommFees || broker.cptBrokers.reviewBodyCommFees ? (
           <div id="comm-fees" class="rev-part">
             <div class="title-wrap">
-              <h4>{Parser('Commissions &amp; Fees')}</h4>
+              <h2>{Parser('Commissions &amp; Fees')}</h2>
               <div class="rat-wrap">
                 <span class="rating">
                   <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
@@ -1212,7 +1212,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.ratingPlatfTools || broker.cptBrokers.introTextPlatfTools || broker.cptBrokers.table_platf_tools || broker.cptBrokers.review_body_platf_tools ? (
           <div id="platf-tools" class="rev-part">
             <div class="title-wrap">
-              <h4>{Parser('Platforms &amp; Tools')}</h4>
+              <h2>{Parser('Platforms &amp; Tools')}</h2>
               <div class="rat-wrap">
                 <span class="rating">
                   <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
@@ -1337,7 +1337,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.ratingCustServ || broker.cptBrokers.reviewBodyCustServ ? (
           <div id="cust-serv" class="rev-part">
             <div class="title-wrap">
-              <h4>Customer Service</h4>
+              <h2>Customer Service</h2>
               <div class="rat-wrap">
                 <span class="rating">
                   <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
@@ -1351,7 +1351,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.ratingCustResearch || broker.cptBrokers.reviewBodyResearch || broker.cptBrokers.tableResearch ? (
           <div id="research" class="rev-part">
             <div class="title-wrap">
-              <h4>Research</h4>
+              <h2>Research</h2>
               <div class="rat-wrap">
                 <span class="rating">
                   <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
@@ -1475,7 +1475,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.ratingEase || broker.cptBrokers.reviewBodyEase ? (
           <div id="ease" class="rev-part">
             <div class="title-wrap">
-              <h4>Ease of Use</h4>
+              <h2>Ease of Use</h2>
               <div class="rat-wrap">
                 <span class="rating">
                   <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
@@ -1489,7 +1489,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.ratingMobTrad || broker.cptBrokers.reviewBodyMobTrad || broker.cptBrokers.tableMobTrad ? (
           <div id="mob-trad" class="rev-part">
             <div class="title-wrap">
-              <h4>Mobile Trading</h4>
+              <h2>Mobile Trading</h2>
               <div class="rat-wrap">
                 <span class="rating">
                   <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
@@ -1613,7 +1613,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.reviewBodyMetod ? (
           <div id="metod" class="rev-part">
             <div class="title-wrap">
-              <h4>Robo Trading</h4>
+              <h2>Robo Trading</h2>
             </div>
             {Parser(broker.cptBrokers.reviewBodyMetod ? broker.cptBrokers.reviewBodyMetod : '')}
           </div>
@@ -1621,7 +1621,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.reviewBodyCrypto ? (
           <div id="crypt" class="rev-part">
             <div class="title-wrap">
-              <h4>Crypto Currency</h4>
+              <h2>Crypto Currency</h2>
             </div>
             {Parser(broker.cptBrokers.reviewBodyCrypto ? broker.cptBrokers.reviewBodyCrypto : '')}
           </div>
@@ -1629,7 +1629,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.reviewBodyOther ? (
           <div id="other" class="rev-part">
             <div class="title-wrap">
-              <h4>Regulatory details</h4>
+              <h2>Regulatory details</h2>
             </div>
             {Parser(broker.cptBrokers.reviewBodyOther ? broker.cptBrokers.reviewBodyOther : '')}
           </div>
@@ -1637,7 +1637,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.reviewBodyFinThoughts ? (
           <div id="fin-thoughts" class="rev-part">
             <div class="title-wrap">
-              <h4>Final Thoughts</h4>
+              <h2>Final Thoughts</h2>
             </div>
             {Parser(broker.cptBrokers.reviewBodyFinThoughts ? broker.cptBrokers.reviewBodyFinThoughts : '')}
           </div>
@@ -1645,7 +1645,7 @@ export default function BrokersSingle({ data }) {
         {broker.content ? (
           <div id="faq" class="rev-part">
             <div class="title-wrap">
-              <h4>FAQ</h4>
+              <h2>FAQ</h2>
             </div>
             {Parser(broker.content ? broker.content : '')}
           </div>
@@ -1653,7 +1653,7 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.reviewBodyLatBrokNews ? (
           <div id="lat-news" class="rev-part">
             <div class="title-wrap">
-              <h4>Latest Broker News</h4>
+              <h2>Latest Broker News</h2>
             </div>
             {Parser(broker.cptBrokers.reviewBodyLatBrokNews ? broker.cptBrokers.reviewBodyLatBrokNews : '')}
           </div>
