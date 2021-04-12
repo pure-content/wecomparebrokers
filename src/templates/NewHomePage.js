@@ -264,6 +264,10 @@ export const query = graphql`
 
       }
 
+      redirects {
+        redirects
+      }
+
     }
   }
 `
@@ -275,6 +279,7 @@ export default function NewHomePage({ data }) {
   const generalSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings;
 
   useEffect(() => {
+    console.log(JSON.parse(data.wpgraphql.redirects.redirects));
     $(function () {
       $(".left_banner_dropdown, .right_banner_dropdown").on("click", function () {
           $(this).find(".banner_body").slideToggle("fast")

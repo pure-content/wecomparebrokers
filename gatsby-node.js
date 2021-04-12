@@ -170,6 +170,10 @@ exports.createPages = async({ actions, graphql }) => {
                     id
                 }
             }
+
+            redirects {
+                redirects
+            }
         }
     }
     `)
