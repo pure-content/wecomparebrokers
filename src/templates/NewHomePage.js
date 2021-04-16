@@ -264,8 +264,13 @@ export const query = graphql`
 
       }
 
-      redirects {
-        redirects
+      redirectsSettings {
+        opt_redirects_settings {
+          redirects {
+            oldUrl
+            newUrl
+          }
+        }
       }
 
     }
@@ -279,7 +284,7 @@ export default function NewHomePage({ data }) {
   const generalSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings;
 
   useEffect(() => {
-    console.log(JSON.parse(data.wpgraphql.redirects.redirects));
+    console.log(data.wpgraphql.redirectsSettings.opt_redirects_settings.redirects);
     $(function () {
       $(".left_banner_dropdown, .right_banner_dropdown").on("click", function () {
           $(this).find(".banner_body").slideToggle("fast")

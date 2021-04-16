@@ -171,12 +171,27 @@ exports.createPages = async({ actions, graphql }) => {
                 }
             }
 
-            redirects {
-                redirects
+            redirectsSettings {
+                opt_redirects_settings {
+                    redirects {
+                        oldUrl
+                        newUrl
+                    }
+                }
             }
         }
     }
     `)
+
+    const { redirects } = result.data.wpgraphql.redirectsSettings.opt_redirects_settings
+    const { createRedirect } = actions
+
+    redirects.forEach(red => {
+        console.log('red.oldUrl', red.oldUrl);
+        console.log('red.newUrl', red.newUrl);
+        createRedirect({ fromPath: red.oldUrl, toPath: red.newUrl, isPermanent: true })
+        
+    })
     
     // pull the page data out of the query response
     const pages = result.data.wpgraphql.pages.nodes
