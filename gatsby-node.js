@@ -188,7 +188,7 @@ exports.createPages = async({ actions, graphql }) => {
 
     redirects.forEach(redir => {
         const { oldUrl, newUrl, statusCode } = redir
-        createRedirect({ fromPath: oldUrl, toPath: newUrl, isPermanent: true, statusCode: statusCode || 301 })
+        createRedirect({ fromPath: oldUrl, toPath: newUrl, isPermanent: true, statusCode: parseInt(statusCode) || 301 })
     })
     
     // pull the page data out of the query response
