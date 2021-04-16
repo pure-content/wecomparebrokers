@@ -176,6 +176,7 @@ exports.createPages = async({ actions, graphql }) => {
                     redirects {
                         oldUrl
                         newUrl
+                        statusCode
                     }
                 }
             }
