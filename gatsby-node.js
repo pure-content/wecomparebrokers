@@ -186,11 +186,9 @@ exports.createPages = async({ actions, graphql }) => {
     const { redirects } = result.data.wpgraphql.redirectsSettings.opt_redirects_settings
     const { createRedirect } = actions
 
-    redirects.forEach(red => {
-        console.log('red.oldUrl', red.oldUrl);
-        console.log('red.newUrl', red.newUrl);
-        createRedirect({ fromPath: red.oldUrl, toPath: red.newUrl, isPermanent: true })
-        
+    redirects.forEach(redir => {
+        const { oldUrl, newUrl, statusCode } = redir
+        createRedirect({ fromPath: oldUrl, toPath: newUrl, isPermanent: true, statusCode: statusCode || 301 })
     })
     
     // pull the page data out of the query response
