@@ -76,6 +76,7 @@ function ArchiveBrokers({ search }) {
     `)
 
     const brokers = brokersQuery.wpgraphql.brokers123.nodes
+    
     const { themeGeneralSettings } = brokersQuery.wpgraphql
 
     const [currentPage, setCurrentPage] = useState(1)
