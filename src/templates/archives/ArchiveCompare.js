@@ -35,6 +35,7 @@ export default function ArchiveCompare() {
                 meta={[
                     { name: "description", content: '' },
                     { property: "og:type", content: '' },
+                    { property: "og:title", content: 'Comparison Archive | We Compare Brokers' },
                 ]}
             />
             <div class="top-content-compare">

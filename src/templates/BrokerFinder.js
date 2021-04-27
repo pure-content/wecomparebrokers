@@ -277,6 +277,8 @@ function BrokerFinderTemplate({ data, search }) {
         meta={[
           { name: "description", content: page.seo.metaDesc },
           { property: "og:type", content: page.seo.opengraphType },
+          { property: "og:title", content: page.seo.title },
+          { property: "og:description", content: page.seo.metaDesc },
         ]}
       />
       <CompareFrom />

@@ -99,6 +99,8 @@ export default function QandASingle({ data }) {
                 meta={[
                     { name: "description", content: qa.seo.metaDesc },
                     { property: "og:type", content: qa.seo.opengraphType },
+                    { property: "og:title", content: qa.seo.title },
+                    { property: "og:description", content: qa.seo.metaDesc },
                 ]}
             />
             <TopContent />

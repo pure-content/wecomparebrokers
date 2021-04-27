@@ -980,6 +980,8 @@ export default function NewHomePage({ data }) {
         meta={[
           { name: "description", content: seo.metaDesc },
           { property: "og:type", content: seo.opengraphType },
+          { property: "og:title", content: seo.title },
+          { property: "og:description", content: seo.metaDesc },
         ]}
       />
       <Helmet><meta name="google-site-verification" content="LpG-zlER00N7KP55u-bULwtUxop1FcoyzA6M3PeClJU" /></Helmet>

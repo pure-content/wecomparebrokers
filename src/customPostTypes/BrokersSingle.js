@@ -1850,6 +1850,10 @@ export default function BrokersSingle({ data }) {
         meta={[
           { name: "description", content: broker.seo.metaDesc },
           { property: "og:type", content: broker.seo.opengraphType },
+          { property: "og:title", content: broker.seo.title },
+          { property: "og:url", content: siteUrl + broker.uri },
+          { property: "og:image", content: broker.featuredImage ? broker.featuredImage.node.mediaItemUrl : '' },
+          { property: "og:description", content: broker.seo.metaDesc },
         ]}
       />
       <div class="single-broker-wrap">

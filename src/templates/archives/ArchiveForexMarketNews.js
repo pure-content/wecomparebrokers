@@ -105,6 +105,7 @@ export default function ArchiveForexMarketNews() {
                 meta={[
                     { name: "description", content: '' },
                     { property: "og:type", content: '' },
+                    { property: "og:title", content: 'Forex Market News Archive | We Compare Brokers' },
                 ]}
             />
             <section class="forex-market-news">

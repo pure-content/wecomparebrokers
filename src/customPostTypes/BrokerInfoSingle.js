@@ -53,6 +53,8 @@ export default function BrokerInfoSingle({ data }) {
                 meta={[
                     { name: "description", content: seo.metaDesc },
                     { property: "og:type", content: seo.opengraphType },
+                    { property: "og:title", content: seo.title },
+                    { property: "og:description", content: seo.metaDesc },
                 ]}
             />
             <div class="blog-tmpl-wrap crypto-blog">
