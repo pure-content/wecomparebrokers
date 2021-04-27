@@ -1852,8 +1852,6 @@ export default function BrokersSingle({ data }) {
           { property: "og:type", content: broker.seo.opengraphType },
         ]}
       />
-      <CompareFrom />
-      <CallBackFormPopUp />
       <div class="single-broker-wrap">
         <div class="broker-floating-btn show-for-small-only">
           <a
@@ -2012,6 +2010,8 @@ export default function BrokersSingle({ data }) {
           </div>
         </div>
       </div>
+      <CompareFrom />
+      <CallBackFormPopUp />
     </Layout>
   )
 }
