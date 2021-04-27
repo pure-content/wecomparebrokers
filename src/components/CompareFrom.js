@@ -40,16 +40,17 @@ export default function CompareFrom() {
   `)
 
   useEffect(() => {
-    $('.compare-btn').click(function () {
+    console.log('CompareFrom updated');
+    $('.compare-btn').on('click', function () {
       var brokValue = $(this).attr('value');
       $('#first-user').val(brokValue);
       $('#compare-form-wrap').fadeIn('fast');
     });
-    $('#compare-form .close').click(function () {
+    $('#compare-form .close').on('click', function () {
       $('#compare-form-wrap').fadeOut('fast');
     });
 
-    $('.compare-btn-add').click(function () {
+    $('.compare-btn-add').on('click', function () {
       var brokValue = $(this).attr('value');
       $('#first-user-add').val(brokValue);
     });
