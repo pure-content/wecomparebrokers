@@ -645,12 +645,14 @@ export default function NewHomePage({ data }) {
 
                             <div className="platforms brok-each-box">
                                 <h6>Platforms</h6>
-                                <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
-                                    if(i !== list.length - 1){
-                                        return `${platf} and `
-                                    }
-                                    return platf
-                                })}</span>
+                                {brok.broker.cptBrokers.platformsList && (
+                                  <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
+                                      if(i !== list.length - 1){
+                                          return `${platf} and `
+                                      }
+                                      return platf
+                                  })}</span>
+                                )}
                             </div>
 
                             <div className="leverage brok-each-box">
@@ -719,12 +721,14 @@ export default function NewHomePage({ data }) {
 
                       <div className="platforms brok-each-box">
                         <h6>Platforms</h6>
-                        <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
-                          if(i !== list.length - 1){
-                            return `${platf} and `
-                          }
-                          return platf
-                        })}</span>
+                        {brok.broker.cptBrokers.platformsList && (
+                          <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
+                            if(i !== list.length - 1){
+                              return `${platf} and `
+                            }
+                            return platf
+                          })}</span>
+                        )}
                       </div>
 
                       <div className="leverage brok-each-box">
@@ -793,12 +797,14 @@ export default function NewHomePage({ data }) {
 
                                 <div className="platforms brok-each-box">
                                     <h6>Platforms</h6>
-                                    <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
+                                    {brok.broker.cptBrokers.platformsList && (
+                                      <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
                                         if(i !== list.length - 1){
                                             return `${platf} and `
                                         }
                                         return platf
-                                    })}</span>
+                                      })}</span>
+                                    )}
                                 </div>
 
                                 <div className="leverage brok-each-box">
