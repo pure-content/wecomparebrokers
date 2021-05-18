@@ -252,6 +252,7 @@ export const query = graphql`
           reviewBodyRelGuides
           reviewBodyResearch
           reviewIntroText
+          rightIframe
           safetyOfDepositsRegComp
           safetyOfDepositsRegCompScore
           sizeMeasureBg
@@ -884,6 +885,7 @@ export default function BrokersSingle({ data }) {
             </>
           )}
         </div>
+        
         {broker.cptBrokers.videoBroker && (
           <div class="medium-6 columns rew-user-right">
             {Parser(
@@ -928,8 +930,16 @@ export default function BrokersSingle({ data }) {
             ) : (
                 ""
               )}
-          </div>
+          </div>  
         )}
+
+        {broker.cptBrokers.rightIframe && (
+          <div class="medium-6 columns rew-user-right">
+              <iframe width="100%" height="550px" src={Parser(broker.cptBrokers.rightIframe)}></iframe>
+          </div>  
+        )}
+         
+            
       </div>
     )
   }
