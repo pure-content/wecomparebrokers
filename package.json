@@ -6,7 +6,6 @@
     "license": "0BSD",
     "scripts": {
         "build": "gatsby build",
-        "build:lambda": "netlify-lambda build src/lambda",
         "develop": "gatsby develop",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
         "start": "npm run develop",

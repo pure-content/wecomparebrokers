@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import $ from "jquery"
 import "jquery-match-height"
 let base64 = require('base-64');
-require('dotenv').config();
+// require('dotenv').config();
 const shortid = require("shortid")
 
 export default function CallBackFormPopUp(props) {
