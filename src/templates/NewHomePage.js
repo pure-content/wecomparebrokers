@@ -11,10 +11,9 @@ import { avarageRatingCounter } from "../functions/avarageRatingCounter"
 const shortid = require("shortid")
 
 export const query = graphql`
-  query($id: ID!) {
+  query ($id: ID!) {
     wpgraphql {
       page(id: $id) {
-          
         title
         content
         id
@@ -30,7 +29,6 @@ export const query = graphql`
           opengraphType
         }
         newHomePage {
-
           homeBannerColor
           newBannerText
           trustSubsectionText
@@ -136,7 +134,7 @@ export const query = graphql`
               uri
             }
           }
-          
+
           topThreeStockHeading
           topThreeStockButtonText
           topThreeStockButtonLink {
@@ -220,48 +218,78 @@ export const query = graphql`
               }
             }
           }
-
         }
       }
 
-
       themeGeneralSettings {
-
         optGeneralSettings {
-          topAdLink
-          topAdImage {
-            mediaItemUrl
+          topAddSection {
+            typeOfAdd
+            topAdLink
+            topAdImage {
+              mediaItemUrl
+            }
+            topAdTag
+            topAdScript
           }
           leftAdBanners {
+            bannerType
+            bannerTag
+            bannerScript
             bannerLink
             bannerImage {
               mediaItemUrl
             }
           }
           rightAdBanner {
+            bannerType
+            bannerTag
+            bannerScript
             bannerLink
             bannerImage {
               mediaItemUrl
             }
           }
-          topAdBannerFirstImage {
-            mediaItemUrl
+          topAdFirstBannerSectionForMobile {
+            bannerType
+            bannerTag
+            bannerScript
+            bannerLink
+            bannerImage {
+              mediaItemUrl
+            }
           }
-          topAdBannerFirstLink
-          topAdBannerSecondImage {
-            mediaItemUrl
-          }
-          topAdBannerSecondLink
-          bottomAdBannerFirstImage {
-            mediaItemUrl
-          }
-          bottomAdBannerFirstLink
-          bottomAdBannerSecondImage {
-            mediaItemUrl
-          }
-          bottomAdBannerSecondLink
-        }
 
+          topAdSecondBannerSectionForMobile {
+            bannerTag
+            bannerScript
+            bannerLink
+            bannerType
+            bannerImage {
+              mediaItemUrl
+            }
+          }
+
+          bottomAdFirstBannerSectionForMobile {
+            bannerType
+            bannerTag
+            bannerScript
+            bannerLink
+            bannerImage {
+              mediaItemUrl
+            }
+          }
+
+          bottomAdSecondBannerSectionForMobile {
+            bannerType
+            bannerTag
+            bannerScript
+            bannerLink
+            bannerImage {
+              mediaItemUrl
+            }
+          }
+        }
       }
 
       redirectsSettings {
@@ -272,7 +300,6 @@ export const query = graphql`
           }
         }
       }
-
     }
   }
 `
@@ -281,19 +308,22 @@ export default function NewHomePage({ data }) {
   const page = data.wpgraphql.page
   const seo = page.seo
   const templateFields = page.newHomePage
-  const generalSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings;
-
+  const generalSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings
+  console.log(generalSettings)
   useEffect(() => {
-    console.log(data.wpgraphql.redirectsSettings.opt_redirects_settings.redirects);
+    console.log(
+      data.wpgraphql.redirectsSettings.opt_redirects_settings.redirects
+    )
     $(function () {
-      $(".left_banner_dropdown, .right_banner_dropdown").on("click", function () {
+      $(".left_banner_dropdown, .right_banner_dropdown").on(
+        "click",
+        function () {
           $(this).find(".banner_body").slideToggle("fast")
           $(this).toggleClass("open")
         }
       )
       $(".slide-wrap").matchHeight()
       $(".tabs-brok-card-wrap .top-cols").matchHeight()
-      
     })
   })
 
@@ -462,31 +492,31 @@ export default function NewHomePage({ data }) {
       const bannerDropdownHandler = side => {
         side === "left"
           ? setLeftDropdownOpen({
-            isVisible: !leftDropdownOpen.isVisible,
-            className: leftDropdownOpen.className === "" ? "open" : "",
-            style: {
-              maxHeight:
-                leftDropdownOpen.style.maxHeight === "0" ? "inherit" : "0",
-              opacity: leftDropdownOpen.style.opacity === "0" ? "1" : "0",
-              visibility:
-                leftDropdownOpen.style.visibility === "hidden"
-                  ? "visible"
-                  : "hidden",
-            },
-          })
+              isVisible: !leftDropdownOpen.isVisible,
+              className: leftDropdownOpen.className === "" ? "open" : "",
+              style: {
+                maxHeight:
+                  leftDropdownOpen.style.maxHeight === "0" ? "inherit" : "0",
+                opacity: leftDropdownOpen.style.opacity === "0" ? "1" : "0",
+                visibility:
+                  leftDropdownOpen.style.visibility === "hidden"
+                    ? "visible"
+                    : "hidden",
+              },
+            })
           : setRightDropdownOpen({
-            isVisible: !rightDropdownOpen.isVisible,
-            className: rightDropdownOpen.className === "" ? "open" : "",
-            style: {
-              maxHeight:
-                rightDropdownOpen.style.maxHeight === "0" ? "inherit" : "0",
-              opacity: rightDropdownOpen.style.opacity === "0" ? "1" : "0",
-              visibility:
-                rightDropdownOpen.style.visibility === "hidden"
-                  ? "visible"
-                  : "hidden",
-            },
-          })
+              isVisible: !rightDropdownOpen.isVisible,
+              className: rightDropdownOpen.className === "" ? "open" : "",
+              style: {
+                maxHeight:
+                  rightDropdownOpen.style.maxHeight === "0" ? "inherit" : "0",
+                opacity: rightDropdownOpen.style.opacity === "0" ? "1" : "0",
+                visibility:
+                  rightDropdownOpen.style.visibility === "hidden"
+                    ? "visible"
+                    : "hidden",
+              },
+            })
       }
 
       return (
@@ -597,110 +627,69 @@ export default function NewHomePage({ data }) {
   }
 
   const TopThreeBrokersWIthAds = () => {
-    
     return (
       <div className="brokers-top-section row expanded">
         {generalSettings.leftAdBanners.length > 0 && (
-          <div className="brokers-top__left-a-d column hide-for-small-only medium-2 large-1 xlarge-2" data-mh="brok-ad">
-            {generalSettings.leftAdBanners.map(ad => {
-              return <a className="brokers-top__left-a-d-each" href={ad.bannerLink}><img src={ad.bannerImage.mediaItemUrl} alt=""/></a>
-            })}
+          <div
+            className="brokers-top__left-a-d column hide-for-small-only medium-2 large-1 xlarge-2"
+            data-mh="brok-ad"
+          >
+            {generalSettings.leftAdBanners.map(ad =>
+              ad.bannerType === "link" ? (
+                <a className="brokers-top__left-a-d-each" href={ad.bannerLink}>
+                  <img src={ad.bannerImage?.mediaItemUrl} alt="" />
+                </a>
+              ) : (
+                Parser(ad.bannerTag)
+              )
+            )}
           </div>
         )}
 
-        <div className="brokers-top__content column medium-8 large-10 xlarge-8" data-mh="brok-ad">
+        <div
+          className="brokers-top__content column medium-8 large-10 xlarge-8"
+          data-mh="brok-ad"
+        >
           {templateFields.topThreeStockBrokers.length > 0 && (
             <div className="top-three top-three-stock">
-                {generalSettings.topAdBannerFirstImage && generalSettings.topAdBannerFirstLink && (
-                    <div className="brokAd show-for-small-only">
-                        <a href={generalSettings.topAdBannerFirstLink}><img src={generalSettings.topAdBannerFirstImage.mediaItemUrl} alt=""/></a>
-                    </div>
-                )}
-                {templateFields.topThreeStockHeading && <h2>{templateFields.topThreeStockHeading}</h2>}
+              {generalSettings.topAdFirstBannerSectionForMobile?.bannerType &&
+                (generalSettings.topAdFirstBannerSectionForMobile
+                  ?.bannerType === "link" ? (
+                  <div className="brokAd show-for-small-only">
+                    <a
+                      href={
+                        generalSettings.topAdFirstBannerSectionForMobile
+                          .bannerLink
+                      }
+                    >
+                      <img
+                        src={
+                          generalSettings.topAdFirstBannerSectionForMobile
+                            .bannerImage.mediaItemUrl
+                        }
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                ) : (
+                  Parser(
+                    generalSettings.topAdFirstBannerSectionForMobile?.bannerTag
+                  )
+                ))}
+              {templateFields.topThreeStockHeading && (
+                <h2>{templateFields.topThreeStockHeading}</h2>
+              )}
 
-                <div class="dot-sep"><span></span><span></span><span></span></div>
-
-                <div className="top-three-brok-wrap">
-                    {templateFields.topThreeStockBrokers.map((brok, i) => {
-                        return (
-                            <div className="top-three-brok-each">
-
-                            <div className="count-name brok-each-box">
-                                <span className={`count count${++i}`}>{i}</span>
-                                <Link to={brok.broker.uri}>
-                                    <span className="name">{brok.broker.title}</span>
-                                </Link>
-                            </div>
-
-                            <div className="brok-img brok-each-box">
-                                <Link to={brok.broker.uri}>
-                                    <img src={brok.broker.featuredImage.node.mediaItemUrl} alt=""/>
-                                </Link>
-                            </div>
-
-                            <div className="min-deposit brok-each-box">
-                                <h6>Min. Deposit</h6>
-                                <span>{brok.broker.cptBrokers.minDeposit}</span>
-                            </div>
-
-                            <div className="platforms brok-each-box">
-                                <h6>Platforms</h6>
-                                {brok.broker.cptBrokers.platformsList && (
-                                  <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
-                                      if(i !== list.length - 1){
-                                          return `${platf} and `
-                                      }
-                                      return platf
-                                  })}</span>
-                                )}
-                            </div>
-
-                            <div className="leverage brok-each-box">
-                                <h6>Typical Leverage</h6>
-                                <span>{brok.broker.cptBrokers.typicalLeverageForStocks}</span>
-                            </div>
-
-                            <div className="bonus brok-each-box">
-                                <h6>Bonus Feature</h6>
-                                <span>{brok.broker.cptBrokers.bonusFeatureForStocks}</span>
-                            </div>
-
-                            <div className="to-broker brok-each-box">
-                                <a href={brok.broker.cptBrokers.affiliateLink}>Go to Broker</a>
-                            </div>
-                            
-                            </div>
-                        );
-                    })}
-                </div>
-
-                {templateFields.topThreeStockButtonText && templateFields.topThreeStockButtonLink && (
-                    <div className="top-three-brok-bottom-btn">
-                        <Link to={templateFields.topThreeStockButtonLink.uri}>{templateFields.topThreeStockButtonText}</Link>
-                    </div>
-                )}
-
-                {generalSettings.topAdBannerSecondImage && generalSettings.topAdBannerSecondLink && (
-                    <div className="brokAd show-for-small-only">
-                        <a href={generalSettings.topAdBannerSecondLink}><img src={generalSettings.topAdBannerSecondImage.mediaItemUrl} alt=""/></a>
-                    </div>
-                )}
-
-            </div>
-          )}
-
-          {templateFields.topThreeForexBrokers.length > 0 && (
-            <div className="top-three top-three-stock">
-
-              {templateFields.topThreeForexHeading && <h2>{templateFields.topThreeForexHeading}</h2>}
-
-              <div class="dot-sep"><span></span><span></span><span></span></div>
+              <div class="dot-sep">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
 
               <div className="top-three-brok-wrap">
-                {templateFields.topThreeForexBrokers.map((brok, i) => {
+                {templateFields.topThreeStockBrokers.map((brok, i) => {
                   return (
                     <div className="top-three-brok-each">
-
                       <div className="count-name brok-each-box">
                         <span className={`count count${++i}`}>{i}</span>
                         <Link to={brok.broker.uri}>
@@ -710,7 +699,10 @@ export default function NewHomePage({ data }) {
 
                       <div className="brok-img brok-each-box">
                         <Link to={brok.broker.uri}>
-                          <img src={brok.broker.featuredImage.node.mediaItemUrl} alt=""/>
+                          <img
+                            src={brok.broker.featuredImage.node.mediaItemUrl}
+                            alt=""
+                          />
                         </Link>
                       </div>
 
@@ -722,138 +714,327 @@ export default function NewHomePage({ data }) {
                       <div className="platforms brok-each-box">
                         <h6>Platforms</h6>
                         {brok.broker.cptBrokers.platformsList && (
-                          <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
-                            if(i !== list.length - 1){
-                              return `${platf} and `
-                            }
-                            return platf
-                          })}</span>
+                          <span>
+                            {brok.broker.cptBrokers.platformsList.map(
+                              (platf, i, list) => {
+                                if (i !== list.length - 1) {
+                                  return `${platf} and `
+                                }
+                                return platf
+                              }
+                            )}
+                          </span>
                         )}
                       </div>
 
                       <div className="leverage brok-each-box">
                         <h6>Typical Leverage</h6>
-                        <span>{brok.broker.cptBrokers.typicalLeverageForStocks}</span>
+                        <span>
+                          {brok.broker.cptBrokers.typicalLeverageForStocks}
+                        </span>
                       </div>
 
                       <div className="bonus brok-each-box">
                         <h6>Bonus Feature</h6>
-                        <span>{brok.broker.cptBrokers.bonusFeatureForStocks}</span>
+                        <span>
+                          {brok.broker.cptBrokers.bonusFeatureForStocks}
+                        </span>
                       </div>
 
                       <div className="to-broker brok-each-box">
-                        <a href={brok.broker.cptBrokers.affiliateLink}>Go to Broker</a>
+                        <a href={brok.broker.cptBrokers.affiliateLink}>
+                          Go to Broker
+                        </a>
                       </div>
-                      
                     </div>
-                  );
+                  )
                 })}
               </div>
 
-              {templateFields.topThreeForexButtonText && templateFields.topThreeForexButtonLink && (
-                <div className="top-three-brok-bottom-btn">
-                  <Link to={templateFields.topThreeForexButtonLink.uri}>{templateFields.topThreeForexButtonText}</Link>
-                </div>
+              {templateFields.topThreeStockButtonText &&
+                templateFields.topThreeStockButtonLink && (
+                  <div className="top-three-brok-bottom-btn">
+                    <Link to={templateFields.topThreeStockButtonLink.uri}>
+                      {templateFields.topThreeStockButtonText}
+                    </Link>
+                  </div>
+                )}
+
+              {generalSettings.topAdSecondBannerSectionForMobile &&
+                (generalSettings.topAdSecondBannerSectionForMobile
+                  .bannerType === "link" ? (
+                  <div className="brokAd show-for-small-only">
+                    <a
+                      href={
+                        generalSettings.topAdSecondBannerSectionForMobile
+                          ?.bannerLink
+                      }
+                    >
+                      <img
+                        src={
+                          generalSettings.topAdSecondBannerSectionForMobile
+                            ?.bannerImage?.mediaItemUrl
+                        }
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                ) : (
+                  Parser(
+                    generalSettings.topAdSecondBannerSectionForMobile?.bannerTag
+                  )
+                ))}
+            </div>
+          )}
+
+          {templateFields.topThreeForexBrokers.length > 0 && (
+            <div className="top-three top-three-stock">
+              {templateFields.topThreeForexHeading && (
+                <h2>{templateFields.topThreeForexHeading}</h2>
               )}
 
+              <div class="dot-sep">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div className="top-three-brok-wrap">
+                {templateFields.topThreeForexBrokers.map((brok, i) => {
+                  return (
+                    <div className="top-three-brok-each">
+                      <div className="count-name brok-each-box">
+                        <span className={`count count${++i}`}>{i}</span>
+                        <Link to={brok.broker.uri}>
+                          <span className="name">{brok.broker.title}</span>
+                        </Link>
+                      </div>
+
+                      <div className="brok-img brok-each-box">
+                        <Link to={brok.broker.uri}>
+                          <img
+                            src={brok.broker.featuredImage.node.mediaItemUrl}
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+
+                      <div className="min-deposit brok-each-box">
+                        <h6>Min. Deposit</h6>
+                        <span>{brok.broker.cptBrokers.minDeposit}</span>
+                      </div>
+
+                      <div className="platforms brok-each-box">
+                        <h6>Platforms</h6>
+                        {brok.broker.cptBrokers.platformsList && (
+                          <span>
+                            {brok.broker.cptBrokers.platformsList.map(
+                              (platf, i, list) => {
+                                if (i !== list.length - 1) {
+                                  return `${platf} and `
+                                }
+                                return platf
+                              }
+                            )}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="leverage brok-each-box">
+                        <h6>Typical Leverage</h6>
+                        <span>
+                          {brok.broker.cptBrokers.typicalLeverageForStocks}
+                        </span>
+                      </div>
+
+                      <div className="bonus brok-each-box">
+                        <h6>Bonus Feature</h6>
+                        <span>
+                          {brok.broker.cptBrokers.bonusFeatureForStocks}
+                        </span>
+                      </div>
+
+                      <div className="to-broker brok-each-box">
+                        <a href={brok.broker.cptBrokers.affiliateLink}>
+                          Go to Broker
+                        </a>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+              {templateFields.topThreeForexButtonText &&
+                templateFields.topThreeForexButtonLink && (
+                  <div className="top-three-brok-bottom-btn">
+                    <Link to={templateFields.topThreeForexButtonLink.uri}>
+                      {templateFields.topThreeForexButtonText}
+                    </Link>
+                  </div>
+                )}
             </div>
           )}
 
           {templateFields.topThreeCryptoBrokers.length > 0 && (
             <div className="top-three top-three-stock">
+              {generalSettings.bottomAdFirstBannerSectionForMobile &&
+                (generalSettings.bottomAdFirstBannerSectionForMobile
+                  .bannerType === "link" ? (
+                  <div className="brokAd show-for-small-only">
+                    <a
+                      href={
+                        generalSettings.bottomAdFirstBannerSectionForMobile
+                          .bannerLink
+                      }
+                    >
+                      <img
+                        src={
+                          generalSettings.bottomAdFirstBannerSectionForMobile
+                            ?.bannerImage?.mediaItemUrl
+                        }
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                ) : (
+                  Parser(
+                    generalSettings.bottomAdFirstBannerSectionForMobile
+                      ?.bannerTag
+                  )
+                ))}
 
-                {generalSettings.bottomAdBannerFirstImage && generalSettings.bottomAdBannerFirstLink && (
-                    <div className="brokAd show-for-small-only">
-                        <a href={generalSettings.bottomAdBannerFirstLink}><img src={generalSettings.bottomAdBannerFirstImage.mediaItemUrl} alt=""/></a>
+              {templateFields.topThreeCryptoHeading && (
+                <h2>{templateFields.topThreeCryptoHeading}</h2>
+              )}
+
+              <div class="dot-sep">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div className="top-three-brok-wrap">
+                {templateFields.topThreeCryptoBrokers.map((brok, i) => {
+                  return (
+                    <div className="top-three-brok-each">
+                      <div className="count-name brok-each-box">
+                        <span className={`count count${++i}`}>{i}</span>
+                        <Link to={brok.broker.uri}>
+                          <span className="name">{brok.broker.title}</span>
+                        </Link>
+                      </div>
+
+                      <div className="brok-img brok-each-box">
+                        <Link to={brok.broker.uri}>
+                          <img
+                            src={brok.broker.featuredImage.node.mediaItemUrl}
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+
+                      <div className="min-deposit brok-each-box">
+                        <h6>Min. Deposit</h6>
+                        <span>{brok.broker.cptBrokers.minDeposit}</span>
+                      </div>
+
+                      <div className="platforms brok-each-box">
+                        <h6>Platforms</h6>
+                        {brok.broker.cptBrokers.platformsList && (
+                          <span>
+                            {brok.broker.cptBrokers.platformsList.map(
+                              (platf, i, list) => {
+                                if (i !== list.length - 1) {
+                                  return `${platf} and `
+                                }
+                                return platf
+                              }
+                            )}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="leverage brok-each-box">
+                        <h6>Typical Leverage</h6>
+                        <span>
+                          {brok.broker.cptBrokers.typicalLeverageForStocks}
+                        </span>
+                      </div>
+
+                      <div className="bonus brok-each-box">
+                        <h6>Bonus Feature</h6>
+                        <span>
+                          {brok.broker.cptBrokers.bonusFeatureForStocks}
+                        </span>
+                      </div>
+
+                      <div className="to-broker brok-each-box">
+                        <a href={brok.broker.cptBrokers.affiliateLink}>
+                          Go to Broker
+                        </a>
+                      </div>
                     </div>
+                  )
+                })}
+              </div>
+
+              {templateFields.topThreeCryptoButtonText &&
+                templateFields.topThreeCryptoButtonLink && (
+                  <div className="top-three-brok-bottom-btn">
+                    <Link to={templateFields.topThreeCryptoButtonLink.uri}>
+                      {templateFields.topThreeCryptoButtonText}
+                    </Link>
+                  </div>
                 )}
 
-                {templateFields.topThreeCryptoHeading && <h2>{templateFields.topThreeCryptoHeading}</h2>}
-
-                <div class="dot-sep"><span></span><span></span><span></span></div>
-
-                <div className="top-three-brok-wrap">
-                    {templateFields.topThreeCryptoBrokers.map((brok, i) => {
-                        return (
-                            <div className="top-three-brok-each">
-
-                                <div className="count-name brok-each-box">
-                                    <span className={`count count${++i}`}>{i}</span>
-                                    <Link to={brok.broker.uri}>
-                                    <span className="name">{brok.broker.title}</span>
-                                    </Link>
-                                </div>
-
-                                <div className="brok-img brok-each-box">
-                                    <Link to={brok.broker.uri}>
-                                    <img src={brok.broker.featuredImage.node.mediaItemUrl} alt=""/>
-                                    </Link>
-                                </div>
-
-                                <div className="min-deposit brok-each-box">
-                                    <h6>Min. Deposit</h6>
-                                    <span>{brok.broker.cptBrokers.minDeposit}</span>
-                                </div>
-
-                                <div className="platforms brok-each-box">
-                                    <h6>Platforms</h6>
-                                    {brok.broker.cptBrokers.platformsList && (
-                                      <span>{brok.broker.cptBrokers.platformsList.map((platf, i, list) => {
-                                        if(i !== list.length - 1){
-                                            return `${platf} and `
-                                        }
-                                        return platf
-                                      })}</span>
-                                    )}
-                                </div>
-
-                                <div className="leverage brok-each-box">
-                                    <h6>Typical Leverage</h6>
-                                    <span>{brok.broker.cptBrokers.typicalLeverageForStocks}</span>
-                                </div>
-
-                                <div className="bonus brok-each-box">
-                                    <h6>Bonus Feature</h6>
-                                    <span>{brok.broker.cptBrokers.bonusFeatureForStocks}</span>
-                                </div>
-
-                                <div className="to-broker brok-each-box">
-                                    <a href={brok.broker.cptBrokers.affiliateLink}>Go to Broker</a>
-                                </div>
-                            
-                            </div>
-                        );
-                    })}
-                </div>
-
-                {templateFields.topThreeCryptoButtonText && templateFields.topThreeCryptoButtonLink && (
-                    <div className="top-three-brok-bottom-btn">
-                    <Link to={templateFields.topThreeCryptoButtonLink.uri}>{templateFields.topThreeCryptoButtonText}</Link>
-                    </div>
-                )}
-
-                {generalSettings.bottomAdBannerSecondImage && generalSettings.bottomAdBannerSecondLink && (
-                    <div className="brokAd show-for-small-only">
-                        <a href={generalSettings.bottomAdBannerSecondLink}><img src={generalSettings.bottomAdBannerSecondImage.mediaItemUrl} alt=""/></a>
-                    </div>
-                )}
-
+              {generalSettings.bottomAdSecondBannerSectionForMobile &&
+                (generalSettings.bottomAdSecondBannerSectionForMobile
+                  .bannerType === "link" ? (
+                  <div className="brokAd show-for-small-only">
+                    <a
+                      href={
+                        generalSettings.bottomAdSecondBannerSectionForMobile
+                          ?.bannerLink
+                      }
+                    >
+                      <img
+                        src={
+                          generalSettings.bottomAdSecondBannerSectionForMobile
+                            ?.bannerImage?.mediaItemUrl
+                        }
+                        alt=""
+                      />
+                    </a>
+                  </div>
+                ) : (
+                  Parser(
+                    generalSettings.bottomAdSecondBannerSectionForMobile
+                      ?.bannerTag
+                  )
+                ))}
             </div>
           )}
         </div>
 
         {generalSettings.rightAdBanner.length > 0 && (
-          <div className="brokers-top__right-a-d column hide-for-small-only medium-2 large-1 xlarge-2" data-mh="brok-ad">
-            {generalSettings.rightAdBanner.map(ad => {
-              return <a className="brokers-top__right-a-d-each" href={ad.bannerLink}><img src={ad.bannerImage.mediaItemUrl} alt=""/></a>
-            })}
+          <div
+            className="brokers-top__right-a-d column hide-for-small-only medium-2 large-1 xlarge-2"
+            data-mh="brok-ad"
+          >
+            {generalSettings.rightAdBanner.map(ad =>
+              ad.bannerType === "link" ? (
+                <a className="brokers-top__left-a-d-each" href={ad.bannerLink}>
+                  <img src={ad.bannerImage?.mediaItemUrl} alt="" />
+                </a>
+              ) : (
+                Parser(ad.bannerTag)
+              )
+            )}
           </div>
         )}
-        
       </div>
-    );
+    )
   }
-  
 
   const TrustSection = () => {
     if (templateFields.trustSubsectionLogos.length > 0) {
@@ -935,7 +1116,6 @@ export default function NewHomePage({ data }) {
       return (
         <div className="slider-wrap">
           <div className="row slider-row">
-
             <div className="large-12 columns soc-heading">
               <h2>{templateFields.headingSocProof}</h2>
             </div>
@@ -984,9 +1164,38 @@ export default function NewHomePage({ data }) {
           { property: "og:description", content: seo.metaDesc },
         ]}
       />
-      <Helmet><meta name="google-site-verification" content="LpG-zlER00N7KP55u-bULwtUxop1FcoyzA6M3PeClJU" /></Helmet>
+      <Helmet>
+        <meta
+          name="google-site-verification"
+          content="LpG-zlER00N7KP55u-bULwtUxop1FcoyzA6M3PeClJU"
+        />
+        {generalSettings.topAddSection?.typeOfAdd === "iframe"
+          ? Parser(generalSettings.topAddSection?.topAdScript)
+          : null}
+        {generalSettings.leftAdBanners.map(ad => Parser(ad.bannerScript))}
+        {generalSettings.rightAdBanner.map(ad => Parser(ad.bannerScript))}
+        {generalSettings.topAdFirstBannerSectionForMobile.bannerScript &&
+          Parser(
+            generalSettings.topAdFirstBannerSectionForMobile?.bannerScript
+          )}
+        {generalSettings.topAdSecondBannerSectionForMobile.bannerScript &&
+          Parser(
+            generalSettings.topAdSecondBannerSectionForMobile?.bannerScript
+          )}
+        {generalSettings.bottomAdFirstBannerSectionForMobile.bannerScript &&
+          Parser(
+            generalSettings.bottomAdFirstBannerSectionForMobile?.bannerScript
+          )}
+        {generalSettings.bottomAdSecondBannerSectionForMobile.bannerScript &&
+          Parser(
+            generalSettings.bottomAdSecondBannerSectionForMobile?.bannerScript
+          )}
+      </Helmet>
       <div className="new-hp-wrap">
-        <div className="new_banner_bg" style={{ backgroundColor: templateFields.homeBannerColor }} >
+        <div
+          className="new_banner_bg"
+          style={{ backgroundColor: templateFields.homeBannerColor }}
+        >
           <div className="row">
             <div className="large-12 columns">
               <div className="new_banner_content">
@@ -1001,12 +1210,26 @@ export default function NewHomePage({ data }) {
             </div>
           </div>
         </div>
-        
-        {generalSettings.topAdLink && generalSettings.topAdImage.mediaItemUrl && (
+
+        {generalSettings.topAddSection?.typeOfAdd && (
           <div className="row top-a-d-wrap">
             <div className="large-12 columns">
-
-              <a href={generalSettings.topAdLink} className="top-a-d"><img src={generalSettings.topAdImage.mediaItemUrl} alt=""/></a>
+              {generalSettings.topAddSection?.typeOfAdd === "iframe"
+                ? Parser(generalSettings.topAddSection.topAdTag)
+                : null}
+              {generalSettings.topAddSection?.typeOfAdd === "link" ? (
+                <a
+                  href={generalSettings.topAddSection?.topAdLink}
+                  className="top-a-d"
+                >
+                  <img
+                    src={
+                      generalSettings.topAddSection?.topAdImage?.mediaItemUrl
+                    }
+                    alt=""
+                  />
+                </a>
+              ) : null}
             </div>
           </div>
         )}
