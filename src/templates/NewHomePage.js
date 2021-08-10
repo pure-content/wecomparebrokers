@@ -309,11 +309,8 @@ export default function NewHomePage({ data }) {
   const seo = page.seo
   const templateFields = page.newHomePage
   const generalSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings
-  console.log(generalSettings)
+
   useEffect(() => {
-    console.log(
-      data.wpgraphql.redirectsSettings.opt_redirects_settings.redirects
-    )
     $(function () {
       $(".left_banner_dropdown, .right_banner_dropdown").on(
         "click",
@@ -627,11 +624,25 @@ export default function NewHomePage({ data }) {
   }
 
   const TopThreeBrokersWIthAds = () => {
+    useEffect(() => {
+      console.log("LALALALA Load")
+      setTimeout(() => {
+        console.log("settimeout")
+        console.log("page loaded")
+        console.log($("#cmstrader3778WcqDDi iframe"))
+
+        let head = $(".a-d-column iframe").contents().find("head")
+        console.log("iframe head", $(".a-d-column iframe").find("head"))
+        let css =
+          '<style type="text/css"> a img { width: 100%; height: 100%; } </style>'
+        $(head).append(css)
+      }, 3000)
+    }, [generalSettings.leftAdBanners])
     return (
       <div className="brokers-top-section row expanded">
         {generalSettings.leftAdBanners.length > 0 && (
           <div
-            className="brokers-top__left-a-d column hide-for-small-only medium-2 large-1 xlarge-2"
+            className="brokers-top__left-a-d a-d-column column hide-for-small-only medium-2 large-1 xlarge-2"
             data-mh="brok-ad"
           >
             {generalSettings.leftAdBanners.map(ad =>
@@ -1018,12 +1029,12 @@ export default function NewHomePage({ data }) {
 
         {generalSettings.rightAdBanner.length > 0 && (
           <div
-            className="brokers-top__right-a-d column hide-for-small-only medium-2 large-1 xlarge-2"
+            className="brokers-top__right-a-d a-d-column column hide-for-small-only medium-2 large-1 xlarge-2"
             data-mh="brok-ad"
           >
             {generalSettings.rightAdBanner.map(ad =>
               ad.bannerType === "link" ? (
-                <a className="brokers-top__left-a-d-each" href={ad.bannerLink}>
+                <a className="brokers-top__right-a-d-each" href={ad.bannerLink}>
                   <img src={ad.bannerImage?.mediaItemUrl} alt="" />
                 </a>
               ) : (
