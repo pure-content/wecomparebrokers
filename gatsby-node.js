@@ -160,7 +160,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const pages = result.data.wpgraphql.pages.nodes
   // loop through WordPress pages and create a Gatsby page for each one
   pages.forEach(page => {
-    const tmplName = page.template?.templateName.split(" ").join("")
+    const tmplName = page.template.templateName.split(" ").join("")
     switch (tmplName) {
       case "NewHomePage":
         actions.createPage({
