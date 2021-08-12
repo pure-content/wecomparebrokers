@@ -17,7 +17,7 @@ import CallBackFormPopUp from "../components/CallBackFormPopUp"
 const shortid = require("shortid")
 
 export const query = graphql`
-  query($id: ID!) {
+  query ($id: ID!) {
     wpgraphql {
       brokers123(
         first: 10000
@@ -121,7 +121,7 @@ export const query = graphql`
           opengraphType
         }
       }
-      themeGeneralSettings {
+      acfOptionsGeneralSettings {
         optGeneralSettings {
           specialOfferIcon {
             mediaItemUrl
@@ -133,7 +133,6 @@ export const query = graphql`
 `
 
 function BrokerFinderTemplate({ data, search }) {
-
   const page = data.wpgraphql.page
   const brokers = data.wpgraphql.brokers123.nodes
   const pageTemplate = data.wpgraphql.page.tmplBrokerFinder
@@ -145,14 +144,18 @@ function BrokerFinderTemplate({ data, search }) {
   const indexOfFirstPost = indexOfLastPost - postsPerPage
   const [filteredBrokers, setFilteredBrokers] = useState(brokers)
 
-
-  const currentBrokers = filteredBrokers.slice(indexOfFirstPost, indexOfLastPost)
+  const currentBrokers = filteredBrokers.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  )
 
   useEffect(() => {
     if (search) {
       let country = $(`#main-form #country option[value="${search.country}"]`),
         catVal = country.val(),
-        instrument = $(`#main-form #instrument option[value="${search.instrument}"]`),
+        instrument = $(
+          `#main-form #instrument option[value="${search.instrument}"]`
+        ),
         instVal = instrument.val()
       $("#main-form #country").val(catVal).trigger("change")
       $("#main-form #instrument").val(instVal).trigger("change")
@@ -176,27 +179,30 @@ function BrokerFinderTemplate({ data, search }) {
     // $(".top-content-col").matchHeight()
     $(".broker-col").matchHeight()
 
-    $('.compare-btn').on('click', function () {
-      var brokValue = $(this).attr('value');
-      $('#first-user').val(brokValue);
-      $('#compare-form-wrap').fadeIn('fast');
-    });
-    $('#compare-form .close').on('click', function () {
-      $('#compare-form-wrap').fadeOut('fast');
-    });
+    $(".compare-btn").on("click", function () {
+      var brokValue = $(this).attr("value")
+      $("#first-user").val(brokValue)
+      $("#compare-form-wrap").fadeIn("fast")
+    })
+    $("#compare-form .close").on("click", function () {
+      $("#compare-form-wrap").fadeOut("fast")
+    })
 
-    $('.compare-btn-add').on('click', function () {
-      var brokValue = $(this).attr('value');
-      $('#first-user-add').val(brokValue);
-    });
-
-
+    $(".compare-btn-add").on("click", function () {
+      var brokValue = $(this).attr("value")
+      $("#first-user-add").val(brokValue)
+    })
   })
 
   useEffect(() => {
     if (search.country && search.instrument) {
       const sortedBrokers = filteredBrokers.filter(eachBroker => {
-        if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument) && eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
+        if (
+          eachBroker.cptBrokers.brokerType &&
+          eachBroker.cptBrokers.brokerType.includes(search.instrument) &&
+          eachBroker.cptBrokers.brokerRegion &&
+          eachBroker.cptBrokers.brokerRegion.includes(search.country)
+        ) {
           return eachBroker
         }
       })
@@ -204,7 +210,10 @@ function BrokerFinderTemplate({ data, search }) {
     }
     if (search.country && !search.instrument) {
       const sortedBrokers = filteredBrokers.filter(eachBroker => {
-        if (eachBroker.cptBrokers.brokerRegion && eachBroker.cptBrokers.brokerRegion.includes(search.country)) {
+        if (
+          eachBroker.cptBrokers.brokerRegion &&
+          eachBroker.cptBrokers.brokerRegion.includes(search.country)
+        ) {
           return eachBroker
         }
       })
@@ -212,7 +221,10 @@ function BrokerFinderTemplate({ data, search }) {
     }
     if (!search.country && search.instrument) {
       const sortedBrokers = filteredBrokers.filter(eachBroker => {
-        if (eachBroker.cptBrokers.brokerType && eachBroker.cptBrokers.brokerType.includes(search.instrument)) {
+        if (
+          eachBroker.cptBrokers.brokerType &&
+          eachBroker.cptBrokers.brokerType.includes(search.instrument)
+        ) {
           return eachBroker
         }
       })
@@ -221,9 +233,12 @@ function BrokerFinderTemplate({ data, search }) {
   }, [search])
 
   useEffect(() => {
-    $('html, body').animate({
-      scrollTop: $('#rec-brok-wrap').offset().top
-    }, 1000);
+    $("html, body").animate(
+      {
+        scrollTop: $("#rec-brok-wrap").offset().top,
+      },
+      1000
+    )
   }, [currentPage])
 
   const Filter = () => {
@@ -266,7 +281,7 @@ function BrokerFinderTemplate({ data, search }) {
     isFrontPage: page.isFrontPage,
     contentType: page.contentType,
     title: page.title,
-    uri: page.uri
+    uri: page.uri,
   }
 
   return (
@@ -289,14 +304,29 @@ function BrokerFinderTemplate({ data, search }) {
         <div className="small-12 columns">
           <RecommendedBroker
             recommendedBroker={pageTemplate.recommendedBroker}
-            recommendedBrokerAdditionalText={pageTemplate.recommendedBrokerAdditionalText}
+            recommendedBrokerAdditionalText={
+              pageTemplate.recommendedBrokerAdditionalText
+            }
           />
           {currentBrokers.map(eachBroker => {
-            return <BrokerTableSingleItemNewView brokerInfo={eachBroker} recommendedBrokerAdditionalText={pageTemplate.recommendedBrokerAdditionalText} />
+            return (
+              <BrokerTableSingleItemNewView
+                brokerInfo={eachBroker}
+                recommendedBrokerAdditionalText={
+                  pageTemplate.recommendedBrokerAdditionalText
+                }
+              />
+            )
           })}
         </div>
         <div className="small-12 columns text-right btn-navi-wrap">
-          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={filteredBrokers.length} noNumbers={false} />
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            postsPerPage={postsPerPage}
+            totalPosts={filteredBrokers.length}
+            noNumbers={false}
+          />
         </div>
       </div>
       <div className="choose-wrap bot-text">

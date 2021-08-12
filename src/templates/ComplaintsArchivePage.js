@@ -9,7 +9,7 @@ import SideBarComplaints from "../components/SideBarComplaints"
 import ComplainsComponent from "../components/ComplainsComponent"
 
 export const query = graphql`
-  query($id: ID!) {
+  query ($id: ID!) {
     wpgraphql {
       page(id: $id) {
         title
@@ -22,7 +22,7 @@ export const query = graphql`
             name
           }
         }
-        
+
         seo {
           metaDesc
           title
@@ -49,13 +49,12 @@ export const query = graphql`
         }
       }
 
-      themeGeneralSettings {
+      acfOptionsGeneralSettings {
         optGeneralSettings {
           takeMeToBrokerButtonAlternativeText
           readFullReviewButtonAlternativeText
         }
       }
-
     }
   }
 `
@@ -69,7 +68,7 @@ export default function ComplaintsArchivePageTemplate({ data }) {
     //     'sitekey': '6LcWcJwUAAAAABbqKp2XNtC7zLs-cyVhYQzaMl-6'
     //   });
     // };
-    $('.comp-col-link').matchHeight()
+    $(".comp-col-link").matchHeight()
   })
 
   const TopContent = () => {
@@ -78,15 +77,24 @@ export default function ComplaintsArchivePageTemplate({ data }) {
         <div class="row top-content fraud-top">
           <div class="small-12 columns">
             <div class="crumbs">
-              <Link to={'/'}>Home page</Link> -&gt;
-                    <span>
-                {page.title}
-              </span>
+              <Link to={"/"}>Home page</Link> -&gt;
+              <span>{page.title}</span>
             </div>
             <article>
               <h3 class="page_title">
-                {page.allPagesFields.pageIcon ? <img src={page.allPagesFields.pageIcon.mediaItemUrl} alt="Title" /> : null}
-                {page.allPagesFields.alternativeTitle ? Parser(page.allPagesFields.alternativeTitle ? page.allPagesFields.alternativeTitle : '') : page.title}
+                {page.allPagesFields.pageIcon ? (
+                  <img
+                    src={page.allPagesFields.pageIcon.mediaItemUrl}
+                    alt="Title"
+                  />
+                ) : null}
+                {page.allPagesFields.alternativeTitle
+                  ? Parser(
+                      page.allPagesFields.alternativeTitle
+                        ? page.allPagesFields.alternativeTitle
+                        : ""
+                    )
+                  : page.title}
               </h3>
               <div class="dot-sep">
                 <span></span>
@@ -108,7 +116,11 @@ export default function ComplaintsArchivePageTemplate({ data }) {
           {page.pageBrokerFraudComplaints.bottomText ? (
             <div class="row bot-text">
               <div class="small-12 columns">
-                {Parser(page.pageBrokerFraudComplaints.bottomText ? page.pageBrokerFraudComplaints.bottomText : '')}
+                {Parser(
+                  page.pageBrokerFraudComplaints.bottomText
+                    ? page.pageBrokerFraudComplaints.bottomText
+                    : ""
+                )}
               </div>
             </div>
           ) : null}
@@ -121,7 +133,7 @@ export default function ComplaintsArchivePageTemplate({ data }) {
     isFrontPage: page.isFrontPage,
     contentType: page.contentType,
     title: page.title,
-    uri: page.uri
+    uri: page.uri,
   }
 
   return (

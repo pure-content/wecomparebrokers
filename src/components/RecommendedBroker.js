@@ -13,7 +13,7 @@ export default function RecommendedBroker(props) {
   const specialOffer = useStaticQuery(graphql`
     query {
       wpgraphql {
-        themeGeneralSettings {
+        acfOptionsGeneralSettings {
           optGeneralSettings {
             specialOfferIcon {
               mediaItemUrl
@@ -102,8 +102,8 @@ export default function RecommendedBroker(props) {
           <img
             className="spec-offer-ico"
             src={
-              specialOffer.wpgraphql.themeGeneralSettings.optGeneralSettings
-                .specialOfferIcon.mediaItemUrl
+              specialOffer.wpgraphql.acfOptionsGeneralSettings
+                .optGeneralSettings.specialOfferIcon.mediaItemUrl
             }
             alt="Special Offer"
           />
@@ -111,17 +111,14 @@ export default function RecommendedBroker(props) {
         <div className="broker-tab-col img-col broker-col">
           <div className="thumb-wrap">
             {brokerImage ? (
+              <img src={brokerImage.mediaItemUrl} alt="WCB Logo" />
+            ) : (
               <img
-                src={brokerImage.mediaItemUrl}
+                className="img-list-default"
+                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
                 alt="WCB Logo"
               />
-            ) : (
-                <img
-                  className="img-list-default"
-                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
-                  alt="WCB Logo"
-                />
-              )}
+            )}
           </div>
         </div>
 

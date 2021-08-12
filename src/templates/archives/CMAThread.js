@@ -9,136 +9,140 @@ import SideBarComplaints from "../../components/SideBarComplaints"
 import ComplainsComponent from "../../components/ComplainsComponent"
 //cG9zdDoxMjY= - id of /scam-brokers-broker-complaints/ page
 
-
 export default function CMAThread() {
-    const allData = useStaticQuery(graphql`
+  const allData = useStaticQuery(graphql`
     query {
-        wpgraphql {
-          page(id: "cG9zdDoxMjY=") {
-    
+      wpgraphql {
+        page(id: "cG9zdDoxMjY=") {
+          title
+          content
+          id
+          isFrontPage
+          uri
+          contentType {
+            node {
+              name
+            }
+          }
+
+          seo {
+            metaDesc
             title
-            content
-            id
-            isFrontPage
-            uri
-            contentType {
-              node {
-                name
-              }
+            opengraphType
+          }
+
+          allPagesFields {
+            alternativeTitle
+            pageIcon {
+              mediaItemUrl
             }
-            
-            seo {
-              metaDesc
-              title
-              opengraphType
-            }
-    
-            allPagesFields {
-              alternativeTitle
-              pageIcon {
+            videoPage
+          }
+
+          pageBrokerFraudComplaints {
+            textIntro
+            pointsList {
+              text
+              icone {
                 mediaItemUrl
               }
-              videoPage
             }
-    
-            pageBrokerFraudComplaints {
-              textIntro
-              pointsList {
-                text
-                icone {
-                  mediaItemUrl
-                }
-              }
-              bottomText
-            }
+            bottomText
           }
-    
-    
-          themeGeneralSettings {
-            optGeneralSettings {
-              takeMeToBrokerButtonAlternativeText
-              readFullReviewButtonAlternativeText
-            }
+        }
+
+        acfOptionsGeneralSettings {
+          optGeneralSettings {
+            takeMeToBrokerButtonAlternativeText
+            readFullReviewButtonAlternativeText
           }
-    
         }
       }
-    `)
-    const page = allData.wpgraphql.page
-
-    useEffect(() => {
-        // var onloadCallback = function () {
-        //   grecaptcha.render('g-recaptcha', {
-        //     'sitekey': '6LcWcJwUAAAAABbqKp2XNtC7zLs-cyVhYQzaMl-6'
-        //   });
-        // };
-        $('.comp-col-link').matchHeight()
-    })
-
-    const TopContent = () => {
-        return (
-            <div class="top-content-wrap find-page">
-                <div class="row top-content fraud-top">
-                    <div class="small-12 columns">
-                        <div class="crumbs">
-                            <Link to={'/'}>Home page</Link> -&gt;
-                    <span>
-                                {page.title}
-                            </span>
-                        </div>
-                        <article>
-                            <h3 class="page_title">
-                                {page.allPagesFields.pageIcon ? <img src={page.allPagesFields.pageIcon.mediaItemUrl} alt="Title" /> : null}
-                                {page.allPagesFields.alternativeTitle ? Parser(page.allPagesFields.alternativeTitle ? page.allPagesFields.alternativeTitle : '') : page.title}
-                            </h3>
-                            <div class="dot-sep">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        )
     }
+  `)
+  const page = allData.wpgraphql.page
 
-    const MainColumn = () => {
-        return (
-            <div class="large-9 medium-8 columns">
-                <div class="cma-comp-list-wrap">
-                    <ComplainsComponent showList={false} />
-                </div>
-            </div>
-        )
-    }
+  useEffect(() => {
+    // var onloadCallback = function () {
+    //   grecaptcha.render('g-recaptcha', {
+    //     'sitekey': '6LcWcJwUAAAAABbqKp2XNtC7zLs-cyVhYQzaMl-6'
+    //   });
+    // };
+    $(".comp-col-link").matchHeight()
+  })
 
-    const pageInfo = {
-        isFrontPage: page.isFrontPage,
-        contentType: page.contentType,
-        title: page.title,
-    }
-
-
+  const TopContent = () => {
     return (
-        <Layout pageInfo={pageInfo}>
-            <Helmet
-                htmlAttributes={{ lang: "en", amp: undefined }}
-                title={page.seo.title}
-                meta={[
-                    { name: "description", content: page.seo.metaDesc },
-                    { property: "og:type", content: page.seo.opengraphType },
-                    { property: "og:title", content: page.seo.title },
-                    { property: "og:description", content: page.seo.metaDesc },
-                ]}
-            />
-            <TopContent />
-            <div class="row cma-wrap">
-                <MainColumn />
-                <div class="large-3 medium-4 columns sidebar">
-                    <SideBarComplaints />
-                </div>
+      <div class="top-content-wrap find-page">
+        <div class="row top-content fraud-top">
+          <div class="small-12 columns">
+            <div class="crumbs">
+              <Link to={"/"}>Home page</Link> -&gt;
+              <span>{page.title}</span>
             </div>
-        </Layout>
+            <article>
+              <h3 class="page_title">
+                {page.allPagesFields.pageIcon ? (
+                  <img
+                    src={page.allPagesFields.pageIcon.mediaItemUrl}
+                    alt="Title"
+                  />
+                ) : null}
+                {page.allPagesFields.alternativeTitle
+                  ? Parser(
+                      page.allPagesFields.alternativeTitle
+                        ? page.allPagesFields.alternativeTitle
+                        : ""
+                    )
+                  : page.title}
+              </h3>
+              <div class="dot-sep">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
     )
+  }
+
+  const MainColumn = () => {
+    return (
+      <div class="large-9 medium-8 columns">
+        <div class="cma-comp-list-wrap">
+          <ComplainsComponent showList={false} />
+        </div>
+      </div>
+    )
+  }
+
+  const pageInfo = {
+    isFrontPage: page.isFrontPage,
+    contentType: page.contentType,
+    title: page.title,
+  }
+
+  return (
+    <Layout pageInfo={pageInfo}>
+      <Helmet
+        htmlAttributes={{ lang: "en", amp: undefined }}
+        title={page.seo.title}
+        meta={[
+          { name: "description", content: page.seo.metaDesc },
+          { property: "og:type", content: page.seo.opengraphType },
+          { property: "og:title", content: page.seo.title },
+          { property: "og:description", content: page.seo.metaDesc },
+        ]}
+      />
+      <TopContent />
+      <div class="row cma-wrap">
+        <MainColumn />
+        <div class="large-3 medium-4 columns sidebar">
+          <SideBarComplaints />
+        </div>
+      </div>
+    </Layout>
+  )
 }

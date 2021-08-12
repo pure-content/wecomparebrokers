@@ -5,13 +5,13 @@ import Parser from "html-react-parser"
 import "jquery-match-height"
 import "easy-pie-chart/dist/jquery.easypiechart"
 import { scoreAnimation } from "../functions/scoreAnimation"
-import AllData from '../data/allData'
+import AllData from "../data/allData"
 
 export default function BrokerTableSingleItem(props) {
-  const themeGeneralSettings = useStaticQuery(graphql`
+  const acfOptionsGeneralSettings = useStaticQuery(graphql`
     query {
       wpgraphql {
-        themeGeneralSettings {
+        acfOptionsGeneralSettings {
           optGeneralSettings {
             specialOfferIcon {
               mediaItemUrl
@@ -85,7 +85,6 @@ export default function BrokerTableSingleItem(props) {
     : null
 
   const BrokerButtons = () => {
-
     return (
       <>
         <span className="aff-wrap">
@@ -95,8 +94,11 @@ export default function BrokerTableSingleItem(props) {
             target="_blank"
             rel="nofollow sponsored"
           >
-            {themeGeneralSettings.wpgraphql.themeGeneralSettings.optGeneralSettings.takeMeToBrokerButtonAlternativeText ? themeGeneralSettings.wpgraphql.themeGeneralSettings.optGeneralSettings.takeMeToBrokerButtonAlternativeText : 'Take Me To Broker'}
-
+            {acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
+              .optGeneralSettings.takeMeToBrokerButtonAlternativeText
+              ? acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
+                  .optGeneralSettings.takeMeToBrokerButtonAlternativeText
+              : "Take Me To Broker"}
           </a>
           {brokerInfo.cptBrokers.takeMeToBrokerButtonNoteText && (
             <span className="floating-note">
@@ -104,19 +106,22 @@ export default function BrokerTableSingleItem(props) {
             </span>
           )}
         </span>
-        <span data-id={brokerInfo.id} value={JSON.stringify(brokerInfo)} className="btn small compare-btn">
-          {themeGeneralSettings.wpgraphql.themeGeneralSettings
+        <span
+          data-id={brokerInfo.id}
+          value={JSON.stringify(brokerInfo)}
+          className="btn small compare-btn"
+        >
+          {acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
             .optGeneralSettings.compareBrokerSideBySideButtonAlternativeText
-            ? themeGeneralSettings.wpgraphql.themeGeneralSettings
-              .optGeneralSettings
-              .compareBrokerSideBySideButtonAlternativeText
+            ? acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
+                .optGeneralSettings.compareBrokerSideBySideButtonAlternativeText
             : "Compare Brokers Side by Side"}
         </span>
         <Link className="btn small" to={brokerInfo.uri}>
-          {themeGeneralSettings.wpgraphql.themeGeneralSettings
+          {acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
             .optGeneralSettings.readFullReviewButtonAlternativeText
-            ? themeGeneralSettings.wpgraphql.themeGeneralSettings
-              .optGeneralSettings.readFullReviewButtonAlternativeText
+            ? acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
+                .optGeneralSettings.readFullReviewButtonAlternativeText
             : "Read Full Review"}
         </Link>
       </>
@@ -130,7 +135,7 @@ export default function BrokerTableSingleItem(props) {
           <img
             className="spec-offer-ico"
             src={
-              themeGeneralSettings.wpgraphql.themeGeneralSettings
+              acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
                 .optGeneralSettings.specialOfferIcon.mediaItemUrl
             }
             alt="Special Offer"
@@ -145,12 +150,12 @@ export default function BrokerTableSingleItem(props) {
                   alt="WCB Logo"
                 />
               ) : (
-                  <img
-                    className="img-list-default"
-                    src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
-                    alt="WCB Logo"
-                  />
-                )}
+                <img
+                  className="img-list-default"
+                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
+                  alt="WCB Logo"
+                />
+              )}
             </div>
           </div>
 
@@ -165,10 +170,10 @@ export default function BrokerTableSingleItem(props) {
           </div>
           <div className="btn-wrap">
             <a className="btn call-back-form" data-brokname={brokerInfo.title}>
-              {themeGeneralSettings.wpgraphql.themeGeneralSettings
+              {acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
                 .optGeneralSettings.brokerCallBackButtonAlternativeText
-                ? themeGeneralSettings.wpgraphql.themeGeneralSettings
-                  .optGeneralSettings.brokerCallBackButtonAlternativeText
+                ? acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
+                    .optGeneralSettings.brokerCallBackButtonAlternativeText
                 : "Broker Callback"}
             </a>
             <a
@@ -176,10 +181,10 @@ export default function BrokerTableSingleItem(props) {
               href={brokerInfo.cptBrokers.affiliateLink}
               target="_blank"
             >
-              {themeGeneralSettings.wpgraphql.themeGeneralSettings
+              {acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
                 .optGeneralSettings.visitBrokerButtonAlternativeText
-                ? themeGeneralSettings.wpgraphql.themeGeneralSettings
-                  .optGeneralSettings.visitBrokerButtonAlternativeText
+                ? acfOptionsGeneralSettings.wpgraphql.acfOptionsGeneralSettings
+                    .optGeneralSettings.visitBrokerButtonAlternativeText
                 : "Visit Broker"}
             </a>
           </div>
@@ -235,10 +240,10 @@ export default function BrokerTableSingleItem(props) {
                     return brokerInfo.cptBrokers.platformsList.includes(
                       platf
                     ) ? (
-                        <li className="checked">{platf}</li>
-                      ) : (
-                        <li>{platf}</li>
-                      )
+                      <li className="checked">{platf}</li>
+                    ) : (
+                      <li>{platf}</li>
+                    )
                   } else {
                     return <li>{platf}</li>
                   }
@@ -263,10 +268,10 @@ export default function BrokerTableSingleItem(props) {
                     return brokerInfo.cptBrokers.accountsList.includes(
                       account
                     ) ? (
-                        <li className="checked">{account}</li>
-                      ) : (
-                        <li>{account}</li>
-                      )
+                      <li className="checked">{account}</li>
+                    ) : (
+                      <li>{account}</li>
+                    )
                   } else {
                     return <li>{account}</li>
                   }
@@ -291,10 +296,10 @@ export default function BrokerTableSingleItem(props) {
                     return brokerInfo.cptBrokers.spreadsList.includes(
                       spread
                     ) ? (
-                        <li className="checked">{spread}</li>
-                      ) : (
-                        <li>{spread}</li>
-                      )
+                      <li className="checked">{spread}</li>
+                    ) : (
+                      <li>{spread}</li>
+                    )
                   } else {
                     return <li>{spread}</li>
                   }
@@ -319,10 +324,10 @@ export default function BrokerTableSingleItem(props) {
                     return brokerInfo.cptBrokers.methodsList.includes(
                       method
                     ) ? (
-                        <li className="checked">{method}</li>
-                      ) : (
-                        <li>{method}</li>
-                      )
+                      <li className="checked">{method}</li>
+                    ) : (
+                      <li>{method}</li>
+                    )
                   } else {
                     return <li>{method}</li>
                   }

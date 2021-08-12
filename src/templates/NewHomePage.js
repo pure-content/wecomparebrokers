@@ -221,7 +221,7 @@ export const query = graphql`
         }
       }
 
-      themeGeneralSettings {
+      acfOptionsGeneralSettings {
         optGeneralSettings {
           topAddSection {
             typeOfAdd
@@ -292,7 +292,7 @@ export const query = graphql`
         }
       }
 
-      redirectsSettings {
+      acfOptionsRedirectsSettings {
         opt_redirects_settings {
           redirects {
             oldUrl
@@ -308,7 +308,8 @@ export default function NewHomePage({ data }) {
   const page = data.wpgraphql.page
   const seo = page.seo
   const templateFields = page.newHomePage
-  const generalSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings
+  const generalSettings =
+    data.wpgraphql.acfOptionsGeneralSettings.optGeneralSettings
 
   useEffect(() => {
     $(function () {
@@ -624,6 +625,7 @@ export default function NewHomePage({ data }) {
   }
 
   const TopThreeBrokersWIthAds = () => {
+    //@issue - change width in iframe fail
     useEffect(() => {
       console.log("LALALALA Load")
       setTimeout(() => {
@@ -1078,7 +1080,11 @@ export default function NewHomePage({ data }) {
         <div className="trust-section-bot-text">
           <div className="row">
             <div className="small-12 columns">
-              {Parser(templateFields.bottomTextDropdown)}
+              {Parser(
+                templateFields.bottomTextDropdown
+                  ? templateFields.bottomTextDropdown
+                  : ""
+              )}
             </div>
           </div>
         </div>
@@ -1163,6 +1169,8 @@ export default function NewHomePage({ data }) {
     title: page.title,
   }
 
+  console.log("generalSettings", generalSettings)
+
   return (
     <Layout pageInfo={pageInfo}>
       <Helmet
@@ -1183,8 +1191,12 @@ export default function NewHomePage({ data }) {
         {generalSettings.topAddSection?.typeOfAdd === "iframe"
           ? Parser(generalSettings.topAddSection?.topAdScript)
           : null}
-        {generalSettings.leftAdBanners.map(ad => Parser(ad.bannerScript))}
-        {generalSettings.rightAdBanner.map(ad => Parser(ad.bannerScript))}
+        {generalSettings.leftAdBanners.map(ad =>
+          Parser(ad.bannerScript ? ad.bannerScript : "")
+        )}
+        {generalSettings.rightAdBanner.map(ad =>
+          Parser(ad.bannerScript ? ad.bannerScript : "")
+        )}
         {generalSettings.topAdFirstBannerSectionForMobile.bannerScript &&
           Parser(
             generalSettings.topAdFirstBannerSectionForMobile?.bannerScript

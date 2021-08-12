@@ -2,7 +2,7 @@ import React from "react"
 import $ from "jquery"
 import "jquery-match-height"
 import { graphql, Link } from "gatsby"
-import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
+import { Disqus, CommentCount } from "gatsby-plugin-disqus"
 import Helmet from "react-helmet"
 import Layout from "../components/layout"
 import CompareFrom from "../components/CompareFrom"
@@ -10,14 +10,16 @@ import { brokerTypes } from "../data/brokerTypes"
 import Parser from "html-react-parser"
 import { useEffect } from "react"
 import { avarageRatingCounter } from "../functions/avarageRatingCounter"
-import BrokerTableSingleItemNewView from '../components/BrokerTableSingleItemNewView';
-import CallBackFormPopUp from '../components/CallBackFormPopUp';
-const {siteMetadata: { siteUrl }} = require('../../gatsby-config');
+import BrokerTableSingleItemNewView from "../components/BrokerTableSingleItemNewView"
+import CallBackFormPopUp from "../components/CallBackFormPopUp"
+const {
+  siteMetadata: { siteUrl },
+} = require("../../gatsby-config")
 
 const shortid = require("shortid")
 
 export const query = graphql`
-  query($id: ID!) {
+  query ($id: ID!) {
     wpgraphql {
       broker123(id: $id) {
         title
@@ -403,7 +405,7 @@ export const query = graphql`
         }
       }
 
-      themeGeneralSettings {
+      acfOptionsGeneralSettings {
         optGeneralSettings {
           takeMeToBrokerButtonAlternativeText
           disqusBodyText
@@ -453,76 +455,185 @@ export const query = graphql`
 `
 
 export default function BrokersSingle({ data }) {
-  
   const broker = data.wpgraphql.broker123
-  const themeGeneralSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings
+  const acfOptionsGeneralSettings =
+    data.wpgraphql.acfOptionsGeneralSettings.optGeneralSettings
 
   useEffect(() => {
     //STIKT KIT
-    (function () {
-      var b, f;
+    ;(function () {
+      var b, f
       b = $
-      f = b(window);
+      f = b(window)
       b.fn.stick_in_parent = function (d) {
-        var A, w, J, n, B, K, p, q, k, E, t;
-        null == d && (d = {});
-        t = d.sticky_class;
-        B = d.inner_scrolling;
-        E = d.recalc_every;
-        k = d.parent;
-        q = d.offset_top;
-        p = d.spacer;
-        w = d.bottoming;
-        null == q && (q = 0);
-        null == k && (k = void 0);
-        null == B && (B = !0);
-        null == t && (t = "is_stuck");
-        A = b(document);
-        null == w && (w = !0);
+        var A, w, J, n, B, K, p, q, k, E, t
+        null == d && (d = {})
+        t = d.sticky_class
+        B = d.inner_scrolling
+        E = d.recalc_every
+        k = d.parent
+        q = d.offset_top
+        p = d.spacer
+        w = d.bottoming
+        null == q && (q = 0)
+        null == k && (k = void 0)
+        null == B && (B = !0)
+        null == t && (t = "is_stuck")
+        A = b(document)
+        null == w && (w = !0)
         J = function (a, d, n, C, F, u, r, G) {
-          var v, H, m, D, I, c, g, x, y, z, h, l;
+          var v, H, m, D, I, c, g, x, y, z, h, l
           if (!a.data("sticky_kit")) {
-            a.data("sticky_kit", !0);
-            I = A.height();
-            g = a.parent();
-            null != k && (g = g.closest(k));
-            if (!g.length) throw "failed to find stick parent";
-            v = m = !1;
-            (h = null != p ? p && a.closest(p) : b("<div />")) && h.css("position", a.css("position"));
+            a.data("sticky_kit", !0)
+            I = A.height()
+            g = a.parent()
+            null != k && (g = g.closest(k))
+            if (!g.length) throw "failed to find stick parent"
+            v = m = !1
+            ;(h = null != p ? p && a.closest(p) : b("<div />")) &&
+              h.css("position", a.css("position"))
             x = function () {
-              var c, f, e;
-              if (!G && (I = A.height(), c = parseInt(g.css("border-top-width"), 10), f = parseInt(g.css("padding-top"), 10), d = parseInt(g.css("padding-bottom"), 10), n = g.offset().top + c + f, C = g.height(), m && (v = m = !1, null == p && (a.insertAfter(h), h.detach()), a.css({ position: "", top: "", width: "", bottom: "" }).removeClass(t), e = !0), F = a.offset().top - (parseInt(a.css("margin-top"), 10) || 0) - q,
-                u = a.outerHeight(!0), r = a.css("float"), h && h.css({ width: a.outerWidth(!0), height: u, display: a.css("display"), "vertical-align": a.css("vertical-align"), "float": r }), e)) return l()
-            };
-            x();
-            if (u !== C) return D = void 0, c = q, z = E, l = function () {
-              var b, l, e, k;
-              if (!G && (e = !1, null != z && (--z, 0 >= z && (z = E, x(), e = !0)), e || A.height() === I || x(), e = f.scrollTop(), null != D && (l = e - D), D = e, m ? (w && (k = e + u + c > C + n, v && !k && (v = !1, a.css({ position: "fixed", bottom: "", top: c }).trigger("sticky_kit:unbottom"))), e < F && (m = !1, c = q, null == p && ("left" !== r && "right" !== r || a.insertAfter(h),
-                h.detach()), b = { position: "", width: "", top: "" }, a.css(b).removeClass(t).trigger("sticky_kit:unstick")), B && (b = f.height(), u + q > b && !v && (c -= l, c = Math.max(b - u, c), c = Math.min(q, c), m && a.css({ top: c + "px" })))) : e > F && (m = !0, b = { position: "fixed", top: c }, b.width = "border-box" === a.css("box-sizing") ? a.outerWidth() + "px" : a.width() + "px", a.css(b).addClass(t), null == p && (a.after(h), "left" !== r && "right" !== r || h.append(a)), a.trigger("sticky_kit:stick")), m && w && (null == k && (k = e + u + c > C + n), !v && k))) return v = !0, "static" === g.css("position") && g.css({ position: "relative" }),
-                  a.css({ position: "absolute", bottom: d, top: "auto" }).trigger("sticky_kit:bottom")
-            }, y = function () { x(); return l() }, H = function () {
-              G = !0;
-              f.off("touchmove", l);
-              f.off("scroll", l);
-              f.off("resize", y);
-              b(document.body).off("sticky_kit:recalc", y);
-              a.off("sticky_kit:detach", H);
-              a.removeData("sticky_kit");
-              a.css({ position: "", bottom: "", top: "", width: "" });
-              g.position("position", "");
-              if (m) return null == p && ("left" !== r && "right" !== r || a.insertAfter(h), h.remove()), a.removeClass(t)
-            }, f.on("touchmove", l), f.on("scroll", l), f.on("resize",
-              y), b(document.body).on("sticky_kit:recalc", y), a.on("sticky_kit:detach", H), setTimeout(l, 0)
+              var c, f, e
+              if (
+                !G &&
+                ((I = A.height()),
+                (c = parseInt(g.css("border-top-width"), 10)),
+                (f = parseInt(g.css("padding-top"), 10)),
+                (d = parseInt(g.css("padding-bottom"), 10)),
+                (n = g.offset().top + c + f),
+                (C = g.height()),
+                m &&
+                  ((v = m = !1),
+                  null == p && (a.insertAfter(h), h.detach()),
+                  a
+                    .css({ position: "", top: "", width: "", bottom: "" })
+                    .removeClass(t),
+                  (e = !0)),
+                (F =
+                  a.offset().top -
+                  (parseInt(a.css("margin-top"), 10) || 0) -
+                  q),
+                (u = a.outerHeight(!0)),
+                (r = a.css("float")),
+                h &&
+                  h.css({
+                    width: a.outerWidth(!0),
+                    height: u,
+                    display: a.css("display"),
+                    "vertical-align": a.css("vertical-align"),
+                    float: r,
+                  }),
+                e)
+              )
+                return l()
+            }
+            x()
+            if (u !== C)
+              return (
+                (D = void 0),
+                (c = q),
+                (z = E),
+                (l = function () {
+                  var b, l, e, k
+                  if (
+                    !G &&
+                    ((e = !1),
+                    null != z && (--z, 0 >= z && ((z = E), x(), (e = !0))),
+                    e || A.height() === I || x(),
+                    (e = f.scrollTop()),
+                    null != D && (l = e - D),
+                    (D = e),
+                    m
+                      ? (w &&
+                          ((k = e + u + c > C + n),
+                          v &&
+                            !k &&
+                            ((v = !1),
+                            a
+                              .css({ position: "fixed", bottom: "", top: c })
+                              .trigger("sticky_kit:unbottom"))),
+                        e < F &&
+                          ((m = !1),
+                          (c = q),
+                          null == p &&
+                            (("left" !== r && "right" !== r) ||
+                              a.insertAfter(h),
+                            h.detach()),
+                          (b = { position: "", width: "", top: "" }),
+                          a
+                            .css(b)
+                            .removeClass(t)
+                            .trigger("sticky_kit:unstick")),
+                        B &&
+                          ((b = f.height()),
+                          u + q > b &&
+                            !v &&
+                            ((c -= l),
+                            (c = Math.max(b - u, c)),
+                            (c = Math.min(q, c)),
+                            m && a.css({ top: c + "px" }))))
+                      : e > F &&
+                        ((m = !0),
+                        (b = { position: "fixed", top: c }),
+                        (b.width =
+                          "border-box" === a.css("box-sizing")
+                            ? a.outerWidth() + "px"
+                            : a.width() + "px"),
+                        a.css(b).addClass(t),
+                        null == p &&
+                          (a.after(h),
+                          ("left" !== r && "right" !== r) || h.append(a)),
+                        a.trigger("sticky_kit:stick")),
+                    m && w && (null == k && (k = e + u + c > C + n), !v && k))
+                  )
+                    return (
+                      (v = !0),
+                      "static" === g.css("position") &&
+                        g.css({ position: "relative" }),
+                      a
+                        .css({ position: "absolute", bottom: d, top: "auto" })
+                        .trigger("sticky_kit:bottom")
+                    )
+                }),
+                (y = function () {
+                  x()
+                  return l()
+                }),
+                (H = function () {
+                  G = !0
+                  f.off("touchmove", l)
+                  f.off("scroll", l)
+                  f.off("resize", y)
+                  b(document.body).off("sticky_kit:recalc", y)
+                  a.off("sticky_kit:detach", H)
+                  a.removeData("sticky_kit")
+                  a.css({ position: "", bottom: "", top: "", width: "" })
+                  g.position("position", "")
+                  if (m)
+                    return (
+                      null == p &&
+                        (("left" !== r && "right" !== r) || a.insertAfter(h),
+                        h.remove()),
+                      a.removeClass(t)
+                    )
+                }),
+                f.on("touchmove", l),
+                f.on("scroll", l),
+                f.on("resize", y),
+                b(document.body).on("sticky_kit:recalc", y),
+                a.on("sticky_kit:detach", H),
+                setTimeout(l, 0)
+              )
           }
-        };
-        n = 0;
+        }
+        n = 0
         for (K = this.length; n < K; n++) {
           d = this[n]
-          J(b(d));
+          J(b(d))
         }
         return this
       }
-    }).call(this);
+    }.call(this))
 
     //CUSTOM JS
     $(document).ready(function () {
@@ -534,39 +645,42 @@ export default function BrokersSingle({ data }) {
         $(this).addClass("active")
         $("#tab-" + currentHash).show("fast")
       })
-      $('.broker-tab-col').matchHeight()
-      $('.tab-col').matchHeight()
-      $('.cont-col').matchHeight()
+      $(".broker-tab-col").matchHeight()
+      $(".tab-col").matchHeight()
+      $(".cont-col").matchHeight()
       //smoth scroling
-      var $root = $('html, body');
+      var $root = $("html, body")
 
       $('a[href^="#"]').click(function () {
-        $root.animate({
-          scrollTop: $($.attr(this, 'href')).offset().top
-        }, 500);
+        $root.animate(
+          {
+            scrollTop: $($.attr(this, "href")).offset().top,
+          },
+          500
+        )
 
-        return false;
-      });
+        return false
+      })
 
       //broker floating button descktop
       if ($(window).innerWidth() > 1024) {
         var wH = $(window).height() + 32,
-          bH = $('.broker-floating-btn .btn').height() + 2,
-          offset = (wH - bH) / 2 - 40;
+          bH = $(".broker-floating-btn .btn").height() + 2,
+          offset = (wH - bH) / 2 - 40
         // console.log(wH, bH, offset);
-        $('.rev-nav-col .broker-floating-btn').stick_in_parent({
-          parent: '.review-cols',
+        $(".rev-nav-col .broker-floating-btn").stick_in_parent({
+          parent: ".review-cols",
           inner_scrolling: false,
           offset_top: offset,
-        });
+        })
       }
       //broker floating button mobile
       if ($(window).innerWidth() < 641) {
-        $('.broker-floating-btn').stick_in_parent({
-          parent: '.single-broker-wrap',
+        $(".broker-floating-btn").stick_in_parent({
+          parent: ".single-broker-wrap",
           inner_scrolling: false,
           offset_top: 20,
-        });
+        })
       }
     })
   })
@@ -634,8 +748,10 @@ export default function BrokersSingle({ data }) {
                       {Parser(telItem.telephone)}
                     </a>
                   ) : (
-                      <span key={shortid.generate()}>{Parser(telItem.telephone)}</span>
-                    )
+                    <span key={shortid.generate()}>
+                      {Parser(telItem.telephone)}
+                    </span>
+                  )
                 })}
               </p>
             </div>
@@ -646,7 +762,11 @@ export default function BrokersSingle({ data }) {
               <p>
                 <strong>Email: </strong>
                 {broker.cptBrokers.brokerEmails.map(em => {
-                    return <a href={`mailto:${em.emailLink}`}>{Parser(em.email ? em.email : '')}</a>
+                  return (
+                    <a href={`mailto:${em.emailLink}`}>
+                      {Parser(em.email ? em.email : "")}
+                    </a>
+                  )
                 })}
               </p>
             </div>
@@ -681,62 +801,62 @@ export default function BrokersSingle({ data }) {
                         <div class="small-12 columns trade-info">
                           {type === "forex"
                             ? Parser(
-                              broker.cptBrokers.traderInformationForForex
-                                ? broker.cptBrokers.traderInformationForForex
-                                : ""
-                            )
+                                broker.cptBrokers.traderInformationForForex
+                                  ? broker.cptBrokers.traderInformationForForex
+                                  : ""
+                              )
                             : ""}
                           {type === "etf"
                             ? Parser(
-                              broker.cptBrokers.traderInformationForEtf
-                                ? broker.cptBrokers.traderInformationForEtf
-                                : ""
-                            )
+                                broker.cptBrokers.traderInformationForEtf
+                                  ? broker.cptBrokers.traderInformationForEtf
+                                  : ""
+                              )
                             : ""}
                           {type === "stocks"
                             ? Parser(
-                              broker.cptBrokers.traderInformationForStocks
-                                ? broker.cptBrokers.traderInformationForStocks
-                                : ""
-                            )
+                                broker.cptBrokers.traderInformationForStocks
+                                  ? broker.cptBrokers.traderInformationForStocks
+                                  : ""
+                              )
                             : ""}
                           {type === "cfd"
                             ? Parser(
-                              broker.cptBrokers.traderInformationForCfd
-                                ? broker.cptBrokers.traderInformationForCfd
-                                : ""
-                            )
+                                broker.cptBrokers.traderInformationForCfd
+                                  ? broker.cptBrokers.traderInformationForCfd
+                                  : ""
+                              )
                             : ""}
                           {type === "crypto"
                             ? Parser(
-                              broker.cptBrokers.traderInformationForCrypto
-                                ? broker.cptBrokers.traderInformationForCrypto
-                                : ""
-                            )
+                                broker.cptBrokers.traderInformationForCrypto
+                                  ? broker.cptBrokers.traderInformationForCrypto
+                                  : ""
+                              )
                             : ""}
                           {type === "soc_trad"
                             ? Parser(
-                              broker.cptBrokers.traderInformationForSocTrad
-                                ? broker.cptBrokers
-                                  .traderInformationForSocTrad
-                                : ""
-                            )
+                                broker.cptBrokers.traderInformationForSocTrad
+                                  ? broker.cptBrokers
+                                      .traderInformationForSocTrad
+                                  : ""
+                              )
                             : ""}
                           {type === "commodities"
                             ? Parser(
-                              broker.cptBrokers
-                                .traderInformationForCommodities
-                                ? broker.cptBrokers
+                                broker.cptBrokers
                                   .traderInformationForCommodities
-                                : ""
-                            )
+                                  ? broker.cptBrokers
+                                      .traderInformationForCommodities
+                                  : ""
+                              )
                             : ""}
                           {type === "bin_opt"
                             ? Parser(
-                              broker.cptBrokers.traderInformationForBinOpt
-                                ? broker.cptBrokers.traderInformationForBinOpt
-                                : ""
-                            )
+                                broker.cptBrokers.traderInformationForBinOpt
+                                  ? broker.cptBrokers.traderInformationForBinOpt
+                                  : ""
+                              )
                             : ""}
                         </div>
                         <div class="small-6 columns fees-wrap">
@@ -872,8 +992,9 @@ export default function BrokersSingle({ data }) {
                     <span
                       class="rat-color"
                       style={{
-                        width: `${avarageRatingCounter(broker.cptBrokers) * 20
-                          }%`,
+                        width: `${
+                          avarageRatingCounter(broker.cptBrokers) * 20
+                        }%`,
                       }}
                     ></span>
                   </span>
@@ -885,7 +1006,7 @@ export default function BrokersSingle({ data }) {
             </>
           )}
         </div>
-        
+
         {broker.cptBrokers.videoBroker && (
           <div class="medium-6 columns rew-user-right">
             {Parser(
@@ -901,45 +1022,45 @@ export default function BrokersSingle({ data }) {
                     target="_blank"
                     rel="nofollow sponsored"
                   >
-                    {themeGeneralSettings.takeMeToBrokerButtonAlternativeText ? themeGeneralSettings.takeMeToBrokerButtonAlternativeText : 'Take me to broker'}
-
+                    {acfOptionsGeneralSettings.takeMeToBrokerButtonAlternativeText
+                      ? acfOptionsGeneralSettings.takeMeToBrokerButtonAlternativeText
+                      : "Take me to broker"}
                   </a>
                   {broker.cptBrokers.takeMeToBrokerButtonNoteText ? (
                     <span class="floating-note">
                       {broker.cptBrokers.takeMeToBrokerButtonNoteText}
                     </span>
                   ) : (
-                      ""
-                    )}
+                    ""
+                  )}
                 </span>
               )}
-              
-              {
-                broker.cptBrokers.affiliateLink && (
-                  <a href={broker.cptBrokers.affiliateLink} class="btn">
-                    Visit Broker
-                  </a>
-                )
-              }
-              
+
+              {broker.cptBrokers.affiliateLink && (
+                <a href={broker.cptBrokers.affiliateLink} class="btn">
+                  Visit Broker
+                </a>
+              )}
             </div>
             {broker.cptBrokers.textBelowVideo ? (
               <div class="video-text-wrap text-left">
                 {Parser(broker.cptBrokers.textBelowVideo)}
               </div>
             ) : (
-                ""
-              )}
-          </div>  
+              ""
+            )}
+          </div>
         )}
 
         {broker.cptBrokers.rightIframe && (
           <div class="medium-6 columns rew-user-right">
-              <iframe width="100%" height="550px" src={Parser(broker.cptBrokers.rightIframe)}></iframe>
-          </div>  
+            <iframe
+              width="100%"
+              height="550px"
+              src={Parser(broker.cptBrokers.rightIframe)}
+            ></iframe>
+          </div>
         )}
-         
-            
       </div>
     )
   }
@@ -948,37 +1069,37 @@ export default function BrokersSingle({ data }) {
     return (
       <div class="row likes-dislikes-row">
         {broker.cptBrokers.brokerHealth &&
-          broker.cptBrokers.brokerHealth === "good" ? (
-            <>
-              <div class="medium-6 columns likes-col">
-                <p>
-                  <strong>Likes</strong>
-                </p>
-                {Parser(
-                  broker.cptBrokers.likesList ? broker.cptBrokers.likesList : ""
-                )}
-              </div>
-              <div class="medium-6 columns dislikes-col">
-                <p>
-                  <strong>Dislikes</strong>
-                </p>
-                {Parser(
-                  broker.cptBrokers.dislikesList
-                    ? broker.cptBrokers.dislikesList
-                    : ""
-                )}
-              </div>
-            </>
-          ) : (
-            <div class="small-12 columns">
+        broker.cptBrokers.brokerHealth === "good" ? (
+          <>
+            <div class="medium-6 columns likes-col">
               <p>
-                <strong>Warning Reason</strong>
+                <strong>Likes</strong>
               </p>
               {Parser(
-                broker.cptBrokers.banReason ? broker.cptBrokers.banReason : ""
+                broker.cptBrokers.likesList ? broker.cptBrokers.likesList : ""
               )}
             </div>
-          )}
+            <div class="medium-6 columns dislikes-col">
+              <p>
+                <strong>Dislikes</strong>
+              </p>
+              {Parser(
+                broker.cptBrokers.dislikesList
+                  ? broker.cptBrokers.dislikesList
+                  : ""
+              )}
+            </div>
+          </>
+        ) : (
+          <div class="small-12 columns">
+            <p>
+              <strong>Warning Reason</strong>
+            </p>
+            {Parser(
+              broker.cptBrokers.banReason ? broker.cptBrokers.banReason : ""
+            )}
+          </div>
+        )}
       </div>
     )
   }
@@ -989,46 +1110,46 @@ export default function BrokersSingle({ data }) {
         <h5>Review Sections:</h5>
         <ul class="review-nav">
           {broker.cptBrokers.ratingCommFees ||
-            broker.cptBrokers.introTextCommFees ||
-            broker.cptBrokers.tableCommFees ||
-            broker.cptBrokers.reviewBodyCommFees ? (
-              <li>
-                <a href="#comm-fees">{Parser("Commissions &amp; Fees")}</a>
-              </li>
-            ) : null}
+          broker.cptBrokers.introTextCommFees ||
+          broker.cptBrokers.tableCommFees ||
+          broker.cptBrokers.reviewBodyCommFees ? (
+            <li>
+              <a href="#comm-fees">{Parser("Commissions &amp; Fees")}</a>
+            </li>
+          ) : null}
           {broker.cptBrokers.ratingPlatfTools ||
-            broker.cptBrokers.introTextPlatfTools ||
-            broker.cptBrokers.tablePlatfTools ||
-            broker.cptBrokers.reviewBodyPlatfTools ? (
-              <li>
-                <a href="#platf-tools">{Parser("Platforms &amp; Tools")}</a>
-              </li>
-            ) : null}
+          broker.cptBrokers.introTextPlatfTools ||
+          broker.cptBrokers.tablePlatfTools ||
+          broker.cptBrokers.reviewBodyPlatfTools ? (
+            <li>
+              <a href="#platf-tools">{Parser("Platforms &amp; Tools")}</a>
+            </li>
+          ) : null}
           {broker.cptBrokers.ratingCustServ ||
-            broker.cptBrokers.reviewBodyCustServ ? (
-              <li>
-                <a href="#cust-serv">Customer Service</a>
-              </li>
-            ) : null}
+          broker.cptBrokers.reviewBodyCustServ ? (
+            <li>
+              <a href="#cust-serv">Customer Service</a>
+            </li>
+          ) : null}
           {broker.cptBrokers.ratingCustResearch ||
-            broker.cptBrokers.reviewBodyResearch ||
-            broker.cptBrokers.tableResearch ? (
-              <li>
-                <a href="#research">Research</a>
-              </li>
-            ) : null}
+          broker.cptBrokers.reviewBodyResearch ||
+          broker.cptBrokers.tableResearch ? (
+            <li>
+              <a href="#research">Research</a>
+            </li>
+          ) : null}
           {broker.cptBrokers.ratingEase || broker.cptBrokers.reviewBodyEase ? (
             <li>
               <a href="#ease">Ease of Use</a>
             </li>
           ) : null}
           {broker.cptBrokers.ratingMobTrad ||
-            broker.cptBrokers.reviewBodyMobTrad ||
-            broker.cptBrokers.tableMobTrad ? (
-              <li>
-                <a href="#mob-trad">Mobile Trading</a>
-              </li>
-            ) : null}
+          broker.cptBrokers.reviewBodyMobTrad ||
+          broker.cptBrokers.tableMobTrad ? (
+            <li>
+              <a href="#mob-trad">Mobile Trading</a>
+            </li>
+          ) : null}
           {broker.cptBrokers.reviewBodyMetod ? (
             <li>
               <a href="#metod">Robo Trading</a>
@@ -1066,7 +1187,9 @@ export default function BrokersSingle({ data }) {
               target="_blank"
               rel="nofollow sponsored"
             >
-              {themeGeneralSettings.takeMeToBrokerButtonAlternativeText ? themeGeneralSettings.takeMeToBrokerButtonAlternativeText : 'Take me to broker'}
+              {acfOptionsGeneralSettings.takeMeToBrokerButtonAlternativeText
+                ? acfOptionsGeneralSettings.takeMeToBrokerButtonAlternativeText
+                : "Take me to broker"}
             </a>
             {broker.cptBrokers.takeMeToBrokerButtonNoteText ? (
               <span class="floating-note">
@@ -1083,256 +1206,641 @@ export default function BrokersSingle({ data }) {
     return (
       <div class="large-10 columns rev-body-col">
         <div class="rev-intro">
-          {Parser(broker.cptBrokers.reviewIntroText ? broker.cptBrokers.reviewIntroText : '')}
+          {Parser(
+            broker.cptBrokers.reviewIntroText
+              ? broker.cptBrokers.reviewIntroText
+              : ""
+          )}
         </div>
-        {broker.cptBrokers.ratingCommFees || broker.cptBrokers.introTextCommFees || broker.cptBrokers.tableCommFees || broker.cptBrokers.reviewBodyCommFees ? (
+        {broker.cptBrokers.ratingCommFees ||
+        broker.cptBrokers.introTextCommFees ||
+        broker.cptBrokers.tableCommFees ||
+        broker.cptBrokers.reviewBodyCommFees ? (
           <div id="comm-fees" class="rev-part">
             <div class="title-wrap">
-              <h2>{Parser('Commissions &amp; Fees')}</h2>
+              <h2>{Parser("Commissions &amp; Fees")}</h2>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                  <span class="rat-color" style={{ width: `${avarageRatingCounter(broker.cptBrokers) * 20}%` }}></span>
+                  <img
+                    src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                    alt="Rating"
+                  />
+                  <span
+                    class="rat-color"
+                    style={{
+                      width: `${avarageRatingCounter(broker.cptBrokers) * 20}%`,
+                    }}
+                  ></span>
                 </span>
               </div>
             </div>
-            {Parser(broker.cptBrokers.introTextCommFees ? broker.cptBrokers.introTextCommFees : '')}
-            {broker.cptBrokers.tableTitleCommFees ? <h6>{broker.cptBrokers.tableTitleCommFees}</h6> : ''}
+            {Parser(
+              broker.cptBrokers.introTextCommFees
+                ? broker.cptBrokers.introTextCommFees
+                : ""
+            )}
+            {broker.cptBrokers.tableTitleCommFees ? (
+              <h6>{broker.cptBrokers.tableTitleCommFees}</h6>
+            ) : (
+              ""
+            )}
             {broker.cptBrokers.tableCommFees ? (
               <div class="tab-wrap six-cols">
                 <div class="tab-row tab-head hide-for-small">
-                  <div class="tab-col col-val" ><p>Fees</p></div>
-                  <div class="tab-col col-xtb" ><p>TD Ameritrade</p></div>
-                  <div class="tab-col col-ava" ><p>E*TRADE</p></div>
-                  <div class="tab-col col-city" ><p>Charles Schwab</p></div>
-                  <div class="tab-col col-city" ><p>Fidelity</p></div>
-                  <div class="tab-col col-city" ><p>Merrill Edge</p></div>
+                  <div class="tab-col col-val">
+                    <p>Fees</p>
+                  </div>
+                  <div class="tab-col col-xtb">
+                    <p>TD Ameritrade</p>
+                  </div>
+                  <div class="tab-col col-ava">
+                    <p>E*TRADE</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Charles Schwab</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Fidelity</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Merrill Edge</p>
+                  </div>
                 </div>
-                {broker.cptBrokers.tableCommFees && broker.cptBrokers.tableCommFees.map((row) => {
-                  return (
-                    <div class="tab-row">
-                      <div class="tab-col col-val" ><p>{row.rowLabel}</p></div>
-                      <div class="tab-col col-amer" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">TD Ameritrade:</strong>{row.tdAmeritradeValueText}</p> : ''}
-                        {row.valueType === 'Rating' ? (
-                          <>
-                            <p><strong class="show-for-small">TD Ameritrade:</strong></p>
-                            <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.tdAmeritradeValueRat * 20}%` }}></span>
-                            </span>
-                          </>
-                        ) : ''}
-                        {row.valueType === 'Check' ? (
-                          <>
-                            <p><strong class="show-for-small">TD Ameritrade:</strong></p>
-                            {row.tdAmeritradeValueCheck ? (
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" />
-                            ) : (
-                                <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />
+                {broker.cptBrokers.tableCommFees &&
+                  broker.cptBrokers.tableCommFees.map(row => {
+                    return (
+                      <div class="tab-row">
+                        <div class="tab-col col-val">
+                          <p>{row.rowLabel}</p>
+                        </div>
+                        <div class="tab-col col-amer">
+                          {row.valueType === "Text" ? (
+                            <p>
+                              <strong class="show-for-small">
+                                TD Ameritrade:
+                              </strong>
+                              {row.tdAmeritradeValueText}
+                            </p>
+                          ) : (
+                            ""
+                          )}
+                          {row.valueType === "Rating" ? (
+                            <>
+                              <p>
+                                <strong class="show-for-small">
+                                  TD Ameritrade:
+                                </strong>
+                              </p>
+                              <span class="rating">
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                                  alt="Rating"
+                                />
+                                <span
+                                  class="rat-color"
+                                  style={{
+                                    width: `${row.tdAmeritradeValueRat * 20}%`,
+                                  }}
+                                ></span>
+                              </span>
+                            </>
+                          ) : (
+                            ""
+                          )}
+                          {row.valueType === "Check" ? (
+                            <>
+                              <p>
+                                <strong class="show-for-small">
+                                  TD Ameritrade:
+                                </strong>
+                              </p>
+                              {row.tdAmeritradeValueCheck ? (
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                  alt="Yes"
+                                />
+                              ) : (
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                  alt="No"
+                                />
                               )}
-                          </>
-                        ) : ''}
-                      </div>
+                            </>
+                          ) : (
+                            ""
+                          )}
+                        </div>
 
-                      <div class="tab-col col-etrade" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">E*TRADE:</strong>{row.etradeValueText}</p> : ''}
-                        {row.valueType === 'Rating' ? (
-                          <>
-                            <p><strong class="show-for-small">E*TRADE:</strong></p>
-                            <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.etradeValueRat * 20}%` }}></span>
-                            </span>
-                          </>
-                        ) : null}
-                        {row.valueType === 'Check' ? (
-                          <>
-                            <p><strong class="show-for-small">E*TRADE:</strong></p>
-                            {row.etradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
-                          </>
-                        ) : null}
-                      </div>
+                        <div class="tab-col col-etrade">
+                          {row.valueType === "Text" ? (
+                            <p>
+                              <strong class="show-for-small">E*TRADE:</strong>
+                              {row.etradeValueText}
+                            </p>
+                          ) : (
+                            ""
+                          )}
+                          {row.valueType === "Rating" ? (
+                            <>
+                              <p>
+                                <strong class="show-for-small">E*TRADE:</strong>
+                              </p>
+                              <span class="rating">
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                  alt="Rating"
+                                />
+                                <span
+                                  class="rat-color"
+                                  style={{
+                                    width: `${row.etradeValueRat * 20}%`,
+                                  }}
+                                ></span>
+                              </span>
+                            </>
+                          ) : null}
+                          {row.valueType === "Check" ? (
+                            <>
+                              <p>
+                                <strong class="show-for-small">E*TRADE:</strong>
+                              </p>
+                              {row.etradeValueCheck ? (
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                  alt="Yes"
+                                />
+                              ) : (
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                  alt="No"
+                                />
+                              )}
+                            </>
+                          ) : null}
+                        </div>
 
-                      <div class="tab-col col-schwab" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Charles Schwab:</strong>{row.charlesSchwabValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
-                          <>
-                            <p><strong class="show-for-small">Charles Schwab:</strong></p>
-                            <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.charlesSchwabValueRat * 20}%` }}></span>
-                            </span>
-                          </>
-                        ) : null}
-                        {row.valueType === 'Check' ? (
-                          <>
-                            <p><strong class="show-for-small">Charles Schwab:</strong></p>
-                            {row.charlesSchwabValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
-                          </>
-                        ) : null}
-                      </div>
+                        <div class="tab-col col-schwab">
+                          {row.valueType === "Text" ? (
+                            <p>
+                              <strong class="show-for-small">
+                                Charles Schwab:
+                              </strong>
+                              {row.charlesSchwabValueText}
+                            </p>
+                          ) : null}
+                          {row.valueType === "Rating" ? (
+                            <>
+                              <p>
+                                <strong class="show-for-small">
+                                  Charles Schwab:
+                                </strong>
+                              </p>
+                              <span class="rating">
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                  alt="Rating"
+                                />
+                                <span
+                                  class="rat-color"
+                                  style={{
+                                    width: `${row.charlesSchwabValueRat * 20}%`,
+                                  }}
+                                ></span>
+                              </span>
+                            </>
+                          ) : null}
+                          {row.valueType === "Check" ? (
+                            <>
+                              <p>
+                                <strong class="show-for-small">
+                                  Charles Schwab:
+                                </strong>
+                              </p>
+                              {row.charlesSchwabValueCheck ? (
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                  alt="Yes"
+                                />
+                              ) : (
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                  alt="No"
+                                />
+                              )}
+                            </>
+                          ) : null}
+                        </div>
 
-                      <div class="tab-col col-fidelity" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Fidelity:</strong>{row.fidelityValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
-                          <>
-                            <p><strong class="show-for-small">Fidelity:</strong></p>
-                            <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.fidelityValueRat * 20}%` }}></span>
-                            </span>
-                          </>
-                        ) : null}
-                        {row.valueType === 'Check' ? (
-                          <>
-                            <p><strong class="show-for-small">Fidelity:</strong></p>
-                            {row.fidelityValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
-                          </>
-                        ) : null}
-                      </div>
+                        <div class="tab-col col-fidelity">
+                          {row.valueType === "Text" ? (
+                            <p>
+                              <strong class="show-for-small">Fidelity:</strong>
+                              {row.fidelityValueText}
+                            </p>
+                          ) : null}
+                          {row.valueType === "Rating" ? (
+                            <>
+                              <p>
+                                <strong class="show-for-small">
+                                  Fidelity:
+                                </strong>
+                              </p>
+                              <span class="rating">
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                  alt="Rating"
+                                />
+                                <span
+                                  class="rat-color"
+                                  style={{
+                                    width: `${row.fidelityValueRat * 20}%`,
+                                  }}
+                                ></span>
+                              </span>
+                            </>
+                          ) : null}
+                          {row.valueType === "Check" ? (
+                            <>
+                              <p>
+                                <strong class="show-for-small">
+                                  Fidelity:
+                                </strong>
+                              </p>
+                              {row.fidelityValueCheck ? (
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                  alt="Yes"
+                                />
+                              ) : (
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                  alt="No"
+                                />
+                              )}
+                            </>
+                          ) : null}
+                        </div>
 
-                      <div class="tab-col col-merrill" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Merrill Edge:</strong>{row.merrillEdgeValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
-                          <>
-                            <p><strong class="show-for-small">Merrill Edge:</strong></p>
-                            <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.merrillEdgeValueRat * 20}%` }}></span>
-                            </span>
-                          </>
-                        ) : null}
-                        {row.valueType === 'Check' ? (
-                          <>
-                            <p><strong class="show-for-small">Merrill Edge:</strong></p>
-                            {row.merrillEdgeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
-                          </>
-                        ) : null}
+                        <div class="tab-col col-merrill">
+                          {row.valueType === "Text" ? (
+                            <p>
+                              <strong class="show-for-small">
+                                Merrill Edge:
+                              </strong>
+                              {row.merrillEdgeValueText}
+                            </p>
+                          ) : null}
+                          {row.valueType === "Rating" ? (
+                            <>
+                              <p>
+                                <strong class="show-for-small">
+                                  Merrill Edge:
+                                </strong>
+                              </p>
+                              <span class="rating">
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                  alt="Rating"
+                                />
+                                <span
+                                  class="rat-color"
+                                  style={{
+                                    width: `${row.merrillEdgeValueRat * 20}%`,
+                                  }}
+                                ></span>
+                              </span>
+                            </>
+                          ) : null}
+                          {row.valueType === "Check" ? (
+                            <>
+                              <p>
+                                <strong class="show-for-small">
+                                  Merrill Edge:
+                                </strong>
+                              </p>
+                              {row.merrillEdgeValueCheck ? (
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                  alt="Yes"
+                                />
+                              ) : (
+                                <img
+                                  src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                  alt="No"
+                                />
+                              )}
+                            </>
+                          ) : null}
+                        </div>
                       </div>
-                    </div>
-                  )
-                })}
+                    )
+                  })}
               </div>
             ) : null}
-            {Parser(broker.cptBrokers.reviewBodyCommFees ? broker.cptBrokers.reviewBodyCommFees : '')}
+            {Parser(
+              broker.cptBrokers.reviewBodyCommFees
+                ? broker.cptBrokers.reviewBodyCommFees
+                : ""
+            )}
           </div>
         ) : null}
 
-        {broker.cptBrokers.ratingPlatfTools || broker.cptBrokers.introTextPlatfTools || broker.cptBrokers.table_platf_tools || broker.cptBrokers.review_body_platf_tools ? (
+        {broker.cptBrokers.ratingPlatfTools ||
+        broker.cptBrokers.introTextPlatfTools ||
+        broker.cptBrokers.table_platf_tools ||
+        broker.cptBrokers.review_body_platf_tools ? (
           <div id="platf-tools" class="rev-part">
             <div class="title-wrap">
-              <h2>{Parser('Platforms &amp; Tools')}</h2>
+              <h2>{Parser("Platforms &amp; Tools")}</h2>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                  <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingPlatfTools * 20}%` }}></span>
+                  <img
+                    src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                    alt="Rating"
+                  />
+                  <span
+                    class="rat-color"
+                    style={{
+                      width: `${broker.cptBrokers.ratingPlatfTools * 20}%`,
+                    }}
+                  ></span>
                 </span>
               </div>
             </div>
-            {Parser(broker.cptBrokers.introTextPlatfTools ? broker.cptBrokers.introTextPlatfTools : '')}
-            {broker.cptBrokers.tableTitlePlatfTools ? <h6>{broker.cptBrokers.tableTitlePlatfTools}</h6> : ''}
+            {Parser(
+              broker.cptBrokers.introTextPlatfTools
+                ? broker.cptBrokers.introTextPlatfTools
+                : ""
+            )}
+            {broker.cptBrokers.tableTitlePlatfTools ? (
+              <h6>{broker.cptBrokers.tableTitlePlatfTools}</h6>
+            ) : (
+              ""
+            )}
             {broker.cptBrokers.tablePlatfTools ? (
               <div class="tab-wrap six-cols">
                 <div class="tab-row tab-head hide-for-small">
-                  <div class="tab-col col-val" ></div>
-                  <div class="tab-col col-xtb" ><p>TD Ameritrade</p></div>
-                  <div class="tab-col col-ava" ><p>E*TRADE</p></div>
-                  <div class="tab-col col-city" ><p>Charles Schwab</p></div>
-                  <div class="tab-col col-city" ><p>Fidelity</p></div>
-                  <div class="tab-col col-city" ><p>Merrill Edge</p></div>
+                  <div class="tab-col col-val"></div>
+                  <div class="tab-col col-xtb">
+                    <p>TD Ameritrade</p>
+                  </div>
+                  <div class="tab-col col-ava">
+                    <p>E*TRADE</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Charles Schwab</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Fidelity</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Merrill Edge</p>
+                  </div>
                 </div>
-                {broker.cptBrokers.tablePlatfTools.map((row) => {
+                {broker.cptBrokers.tablePlatfTools.map(row => {
                   return (
                     <div class="tab-row">
-                      <div class="tab-col col-val" ><p>{row.rowLabel}</p></div>
-                      <div class="tab-col col-amer" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">TD Ameritrade:</strong>{row.tdAmeritradeValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-val">
+                        <p>{row.rowLabel}</p>
+                      </div>
+                      <div class="tab-col col-amer">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">
+                              TD Ameritrade:
+                            </strong>
+                            {row.tdAmeritradeValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">TD Ameritrade:</strong></p>
+                            <p>
+                              <strong class="show-for-small">
+                                TD Ameritrade:
+                              </strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.td_ameritradeValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.td_ameritradeValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">TD Ameritrade:</strong></p>
-                            {row.td_ameritradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">
+                                TD Ameritrade:
+                              </strong>
+                            </p>
+                            {row.td_ameritradeValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-etrade" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">E*TRADE:</strong>{row.etradeValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-etrade">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">E*TRADE:</strong>
+                            {row.etradeValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">E*TRADE:</strong></p>
+                            <p>
+                              <strong class="show-for-small">E*TRADE:</strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.etradeValueRat}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{ width: `${row.etradeValueRat}%` }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">E*TRADE:</strong></p>
-                            {row.etradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">E*TRADE:</strong>
+                            </p>
+                            {row.etradeValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-schwab" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Charles Schwab:</strong>{row.charlesSchwabValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-schwab">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">
+                              Charles Schwab:
+                            </strong>
+                            {row.charlesSchwabValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">Charles Schwab:</strong></p>
+                            <p>
+                              <strong class="show-for-small">
+                                Charles Schwab:
+                              </strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.charlesSchwabValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.charlesSchwabValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">Charles Schwab:</strong></p>
-                            {row.charlesSchwabValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">
+                                Charles Schwab:
+                              </strong>
+                            </p>
+                            {row.charlesSchwabValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-fidelity" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Fidelity:</strong>{row.fidelityValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-fidelity">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">Fidelity:</strong>
+                            {row.fidelityValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">Fidelity:</strong></p>
+                            <p>
+                              <strong class="show-for-small">Fidelity:</strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.fidelityValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.fidelityValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">Fidelity:</strong></p>
-                            {row.fidelityValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">Fidelity:</strong>
+                            </p>
+                            {row.fidelityValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-merrill" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Merrill Edge:</strong>{row.merrillEdgeValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-merrill">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">
+                              Merrill Edge:
+                            </strong>
+                            {row.merrillEdgeValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">Merrill Edge:</strong></p>
+                            <p>
+                              <strong class="show-for-small">
+                                Merrill Edge:
+                              </strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.merrillEdgeValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.merrillEdgeValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">Merrill Edge:</strong></p>
-                            {row.merrillEdgeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">
+                                Merrill Edge:
+                              </strong>
+                            </p>
+                            {row.merrillEdgeValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
@@ -1341,137 +1849,335 @@ export default function BrokersSingle({ data }) {
                 })}
               </div>
             ) : null}
-            {Parser(broker.cptBrokers.reviewBodyPlatfTools ? broker.cptBrokers.reviewBodyPlatfTools : '')}
+            {Parser(
+              broker.cptBrokers.reviewBodyPlatfTools
+                ? broker.cptBrokers.reviewBodyPlatfTools
+                : ""
+            )}
           </div>
         ) : null}
-        {broker.cptBrokers.ratingCustServ || broker.cptBrokers.reviewBodyCustServ ? (
+        {broker.cptBrokers.ratingCustServ ||
+        broker.cptBrokers.reviewBodyCustServ ? (
           <div id="cust-serv" class="rev-part">
             <div class="title-wrap">
               <h2>Customer Service</h2>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                  <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingCustServ * 20}%` }}></span>
+                  <img
+                    src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                    alt="Rating"
+                  />
+                  <span
+                    class="rat-color"
+                    style={{
+                      width: `${broker.cptBrokers.ratingCustServ * 20}%`,
+                    }}
+                  ></span>
                 </span>
               </div>
             </div>
-            {Parser(broker.cptBrokers.reviewBodyCustServ ? broker.cptBrokers.reviewBodyCustServ : '')}
+            {Parser(
+              broker.cptBrokers.reviewBodyCustServ
+                ? broker.cptBrokers.reviewBodyCustServ
+                : ""
+            )}
           </div>
         ) : null}
-        {broker.cptBrokers.ratingCustResearch || broker.cptBrokers.reviewBodyResearch || broker.cptBrokers.tableResearch ? (
+        {broker.cptBrokers.ratingCustResearch ||
+        broker.cptBrokers.reviewBodyResearch ||
+        broker.cptBrokers.tableResearch ? (
           <div id="research" class="rev-part">
             <div class="title-wrap">
               <h2>Research</h2>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                  <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingCustResearch * 20}%` }}></span>
+                  <img
+                    src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                    alt="Rating"
+                  />
+                  <span
+                    class="rat-color"
+                    style={{
+                      width: `${broker.cptBrokers.ratingCustResearch * 20}%`,
+                    }}
+                  ></span>
                 </span>
               </div>
             </div>
-            {Parser(broker.cptBrokers.reviewBodyResearch ? broker.cptBrokers.reviewBodyResearch : '')}
-            {broker.cptBrokers.tableTitleResearch ? <h6>{broker.cptBrokers.tableTitleResearch}</h6> : ''}
+            {Parser(
+              broker.cptBrokers.reviewBodyResearch
+                ? broker.cptBrokers.reviewBodyResearch
+                : ""
+            )}
+            {broker.cptBrokers.tableTitleResearch ? (
+              <h6>{broker.cptBrokers.tableTitleResearch}</h6>
+            ) : (
+              ""
+            )}
             {broker.cptBrokers.tableResearch ? (
               <div class="tab-wrap six-cols">
                 <div class="tab-row tab-head hide-for-small">
-                  <div class="tab-col col-val" ></div>
-                  <div class="tab-col col-xtb" ><p>TD Ameritrade</p></div>
-                  <div class="tab-col col-ava" ><p>E*TRADE</p></div>
-                  <div class="tab-col col-city" ><p>Charles Schwab</p></div>
-                  <div class="tab-col col-city" ><p>Fidelity</p></div>
-                  <div class="tab-col col-city" ><p>Merrill Edge</p></div>
+                  <div class="tab-col col-val"></div>
+                  <div class="tab-col col-xtb">
+                    <p>TD Ameritrade</p>
+                  </div>
+                  <div class="tab-col col-ava">
+                    <p>E*TRADE</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Charles Schwab</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Fidelity</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Merrill Edge</p>
+                  </div>
                 </div>
-                {broker.cptBrokers.tableResearch.map((row) => {
+                {broker.cptBrokers.tableResearch.map(row => {
                   return (
                     <div class="tab-row">
-                      <div class="tab-col col-val" ><p>{row.rowLabel}</p></div>
-                      <div class="tab-col col-amer" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">TD Ameritrade:</strong>{row.tdAmeritradeValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-val">
+                        <p>{row.rowLabel}</p>
+                      </div>
+                      <div class="tab-col col-amer">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">
+                              TD Ameritrade:
+                            </strong>
+                            {row.tdAmeritradeValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">TD Ameritrade:</strong></p>
+                            <p>
+                              <strong class="show-for-small">
+                                TD Ameritrade:
+                              </strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.td_ameritradeValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.td_ameritradeValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">TD Ameritrade:</strong></p>
-                            {row.td_ameritradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">
+                                TD Ameritrade:
+                              </strong>
+                            </p>
+                            {row.td_ameritradeValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-etrade" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">E*TRADE:</strong>{row.etradeValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-etrade">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">E*TRADE:</strong>
+                            {row.etradeValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">E*TRADE:</strong></p>
+                            <p>
+                              <strong class="show-for-small">E*TRADE:</strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.etradeValueRat}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{ width: `${row.etradeValueRat}%` }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">E*TRADE:</strong></p>
-                            {row.etradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">E*TRADE:</strong>
+                            </p>
+                            {row.etradeValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-schwab" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Charles Schwab:</strong>{row.charlesSchwabValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-schwab">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">
+                              Charles Schwab:
+                            </strong>
+                            {row.charlesSchwabValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">Charles Schwab:</strong></p>
+                            <p>
+                              <strong class="show-for-small">
+                                Charles Schwab:
+                              </strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.charlesSchwabValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.charlesSchwabValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">Charles Schwab:</strong></p>
-                            {row.charlesSchwabValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">
+                                Charles Schwab:
+                              </strong>
+                            </p>
+                            {row.charlesSchwabValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-fidelity" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Fidelity:</strong>{row.fidelityValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-fidelity">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">Fidelity:</strong>
+                            {row.fidelityValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">Fidelity:</strong></p>
+                            <p>
+                              <strong class="show-for-small">Fidelity:</strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.fidelityValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.fidelityValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">Fidelity:</strong></p>
-                            {row.fidelityValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">Fidelity:</strong>
+                            </p>
+                            {row.fidelityValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-merrill" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Merrill Edge:</strong>{row.merrillEdgeValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-merrill">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">
+                              Merrill Edge:
+                            </strong>
+                            {row.merrillEdgeValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">Merrill Edge:</strong></p>
+                            <p>
+                              <strong class="show-for-small">
+                                Merrill Edge:
+                              </strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.merrillEdgeValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.merrillEdgeValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">Merrill Edge:</strong></p>
-                            {row.merrillEdgeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">
+                                Merrill Edge:
+                              </strong>
+                            </p>
+                            {row.merrillEdgeValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
@@ -1488,128 +2194,319 @@ export default function BrokersSingle({ data }) {
               <h2>Ease of Use</h2>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                  <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingEase * 20}%` }}></span>
+                  <img
+                    src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                    alt="Rating"
+                  />
+                  <span
+                    class="rat-color"
+                    style={{ width: `${broker.cptBrokers.ratingEase * 20}%` }}
+                  ></span>
                 </span>
               </div>
             </div>
-            {Parser(broker.cptBrokers.reviewBodyEase ? broker.cptBrokers.reviewBodyEase : '')}
+            {Parser(
+              broker.cptBrokers.reviewBodyEase
+                ? broker.cptBrokers.reviewBodyEase
+                : ""
+            )}
           </div>
         ) : null}
-        {broker.cptBrokers.ratingMobTrad || broker.cptBrokers.reviewBodyMobTrad || broker.cptBrokers.tableMobTrad ? (
+        {broker.cptBrokers.ratingMobTrad ||
+        broker.cptBrokers.reviewBodyMobTrad ||
+        broker.cptBrokers.tableMobTrad ? (
           <div id="mob-trad" class="rev-part">
             <div class="title-wrap">
               <h2>Mobile Trading</h2>
               <div class="rat-wrap">
                 <span class="rating">
-                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                  <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingMobTrad * 20}%` }}></span>
+                  <img
+                    src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                    alt="Rating"
+                  />
+                  <span
+                    class="rat-color"
+                    style={{
+                      width: `${broker.cptBrokers.ratingMobTrad * 20}%`,
+                    }}
+                  ></span>
                 </span>
               </div>
             </div>
-            {Parser(broker.cptBrokers.reviewBodyMobTrad ? broker.cptBrokers.reviewBodyMobTrad : '')}
-            {broker.cptBrokers.tableTitleMobTrad ? <h6>{broker.cptBrokers.tableTitleMobTrad}</h6> : ''}
+            {Parser(
+              broker.cptBrokers.reviewBodyMobTrad
+                ? broker.cptBrokers.reviewBodyMobTrad
+                : ""
+            )}
+            {broker.cptBrokers.tableTitleMobTrad ? (
+              <h6>{broker.cptBrokers.tableTitleMobTrad}</h6>
+            ) : (
+              ""
+            )}
             {broker.cptBrokers.tableMobTrad ? (
               <div class="tab-wrap six-cols">
                 <div class="tab-row tab-head hide-for-small">
-                  <div class="tab-col col-val" ></div>
-                  <div class="tab-col col-xtb" ><p>TD Ameritrade</p></div>
-                  <div class="tab-col col-ava" ><p>E*TRADE</p></div>
-                  <div class="tab-col col-city" ><p>Charles Schwab</p></div>
-                  <div class="tab-col col-city" ><p>Fidelity</p></div>
-                  <div class="tab-col col-city" ><p>Merrill Edge</p></div>
+                  <div class="tab-col col-val"></div>
+                  <div class="tab-col col-xtb">
+                    <p>TD Ameritrade</p>
+                  </div>
+                  <div class="tab-col col-ava">
+                    <p>E*TRADE</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Charles Schwab</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Fidelity</p>
+                  </div>
+                  <div class="tab-col col-city">
+                    <p>Merrill Edge</p>
+                  </div>
                 </div>
-                {broker.cptBrokers.tableMobTrad.map((row) => {
+                {broker.cptBrokers.tableMobTrad.map(row => {
                   return (
                     <div class="tab-row">
-                      <div class="tab-col col-val" ><p>{row.rowLabel}</p></div>
-                      <div class="tab-col col-amer" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">TD Ameritrade:</strong>{row.tdAmeritradeValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-val">
+                        <p>{row.rowLabel}</p>
+                      </div>
+                      <div class="tab-col col-amer">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">
+                              TD Ameritrade:
+                            </strong>
+                            {row.tdAmeritradeValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">TD Ameritrade:</strong></p>
+                            <p>
+                              <strong class="show-for-small">
+                                TD Ameritrade:
+                              </strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.td_ameritradeValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.td_ameritradeValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">TD Ameritrade:</strong></p>
-                            {row.td_ameritradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">
+                                TD Ameritrade:
+                              </strong>
+                            </p>
+                            {row.td_ameritradeValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-etrade" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">E*TRADE:</strong>{row.etradeValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-etrade">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">E*TRADE:</strong>
+                            {row.etradeValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">E*TRADE:</strong></p>
+                            <p>
+                              <strong class="show-for-small">E*TRADE:</strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.etradeValueRat}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{ width: `${row.etradeValueRat}%` }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">E*TRADE:</strong></p>
-                            {row.etradeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">E*TRADE:</strong>
+                            </p>
+                            {row.etradeValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-schwab" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Charles Schwab:</strong>{row.charlesSchwabValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-schwab">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">
+                              Charles Schwab:
+                            </strong>
+                            {row.charlesSchwabValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">Charles Schwab:</strong></p>
+                            <p>
+                              <strong class="show-for-small">
+                                Charles Schwab:
+                              </strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.charlesSchwabValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.charlesSchwabValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">Charles Schwab:</strong></p>
-                            {row.charlesSchwabValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">
+                                Charles Schwab:
+                              </strong>
+                            </p>
+                            {row.charlesSchwabValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-fidelity" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Fidelity:</strong>{row.fidelityValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-fidelity">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">Fidelity:</strong>
+                            {row.fidelityValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">Fidelity:</strong></p>
+                            <p>
+                              <strong class="show-for-small">Fidelity:</strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.fidelityValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.fidelityValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">Fidelity:</strong></p>
-                            {row.fidelityValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">Fidelity:</strong>
+                            </p>
+                            {row.fidelityValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
-                      <div class="tab-col col-merrill" >
-                        {row.valueType === 'Text' ? <p><strong class="show-for-small">Merrill Edge:</strong>{row.merrillEdgeValueText}</p> : null}
-                        {row.valueType === 'Rating' ? (
+                      <div class="tab-col col-merrill">
+                        {row.valueType === "Text" ? (
+                          <p>
+                            <strong class="show-for-small">
+                              Merrill Edge:
+                            </strong>
+                            {row.merrillEdgeValueText}
+                          </p>
+                        ) : null}
+                        {row.valueType === "Rating" ? (
                           <>
-                            <p><strong class="show-for-small">Merrill Edge:</strong></p>
+                            <p>
+                              <strong class="show-for-small">
+                                Merrill Edge:
+                              </strong>
+                            </p>
                             <span class="rating">
-                              <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg" alt="Rating" />
-                              <span class="rat-color" style={{ width: `${row.merrillEdgeValueRat * 20}%` }}></span>
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey.svg"
+                                alt="Rating"
+                              />
+                              <span
+                                class="rat-color"
+                                style={{
+                                  width: `${row.merrillEdgeValueRat * 20}%`,
+                                }}
+                              ></span>
                             </span>
                           </>
                         ) : null}
-                        {row.valueType === 'Check' ? (
+                        {row.valueType === "Check" ? (
                           <>
-                            <p><strong class="show-for-small">Merrill Edge:</strong></p>
-                            {row.merrillEdgeValueCheck ? <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg" alt="Yes" /> : <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg" alt="No" />}
+                            <p>
+                              <strong class="show-for-small">
+                                Merrill Edge:
+                              </strong>
+                            </p>
+                            {row.merrillEdgeValueCheck ? (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/check-green.svg"
+                                alt="Yes"
+                              />
+                            ) : (
+                              <img
+                                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/cross-red.svg"
+                                alt="No"
+                              />
+                            )}
                           </>
                         ) : null}
                       </div>
@@ -1625,7 +2522,11 @@ export default function BrokersSingle({ data }) {
             <div class="title-wrap">
               <h2>Robo Trading</h2>
             </div>
-            {Parser(broker.cptBrokers.reviewBodyMetod ? broker.cptBrokers.reviewBodyMetod : '')}
+            {Parser(
+              broker.cptBrokers.reviewBodyMetod
+                ? broker.cptBrokers.reviewBodyMetod
+                : ""
+            )}
           </div>
         ) : null}
         {broker.cptBrokers.reviewBodyCrypto ? (
@@ -1633,7 +2534,11 @@ export default function BrokersSingle({ data }) {
             <div class="title-wrap">
               <h2>Crypto Currency</h2>
             </div>
-            {Parser(broker.cptBrokers.reviewBodyCrypto ? broker.cptBrokers.reviewBodyCrypto : '')}
+            {Parser(
+              broker.cptBrokers.reviewBodyCrypto
+                ? broker.cptBrokers.reviewBodyCrypto
+                : ""
+            )}
           </div>
         ) : null}
         {broker.cptBrokers.reviewBodyOther ? (
@@ -1641,7 +2546,11 @@ export default function BrokersSingle({ data }) {
             <div class="title-wrap">
               <h2>Regulatory details</h2>
             </div>
-            {Parser(broker.cptBrokers.reviewBodyOther ? broker.cptBrokers.reviewBodyOther : '')}
+            {Parser(
+              broker.cptBrokers.reviewBodyOther
+                ? broker.cptBrokers.reviewBodyOther
+                : ""
+            )}
           </div>
         ) : null}
         {broker.cptBrokers.reviewBodyFinThoughts ? (
@@ -1649,7 +2558,11 @@ export default function BrokersSingle({ data }) {
             <div class="title-wrap">
               <h2>Final Thoughts</h2>
             </div>
-            {Parser(broker.cptBrokers.reviewBodyFinThoughts ? broker.cptBrokers.reviewBodyFinThoughts : '')}
+            {Parser(
+              broker.cptBrokers.reviewBodyFinThoughts
+                ? broker.cptBrokers.reviewBodyFinThoughts
+                : ""
+            )}
           </div>
         ) : null}
         {broker.content ? (
@@ -1657,7 +2570,7 @@ export default function BrokersSingle({ data }) {
             <div class="title-wrap">
               <h2>FAQ</h2>
             </div>
-            {Parser(broker.content ? broker.content : '')}
+            {Parser(broker.content ? broker.content : "")}
           </div>
         ) : null}
         {broker.cptBrokers.reviewBodyLatBrokNews ? (
@@ -1665,11 +2578,17 @@ export default function BrokersSingle({ data }) {
             <div class="title-wrap">
               <h2>Latest Broker News</h2>
             </div>
-            {Parser(broker.cptBrokers.reviewBodyLatBrokNews ? broker.cptBrokers.reviewBodyLatBrokNews : '')}
+            {Parser(
+              broker.cptBrokers.reviewBodyLatBrokNews
+                ? broker.cptBrokers.reviewBodyLatBrokNews
+                : ""
+            )}
           </div>
         ) : null}
         <RelativeGuides />
-        <Link to={'/compare-forex-brokers'} class="btn">GO TO THE compare brokers</Link>
+        <Link to={"/compare-forex-brokers"} class="btn">
+          GO TO THE compare brokers
+        </Link>
       </div>
     )
   }
@@ -1696,12 +2615,24 @@ export default function BrokersSingle({ data }) {
         {broker.cptBrokers.predefinedRelatedBrokers ? (
           <div class="row collapse brokers-list">
             <div class="small-12 columns">
-              {broker.cptBrokers.predefinedRelatedBrokers.map((brok) => {
+              {broker.cptBrokers.predefinedRelatedBrokers.map(brok => {
                 return (
                   <div class="row collapse broker-wrap">
                     <div class="broker-tab-col img-col">
-                      <div class="thumb-wrap" >
-                        {brok.featuredImage.node ? <img class="img-list-default" src={brok.featuredImage.node.mediaItemUrl} alt="WCB Logo" /> : <img class="img-list-default" src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
+                      <div class="thumb-wrap">
+                        {brok.featuredImage.node ? (
+                          <img
+                            class="img-list-default"
+                            src={brok.featuredImage.node.mediaItemUrl}
+                            alt="WCB Logo"
+                          />
+                        ) : (
+                          <img
+                            class="img-list-default"
+                            src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
+                            alt="WCB Logo"
+                          />
+                        )}
                       </div>
                     </div>
 
@@ -1712,101 +2643,190 @@ export default function BrokersSingle({ data }) {
                     <div class="broker-tab-col broker-content">
                       <div class="points-col broker-content-col text-center">
                         <div class="wrap">
-                          <p class="val">{Parser(brok.cptBrokers.allSpreadsPoints ? brok.cptBrokers.allSpreadsPoints : '')}</p>
+                          <p class="val">
+                            {Parser(
+                              brok.cptBrokers.allSpreadsPoints
+                                ? brok.cptBrokers.allSpreadsPoints
+                                : ""
+                            )}
+                          </p>
                           <p>Spreads:</p>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See All Spreads</a> : ''}
+                        {brok.cptBrokers.affiliateLink ? (
+                          <a
+                            href={brok.cptBrokers.affiliateLink}
+                            target="_blank"
+                            rel="nofollow sponsored"
+                          >
+                            See All Spreads
+                          </a>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <div class="min-dep-col broker-content-col text-center">
                         <div class="wrap">
-                          <p class="val">{Parser(brok.cptBrokers.minDeposit ? brok.cptBrokers.minDeposit : '')}</p>
+                          <p class="val">
+                            {Parser(
+                              brok.cptBrokers.minDeposit
+                                ? brok.cptBrokers.minDeposit
+                                : ""
+                            )}
+                          </p>
                           <p>Min. deposit</p>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Learn More</a> : ''}
+                        {brok.cptBrokers.affiliateLink ? (
+                          <a
+                            href={brok.cptBrokers.affiliateLink}
+                            target="_blank"
+                            rel="nofollow sponsored"
+                          >
+                            Learn More
+                          </a>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <div class="platf-col broker-content-col text-center">
-                        <div class="wrap cont-col" >
+                        <div class="wrap cont-col">
                           <ul>
                             {platfomsList.map(platf => {
                               if (brok.cptBrokers.platformsList) {
                                 return brok.cptBrokers.platformsList.includes(
                                   platf
                                 ) ? (
-                                    <li className="checked">{platf}</li>
-                                  ) : (
-                                    <li>{platf}</li>
-                                  )
+                                  <li className="checked">{platf}</li>
+                                ) : (
+                                  <li>{platf}</li>
+                                )
                               }
                             })}
                           </ul>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Platforms</a> : ''}
+                        {brok.cptBrokers.affiliateLink ? (
+                          <a
+                            href={brok.cptBrokers.affiliateLink}
+                            target="_blank"
+                            rel="nofollow sponsored"
+                          >
+                            See Platforms
+                          </a>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <div class="acc-col broker-content-col text-center">
-                        <div class="wrap cont-col" >
+                        <div class="wrap cont-col">
                           <ul>
                             {accountsList.map(account => {
                               if (brok.cptBrokers.accountsList) {
                                 return brok.cptBrokers.accountsList.includes(
                                   account
                                 ) ? (
-                                    <li className="checked">{account}</li>
-                                  ) : (
-                                    <li>{account}</li>
-                                  )
+                                  <li className="checked">{account}</li>
+                                ) : (
+                                  <li>{account}</li>
+                                )
                               }
                             })}
                           </ul>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Accounts</a> : ''}
+                        {brok.cptBrokers.affiliateLink ? (
+                          <a
+                            href={brok.cptBrokers.affiliateLink}
+                            target="_blank"
+                            rel="nofollow sponsored"
+                          >
+                            See Accounts
+                          </a>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <div class="spreads-col broker-content-col text-center">
-                        <div class="wrap cont-col" >
+                        <div class="wrap cont-col">
                           <ul>
                             {spreadsList.map(spread => {
                               if (brok.cptBrokers.spreadsList) {
                                 return brok.cptBrokers.spreadsList.includes(
                                   spread
                                 ) ? (
-                                    <li className="checked">{spread}</li>
-                                  ) : (
-                                    <li>{spread}</li>
-                                  )
+                                  <li className="checked">{spread}</li>
+                                ) : (
+                                  <li>{spread}</li>
+                                )
                               }
                             })}
                           </ul>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Spreads</a> : ''}
+                        {brok.cptBrokers.affiliateLink ? (
+                          <a
+                            href={brok.cptBrokers.affiliateLink}
+                            target="_blank"
+                            rel="nofollow sponsored"
+                          >
+                            See Spreads
+                          </a>
+                        ) : (
+                          ""
+                        )}
                       </div>
                       <div class="methods-col broker-content-col text-center">
-                        <div class="wrap cont-col" >
+                        <div class="wrap cont-col">
                           <ul>
                             {methodsList.map(method => {
                               if (brok.cptBrokers.methodsList) {
                                 return brok.cptBrokers.methodsList.includes(
                                   method
                                 ) ? (
-                                    <li className="checked">{method}</li>
-                                  ) : (
-                                    <li>{method}</li>
-                                  )
+                                  <li className="checked">{method}</li>
+                                ) : (
+                                  <li>{method}</li>
+                                )
                               }
                             })}
                           </ul>
                         </div>
-                        {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">See Methods</a> : ''}
+                        {brok.cptBrokers.affiliateLink ? (
+                          <a
+                            href={brok.cptBrokers.affiliateLink}
+                            target="_blank"
+                            rel="nofollow sponsored"
+                          >
+                            See Methods
+                          </a>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
 
                     <div class="broker-tab-col btn-col">
                       {brok.cptBrokers.affiliateLink ? (
                         <span class="aff-wrap">
-                          <a class="btn small" href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">Take Me To Broker</a>
-                          {brok.cptBrokers.takeMeToBrokerButtonNoteText ? <span class="floating-note">{brok.cptBrokers.takeMeToBrokerButtonNoteText}</span> : ''}
+                          <a
+                            class="btn small"
+                            href={brok.cptBrokers.affiliateLink}
+                            target="_blank"
+                            rel="nofollow sponsored"
+                          >
+                            Take Me To Broker
+                          </a>
+                          {brok.cptBrokers.takeMeToBrokerButtonNoteText ? (
+                            <span class="floating-note">
+                              {brok.cptBrokers.takeMeToBrokerButtonNoteText}
+                            </span>
+                          ) : (
+                            ""
+                          )}
                         </span>
                       ) : null}
-                      <span data-id={brok.id} class="btn small compare-btn">Compare Brokers Side by Side</span>
-                      <Link class="btn small" to={brok.uri}>Read Full Review</Link>
+                      <span data-id={brok.id} class="btn small compare-btn">
+                        Compare Brokers Side by Side
+                      </span>
+                      <Link class="btn small" to={brok.uri}>
+                        Read Full Review
+                      </Link>
                     </div>
                   </div>
                 )
@@ -1814,13 +2834,14 @@ export default function BrokersSingle({ data }) {
             </div>
           </div>
         ) : (
-            <div class="row collapse brokers-list">
-              <div class="small-12 columns">
-                {themeGeneralSettings.brokerRelatedGuides.map((brok) => <BrokerTableSingleItemNewView brokerInfo={brok}/>)}
-              </div>
+          <div class="row collapse brokers-list">
+            <div class="small-12 columns">
+              {acfOptionsGeneralSettings.brokerRelatedGuides.map(brok => (
+                <BrokerTableSingleItemNewView brokerInfo={brok} />
+              ))}
             </div>
-
-          )}
+          </div>
+        )}
       </div>
     )
   }
@@ -1862,7 +2883,12 @@ export default function BrokersSingle({ data }) {
           { property: "og:type", content: broker.seo.opengraphType },
           { property: "og:title", content: broker.seo.title },
           { property: "og:url", content: siteUrl + broker.uri },
-          { property: "og:image", content: broker.featuredImage ? broker.featuredImage.node.mediaItemUrl : '' },
+          {
+            property: "og:image",
+            content: broker.featuredImage
+              ? broker.featuredImage.node.mediaItemUrl
+              : "",
+          },
           { property: "og:description", content: broker.seo.metaDesc },
         ]}
       />
@@ -1911,42 +2937,80 @@ export default function BrokersSingle({ data }) {
                   <div class="small-12 columns related-articles-wrap">
                     <h4>Related articles:</h4>
                     <ul>
-                      {broker.cptBrokers.brokerInfoRelatedArticles.map((article) => {
-                        return <li><Link to={article.uri}>{article.uri}</Link></li>
-                      })}
+                      {broker.cptBrokers.brokerInfoRelatedArticles.map(
+                        article => {
+                          return (
+                            <li>
+                              <Link to={article.uri}>{article.uri}</Link>
+                            </li>
+                          )
+                        }
+                      )}
                     </ul>
                   </div>
                 </div>
               </div>
             ) : null}
 
-            {broker.cptBrokers.brokerHealth === 'good' || broker.cptBrokers.brokerHealth === 'banned' && broker.cptBrokers.allFieldsChecker ? (
+            {broker.cptBrokers.brokerHealth === "good" ||
+            (broker.cptBrokers.brokerHealth === "banned" &&
+              broker.cptBrokers.allFieldsChecker) ? (
               <div class="brok-rew-wrap overal-rat-wrap">
                 <div class="row collapse">
                   <div class="large-4 medium-6 columns overal-left">
                     <div class="title-wrap">
                       <h4>Ratings</h4>
                       <span class="rating">
-                        <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                        <span class="rat-color" style={{ width: `${avarageRatingCounter(broker.cptBrokers) * 20}%` }}></span>
+                        <img
+                          src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                          alt="Rating"
+                        />
+                        <span
+                          class="rat-color"
+                          style={{
+                            width: `${
+                              avarageRatingCounter(broker.cptBrokers) * 20
+                            }%`,
+                          }}
+                        ></span>
                       </span>
                     </div>
                     <ul>
                       {broker.cptBrokers.ratingCommFees !== 0 ? (
                         <li>
-                          {Parser('Commissions &amp; Fees')}
+                          {Parser("Commissions &amp; Fees")}
                           <span class="rating">
-                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                            <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingCommFees * 20}%` }}></span>
+                            <img
+                              src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                              alt="Rating"
+                            />
+                            <span
+                              class="rat-color"
+                              style={{
+                                width: `${
+                                  broker.cptBrokers.ratingCommFees * 20
+                                }%`,
+                              }}
+                            ></span>
                           </span>
                         </li>
                       ) : null}
                       {broker.cptBrokers.ratingPlatfTools !== 0 ? (
                         <li>
-                          {Parser('Platforms & Tools')}
+                          {Parser("Platforms & Tools")}
                           <span class="rating">
-                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                            <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingPlatfTools * 20}%` }}></span>
+                            <img
+                              src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                              alt="Rating"
+                            />
+                            <span
+                              class="rat-color"
+                              style={{
+                                width: `${
+                                  broker.cptBrokers.ratingPlatfTools * 20
+                                }%`,
+                              }}
+                            ></span>
                           </span>
                         </li>
                       ) : null}
@@ -1954,8 +3018,18 @@ export default function BrokersSingle({ data }) {
                         <li>
                           Customer Service
                           <span class="rating">
-                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                            <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingCustServ * 20}%` }}></span>
+                            <img
+                              src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                              alt="Rating"
+                            />
+                            <span
+                              class="rat-color"
+                              style={{
+                                width: `${
+                                  broker.cptBrokers.ratingCustServ * 20
+                                }%`,
+                              }}
+                            ></span>
                           </span>
                         </li>
                       ) : null}
@@ -1963,8 +3037,18 @@ export default function BrokersSingle({ data }) {
                         <li>
                           Research
                           <span class="rating">
-                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                            <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingCustResearch * 20}%` }}></span>
+                            <img
+                              src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                              alt="Rating"
+                            />
+                            <span
+                              class="rat-color"
+                              style={{
+                                width: `${
+                                  broker.cptBrokers.ratingCustResearch * 20
+                                }%`,
+                              }}
+                            ></span>
                           </span>
                         </li>
                       ) : null}
@@ -1972,8 +3056,16 @@ export default function BrokersSingle({ data }) {
                         <li>
                           Ease of Use
                           <span class="rating">
-                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                            <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingEase * 20}%` }}></span>
+                            <img
+                              src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                              alt="Rating"
+                            />
+                            <span
+                              class="rat-color"
+                              style={{
+                                width: `${broker.cptBrokers.ratingEase * 20}%`,
+                              }}
+                            ></span>
                           </span>
                         </li>
                       ) : null}
@@ -1981,8 +3073,18 @@ export default function BrokersSingle({ data }) {
                         <li>
                           Mobile Trading
                           <span class="rating">
-                            <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg" alt="Rating" />
-                            <span class="rat-color" style={{ width: `${broker.cptBrokers.ratingMobTrad * 20}%` }}></span>
+                            <img
+                              src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask.svg"
+                              alt="Rating"
+                            />
+                            <span
+                              class="rat-color"
+                              style={{
+                                width: `${
+                                  broker.cptBrokers.ratingMobTrad * 20
+                                }%`,
+                              }}
+                            ></span>
                           </span>
                         </li>
                       ) : null}
@@ -1991,16 +3093,33 @@ export default function BrokersSingle({ data }) {
                   <div class="large-8 medium-6 columns overal-right">
                     {broker.cptBrokers.yearList ? (
                       <div class="rat-hist-list">
-                        {broker.cptBrokers.yearList.map((year) => {
+                        {broker.cptBrokers.yearList.map(year => {
                           return (
                             <div class="year-row latest">
-                              <div class="hist-col col-year"><p>{year.year}</p></div>
-                              <div class="hist-col col-pos"><p><span>{year.position}</span> of {year.opponents}</p></div>
-                              <div class="hist-col col-type"><p>Overall</p></div>
+                              <div class="hist-col col-year">
+                                <p>{year.year}</p>
+                              </div>
+                              <div class="hist-col col-pos">
+                                <p>
+                                  <span>{year.position}</span> of{" "}
+                                  {year.opponents}
+                                </p>
+                              </div>
+                              <div class="hist-col col-type">
+                                <p>Overall</p>
+                              </div>
                               <div class="hist-col col-rat">
                                 <span class="rating">
-                                  <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey-light.svg" alt="Rating" />
-                                  <span class="rat-color" style={{ width: `${year.overallRating * 20}%` }}></span>
+                                  <img
+                                    src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/stars-mask-grey-light.svg"
+                                    alt="Rating"
+                                  />
+                                  <span
+                                    class="rat-color"
+                                    style={{
+                                      width: `${year.overallRating * 20}%`,
+                                    }}
+                                  ></span>
                                 </span>
                               </div>
                             </div>
@@ -2016,7 +3135,11 @@ export default function BrokersSingle({ data }) {
             <div class="brok-rew-wrap disqus-wrap">
               <div class="row collapse">
                 <div class="small-12 columns">
-                  {Parser(themeGeneralSettings.disqusBodyText ? themeGeneralSettings.disqusBodyText : '')}
+                  {Parser(
+                    acfOptionsGeneralSettings.disqusBodyText
+                      ? acfOptionsGeneralSettings.disqusBodyText
+                      : ""
+                  )}
                   <Disqus config={disqusConfig} />
                 </div>
               </div>

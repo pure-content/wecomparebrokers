@@ -12,7 +12,7 @@ import Pagination from "../components/Pagination"
 const shortid = require("shortid")
 
 export const query = graphql`
-  query($id: ID!) {
+  query ($id: ID!) {
     wpgraphql {
       page(id: $id) {
         title
@@ -61,11 +61,10 @@ export const query = graphql`
               sizes(size: BROKERS_REW_THUMB_NEW)
             }
           }
-          
         }
       }
 
-      themeGeneralSettings {
+      acfOptionsGeneralSettings {
         optGeneralSettings {
           takeMeToBrokerButtonAlternativeText
           readFullReviewButtonAlternativeText
@@ -79,22 +78,22 @@ function BrokerHealthTemplate({ data, search }) {
   const page = data.wpgraphql.page
   const template = page.tmplBrokerHealth
   const brokers = data.wpgraphql.brokers123.nodes
-  const generalSettings = data.wpgraphql.themeGeneralSettings.optGeneralSettings
+  const generalSettings =
+    data.wpgraphql.acfOptionsGeneralSettings.optGeneralSettings
 
-  const name = search['broker-name'] ? search['broker-name'] : ''
-  const good = search.good ? search.good : ''
-  const banned = search.banned ? search.banned : ''
-  const char = search.char ? search.char : ''
-
+  const name = search["broker-name"] ? search["broker-name"] : ""
+  const good = search.good ? search.good : ""
+  const banned = search.banned ? search.banned : ""
+  const char = search.char ? search.char : ""
 
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(6)
   const [filteredBrokers, setFilteredBrokers] = useState(brokers)
 
   useEffect(() => {
-    $('.broker-col').matchHeight()
+    $(".broker-col").matchHeight()
     if (name) {
-      $('#broker-name').focus()
+      $("#broker-name").focus()
     }
 
     if (name && !good && !banned) {
@@ -107,7 +106,10 @@ function BrokerHealthTemplate({ data, search }) {
     }
     if (name && good && !banned) {
       const sortedBrokers = filteredBrokers.filter(eachBroker => {
-        if (eachBroker.title.toLowerCase().includes(name.toLowerCase()) && eachBroker.cptBrokers.brokerHealth === 'good') {
+        if (
+          eachBroker.title.toLowerCase().includes(name.toLowerCase()) &&
+          eachBroker.cptBrokers.brokerHealth === "good"
+        ) {
           return eachBroker
         }
       })
@@ -115,7 +117,10 @@ function BrokerHealthTemplate({ data, search }) {
     }
     if (name && banned && !good) {
       const sortedBrokers = filteredBrokers.filter(eachBroker => {
-        if (eachBroker.title.toLowerCase().includes(name.toLowerCase()) && eachBroker.cptBrokers.brokerHealth === 'banned') {
+        if (
+          eachBroker.title.toLowerCase().includes(name.toLowerCase()) &&
+          eachBroker.cptBrokers.brokerHealth === "banned"
+        ) {
           return eachBroker
         }
       })
@@ -123,7 +128,7 @@ function BrokerHealthTemplate({ data, search }) {
     }
     if (good && !name && !banned) {
       const sortedBrokers = filteredBrokers.filter(eachBroker => {
-        if (eachBroker.cptBrokers.brokerHealth === 'good') {
+        if (eachBroker.cptBrokers.brokerHealth === "good") {
           return eachBroker
         }
       })
@@ -131,7 +136,7 @@ function BrokerHealthTemplate({ data, search }) {
     }
     if (banned && !good && !name) {
       const sortedBrokers = filteredBrokers.filter(eachBroker => {
-        if (eachBroker.cptBrokers.brokerHealth === 'banned') {
+        if (eachBroker.cptBrokers.brokerHealth === "banned") {
           return eachBroker
         }
       })
@@ -139,7 +144,10 @@ function BrokerHealthTemplate({ data, search }) {
     }
     if (banned && good && !name) {
       const sortedBrokers = filteredBrokers.filter(eachBroker => {
-        if (eachBroker.cptBrokers.brokerHealth === 'banned' || eachBroker.cptBrokers.brokerHealth === 'good') {
+        if (
+          eachBroker.cptBrokers.brokerHealth === "banned" ||
+          eachBroker.cptBrokers.brokerHealth === "good"
+        ) {
           return eachBroker
         }
       })
@@ -147,7 +155,11 @@ function BrokerHealthTemplate({ data, search }) {
     }
     if (banned && good && name) {
       const sortedBrokers = filteredBrokers.filter(eachBroker => {
-        if (eachBroker.cptBrokers.brokerHealth === 'banned' || eachBroker.cptBrokers.brokerHealth === 'good' && eachBroker.title.toLowerCase().includes(name.toLowerCase())) {
+        if (
+          eachBroker.cptBrokers.brokerHealth === "banned" ||
+          (eachBroker.cptBrokers.brokerHealth === "good" &&
+            eachBroker.title.toLowerCase().includes(name.toLowerCase()))
+        ) {
           return eachBroker
         }
       })
@@ -155,29 +167,34 @@ function BrokerHealthTemplate({ data, search }) {
     }
     if (char) {
       const sortedBrokers = filteredBrokers.filter(eachBroker => {
-        if (eachBroker.title.toLowerCase().split('')[0] === char.toLowerCase()) {
+        if (
+          eachBroker.title.toLowerCase().split("")[0] === char.toLowerCase()
+        ) {
           return eachBroker
         }
       })
       setFilteredBrokers(sortedBrokers)
     }
-
-
   }, [search])
 
   useEffect(() => {
-    $('html, body').animate({
-      scrollTop: $('.health-filter').offset().top
-    }, 1000);
+    $("html, body").animate(
+      {
+        scrollTop: $(".health-filter").offset().top,
+      },
+      1000
+    )
   }, [currentPage])
 
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
-  const currentBrokers = filteredBrokers.slice(indexOfFirstPost, indexOfLastPost)
+  const currentBrokers = filteredBrokers.slice(
+    indexOfFirstPost,
+    indexOfLastPost
+  )
 
   const HealthFilter = () => {
-
-    const [brokerNameState, setBrokerNameState] = useState(name ? name : '')
+    const [brokerNameState, setBrokerNameState] = useState(name ? name : "")
     const [goodCheck, setGoodCheck] = useState(good ? true : false)
     const [bannedCheck, setBannedCheck] = useState(banned ? true : false)
 
@@ -185,17 +202,49 @@ function BrokerHealthTemplate({ data, search }) {
       <div className="row">
         <div className="small-12 columns">
           <div className="filter-wrap health-filter">
-            <h3>Search <strong>Here</strong></h3>
+            <h3>
+              Search <strong>Here</strong>
+            </h3>
             <form id="health-form" action={page.uri} method="get">
               <div className="inp-wrap">
-                <input id="broker-name" name="broker-name" onChange={e => setBrokerNameState(e.target.value)} type="text" value={brokerNameState} placeholder="Company name here..." autoComplete="off" />
+                <input
+                  id="broker-name"
+                  name="broker-name"
+                  onChange={e => setBrokerNameState(e.target.value)}
+                  type="text"
+                  value={brokerNameState}
+                  placeholder="Company name here..."
+                  autoComplete="off"
+                />
                 <div className="inp-popup"></div>
               </div>
               <div className="check-wrap">
-                <label><input id="good" name="good" type="checkbox" value="good" onChange={() => setGoodCheck(!goodCheck)} checked={goodCheck} />Show only good brokers<span></span></label>
-                <label><input id="banned" name="banned" type="checkbox" value="banned" onChange={() => setBannedCheck(!bannedCheck)} checked={bannedCheck} />Show brokers with warnings<span></span></label>
+                <label>
+                  <input
+                    id="good"
+                    name="good"
+                    type="checkbox"
+                    value="good"
+                    onChange={() => setGoodCheck(!goodCheck)}
+                    checked={goodCheck}
+                  />
+                  Show only good brokers<span></span>
+                </label>
+                <label>
+                  <input
+                    id="banned"
+                    name="banned"
+                    type="checkbox"
+                    value="banned"
+                    onChange={() => setBannedCheck(!bannedCheck)}
+                    checked={bannedCheck}
+                  />
+                  Show brokers with warnings<span></span>
+                </label>
               </div>
-              <button id="form-submit" className="btn blue" type="submit">Check Broker Health</button>
+              <button id="form-submit" className="btn blue" type="submit">
+                Check Broker Health
+              </button>
             </form>
           </div>
         </div>
@@ -210,8 +259,12 @@ function BrokerHealthTemplate({ data, search }) {
         <div className="small-12 columns">
           <div className="filter-wrap alph-filter">
             <ul className="alph-pag">
-              {alphabetArr.map((letter) => {
-                return <li key={shortid.generate()}><a href={`${page.uri}?char=${letter}`}>{letter}</a></li>
+              {alphabetArr.map(letter => {
+                return (
+                  <li key={shortid.generate()}>
+                    <a href={`${page.uri}?char=${letter}`}>{letter}</a>
+                  </li>
+                )
               })}
             </ul>
           </div>
@@ -220,29 +273,65 @@ function BrokerHealthTemplate({ data, search }) {
     )
   }
 
-  const BrokerTableItem = (props) => {
+  const BrokerTableItem = props => {
     const { brok } = props
-    const bg = brok.cptBrokers.brokerHealth === 'good' ? 'green' : 'red'
+    const bg = brok.cptBrokers.brokerHealth === "good" ? "green" : "red"
     return (
       <div className="row collapse broker-wrap health-wrap">
         <div className="large-2 medium-4 columns img-col broker-col">
-          <div className='thumb-wrap'>
-            {brok.featuredImage ? <img onLoad={() => $('.broker-col').matchHeight()} src={brok.featuredImage.node.mediaItemUrl} /> : <img onLoad={() => $('.broker-col').matchHeight()} className="img-list-default" src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png" alt="WCB Logo" />}
+          <div className="thumb-wrap">
+            {brok.featuredImage ? (
+              <img
+                onLoad={() => $(".broker-col").matchHeight()}
+                src={brok.featuredImage.node.mediaItemUrl}
+              />
+            ) : (
+              <img
+                onLoad={() => $(".broker-col").matchHeight()}
+                className="img-list-default"
+                src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/generic-logo.png"
+                alt="WCB Logo"
+              />
+            )}
           </div>
         </div>
         <div className="large-4 medium-8 columns broker-content broker-col">
           <h3>{brok.title}</h3>
-          {brok.cptBrokers.affiliateLink ? <a href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored"><span>{brok.cptBrokers.brokerLink}</span></a> : null}
-          {Parser(brok.excerpt ? brok.excerpt : '')}
+          {brok.cptBrokers.affiliateLink ? (
+            <a
+              href={brok.cptBrokers.affiliateLink}
+              target="_blank"
+              rel="nofollow sponsored"
+            >
+              <span>{brok.cptBrokers.brokerLink}</span>
+            </a>
+          ) : null}
+          {Parser(brok.excerpt ? brok.excerpt : "")}
         </div>
         <div className="large-6 medium-12 columns health-btns broker-col">
-          {brok.cptBrokers.brokerHealth === 'banned' ? <Link className="btn small warning" to={brok.uri}>Warning</Link> : null}
+          {brok.cptBrokers.brokerHealth === "banned" ? (
+            <Link className="btn small warning" to={brok.uri}>
+              Warning
+            </Link>
+          ) : null}
           {brok.cptBrokers.affiliateLink ? (
-            <a className="btn small" href={brok.cptBrokers.affiliateLink} target="_blank" rel="nofollow sponsored">{generalSettings.takeMeToBrokerButtonAlternativeText ? generalSettings.takeMeToBrokerButtonAlternativeText : 'Take Me To Broker'}</a>
+            <a
+              className="btn small"
+              href={brok.cptBrokers.affiliateLink}
+              target="_blank"
+              rel="nofollow sponsored"
+            >
+              {generalSettings.takeMeToBrokerButtonAlternativeText
+                ? generalSettings.takeMeToBrokerButtonAlternativeText
+                : "Take Me To Broker"}
+            </a>
           ) : null}
 
-          <Link className="btn small" to={brok.uri}>{generalSettings.readFullReviewButtonAlternativeText ? generalSettings.readFullReviewButtonAlternativeText : 'Read Full Review'}</Link>
-
+          <Link className="btn small" to={brok.uri}>
+            {generalSettings.readFullReviewButtonAlternativeText
+              ? generalSettings.readFullReviewButtonAlternativeText
+              : "Read Full Review"}
+          </Link>
         </div>
       </div>
     )
@@ -271,16 +360,22 @@ function BrokerHealthTemplate({ data, search }) {
       <AlphabetFilter />
       <div className="row brokers-list plarform-list">
         <div className="small-12 columns">
-          {currentBrokers.map((brok) => {
+          {currentBrokers.map(brok => {
             return <BrokerTableItem brok={brok} />
           })}
-          <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} postsPerPage={postsPerPage} totalPosts={filteredBrokers.length} noNumbers={filteredBrokers.length <= 6 ? true : false} />
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            postsPerPage={postsPerPage}
+            totalPosts={filteredBrokers.length}
+            noNumbers={filteredBrokers.length <= 6 ? true : false}
+          />
         </div>
       </div>
       {template.bottomText ? (
         <div className="row bot-text bot-text-health">
           <div className="small-12 columns">
-            {Parser(template.bottomText ? template.bottomText : '')}
+            {Parser(template.bottomText ? template.bottomText : "")}
           </div>
         </div>
       ) : null}

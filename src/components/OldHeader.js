@@ -18,7 +18,7 @@ export default function OldHeader(props) {
             }
           }
         }
-        themeGeneralSettings {
+        acfOptionsHeader {
           optHeader {
             newHomepageLogo {
               mediaItemUrl
@@ -32,10 +32,8 @@ export default function OldHeader(props) {
 
   const { url } = menu.wpgraphql.generalSettings
   const { title, uri } = props
-  const {
-    altText,
-    mediaItemUrl,
-  } = menu.wpgraphql.themeGeneralSettings.optHeader.newHomepageLogo
+  const { altText, mediaItemUrl } =
+    menu.wpgraphql.acfOptionsGeneralSettings.optHeader.newHomepageLogo
 
   // loop through the menu items and make the links relative
   const items = menu.wpgraphql.menu.menuItems.nodes.map(item => ({
@@ -44,8 +42,8 @@ export default function OldHeader(props) {
   }))
 
   useEffect(() => {
-    $('.toggle-topbar').on('click', function () {
-      $('.top-bar').toggleClass('expanded')
+    $(".toggle-topbar").on("click", function () {
+      $(".top-bar").toggleClass("expanded")
     })
   })
 
@@ -85,7 +83,9 @@ export default function OldHeader(props) {
                   {items.map(item => (
                     <li
                       key={item.id}
-                      className={`menu-item ${title === item.label ? "current-menu-item" : ""} ${uri === item.url ? "current-menu-item" : ""}`}
+                      className={`menu-item ${
+                        title === item.label ? "current-menu-item" : ""
+                      } ${uri === item.url ? "current-menu-item" : ""}`}
                     >
                       <Link key={item.url} to={item.url}>
                         {item.label}

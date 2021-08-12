@@ -45,7 +45,7 @@ export default function Footer() {
         generalSettings {
           url
         }
-        themeFooterSettings {
+        acfOptionsFooter {
           optFooter {
             newFooterSidebarContent
             footerText
@@ -255,7 +255,7 @@ export default function Footer() {
   })
 
   const { url } = footer.wpgraphql.generalSettings
-  const footerOptions = footer.wpgraphql.themeFooterSettings.optFooter
+  const footerOptions = footer.wpgraphql.acfOptionsFooter.optFooter
   const dt = new Date()
 
   // loop through the menu items and make the links relative

@@ -40,7 +40,6 @@ const shortid = require("shortid")
 //   }
 // }
 
-
 // allGfForm {
 //   edges {
 //     node {
@@ -86,7 +85,7 @@ export default function OldFooter(props) {
         generalSettings {
           url
         }
-        themeFooterSettings {
+        acfOptionsFooter {
           optFooter {
             newFooterSidebarContent
             buttonsHeader
@@ -313,12 +312,12 @@ export default function OldFooter(props) {
 
   useEffect(() => {
     $(".light-grey-wrap .columns").matchHeight()
-    $('.fooler-col').matchHeight()
+    $(".fooler-col").matchHeight()
   })
 
   const { url } = footer.wpgraphql.generalSettings
   const contentType = props.contentType ? props.contentType.node.name : ""
-  const footerOptions = footer.wpgraphql.themeFooterSettings.optFooter
+  const footerOptions = footer.wpgraphql.acfOptionsFooter.optFooter
   const dt = new Date()
 
   // loop through the menu items and make the links relative
@@ -413,7 +412,7 @@ export default function OldFooter(props) {
       return (
         <div className="large-3 medium-6 columns" data-mh="fooler-col">
           {logo && (
-            <Link className="logo-link" to={'/'}>
+            <Link className="logo-link" to={"/"}>
               <img className="lazy" src={logo.mediaItemUrl} alt="Footer logo" />
             </Link>
           )}
@@ -422,7 +421,12 @@ export default function OldFooter(props) {
             {links.map(eachLink => {
               const linkTitle = eachLink.title
               const linkType = eachLink.linkType
-              const linkItself = linkType === "text" ? eachLink.linkText.includes('wp-content') ? eachLink.linkText : eachLink.linkText.replace(url, "") : eachLink.link.uri
+              const linkItself =
+                linkType === "text"
+                  ? eachLink.linkText.includes("wp-content")
+                    ? eachLink.linkText
+                    : eachLink.linkText.replace(url, "")
+                  : eachLink.link.uri
               return (
                 <li key={shortid.generate()}>
                   <Link to={linkItself}>{linkTitle}</Link>
@@ -494,7 +498,6 @@ export default function OldFooter(props) {
           )}
 
           <div class="large-6 medium-12 columns footer-half half-right">
-
             {/* <GravityFormForm
               id={1}
               formData={allGfForm}
@@ -505,31 +508,95 @@ export default function OldFooter(props) {
 
             <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_1">
               <div id="gf_1" class="gform_anchor" tabindex="-1"></div>
-              <form method="post" enctype="multipart/form-data" target="gform_ajax_frame_1" id="gform_1" action="https://meek-hint.flywheelsites.com/#gf_1">
+              <form
+                method="post"
+                enctype="multipart/form-data"
+                target="gform_ajax_frame_1"
+                id="gform_1"
+                action="https://meek-hint.flywheelsites.com/#gf_1"
+              >
                 <div class="gform_body">
-                  <ul id="gform_fields_1" class="gform_fields top_label form_sublabel_below description_below">
-                    <li id="field_1_1" class="gfield gfield_contains_required field_sublabel_below field_description_below hidden_label gfield_visibility_visible">
-                      <label class="gfield_label" for="input_1_1">Email<span class="gfield_required">*</span></label>
+                  <ul
+                    id="gform_fields_1"
+                    class="gform_fields top_label form_sublabel_below description_below"
+                  >
+                    <li
+                      id="field_1_1"
+                      class="gfield gfield_contains_required field_sublabel_below field_description_below hidden_label gfield_visibility_visible"
+                    >
+                      <label class="gfield_label" for="input_1_1">
+                        Email<span class="gfield_required">*</span>
+                      </label>
                       <div class="ginput_container ginput_container_email">
-                        <input name="input_1" id="input_1_1" type="text" class="large" placeholder='Get Daily Email Alerts' aria-required="true" aria-invalid="false" />
+                        <input
+                          name="input_1"
+                          id="input_1_1"
+                          type="text"
+                          class="large"
+                          placeholder="Get Daily Email Alerts"
+                          aria-required="true"
+                          aria-invalid="false"
+                        />
                       </div>
                     </li>
                   </ul>
                 </div>
                 <div class="gform_footer top_label">
-                  <input type="submit" id="gform_submit_button_1" class="gform_button button btn " value="Sign Up" onClick="if(window[&quot;gf_submitting_1&quot;]){return false;}  window[&quot;gf_submitting_1&quot;]=true;  " onKeyPress="if( event.keyCode == 13 ){ if(window[&quot;gf_submitting_1&quot;]){return false;} window[&quot;gf_submitting_1&quot;]=true;  jQuery(&quot;#gform_1&quot;).trigger(&quot;submit&quot;,[true]); }" />
-                  <input type="hidden" name="gform_ajax" value="form_id=1&amp;title=&amp;description=&amp;tabindex=0" />
-                  <input type="hidden" class="gform_hidden" name="is_submit_1" value="1" />
-                  <input type="hidden" class="gform_hidden" name="gform_submit" value="1" />
-                  <input type="hidden" class="gform_hidden" name="gform_unique_id" value="" />
-                  <input type="hidden" class="gform_hidden" name="state_1" value="WyJbXSIsImQ2ZDg2YWUyMTUzYzk5ODM3ZDBmNzE5Njc3NDAzMGI0Il0=" />
-                  <input type="hidden" class="gform_hidden" name="gform_target_page_number_1" id="gform_target_page_number_1" value="0" />
-                  <input type="hidden" class="gform_hidden" name="gform_source_page_number_1" id="gform_source_page_number_1" value="1" />
+                  <input
+                    type="submit"
+                    id="gform_submit_button_1"
+                    class="gform_button button btn "
+                    value="Sign Up"
+                    onClick='if(window["gf_submitting_1"]){return false;}  window["gf_submitting_1"]=true;  '
+                    onKeyPress='if( event.keyCode == 13 ){ if(window["gf_submitting_1"]){return false;} window["gf_submitting_1"]=true;  jQuery("#gform_1").trigger("submit",[true]); }'
+                  />
+                  <input
+                    type="hidden"
+                    name="gform_ajax"
+                    value="form_id=1&amp;title=&amp;description=&amp;tabindex=0"
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="is_submit_1"
+                    value="1"
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="gform_submit"
+                    value="1"
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="gform_unique_id"
+                    value=""
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="state_1"
+                    value="WyJbXSIsImQ2ZDg2YWUyMTUzYzk5ODM3ZDBmNzE5Njc3NDAzMGI0Il0="
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="gform_target_page_number_1"
+                    id="gform_target_page_number_1"
+                    value="0"
+                  />
+                  <input
+                    type="hidden"
+                    class="gform_hidden"
+                    name="gform_source_page_number_1"
+                    id="gform_source_page_number_1"
+                    value="1"
+                  />
                   <input type="hidden" name="gform_field_values" value="" />
                 </div>
               </form>
             </div>
-
           </div>
 
           {footerOptions.footerText.length > 0 && (
@@ -559,10 +626,12 @@ export default function OldFooter(props) {
             <div className="menu-footer-menu-container">
               <ul id="menu-footer-menu" className="inline-list">
                 {menuItems.map(menuItem => {
-                  if (menuItem.url.includes('sitemap')) {
+                  if (menuItem.url.includes("sitemap")) {
                     return (
                       <li key={shortid.generate()} className="menu-item">
-                        <a href='https://meek-hint.flywheelsites.com/sitemap_index.xml'>{menuItem.label}</a>
+                        <a href="https://meek-hint.flywheelsites.com/sitemap_index.xml">
+                          {menuItem.label}
+                        </a>
                       </li>
                     )
                   } else {
