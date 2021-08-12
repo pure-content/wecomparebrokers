@@ -33,7 +33,7 @@ export default function OldHeader(props) {
   const { url } = menu.wpgraphql.generalSettings
   const { title, uri } = props
   const { altText, mediaItemUrl } =
-    menu.wpgraphql.acfOptionsGeneralSettings.optHeader.newHomepageLogo
+    menu.wpgraphql.acfOptionsHeader.optHeader.newHomepageLogo
 
   // loop through the menu items and make the links relative
   const items = menu.wpgraphql.menu.menuItems.nodes.map(item => ({
