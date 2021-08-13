@@ -69,7 +69,7 @@ export default function ComplaintsFormTemplate({ data }) {
   const page = data.wpgraphql.page
   const brokers123 = data.wpgraphql.brokers123.nodes
   const { optListCopy } =
-    data.wpgraphql.acfOptionsComplaintsSettings.optacfOptionsComplaintsSettings
+    data.wpgraphql.acfOptionsComplaintsSettings.optComplaintsSettings || {}
 
   useEffect(() => {
     $("#thread_broker").select2({

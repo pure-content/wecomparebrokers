@@ -31,8 +31,7 @@ export default function SideBarForexNews() {
   `)
 
   const { sidebarPopularBrokersList } =
-    sidebarInfo.wpgraphql.acfOptionsForexNewsSettings
-      .optacfOptionsForexNewsSettings || {}
+    sidebarInfo.wpgraphql.acfOptionsForexNewsSettings.optForexNewsSettings || {}
 
   return (
     <aside class="widget popular-brok-widget">
