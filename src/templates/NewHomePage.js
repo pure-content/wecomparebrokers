@@ -1169,8 +1169,6 @@ export default function NewHomePage({ data }) {
     title: page.title,
   }
 
-  console.log("generalSettings", generalSettings)
-
   return (
     <Layout pageInfo={pageInfo}>
       <Helmet
