@@ -325,6 +325,7 @@ export default function OldFooter(props) {
     ...item,
     url: item.url.replace(url, ""),
   }))
+  console.log("menuItems", menuItems)
 
   const TopFooterWrap = () => {
     if (contentType !== "top_brokers") {
@@ -626,21 +627,11 @@ export default function OldFooter(props) {
             <div className="menu-footer-menu-container">
               <ul id="menu-footer-menu" className="inline-list">
                 {menuItems.map(menuItem => {
-                  if (menuItem.url.includes("sitemap")) {
-                    return (
-                      <li key={shortid.generate()} className="menu-item">
-                        <a href="https://meek-hint.flywheelsites.com/sitemap_index.xml">
-                          {menuItem.label}
-                        </a>
-                      </li>
-                    )
-                  } else {
-                    return (
-                      <li key={shortid.generate()} className="menu-item">
-                        <Link to={menuItem.url}>{menuItem.label}</Link>
-                      </li>
-                    )
-                  }
+                  return (
+                    <li key={shortid.generate()} className="menu-item">
+                      <Link to={menuItem.url}>{menuItem.label}</Link>
+                    </li>
+                  )
                 })}
               </ul>
             </div>

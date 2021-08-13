@@ -263,6 +263,7 @@ export default function Footer() {
     ...item,
     url: item.url.replace(url, ""),
   }))
+  console.log("menuItems", menuItems)
 
   const DarkBlue = () => {
     if (footerOptions.newFooterSidebarContent.length > 0) {
