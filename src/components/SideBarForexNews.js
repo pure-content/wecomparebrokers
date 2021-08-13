@@ -32,7 +32,7 @@ export default function SideBarForexNews() {
 
   const { sidebarPopularBrokersList } =
     sidebarInfo.wpgraphql.acfOptionsForexNewsSettings
-      .optacfOptionsForexNewsSettings
+      .optacfOptionsForexNewsSettings || {}
 
   return (
     <aside class="widget popular-brok-widget">
