@@ -9,6 +9,7 @@ import CompareFrom from "../components/CompareFrom"
 import PageTopContent from "../components/PageTopContent"
 import withLocation from "../hoc/withLocation"
 import Pagination from "../components/Pagination"
+import { useParams, useLocation } from "@reach/router"
 const shortid = require("shortid")
 
 export const query = graphql`
@@ -342,6 +343,8 @@ function BrokerHealthTemplate({ data, search }) {
     contentType: page.contentType,
     title: page.title,
   }
+  const location = useLocation()
+  const nonCanonical = !!location.search
   return (
     <Layout pageInfo={pageInfo}>
       <Helmet
@@ -354,6 +357,14 @@ function BrokerHealthTemplate({ data, search }) {
           { property: "og:description", content: page.seo.metaDesc },
         ]}
       />
+      {nonCanonical ? (
+        <Helmet>
+          <link
+            rel="canonical"
+            href={`https://www.wecomparebrokers.com${page.uri}`}
+          />
+        </Helmet>
+      ) : null}
       <CompareFrom />
       <PageTopContent page={page} template={template} />
       <HealthFilter />
