@@ -325,7 +325,6 @@ export default function OldFooter(props) {
     ...item,
     url: item.url.replace(url, ""),
   }))
-  console.log("menuItems", menuItems)
 
   const TopFooterWrap = () => {
     if (contentType !== "top_brokers") {

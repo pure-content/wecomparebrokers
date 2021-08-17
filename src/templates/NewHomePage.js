@@ -626,20 +626,20 @@ export default function NewHomePage({ data }) {
 
   const TopThreeBrokersWIthAds = () => {
     //@issue - change width in iframe fail
-    useEffect(() => {
-      console.log("LALALALA Load")
-      setTimeout(() => {
-        console.log("settimeout")
-        console.log("page loaded")
-        console.log($("#cmstrader3778WcqDDi iframe"))
+    // useEffect(() => {
+    //   console.log("LALALALA Load")
+    //   setTimeout(() => {
+    //     console.log("settimeout")
+    //     console.log("page loaded")
+    //     console.log($("#cmstrader3778WcqDDi iframe"))
 
-        let head = $(".a-d-column iframe").contents().find("head")
-        console.log("iframe head", $(".a-d-column iframe").find("head"))
-        let css =
-          '<style type="text/css"> a img { width: 100%; height: 100%; } </style>'
-        $(head).append(css)
-      }, 3000)
-    }, [generalSettings.leftAdBanners])
+    //     let head = $(".a-d-column iframe").contents().find("head")
+    //     console.log("iframe head", $(".a-d-column iframe").find("head"))
+    //     let css =
+    //       '<style type="text/css"> a img { width: 100%; height: 100%; } </style>'
+    //     $(head).append(css)
+    //   }, 3000)
+    // }, [generalSettings.leftAdBanners])
     return (
       <div className="brokers-top-section row expanded">
         {generalSettings.leftAdBanners.length > 0 && (

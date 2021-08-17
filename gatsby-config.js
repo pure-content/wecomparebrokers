@@ -19,6 +19,7 @@ module.exports = {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         url: "https://meek-hint.flywheelsites.com/graphql",
+        batch: true,
       },
     },
     {
