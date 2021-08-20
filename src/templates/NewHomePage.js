@@ -644,7 +644,7 @@ export default function NewHomePage({ data }) {
       <div className="brokers-top-section row expanded">
         {generalSettings.leftAdBanners.length > 0 && (
           <div
-            className="brokers-top__left-a-d a-d-column column hide-for-small-only medium-2 large-1 xlarge-2"
+            className="brokers-top__left-a-d a-d-column column hide-for-small-only medium-12 large-2"
             data-mh="brok-ad"
           >
             {generalSettings.leftAdBanners.map(ad =>
@@ -660,7 +660,7 @@ export default function NewHomePage({ data }) {
         )}
 
         <div
-          className="brokers-top__content column medium-8 large-10 xlarge-8"
+          className="brokers-top__content column medium-12 large-8"
           data-mh="brok-ad"
         >
           {templateFields.topThreeStockBrokers.length > 0 && (
@@ -708,10 +708,7 @@ export default function NewHomePage({ data }) {
                         <Link to={brok.broker.uri}>
                           <span className="name">{brok.broker.title}</span>
                         </Link>
-                      </div>
-
-                      <div className="brok-img brok-each-box">
-                        <Link to={brok.broker.uri}>
+                        <Link className="broker-img-link" to={brok.broker.uri}>
                           <img
                             src={brok.broker.featuredImage.node.mediaItemUrl}
                             alt=""
@@ -821,10 +818,7 @@ export default function NewHomePage({ data }) {
                         <Link to={brok.broker.uri}>
                           <span className="name">{brok.broker.title}</span>
                         </Link>
-                      </div>
-
-                      <div className="brok-img brok-each-box">
-                        <Link to={brok.broker.uri}>
+                        <Link className="broker-img-link" to={brok.broker.uri}>
                           <img
                             src={brok.broker.featuredImage.node.mediaItemUrl}
                             alt=""
@@ -935,10 +929,7 @@ export default function NewHomePage({ data }) {
                         <Link to={brok.broker.uri}>
                           <span className="name">{brok.broker.title}</span>
                         </Link>
-                      </div>
-
-                      <div className="brok-img brok-each-box">
-                        <Link to={brok.broker.uri}>
+                        <Link className="broker-img-link" to={brok.broker.uri}>
                           <img
                             src={brok.broker.featuredImage.node.mediaItemUrl}
                             alt=""
@@ -1031,7 +1022,7 @@ export default function NewHomePage({ data }) {
 
         {generalSettings.rightAdBanner.length > 0 && (
           <div
-            className="brokers-top__right-a-d a-d-column column hide-for-small-only medium-2 large-1 xlarge-2"
+            className="brokers-top__right-a-d a-d-column column hide-for-small-only medium-12 large-2"
             data-mh="brok-ad"
           >
             {generalSettings.rightAdBanner.map(ad =>
