@@ -1647,6 +1647,14 @@
   .hide-for-small-only {
     display: none !important;
   }
+  .brokers-list:not(.plarform-list)
+    .broker-wrap.new
+    .broker-tab-col.broker-identity.one-column {
+    width: 100%;
+  }
+  .broker-wrap.new .rating {
+    height: 11px;
+  }
 }
 
 /* max-width 640px and lower. Use this for mobiles only */
