@@ -139,6 +139,7 @@ export const query = graphql`
           headquartersLocationOfficesBg
           headquartersLocationOfficesBgScore
           includeToMostPopularBrokersTable
+          indexThisBroker
           introTextCommFees
           introTextPlatfTools
           likesList
@@ -2872,7 +2873,7 @@ export default function BrokersSingle({ data }) {
     identifier: broker.id,
     title: broker.title,
   }
-
+  console.log(broker.cptBrokers.indexThisBroker)
   return (
     <Layout pageInfo={pageInfo}>
       <Helmet
@@ -2888,6 +2889,10 @@ export default function BrokersSingle({ data }) {
             content: broker.featuredImage
               ? broker.featuredImage.node.mediaItemUrl
               : "",
+          },
+          {
+            property: "robots",
+            content: broker.cptBrokers?.indexThisBroker ? "index" : "noindex",
           },
           { property: "og:description", content: broker.seo.metaDesc },
         ]}
