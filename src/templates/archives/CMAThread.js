@@ -123,19 +123,49 @@ export default function CMAThread() {
     contentType: page.contentType,
     title: page.title,
   }
-
+  const { seo } = page
   return (
     <Layout pageInfo={pageInfo}>
-      <Helmet
-        htmlAttributes={{ lang: "en", amp: undefined }}
-        title={page.seo.title}
-        meta={[
-          { name: "description", content: page.seo.metaDesc },
-          { property: "og:type", content: page.seo.opengraphType },
-          { property: "og:title", content: page.seo.title },
-          { property: "og:description", content: page.seo.metaDesc },
-        ]}
-      />
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.metaDesc} />
+        <meta name="og:type" content={seo.opengraphType} />
+        <meta name="og:title" content={seo.title} />
+        <meta name="og:description" content={seo.metaDesc} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "WebPage",
+            headline: page.title,
+            url: `https://www.wecomparebrokers.com${page.uri}`,
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                  "@id": "https://www.wecomparebrokers.com/",
+                  url: "https://www.wecomparebrokers.com",
+                  name: "Home Page",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                  "@id": `https://www.wecomparebrokers.com${page.uri}`,
+                  name: page.title,
+                },
+              },
+            ],
+          })}
+        </script>
+      </Helmet>
       <TopContent />
       <div class="row cma-wrap">
         <MainColumn />

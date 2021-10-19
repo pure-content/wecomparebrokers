@@ -15,12 +15,13 @@ import { avarageRatingCounter } from "../functions/avarageRatingCounter"
 const queryString = require("query-string")
 
 export const query = graphql`
-  query($id: ID!) {
+  query ($id: ID!) {
     wpgraphql {
       page(id: $id) {
         title
         content
         id
+        uri
         isFrontPage
         seo {
           title
@@ -156,7 +157,9 @@ function ComparisonPageTemplate({ data, search }) {
       })
     }
     if (firstUsr) {
-      var first = $(`form #first-usr option[id="1${firstUsr ? firstUsr.id : ""}"]`)
+      var first = $(
+        `form #first-usr option[id="1${firstUsr ? firstUsr.id : ""}"]`
+      )
       var firstVal = first.val()
       $("form #first-usr").val(firstVal).trigger("change")
     }
@@ -203,24 +206,25 @@ function ComparisonPageTemplate({ data, search }) {
     $(".top-content-col").matchHeight()
     $(".broker-col").matchHeight()
     $(".tabs-brok-card-wrap").matchHeight()
-    $('.top-cols').matchHeight()
-
+    $(".top-cols").matchHeight()
   })
 
   useEffect(() => {
-    if(firstUsr){
-      $('html, body').animate({
-        scrollTop: $('.compare-cols').offset().top
-      }, 1000);
+    if (firstUsr) {
+      $("html, body").animate(
+        {
+          scrollTop: $(".compare-cols").offset().top,
+        },
+        1000
+      )
     }
-    
   }, [firstUsr])
 
   const TopContent = () => {
     return (
       <div class="top-content-compare">
         <div class="row top-content">
-          <div class="large-12 columns top-content-col" ref={topContentCol} >
+          <div class="large-12 columns top-content-col" ref={topContentCol}>
             <div class="crumbs">
               <Link to={"/"}>Home page</Link> -&gt;
               <span>
@@ -239,7 +243,9 @@ function ComparisonPageTemplate({ data, search }) {
                 ) : (
                     ""
                   )} */}
-                {page.allPagesFields.alternativeTitle ? Parser(page.allPagesFields.alternativeTitle) : Parser(page.title)}
+                {page.allPagesFields.alternativeTitle
+                  ? Parser(page.allPagesFields.alternativeTitle)
+                  : Parser(page.title)}
               </h1>
               {/* <div class="dot-sep">
                 <span></span>
@@ -340,9 +346,12 @@ function ComparisonPageTemplate({ data, search }) {
         <div class="tabs-brok-card-wrap">
           <div class="top-wrap">
             <div class="top-left top-cols">
-              <img onLoad={() => $(".tabs-brok-card-wrap").matchHeight()} src={firstUsr.featuredImage.node.mediaItemUrl} />
+              <img
+                onLoad={() => $(".tabs-brok-card-wrap").matchHeight()}
+                src={firstUsr.featuredImage.node.mediaItemUrl}
+              />
             </div>
-            <div class="top-right top-cols text-center" >
+            <div class="top-right top-cols text-center">
               {scoreAnimation(firstUsr.cptBrokers.ourScore, "big-chart", true)}
             </div>
             <div class="brok-info-wrap">
@@ -382,8 +391,11 @@ function ComparisonPageTemplate({ data, search }) {
       return (
         <div class="tabs-brok-card-wrap">
           <div class="top-wrap">
-            <div class="top-left top-cols" >
-              <img onLoad={() => $(".tabs-brok-card-wrap").matchHeight()} src={secUsr.featuredImage.node.mediaItemUrl} />
+            <div class="top-left top-cols">
+              <img
+                onLoad={() => $(".tabs-brok-card-wrap").matchHeight()}
+                src={secUsr.featuredImage.node.mediaItemUrl}
+              />
             </div>
             <div class="top-right top-cols text-center">
               {scoreAnimation(secUsr.cptBrokers.ourScore, "big-chart", true)}
@@ -452,23 +464,58 @@ function ComparisonPageTemplate({ data, search }) {
 
   return (
     <Layout pageInfo={pageInfo}>
-      <Helmet
-        htmlAttributes={{ lang: "en", amp: undefined }}
-        title={seo.title}
-        meta={[
-          { name: "description", content: seo.metaDesc },
-          { property: "og:type", content: seo.opengraphType },
-          { property: "og:title", content: seo.title },
-          { property: "og:description", content: seo.metaDesc },
-        ]}
-      />
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.metaDesc} />
+        <meta name="og:type" content={seo.opengraphType} />
+        <meta name="og:title" content={seo.title} />
+        <meta name="og:description" content={seo.metaDesc} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "WebPage",
+            headline: page.title,
+            url: `https://www.wecomparebrokers.com${page.uri}`,
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                  "@id": "https://www.wecomparebrokers.com/",
+                  url: "https://www.wecomparebrokers.com",
+                  name: "Home Page",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                  "@id": `https://www.wecomparebrokers.com${page.uri}`,
+                  name: page.title,
+                },
+              },
+            ],
+          })}
+        </script>
+      </Helmet>
       <CompareFrom />
       <TopContent />
       <CompareColumns />
       <div class="row brokers-list">
         <div class="small-12 columns">
           {templateFields.predefinedBrokersList.map(broker => {
-            return <BrokerTableSingleItemNewView key={broker.id} brokerInfo={broker} />
+            return (
+              <BrokerTableSingleItemNewView
+                key={broker.id}
+                brokerInfo={broker}
+              />
+            )
           })}
         </div>
       </div>

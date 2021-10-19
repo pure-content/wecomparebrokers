@@ -367,16 +367,46 @@ export default function TopBrokerSingle({ data }) {
 
   return (
     <Layout>
-      <Helmet
-        htmlAttributes={{ lang: "en", amp: undefined }}
-        title={seo.title}
-        meta={[
-          { name: "description", content: seo.metaDesc },
-          { property: "og:type", content: seo.opengraphType },
-          { property: "og:title", content: seo.title },
-          { property: "og:description", content: seo.metaDesc },
-        ]}
-      />
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.metaDesc} />
+        <meta name="og:type" content={seo.opengraphType} />
+        <meta name="og:title" content={seo.title} />
+        <meta name="og:description" content={seo.metaDesc} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "WebPage",
+            headline: topBroker123.title,
+            url: `https://www.wecomparebrokers.com${topBroker123.uri}`,
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                  "@id": "https://www.wecomparebrokers.com/",
+                  url: "https://www.wecomparebrokers.com",
+                  name: "Home Page",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                  "@id": `https://www.wecomparebrokers.com${topBroker123.uri}`,
+                  name: topBroker123.title,
+                },
+              },
+            ],
+          })}
+        </script>
+      </Helmet>
       <CompareFrom />
 
       <CallBackFormPopUp />

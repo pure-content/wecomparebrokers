@@ -26,9 +26,11 @@ export const query = graphql`
         uri
         content
         date
+        modified
         author {
           node {
             name
+            uri
           }
         }
         featuredImage {
@@ -2873,10 +2875,10 @@ export default function BrokersSingle({ data }) {
     identifier: broker.id,
     title: broker.title,
   }
-  console.log(broker.cptBrokers.indexThisBroker)
+  // console.log(broker.cptBrokers.indexThisBroker)
   return (
     <Layout pageInfo={pageInfo}>
-      <Helmet
+      {/* <Helmet
         htmlAttributes={{ lang: "en", amp: undefined }}
         title={broker.seo.title}
         meta={[
@@ -2896,7 +2898,78 @@ export default function BrokersSingle({ data }) {
           },
           { property: "og:description", content: broker.seo.metaDesc },
         ]}
-      />
+      /> */}
+      <Helmet>
+        <title>{broker.seo.title}</title>
+        <meta name="description" content={broker.seo.metaDesc} />
+        <meta name="og:type" content={broker.seo.opengraphType} />
+        <meta name="og:title" content={broker.seo.title} />
+        <meta name="og:description" content={broker.seo.metaDesc} />
+        <meta
+          name="og:image"
+          content={
+            broker.featuredImage ? broker.featuredImage.node.mediaItemUrl : ""
+          }
+        />
+        <meta
+          name="robots"
+          content={broker.cptBrokers?.indexThisBroker ? "index" : "noindex"}
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "Review",
+            name: broker.title,
+            dateCreated: broker?.date,
+            dateModified: broker?.modified,
+            itemReviewed: {
+              "@type": "Organization",
+              name: broker.title,
+            },
+            author: {
+              "@type": "Person",
+              name: broker?.author?.node?.name,
+              url: broker?.author?.node?.uri,
+            },
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: avarageRatingCounter(broker.cptBrokers),
+              worstRating: 1,
+              bestRating: 5,
+            },
+            organization: {
+              "@type": "Organization",
+              address: broker.cptBrokers.brokerAddress,
+              email: [...broker.cptBrokers.brokerEmails.map(e => e.emailLink)],
+            },
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                  "@id": "https://www.wecomparebrokers.com/",
+                  url: "https://www.wecomparebrokers.com",
+                  name: "Home Page",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                  "@id": `https://www.wecomparebrokers.com/find-a-broker`,
+                  name: "Broker finder",
+                },
+              },
+            ],
+          })}
+        </script>
+      </Helmet>
       <div class="single-broker-wrap">
         <div class="broker-floating-btn show-for-small-only">
           <a

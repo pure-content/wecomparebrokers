@@ -6,13 +6,13 @@ import Parser from "html-react-parser"
 import Helmet from "react-helmet"
 
 export const query = graphql`
-
-  query($id: ID!) {
+  query ($id: ID!) {
     wpgraphql {
       page(id: $id) {
         title
         content
         id
+        uri
         isFrontPage
 
         contentType {
@@ -71,7 +71,6 @@ export const query = graphql`
       }
     }
   }
-
 `
 
 export default function CheapestBrokerTemplate({ data }) {
@@ -83,30 +82,41 @@ export default function CheapestBrokerTemplate({ data }) {
         <div class="cheap-column__cell cell-name" data-mh="cell-name"></div>
         <div class="cheap-column__cell cell-image" data-mh="cell-image"></div>
         <div class="cheap-column first-column">
-
           <div class="cheap-column__cell">
             <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/TRADING_FEE.png" />
-            <p class="cheap-column__head"><strong>TRADING FEE</strong></p>
+            <p class="cheap-column__head">
+              <strong>TRADING FEE</strong>
+            </p>
           </div>
           <div class="cheap-column__cell">
             <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/COMMISSION.png" />
-            <p class="cheap-column__head"><strong>COMMISSION</strong></p>
+            <p class="cheap-column__head">
+              <strong>COMMISSION</strong>
+            </p>
           </div>
           <div class="cheap-column__cell">
             <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/SPREAD (EURUSD).png" />
-            <p class="cheap-column__head"><strong>SPREAD</strong> (EUR/USD)</p>
+            <p class="cheap-column__head">
+              <strong>SPREAD</strong> (EUR/USD)
+            </p>
           </div>
           <div class="cheap-column__cell">
             <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/AVERAGE COMMISSION.png" />
-            <p class="cheap-column__head"><strong>AVERAGE COMMISSION</strong> ON A 1K TRADE (EUR/USD)</p>
+            <p class="cheap-column__head">
+              <strong>AVERAGE COMMISSION</strong> ON A 1K TRADE (EUR/USD)
+            </p>
           </div>
           <div class="cheap-column__cell">
             <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/OVERNIGHTS FEE.png" />
-            <p class="cheap-column__head"><strong>OVERNIGHTS FEE</strong></p>
+            <p class="cheap-column__head">
+              <strong>OVERNIGHTS FEE</strong>
+            </p>
           </div>
           <div class="cheap-column__cell">
             <img src="https://meek-hint.flywheelsites.com/wp-content/themes/we-compare-brokers/images/ANY OTHER FEES.png" />
-            <p class="cheap-column__head"><strong>ANY OTHER FEES</strong></p>
+            <p class="cheap-column__head">
+              <strong>ANY OTHER FEES</strong>
+            </p>
           </div>
         </div>
       </div>
@@ -122,36 +132,80 @@ export default function CheapestBrokerTemplate({ data }) {
         <div class="cheap-column column-broker">
           <div class="cheap-column__cell cell-image" data-mh="cell-image">
             <a href={brokTableInfo.thisBroker.cptBrokers.affiliateLink}>
-              <img src={brokTableInfo.thisBroker.featuredImage.node.mediaItemUrl} />
+              <img
+                src={brokTableInfo.thisBroker.featuredImage.node.mediaItemUrl}
+              />
             </a>
           </div>
           <div class="cheap-column__cell">
-            <p class="cheap-column__head"><strong>TRADING FEE</strong></p>
-            {brokTableInfo.tradingFee || brokTableInfo.tradingFee == 0 ? Parser(brokTableInfo.tradingFee) : <span class="dash"></span>}
+            <p class="cheap-column__head">
+              <strong>TRADING FEE</strong>
+            </p>
+            {brokTableInfo.tradingFee || brokTableInfo.tradingFee == 0 ? (
+              Parser(brokTableInfo.tradingFee)
+            ) : (
+              <span class="dash"></span>
+            )}
           </div>
           <div class="cheap-column__cell">
-            <p class="cheap-column__head"><strong>COMMISSION</strong></p>
-            {brokTableInfo.commision ? Parser(brokTableInfo.commision) : <span class="dash"></span>}
+            <p class="cheap-column__head">
+              <strong>COMMISSION</strong>
+            </p>
+            {brokTableInfo.commision ? (
+              Parser(brokTableInfo.commision)
+            ) : (
+              <span class="dash"></span>
+            )}
           </div>
           <div class="cheap-column__cell">
-            <p class="cheap-column__head"><strong>SPREAD</strong> (EUR/USD)</p>
-            {brokTableInfo.spread ? Parser(brokTableInfo.spread) : <span class="dash"></span>}
+            <p class="cheap-column__head">
+              <strong>SPREAD</strong> (EUR/USD)
+            </p>
+            {brokTableInfo.spread ? (
+              Parser(brokTableInfo.spread)
+            ) : (
+              <span class="dash"></span>
+            )}
           </div>
           <div class="cheap-column__cell">
-            <p class="cheap-column__head"><strong>AVERAGE COMMISSION</strong> ON A 1K TRADE (EUR/USD)</p>
-            {brokTableInfo.avarageComission ? Parser(brokTableInfo.avarageComission) : <span class="dash"></span>}
+            <p class="cheap-column__head">
+              <strong>AVERAGE COMMISSION</strong> ON A 1K TRADE (EUR/USD)
+            </p>
+            {brokTableInfo.avarageComission ? (
+              Parser(brokTableInfo.avarageComission)
+            ) : (
+              <span class="dash"></span>
+            )}
           </div>
           <div class="cheap-column__cell">
-            <p class="cheap-column__head"><strong>OVERNIGHTS FEE</strong></p>
-            {brokTableInfo.overnightFee ? Parser(brokTableInfo.overnightFee) : <span class="dash"></span>}
+            <p class="cheap-column__head">
+              <strong>OVERNIGHTS FEE</strong>
+            </p>
+            {brokTableInfo.overnightFee ? (
+              Parser(brokTableInfo.overnightFee)
+            ) : (
+              <span class="dash"></span>
+            )}
           </div>
 
           <div class="cheap-column__cell">
-            <p class="cheap-column__head"><strong>ANY OTHER FEES</strong></p>
-            {brokTableInfo.anyOtherFees ? Parser(brokTableInfo.anyOtherFees) : <span class="dash"></span>}
+            <p class="cheap-column__head">
+              <strong>ANY OTHER FEES</strong>
+            </p>
+            {brokTableInfo.anyOtherFees ? (
+              Parser(brokTableInfo.anyOtherFees)
+            ) : (
+              <span class="dash"></span>
+            )}
           </div>
         </div>
-        <Link class="btn" to={brokTableInfo.thisBroker.uri} data-wpel-link="internal">Go to broker</Link>
+        <Link
+          class="btn"
+          to={brokTableInfo.thisBroker.uri}
+          data-wpel-link="internal"
+        >
+          Go to broker
+        </Link>
       </div>
     )
   }
@@ -161,29 +215,78 @@ export default function CheapestBrokerTemplate({ data }) {
     contentType: page.contentType,
     title: page.title,
   }
+  const { seo } = page
   return (
     <Layout pageInfo={pageInfo}>
-      <Helmet
-        htmlAttributes={{ lang: "en", amp: undefined }}
-        title={page.seo.title}
-        meta={[
-          { name: "description", content: page.seo.metaDesc },
-          { property: "og:type", content: page.seo.opengraphType },
-          { property: "og:title", content: page.seo.title },
-          { property: "og:description", content: page.seo.metaDesc },
-        ]}
-      />
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.metaDesc} />
+        <meta name="og:type" content={seo.opengraphType} />
+        <meta name="og:title" content={seo.title} />
+        <meta name="og:description" content={seo.metaDesc} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "WebPage",
+            headline: page.title,
+            url: `https://www.wecomparebrokers.com${page.uri}`,
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                  "@id": "https://www.wecomparebrokers.com/",
+                  url: "https://www.wecomparebrokers.com",
+                  name: "Home Page",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                  "@id": `https://www.wecomparebrokers.com${page.uri}`,
+                  name: page.title,
+                },
+              },
+            ],
+          })}
+        </script>
+      </Helmet>
       <div class="row cheap-compare">
-        {page.tmplCheapestBroker.mainHeading ? Parser(page.tmplCheapestBroker.mainHeading ? page.tmplCheapestBroker.mainHeading : '') : null}
-        {page.tmplCheapestBroker.pageDescription ? <div class="cheap-compare__descr">{Parser(page.tmplCheapestBroker.pageDescription ? page.tmplCheapestBroker.pageDescription : '')}</div> : null}
-        {page.tmplCheapestBroker.pageImage ? <div class="cheap-compare__img"><img src={page.tmplCheapestBroker.pageImage.mediaItemUrl} /></div> : null}
+        {page.tmplCheapestBroker.mainHeading
+          ? Parser(
+              page.tmplCheapestBroker.mainHeading
+                ? page.tmplCheapestBroker.mainHeading
+                : ""
+            )
+          : null}
+        {page.tmplCheapestBroker.pageDescription ? (
+          <div class="cheap-compare__descr">
+            {Parser(
+              page.tmplCheapestBroker.pageDescription
+                ? page.tmplCheapestBroker.pageDescription
+                : ""
+            )}
+          </div>
+        ) : null}
+        {page.tmplCheapestBroker.pageImage ? (
+          <div class="cheap-compare__img">
+            <img src={page.tmplCheapestBroker.pageImage.mediaItemUrl} />
+          </div>
+        ) : null}
         <div class="cheap-compare__table">
           <FirstColumn />
-          {page.tmplCheapestBroker.brokersTable ? (
-            page.tmplCheapestBroker.brokersTable.map(brokTableInfo => (
-              <EachColumn brokTableInfo={brokTableInfo} />
-            ))
-          ) : null}
+          {page.tmplCheapestBroker.brokersTable
+            ? page.tmplCheapestBroker.brokersTable.map(brokTableInfo => (
+                <EachColumn brokTableInfo={brokTableInfo} />
+              ))
+            : null}
         </div>
         <div class="cheap-compare__logo">
           <img src="https://meek-hint.flywheelsites.com/wp-content/uploads/2018/10/Group.svg" />

@@ -300,6 +300,15 @@ export const query = graphql`
           }
         }
       }
+
+      acfOptionsHeader {
+        optHeader {
+          newHomepageLogo {
+            mediaItemUrl
+            altText
+          }
+        }
+      }
     }
   }
 `
@@ -1160,23 +1169,26 @@ export default function NewHomePage({ data }) {
     title: page.title,
   }
 
+  const logoUrl =
+    data.wpgraphql?.acfOptionsHeader?.optHeader?.newHomepageLogo?.mediaItemUrl
+
   return (
     <Layout pageInfo={pageInfo}>
-      <Helmet
-        htmlAttributes={{ lang: "en", amp: undefined }}
-        title={seo.title}
-        meta={[
-          { name: "description", content: seo.metaDesc },
-          { property: "og:type", content: seo.opengraphType },
-          { property: "og:title", content: seo.title },
-          { property: "og:description", content: seo.metaDesc },
-        ]}
-      />
       <Helmet>
-        <meta
-          name="google-site-verification"
-          content="LpG-zlER00N7KP55u-bULwtUxop1FcoyzA6M3PeClJU"
-        />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.metaDesc} />
+        <meta name="og:type" content={seo.opengraphType} />
+        <meta name="og:title" content={seo.title} />
+        <meta name="og:description" content={seo.metaDesc} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "http://schema.org/",
+            "@type": "Organization",
+            headline: "We Compare Brokers",
+            url: "https://www.wecomparebrokers.com",
+            logo: logoUrl,
+          })}
+        </script>
         {generalSettings.topAddSection?.typeOfAdd === "iframe"
           ? Parser(generalSettings.topAddSection?.topAdScript)
           : null}
