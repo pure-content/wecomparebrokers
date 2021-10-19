@@ -2875,7 +2875,7 @@ export default function BrokersSingle({ data }) {
     identifier: broker.id,
     title: broker.title,
   }
-  // console.log(broker.cptBrokers.indexThisBroker)
+
   return (
     <Layout pageInfo={pageInfo}>
       {/* <Helmet
@@ -2940,9 +2940,10 @@ export default function BrokersSingle({ data }) {
             organization: {
               "@type": "Organization",
               address: broker.cptBrokers?.brokerAddress,
-              email: [
-                ...broker.cptBrokers?.brokerEmails?.map(e => e.emailLink),
-              ],
+
+              email: broker.cptBrokers?.brokerEmails
+                ? [...broker.cptBrokers?.brokerEmails?.map(e => e.emailLink)]
+                : null,
             },
           })}
         </script>
