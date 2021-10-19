@@ -2939,8 +2939,10 @@ export default function BrokersSingle({ data }) {
             },
             organization: {
               "@type": "Organization",
-              address: broker.cptBrokers.brokerAddress,
-              email: [...broker.cptBrokers.brokerEmails.map(e => e.emailLink)],
+              address: broker.cptBrokers?.brokerAddress,
+              email: [
+                ...broker.cptBrokers?.brokerEmails?.map(e => e.emailLink),
+              ],
             },
           })}
         </script>
