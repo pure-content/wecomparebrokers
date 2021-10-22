@@ -2878,27 +2878,6 @@ export default function BrokersSingle({ data }) {
 
   return (
     <Layout pageInfo={pageInfo}>
-      {/* <Helmet
-        htmlAttributes={{ lang: "en", amp: undefined }}
-        title={broker.seo.title}
-        meta={[
-          { name: "description", content: broker.seo.metaDesc },
-          { property: "og:type", content: broker.seo.opengraphType },
-          { property: "og:title", content: broker.seo.title },
-          { property: "og:url", content: siteUrl + broker.uri },
-          {
-            property: "og:image",
-            content: broker.featuredImage
-              ? broker.featuredImage.node.mediaItemUrl
-              : "",
-          },
-          {
-            property: "robots",
-            content: broker.cptBrokers?.indexThisBroker ? "index" : "noindex",
-          },
-          { property: "og:description", content: broker.seo.metaDesc },
-        ]}
-      /> */}
       <Helmet>
         <title>{broker.seo.title}</title>
         <meta name="description" content={broker.seo.metaDesc} />
@@ -2925,6 +2904,10 @@ export default function BrokersSingle({ data }) {
             itemReviewed: {
               "@type": "Organization",
               name: broker.title,
+              address: broker.cptBrokers?.brokerAddress,
+              email: broker.cptBrokers?.brokerEmails
+                ? [...broker.cptBrokers?.brokerEmails?.map(e => e.emailLink)]
+                : null,
             },
             author: {
               "@type": "Person",
@@ -2936,14 +2919,6 @@ export default function BrokersSingle({ data }) {
               ratingValue: avarageRatingCounter(broker.cptBrokers),
               worstRating: 1,
               bestRating: 5,
-            },
-            organization: {
-              "@type": "Organization",
-              address: broker.cptBrokers?.brokerAddress,
-
-              email: broker.cptBrokers?.brokerEmails
-                ? [...broker.cptBrokers?.brokerEmails?.map(e => e.emailLink)]
-                : null,
             },
           })}
         </script>

@@ -27,6 +27,7 @@ export const query = graphql`
         author {
           node {
             name
+            uri
           }
         }
 
@@ -119,7 +120,11 @@ export default function ForexMarketNewsSingle({ data }) {
             "@type": "NewsArticle",
             headline: seo.title,
             url: `https://www.wecomparebrokers.com${page?.uri}`,
-            author: page?.author?.node?.name,
+            author: {
+              "@type": "Person",
+              name: page?.author?.node?.name,
+              url: `https://www.wecomparebrokers.com${page?.author?.node?.uri}`,
+            },
             datePublished: page?.date,
           })}
         </script>

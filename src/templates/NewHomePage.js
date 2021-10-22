@@ -1184,7 +1184,7 @@ export default function NewHomePage({ data }) {
           {JSON.stringify({
             "@context": "http://schema.org/",
             "@type": "Organization",
-            headline: "We Compare Brokers",
+            name: "We Compare Brokers",
             url: "https://www.wecomparebrokers.com",
             logo: logoUrl,
           })}
