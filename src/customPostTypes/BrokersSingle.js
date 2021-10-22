@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import $ from "jquery"
 import "jquery-match-height"
 import { graphql, Link } from "gatsby"
@@ -258,6 +258,7 @@ export const query = graphql`
           reviewBodyResearch
           reviewIntroText
           rightIframe
+          countriesToShowIframe
           safetyOfDepositsRegComp
           safetyOfDepositsRegCompScore
           sizeMeasureBg
@@ -461,6 +462,26 @@ export default function BrokersSingle({ data }) {
   const broker = data.wpgraphql.broker123
   const acfOptionsGeneralSettings =
     data.wpgraphql.acfOptionsGeneralSettings.optGeneralSettings
+  const [isFormAllowed, setIsFormAllowed] = useState(null)
+  const countriesToShowIframe = broker.cptBrokers?.countriesToShowIframe
+  useEffect(() => {
+    fetch(
+      "https://geolocation-db.com/json/297364b0-2bc6-11ec-a8a6-1fc54772a803"
+    )
+      .then(res => res.json())
+      .then(data => {
+        if (countriesToShowIframe.includes(data.country_code)) {
+          setIsFormAllowed(true)
+        } else {
+          setIsFormAllowed(false)
+        }
+      })
+      .catch(err => {
+        console.log("error", err)
+        setIsFormAllowed(false)
+      })
+  }, [])
+  console.log("typeof isFormAllowed", typeof isFormAllowed)
 
   useEffect(() => {
     //STIKT KIT
@@ -1055,15 +1076,29 @@ export default function BrokersSingle({ data }) {
           </div>
         )}
 
-        {broker.cptBrokers.rightIframe && (
-          <div class="medium-6 columns rew-user-right">
-            <iframe
-              width="100%"
-              height="550px"
-              src={Parser(broker.cptBrokers.rightIframe)}
-            ></iframe>
-          </div>
-        )}
+        {typeof isFormAllowed === "boolean" &&
+          countriesToShowIframe.length > 0 &&
+          broker.cptBrokers.rightIframe &&
+          (isFormAllowed
+            ? broker.cptBrokers.rightIframe && (
+                <div class="medium-6 columns rew-user-right">
+                  <iframe
+                    width="100%"
+                    height="550px"
+                    src={Parser(broker.cptBrokers.rightIframe)}
+                  ></iframe>
+                </div>
+              )
+            : broker.cptBrokers.affiliateLink && (
+                <div class="medium-6 columns rew-user-right">
+                  <a
+                    href={broker.cptBrokers.affiliateLink}
+                    class="btn blue broker-noiframe-btn"
+                  >
+                    Visit Broker
+                  </a>
+                </div>
+              ))}
       </div>
     )
   }

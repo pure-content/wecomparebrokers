@@ -2307,6 +2307,8 @@ form#health-form input:-moz-placeholder {
 
 .rew-user-top {
   margin-bottom: 35px !important;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .brok-rew-wrap .rew-user-left {
@@ -2439,6 +2441,10 @@ form#health-form input:-moz-placeholder {
 .rew-user-right {
   padding-top: 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .rew-user-right .btns-wrap {
@@ -7945,4 +7951,15 @@ ul.trust-list li img {
   line-height: 30px;
   text-align: center;
   color: #ffffff;
+}
+.broker-noiframe-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 150px;
+  font-size: 30px;
+  line-height: 1.6;
+  border-radius: 5px;
+  max-width: none;
 }
