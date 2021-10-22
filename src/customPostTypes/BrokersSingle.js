@@ -481,7 +481,6 @@ export default function BrokersSingle({ data }) {
         setIsFormAllowed(false)
       })
   }, [])
-  console.log("typeof isFormAllowed", typeof isFormAllowed)
 
   useEffect(() => {
     //STIKT KIT
