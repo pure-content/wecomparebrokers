@@ -2449,14 +2449,17 @@ form#health-form input:-moz-placeholder {
 
 .rew-user-right .btns-wrap {
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rew-user-right .btns-wrap .aff-wrap {
   display: inline-block;
-  width: 42%;
+  width: auto;
   margin: 0 20px;
   vertical-align: top;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .rew-user-right .btns-wrap .btn {
@@ -2464,8 +2467,8 @@ form#health-form input:-moz-placeholder {
   border-radius: 0;
   color: #fff;
   max-width: none;
-  width: 42%;
-  padding: 10px 0px;
+  width: auto;
+  padding: 0 15px;
   font-size: 14px;
   margin: 0 20px;
   cursor: pointer;
@@ -2473,11 +2476,13 @@ form#health-form input:-moz-placeholder {
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .rew-user-right .btns-wrap .aff-wrap .btn {
   width: 100%;
   margin: 0;
+  padding: 0 15px;
 }
 
 .rew-user-right .btns-wrap .btn:hover,
