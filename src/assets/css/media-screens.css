@@ -199,7 +199,7 @@
     text-align: center;
   }
   .copy-wrap p {
-    font-size: 12px;
+    font-size: 14px;
   }
   .hp-hero-wrap {
     background-size: contain;
@@ -268,7 +268,7 @@
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 30px;
     border-right: 1px solid #2a79ff;
     border-bottom: 0;
@@ -430,7 +430,7 @@
   }
   .crumbs {
     margin-top: 0;
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 20px;
   }
   .top-content {
@@ -506,7 +506,7 @@
     margin-bottom: 10px;
   }
   .broker-wrap .broker-content > a {
-    font-size: 12px;
+    font-size: 14px;
   }
   .broker-wrap .broker-content p {
     margin-top: 10px;
@@ -571,7 +571,7 @@
   }
   .btn-navi-wrap a,
   .btn-navi-wrap span {
-    font-size: 12px;
+    font-size: 14px;
   }
   .btn-navi-wrap a.prev,
   .btn-navi-wrap span.prev {
@@ -990,7 +990,7 @@
     transform: none;
   }
   .compare-tab .tab-brok-row .fees-col .fee-val {
-    font-size: 12px;
+    font-size: 14px;
   }
   .blog-content-row .blog-listing,
   .blog-content-row .sidebar {
@@ -1022,7 +1022,7 @@
   ul.pagination li a {
     width: 30px;
     line-height: 30px;
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 10px;
   }
   ul.pagination li a.prev,
@@ -1461,7 +1461,7 @@
     padding-left: 5px;
   }
   .dark-grey-wrap .inline-list li a {
-    font-size: 10px;
+    font-size: 14px;
   }
   .trust-section h2 {
     font-size: 24px;
@@ -1564,7 +1564,7 @@
     padding-left: 0;
   }
   .rating {
-    height: 14px;
+    height: 23px;
   }
   .broker-identity.one-column .rat-val {
     margin-left: 10px;
@@ -1653,7 +1653,12 @@
     width: 100%;
   }
   .broker-wrap.new .rating {
-    height: 11px;
+    height: 20px;
+  }
+  .single-broker-wrap table,
+  .single-broker-wrap video,
+  .single-broker-wrap .wp-video {
+    width: 100% !important;
   }
 }
 
@@ -1836,7 +1841,7 @@
     float: none;
   }
   .footer-nav ul li a {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 16px;
   }
   .footer-logo {
@@ -1938,7 +1943,7 @@
     padding-right: 7px;
   }
   .tabs-brok-card-wrap ul li {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.8;
   }
   .fees-cols {
@@ -1952,7 +1957,7 @@
     padding: 0 10px;
   }
   .tabs-brok-card-wrap .btn-wrap .btn {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 30px;
     border-radius: 16px;
     margin-bottom: 10px;
@@ -2422,7 +2427,7 @@
         flex-direction: column;
     }*/
   .tab-nav ul li {
-    font-size: 12px;
+    font-size: 14px;
     padding: 10px 15px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2508,7 +2513,7 @@
     text-align: center;
   }
   .top-bar-section li:not(.has-form) a:not(.button) {
-    font-size: 12px;
+    font-size: 14px;
   }
   .hero-logos-row .hero-logos ul li {
     margin: 0 10px;
@@ -2846,7 +2851,7 @@
     padding: 0 10px;
   }
   .top-bar-section li:not(.has-form) a:not(.button) {
-    font-size: 12px;
+    font-size: 14px;
   }
   .hp-hero-wrap {
     padding-top: 60px;
