@@ -651,12 +651,12 @@ export default function NewHomePage({ data }) {
     // }, [generalSettings.leftAdBanners])
     return (
       <div className="brokers-top-section row expanded">
-        {generalSettings.leftAdBanners.length > 0 && (
+        {generalSettings.leftAdBanners?.length > 0 && (
           <div
             className="brokers-top__left-a-d a-d-column column hide-for-small-only medium-12 large-2"
             data-mh="brok-ad"
           >
-            {generalSettings.leftAdBanners.map(ad =>
+            {generalSettings.leftAdBanners?.map(ad =>
               ad.bannerType === "link" ? (
                 <a className="brokers-top__left-a-d-each" href={ad.bannerLink}>
                   <img src={ad.bannerImage?.mediaItemUrl} alt="" />
@@ -1029,12 +1029,12 @@ export default function NewHomePage({ data }) {
           )}
         </div>
 
-        {generalSettings.rightAdBanner.length > 0 && (
+        {generalSettings.rightAdBanner?.length > 0 && (
           <div
             className="brokers-top__right-a-d a-d-column column hide-for-small-only medium-12 large-2"
             data-mh="brok-ad"
           >
-            {generalSettings.rightAdBanner.map(ad =>
+            {generalSettings.rightAdBanner?.map(ad =>
               ad.bannerType === "link" ? (
                 <a className="brokers-top__right-a-d-each" href={ad.bannerLink}>
                   <img src={ad.bannerImage?.mediaItemUrl} alt="" />
@@ -1192,10 +1192,10 @@ export default function NewHomePage({ data }) {
         {generalSettings.topAddSection?.typeOfAdd === "iframe"
           ? Parser(generalSettings.topAddSection?.topAdScript)
           : null}
-        {generalSettings.leftAdBanners.map(ad =>
+        {generalSettings.leftAdBanners?.map(ad =>
           Parser(ad.bannerScript ? ad.bannerScript : "")
         )}
-        {generalSettings.rightAdBanner.map(ad =>
+        {generalSettings.rightAdBanner?.map(ad =>
           Parser(ad.bannerScript ? ad.bannerScript : "")
         )}
         {generalSettings.topAdFirstBannerSectionForMobile.bannerScript &&
